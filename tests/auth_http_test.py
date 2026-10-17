@@ -71,25 +71,27 @@ try:
     assert status == 303
     assert client.cookies['siminat_session'].value != old_session
     status, _, page = client.request('admin/')
-    assert status == 200 and 'Ruang kerja Anda' in page and 'Perbarui kata sandi' not in page
+    assert status == 200 and '<h1>Dashboard' in page and 'Berhasil masuk' in page
     assert 'name="current_password"' not in page
-    status, _, page = client.request('admin/?page=password')
-    assert status == 200 and 'Ganti kata sandi.' in page
+    status, _, page = client.request('admin/akun/password')
+    assert status == 200 and '<h1>Ganti Kata Sandi' in page
     other_client = Client()
     _, _, other_page = other_client.request('login.php')
     assert other_client.request('login.php', {'_csrf':csrf(other_page),'username':USERNAME,'password':PASSWORD})[0] == 303
-    status, _, page = client.request('admin/?page=password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':'different'})
+    status, _, page = client.request('admin/akun/password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':'different'})
     assert status == 422 and 'Konfirmasi kata sandi belum cocok' in page
-    status, _, _ = client.request('admin/?page=password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':NEW_PASSWORD})
+    status, _, _ = client.request('admin/akun/password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':NEW_PASSWORD})
     assert status == 303
     status, _, page = client.request('admin/')
-    assert status == 200 and 'Ruang kerja Anda' in page
+    assert status == 200 and '<h1>Dashboard' in page
     assert other_client.request('admin/')[0] == 303
     assert client.request('login.php')[0] == 303
     assert client.request('logout.php')[0] == 405
     assert client.request('logout.php', {'_csrf':'invalid'})[0] == 403
     assert client.request('logout.php', {'_csrf':csrf(page)})[0] == 303
     assert client.request('admin/')[0] == 303
+    _, _, page = client.request('login.php')
+    assert 'Berhasil keluar' in page
     _, _, page = client.request('login.php')
     status, _, page = client.request('login.php', {'_csrf':csrf(page),'username':USERNAME,'password':PASSWORD})
     assert status == 422

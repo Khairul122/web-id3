@@ -6,7 +6,7 @@ final class AuthController
     public function login(): void
     {
         if (Auth::user()) {
-            redirect('admin/');
+            redirect('admin/dashboard/');
         }
         $errors = [];
         $username = '';
@@ -42,7 +42,8 @@ final class AuthController
                         User::recordLogin((int) $user['id']);
                         LoginAttempt::clear($ip);
                         Auth::login($user);
-                        redirect('admin/');
+                        flash('success', 'Berhasil masuk', 'Selamat datang, ' . $user['nama'] . '.');
+                        redirect('admin/dashboard/');
                     }
                     http_response_code(422);
                     $notice = 'Username atau kata sandi tidak sesuai.';
@@ -54,53 +55,10 @@ final class AuthController
             $this->methodNotAllowed();
             return;
         }
-        View::auth('login', compact('errors', 'username', 'notice'));
-    }
-
-    public function workspace(): void
-    {
-        $user = Auth::user();
-        if (!$user) {
-            redirect('login.php');
-        }
-        $change = ($_GET['page'] ?? '') === 'password';
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!$this->verifyPost()) {
-                return;
-            }
-            if (!$change) {
-                $this->methodNotAllowed();
-                return;
-            }
-            $password = input('password');
-            if (!password_verify(input('current_password'), $user['password_hash'])) {
-                $errors['current_password'] = 'Kata sandi saat ini belum sesuai.';
-            }
-            if (strlen($password) < 12 || strlen($password) > 72 || str_contains($password, "\0")) {
-                $errors['password'] = 'Gunakan kata sandi sepanjang 12 hingga 72 byte.';
-            } elseif (password_verify($password, $user['password_hash'])) {
-                $errors['password'] = 'Gunakan kata sandi yang berbeda dari kata sandi saat ini.';
-            }
-            if ($password !== input('password_confirmation')) {
-                $errors['password_confirmation'] = 'Konfirmasi kata sandi belum cocok.';
-            }
-            if (!$errors) {
-                User::changePassword((int) $user['id'], $password);
-                Auth::login(User::findById((int) $user['id']));
-                redirect('admin/');
-            }
-            http_response_code(422);
-        } elseif ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-            $this->methodNotAllowed();
-            return;
-        }
-        View::auth($change ? 'password' : 'welcome', [
-            'user' => $user,
-            'errors' => $errors,
-            'heading' => $change ? 'Ganti kata sandi.' : 'Ruang kerja Anda.',
-            'intro' => $change ? 'Ganti kata sandi akun saat Anda menginginkannya.' : 'Selamat datang, ' . $user['nama'] . '.',
-        ]);
+        $flash = $notice !== '' || $errors
+            ? ['type' => 'error', 'title' => 'Gagal masuk', 'message' => $notice !== '' ? $notice : 'Periksa kembali username dan kata sandi Anda.']
+            : null;
+        View::auth('login', compact('errors', 'username', 'notice', 'flash'));
     }
 
     public function logout(): void
@@ -113,6 +71,7 @@ final class AuthController
             return;
         }
         Auth::logout();
+        flash('success', 'Berhasil keluar', 'Anda telah keluar dari SIMINAT. Sampai jumpa kembali.');
         redirect('login.php');
     }
 

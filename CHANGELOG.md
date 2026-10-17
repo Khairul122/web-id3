@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 (panel admin)
+
+- Panel admin berstruktur MVC + service: front controller `admin/index.php` (URL `/admin/{modul}/{aksi}`), controller di `app/controllers`, logika di `app/services`, query di `app/models`, tampilan di `views/admin/{modul}/index.php, form.php, review.php, detail.php`.
+- Modul: Dashboard, Data Siswa (CRUD, form -> tinjau -> simpan, import Excel dengan validasi 247/147/100), Data Sekolah, Atribut ID3, Diskretisasi, Training (pohon, langkah entropy/gain, aturan IF-THEN), Pengujian (stratified k-fold seed 42, confusion matrix), Prediksi (Cek Rekomendasi dan massal), Laporan (cetak A4 dan CSV), Pengguna, Akun Saya.
+- Mesin ID3 (`app/services/Id3.php`) dan evaluator, diuji dengan play-tennis di `tests/id3_manual_test.php`.
+- Dialog pesan di tengah layar untuk berhasil, gagal, dan konfirmasi, termasuk saat masuk dan keluar.
+- Database: migrasi `003_master_id3.sql` dan `seed_master.sql`. Import CLI: `php scripts/import_dataset.php`.
+- Tes: `tests/admin_http_test.py`, tes autentikasi diperbarui untuk rute dan dialog baru.
+
 ## 2026-10-17
 
 - Sesuai permintaan pengguna, login langsung membuka ruang kerja tanpa kewajiban mengganti kata sandi. Kata sandi saat ini tetap berlaku; menu Ganti kata sandi tersedia secara sukarela.

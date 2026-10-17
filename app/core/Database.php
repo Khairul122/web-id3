@@ -20,4 +20,28 @@ final class Database
         }
         return self::$connection;
     }
+
+    public static function run(string $sql, array $params = []): PDOStatement
+    {
+        $statement = self::pdo()->prepare($sql);
+        $statement->execute($params);
+        return $statement;
+    }
+
+    /** Jalankan $work dalam transaksi; rollback bila gagal. */
+    public static function transaction(callable $work): mixed
+    {
+        $pdo = self::pdo();
+        $pdo->beginTransaction();
+        try {
+            $result = $work($pdo);
+            $pdo->commit();
+            return $result;
+        } catch (Throwable $exception) {
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            throw $exception;
+        }
+    }
 }

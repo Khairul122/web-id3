@@ -15,4 +15,5 @@ $server->exec('CREATE DATABASE IF NOT EXISTS `' . $config['db_name'] . '` CHARAC
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/schema.sql'));
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/002_optional_password_change.sql'));
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed.sql'));
-echo "Database autentikasi siap. Akun yang sudah ada tidak diubah.\n";
+Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed_master.sql'));
+echo "Database siap. Akun dan data yang sudah ada tidak diubah.\n";

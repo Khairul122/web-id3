@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="<?= e(url('assets/css/tokens.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/hero.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/auth.css')) ?>">
+  <link rel="stylesheet" href="<?= e(url('assets/css/dialog.css')) ?>">
   <script src="<?= e(url('assets/js/auth.js')) ?>" defer></script>
+  <script src="<?= e(url('assets/js/dialog.js')) ?>" defer></script>
 </head>
 <body class="auth-page">
 <a class="skip-link" href="#form-area">Lewati ke konten</a>
@@ -46,5 +48,6 @@
   <button class="auth-submit" type="button" data-help-close>Kembali ke form masuk</button>
 </dialog>
 <?php endif; ?>
+<?php require APP_ROOT . '/views/partials/dialogs.php'; ?>
 </body>
 </html>

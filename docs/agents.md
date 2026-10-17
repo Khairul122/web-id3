@@ -46,7 +46,8 @@ Akun awal (`seed.sql`): `admin` / `admin123`. Sesuai keputusan pengguna, login l
 3. Query **hanya** lewat `Database::pdo()` dengan prepared statement. Jangan pernah menyisipkan `$_GET` atau `$_POST` ke string SQL.
 4. Output ke HTML **selalu** lewat `e($teks)`. Untuk JSON gunakan `json_encode(..., JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE)`.
 5. Form POST wajib berisi `<?= Csrf::field() ?>` dan controller wajib memanggil `Csrf::verify()`.
-6. Controller tipis. Logika hitung ada di `app/services/`. Query ada di `app/models/`.
+6. MVC + service. Panel admin lewat front controller `admin/index.php` dan `Router` (`/admin/{modul}/{aksi}` -> `{Modul}Controller::{aksi}()`). Controller tipis di `app/controllers/`, logika di `app/services/`, query di `app/models/`, tampilan di `views/admin/{modul}/{halaman}.php`.
+   Pesan hasil aksi memakai `flash('success'|'error', judul, pesan)` dan tampil sebagai dialog di tengah. Aksi yang mengubah atau menghapus data memakai `data-confirm` pada form.
 7. View hanya menampilkan data. Tidak ada query di view.
 8. Error tampil ramah ke pengguna. Detail error masuk `storage/logs/app.log`.
 9. Tanggal disimpan UTC, ditampilkan WIB (`Asia/Jakarta`).

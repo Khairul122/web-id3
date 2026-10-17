@@ -27,6 +27,27 @@ final class Auth
         return $user;
     }
 
+    public static function requireUser(): array
+    {
+        $wasSignedIn = self::isSignedIn();
+        $user = self::user();
+        if (!$user) {
+            if ($wasSignedIn) {
+                flash('error', 'Sesi berakhir', 'Sesi Anda telah berakhir. Silakan masuk kembali.');
+            }
+            redirect('login.php');
+        }
+        return $user;
+    }
+
+    public static function requireAdmin(array $user): void
+    {
+        if ($user['role'] !== 'admin') {
+            flash('error', 'Akses ditolak', 'Halaman tersebut hanya dapat dibuka oleh administrator.');
+            redirect('admin/dashboard/');
+        }
+    }
+
     public static function login(array $user): void
     {
         session_regenerate_id(true);

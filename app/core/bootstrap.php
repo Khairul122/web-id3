@@ -12,7 +12,7 @@ spl_autoload_register(static function (string $class): void {
     if (!preg_match('/^[A-Za-z][A-Za-z0-9]*$/D', $class)) {
         return;
     }
-    foreach (['core', 'models', 'controllers'] as $directory) {
+    foreach (['core', 'models', 'services', 'controllers'] as $directory) {
         $file = APP_ROOT . '/app/' . $directory . '/' . $class . '.php';
         if (is_file($file)) {
             require_once $file;
@@ -22,6 +22,7 @@ spl_autoload_register(static function (string $class): void {
 });
 
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/view_helpers.php';
 
 set_exception_handler(static function (Throwable $exception): void {
     error_log(get_class($exception) . ': ' . $exception->getMessage());
