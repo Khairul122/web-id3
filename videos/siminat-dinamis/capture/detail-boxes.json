@@ -1,0 +1,65 @@
+{
+  "H10": {
+    "x": 32,
+    "y": 64,
+    "width": 378.625,
+    "height": 31.046875,
+    "text": "Hasil Rekomendasi"
+  },
+  "btn btn--outline no-print": {
+    "x": 599.703125,
+    "y": 79.4375,
+    "width": 137.90625,
+    "height": 44,
+    "text": "Cetak Hasil"
+  },
+  "result-head result-head--soshum": {
+    "x": 32,
+    "y": 147.4375,
+    "width": 836,
+    "height": 118.375,
+    "text": "Rekomendasi rumpun\nSoshum\nKeyakinan 100,0% dari distribusi daun pohon keputusan"
+  },
+  "yakin-title": {
+    "x": 53,
+    "y": 286.8125,
+    "width": 180.609375,
+    "height": 24.6875,
+    "text": "Tingkat keyakinan"
+  },
+  "jalur-title": {
+    "x": 481,
+    "y": 286.8125,
+    "width": 159.546875,
+    "height": 24.6875,
+    "text": "Jalur keputusan"
+  },
+  "path": {
+    "x": 481,
+    "y": 352.296875,
+    "width": 366,
+    "height": 152.390625,
+    "text": "Peminatan = Umum\nKecenderungan = MIPA\nKat_Agama = Sedang\nKat_Bahasa = Sedang\nKat_MTK = Tinggi\nSoshum"
+  },
+  "prodi-title": {
+    "x": 53,
+    "y": 566.6875,
+    "width": 216.359375,
+    "height": 24.6875,
+    "text": "Contoh program studi"
+  },
+  "input-title": {
+    "x": 481,
+    "y": 566.6875,
+    "width": 140.515625,
+    "height": 24.6875,
+    "text": "Data masukan"
+  },
+  "notice": {
+    "x": 32,
+    "y": 1140.09375,
+    "width": 836,
+    "height": 52.09375,
+    "text": "Hasil ini adalah rekomendasi, bukan keputusan akhir. Diskusikan dengan guru BK dan orang tua."
+  }
+}

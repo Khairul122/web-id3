@@ -19,7 +19,7 @@ with sync_playwright() as p:
     page.screenshot(path=str(OUT / 'motion-hero-desktop.png'))
     page.evaluate("window.scrollTo({top: document.querySelector('#rumpun').offsetTop - 96, behavior: 'instant'})")
     page.wait_for_timeout(120)
-    assert page.locator('.rumpun-definitions > div').first.evaluate('(e) => e.getAnimations().some(a => a.playState === "running")')
+    assert page.locator('.explore-stage').evaluate('(e) => e.getAnimations().some(a => a.playState === "running")')
     expect(page.locator('.desktop-nav .nav-link--active')).to_have_attribute('href', '#rumpun')
     assert page.locator('[data-header]').evaluate('(e) => getComputedStyle(e).position') == 'fixed'
     progress = page.locator('[data-reading-progress]').evaluate('(e) => parseFloat(e.style.getPropertyValue("--reading-progress"))')
@@ -30,7 +30,7 @@ with sync_playwright() as p:
     assert first_drift != page.locator('#rumpun [data-parallax]').evaluate('(e) => e.style.getPropertyValue("--image-drift")')
     page.evaluate("window.scrollTo({top: document.querySelector('#cara-kerja').offsetTop + 150, behavior: 'instant'})")
     page.wait_for_timeout(80)
-    assert page.locator('.process-list > li').first.evaluate('(e) => e.getAnimations().some(a => a.playState === "running")')
+    assert page.locator('.journey-workspace').evaluate('(e) => e.getAnimations().some(a => a.playState === "running")')
     expect(page.locator('.desktop-nav .nav-link--active')).to_have_attribute('href', '#cara-kerja')
     page.locator('.method-tree').scroll_into_view_if_needed()
     page.wait_for_timeout(100)

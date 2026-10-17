@@ -1,55 +1,37 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        background: #0a0a0a;
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
-    </style>
-  </head>
-  <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
-    </div>
-    <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
-    </script>
-  </body>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=1080, height=1920">
+<title>SIMINAT · Dari masalah menuju arah studi</title>
+<script src="assets/gsap.min.js"></script>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+@font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#071D31}
+.clip{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.film-progress{position:absolute;left:108px;right:108px;bottom:154px;height:5px;background:#31495D;z-index:30}
+.film-progress span{display:block;width:100%;height:100%;background:#F8C454;transform-origin:left}
+</style>
+</head>
+<body>
+<div data-hf-id="hf-8peg" id="root" data-composition-id="main" data-start="0" data-duration="41.748" data-width="1080" data-height="1920" data-fps="30">
+<div data-hf-id="hf-wt19" id="hook" class="clip" data-composition-id="01-hook" data-composition-src="compositions/frames/01-hook.html" data-start="0" data-duration="4.174" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="01 · Masalah memilih jurusan"></div>
+<div data-hf-id="hf-qh1u" id="national" class="clip" data-composition-id="02-national" data-composition-src="compositions/frames/02-national.html" data-start="4.174" data-duration="8.348" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="02 · Panduan nasional dan guru BK"></div>
+<div data-hf-id="hf-wt33" id="brand" class="clip" data-composition-id="02-brand" data-composition-src="compositions/frames/02-brand.html" data-start="12.522" data-duration="4.174" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="03 · Solusi SIMINAT"></div>
+<div data-hf-id="hf-gogf" id="input" class="clip" data-composition-id="03-input" data-composition-src="compositions/frames/03-input.html" data-start="16.696" data-duration="6.261" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="04 · Demo masukan nilai"></div>
+<div data-hf-id="hf-24up" id="process" class="clip" data-composition-id="04-process" data-composition-src="compositions/frames/04-process.html" data-start="22.957" data-duration="6.261" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="05 · Penelusuran keputusan ID3"></div>
+<div data-hf-id="hf-1187" id="result" class="clip" data-composition-id="05-result" data-composition-src="compositions/frames/05-result.html" data-start="29.218" data-duration="6.261" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="06 · Hasil rekomendasi"></div>
+<div data-hf-id="hf-6nby" id="close" class="clip" data-composition-id="06-close" data-composition-src="compositions/frames/06-close.html" data-start="35.479" data-duration="6.269" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="07 · Diskusikan dengan guru BK"></div>
+<div data-hf-id="hf-4jf3" id="progress" class="clip" data-composition-id="film-progress" data-composition-src="compositions/film-progress.html" data-start="0" data-duration="41.748" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" data-label="Progres film" style="pointer-events:none;z-index:30"></div>
+<audio data-hf-id="hf-175b" id="bgm" src="assets/bgm.mp3" data-start="0" data-duration="41.748" data-track-index="10" data-volume="0.78" data-label="Musik pilihan pengguna" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.35,"v":0.78},{"t":39.6,"v":0.78},{"t":41.748,"v":0}]}]}'></audio>
+<audio data-hf-id="hf-1wse" id="brand-impact" src="assets/sfx/impact-bass-1.mp3" data-start="12.522" data-duration="2.12" data-track-index="11" data-volume="0.18" data-label="Aksen solusi"></audio>
+<audio data-hf-id="hf-y8kq" id="demo-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="16.696" data-duration="0.57" data-track-index="12" data-volume="0.16" data-label="Masuk demo"></audio>
+<audio data-hf-id="hf-1w10" id="result-impact" src="assets/sfx/impact-bass-1.mp3" data-start="29.218" data-duration="2.12" data-track-index="11" data-volume="0.18" data-label="Aksen hasil"></audio>
+</div>
+<script>
+const timeline=gsap.timeline({paused:true});
+timeline.to({},{duration:41.748},0);
+window.__timelines['main']=timeline;
+</script>
+</body>
 </html>

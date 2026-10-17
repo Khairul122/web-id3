@@ -15,6 +15,13 @@ document.querySelectorAll('[data-password-toggle]').forEach((button) => {
 
 document.querySelectorAll('[data-auth-form]').forEach((form) => {
   const button = form.querySelector('[data-submit]');
+  const progress = form.querySelector('.auth-form__progress span');
+  const fields = [...form.querySelectorAll('input:not([type="hidden"])')];
+  const updateProgress = () => {
+    if (progress) progress.style.width = `${(fields.filter((field) => field.value.trim()).length / fields.length) * 100}%`;
+  };
+  fields.forEach((field) => field.addEventListener('input', updateProgress));
+  updateProgress();
   const status = form.querySelector('[data-submit-status]');
   form.addEventListener('submit', () => {
     button.disabled = true;
@@ -42,7 +49,7 @@ if (help && helpTrigger) {
     if (event.key !== 'Tab') return;
     const controls = [...help.querySelectorAll('button')];
     const first = controls[0];
-    const last = controls.at(-1);
+    const last = controls[controls.length - 1];
     if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();

@@ -1,0 +1,149 @@
+{
+  "H10": {
+    "x": 32,
+    "y": 64,
+    "width": 720,
+    "height": 31.046875,
+    "text": "Cek Rekomendasi"
+  },
+  "_csrf": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "text": "02fed43a807ade7179e219bae40f747a112eafb1fbbf99df7a78b7403ab91999"
+  },
+  "siswa-title": {
+    "x": 53,
+    "y": 209.828125,
+    "width": 794,
+    "height": 22.09375,
+    "text": "Sekolah dan peminatan"
+  },
+  "nama": {
+    "x": 53,
+    "y": 282.71875,
+    "width": 388,
+    "height": 44.390625,
+    "text": "Siswa Contoh"
+  },
+  "sekolah": {
+    "x": 459,
+    "y": 282.71875,
+    "width": 388,
+    "height": 44,
+    "text": "Pilih sekolah\nMAN 4 Aceh Utara\nMAS Al-Muslimun Lhoksukon"
+  },
+  "peminatan": {
+    "x": 53,
+    "y": 373.90625,
+    "width": 388,
+    "height": 44,
+    "text": "Pilih peminatan\nUmum\nMIPA\nIPS\nKeagamaan\nLainnya"
+  },
+  "nilai-title": {
+    "x": 53,
+    "y": 480.09375,
+    "width": 794,
+    "height": 22.09375,
+    "text": "Nilai rapor"
+  },
+  "rata_agama": {
+    "x": 53,
+    "y": 597.765625,
+    "width": 626,
+    "height": 44.390625,
+    "text": "93"
+  },
+  "kat_Kat_Agama": {
+    "x": 687,
+    "y": 597.765625,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "nilai_barab": {
+    "x": 53,
+    "y": 708.953125,
+    "width": 626,
+    "height": 44.390625,
+    "text": "92"
+  },
+  "kat_Kat_BArab": {
+    "x": 687,
+    "y": 708.953125,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "rata_bahasa": {
+    "x": 53,
+    "y": 820.140625,
+    "width": 626,
+    "height": 44.390625,
+    "text": "93"
+  },
+  "kat_Kat_Bahasa": {
+    "x": 687,
+    "y": 820.140625,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "nilai_mtk": {
+    "x": 53,
+    "y": 931.328125,
+    "width": 626,
+    "height": 44.390625,
+    "text": "96"
+  },
+  "kat_Kat_MTK": {
+    "x": 687,
+    "y": 931.328125,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "rata_mipa": {
+    "x": 53,
+    "y": 1042.515625,
+    "width": 626,
+    "height": 44.390625,
+    "text": "97"
+  },
+  "kat_Kat_MIPA": {
+    "x": 687,
+    "y": 1042.515625,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "rata_ips": {
+    "x": 53,
+    "y": 1153.703125,
+    "width": 626,
+    "height": 44.390625,
+    "text": "90"
+  },
+  "kat_Kat_IPS": {
+    "x": 687,
+    "y": 1153.703125,
+    "width": 160,
+    "height": 44,
+    "text": "Pilih\nTinggi\nSedang\nRendah\nTidak Ada"
+  },
+  "kat_Kecenderungan": {
+    "x": 53,
+    "y": 1264.890625,
+    "width": 794,
+    "height": 44,
+    "text": "Hitung dari rata-rata MIPA dan IPS\nMIPA\nIPS\nSeimbang\nTidak Terukur"
+  },
+  "btn": {
+    "x": 53,
+    "y": 1345.890625,
+    "width": 182.65625,
+    "height": 44,
+    "text": "Lanjut ke Tinjauan"
+  }
+}

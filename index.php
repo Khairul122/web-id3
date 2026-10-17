@@ -18,7 +18,9 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/landing.css?v=20261017-motion">
+  <link rel="stylesheet" href="assets/css/landing-sections.css?v=20261017-redesign">
   <script src="assets/js/hero.js?v=20261017-motion" defer></script>
+  <script src="assets/js/landing-sections.js?v=20261017-redesign" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#konten">Lewati ke konten</a>
@@ -82,58 +84,74 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
       <div class="hero__credit container"><span>SIMINAT · Klasifikasi Minat Jurusan Kuliah</span></div>
     </div>
   </section>
-  <section class="landing-section section--ivory" id="rumpun" aria-labelledby="rumpun-title" tabindex="-1">
-    <div class="container rumpun-layout">
-      <div>
-        <p class="section-eyebrow">Rumpun jurusan</p>
-        <h2 class="section-title" id="rumpun-title">Kenali bidangnya.<br><em>Temukan minatmu.</em></h2>
-        <p class="section-intro">Setiap rumpun membuka banyak pilihan. Mulailah dengan memahami bidang yang ingin kamu pelajari.</p>
-        <figure class="editorial-photo">
-          <div class="editorial-photo__frame"><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/jelajah-rumpun-ai.webp" srcset="assets/img/landing/jelajah-rumpun-ai-768.webp 768w, assets/img/landing/jelajah-rumpun-ai.webp 1536w" sizes="(min-width: 768px) 44vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi dua siswa madrasah membaca panduan bidang studi bersama di perpustakaan."></div><p class="photo-caption">Mulai dari rasa ingin tahu.</p></div>
-        </figure>
+  <section class="landing-section section--ivory explore-section" id="rumpun" aria-labelledby="rumpun-title" tabindex="-1">
+    <div class="container">
+      <div class="chapter-heading"><p class="chapter-label"><span>01 /</span> Kenali pilihanmu</p><span class="chapter-aside">Rasa ingin tahu adalah titik awal.</span></div>
+      <div class="explore-heading"><h2 class="section-title" id="rumpun-title">Ada banyak jalan.<br><em>Mana yang membuatmu penasaran?</em></h2><p class="section-intro">Kenali tiga rumpun jurusan, lihat bidang yang dipelajari, lalu hubungkan dengan hal yang kamu sukai.</p></div>
+      <div class="field-explorer" data-tabs>
+        <div class="field-tabs" data-tab-list aria-label="Jelajahi rumpun jurusan" hidden>
+          <button id="tab-saintek" type="button" data-tab="panel-saintek"><span>01</span> Saintek <?= icon('arrow') ?></button>
+          <button id="tab-soshum" type="button" data-tab="panel-soshum"><span>02</span> Soshum <?= icon('arrow') ?></button>
+          <button id="tab-campuran" type="button" data-tab="panel-campuran"><span>03</span> Campuran <?= icon('arrow') ?></button>
+        </div>
+        <div class="explore-stage">
+          <figure class="explore-photo"><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/jelajah-rumpun-ai.webp" srcset="assets/img/landing/jelajah-rumpun-ai-768.webp 768w, assets/img/landing/jelajah-rumpun-ai.webp 1536w" sizes="(min-width: 768px) 42vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi dua siswa madrasah membaca panduan bidang studi bersama di perpustakaan."></div><figcaption>Mulai dari hal yang<br><em>ingin kamu pahami.</em></figcaption></figure>
+          <div class="field-panels">
+            <article class="field-panel" id="panel-saintek" data-tab-panel>
+              <p class="field-category">Sains &amp; teknologi <span aria-hidden="true">01 / 03</span></p>
+              <h3>Saintek<span class="field-period">.</span></h3><p class="field-description">Untuk rasa ingin tahu tentang cara alam bekerja, teknologi berkembang, dan masalah dipecahkan.</p>
+              <h4>Yang akan kamu jelajahi</h4><ul class="subject-tags" aria-label="Contoh bidang Saintek"><li>Matematika</li><li>Ilmu alam</li><li>Informatika</li><li>Teknik</li><li>Kesehatan</li></ul>
+              <div class="reflection"><span>Pertanyaan untuk dirimu</span><p>“Apakah aku menikmati eksperimen, logika, atau mencari cara kerja sesuatu?”</p></div>
+            </article>
+            <article class="field-panel" id="panel-soshum" data-tab-panel>
+              <p class="field-category">Sosial &amp; humaniora <span aria-hidden="true">02 / 03</span></p>
+              <h3>Soshum<span class="field-period">.</span></h3><p class="field-description">Untuk ketertarikan pada manusia, bahasa, masyarakat, dan cara kita berinteraksi dengan dunia.</p>
+              <h4>Yang akan kamu jelajahi</h4><ul class="subject-tags" aria-label="Contoh bidang Soshum"><li>Ekonomi</li><li>Hukum</li><li>Pendidikan</li><li>Komunikasi</li><li>Bahasa</li></ul>
+              <div class="reflection"><span>Pertanyaan untuk dirimu</span><p>“Apakah aku tertarik memahami perilaku manusia, berdiskusi, atau menyampaikan gagasan?”</p></div>
+            </article>
+            <article class="field-panel" id="panel-campuran" data-tab-panel>
+              <p class="field-category">Pilihan lintas rumpun <span aria-hidden="true">03 / 03</span></p>
+              <h3>Campuran<span class="field-period">.</span></h3><p class="field-description">Ketertarikanmu bisa melintasi satu bidang. Kenali hubungan antara sains, teknologi, dan kehidupan sosial.</p>
+              <h4>Sudut pandang yang bisa dipadukan</h4><ul class="subject-tags" aria-label="Pendekatan lintas rumpun"><li>Sains</li><li>Sosial</li><li>Teknologi</li><li>Humaniora</li></ul>
+              <div class="reflection"><span>Pertanyaan untuk dirimu</span><p>“Apakah aku ingin menggabungkan pendekatan dari beberapa bidang untuk menjawab satu persoalan?”</p></div>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="rumpun-details">
-        <dl class="rumpun-definitions">
-          <div>
-            <dt><span class="row-number" aria-hidden="true">01</span>Saintek</dt>
-            <dd><strong>Sains dan teknologi</strong><p>Matematika, ilmu alam, informatika, teknik, kesehatan, dan bidang teknologi.</p></dd>
-          </div>
-          <div>
-            <dt><span class="row-number" aria-hidden="true">02</span>Soshum</dt>
-            <dd><strong>Sosial dan humaniora</strong><p>Ekonomi, hukum, pendidikan, komunikasi, bahasa, dan humaniora.</p></dd>
-          </div>
-          <div>
-            <dt><span class="row-number" aria-hidden="true">03</span>Campuran</dt>
-            <dd><strong>Pilihan lintas rumpun</strong><p>Bidang yang memadukan sains, sosial, teknologi, atau pendekatan lintas disiplin.</p></dd>
-          </div>
-        </dl>
-        <p class="section-note">Contoh bidang di atas membantu mengenali pilihan, tanpa membatasi ketertarikanmu pada bidang lain.</p>
-      </div>
+      <div class="explore-footnote"><p>Ini peta awal untuk mengenali bidang, bukan batas pilihanmu.</p><a href="#cara-kerja">Lalu, bagaimana SIMINAT membantu? <?= icon('arrow') ?></a></div>
     </div>
   </section>
-  <section class="landing-section section--paper" id="cara-kerja" aria-labelledby="cara-kerja-title" tabindex="-1">
+  <section class="landing-section section--paper journey-section" id="cara-kerja" aria-labelledby="cara-kerja-title" tabindex="-1">
     <div class="container">
-      <div class="section-heading-row">
-        <div><p class="section-eyebrow">Cara kerja</p><h2 class="section-title" id="cara-kerja-title">Dari nilai rapor<br>ke <em>bahan diskusi.</em></h2></div>
-        <p class="section-intro">Kenali alur pengolahan sebelum membaca rekomendasinya.</p>
+      <div class="chapter-heading"><p class="chapter-label"><span>02 /</span> Perjalanan rekomendasi</p><span class="chapter-aside">Data masuk. Arah mulai terbaca.</span></div>
+      <div class="journey-heading"><h2 class="section-title" id="cara-kerja-title">Nilai punya cerita.<br><em>Mari baca arahnya.</em></h2><p class="section-intro">Empat tahap menghubungkan data belajar dengan percakapan tentang masa depanmu.</p></div>
+      <div class="journey-workspace" data-journey>
+        <ol class="journey-steps" role="list">
+          <li><a href="#tahap-data" data-journey-step><span>01</span><div><strong>Siapkan data</strong><small>Nilai rapor &amp; peminatan</small></div><?= icon('chevron') ?></a></li>
+          <li><a href="#tahap-kategori" data-journey-step><span>02</span><div><strong>Kenali polanya</strong><small>Pengelompokan nilai</small></div><?= icon('chevron') ?></a></li>
+          <li><a href="#tahap-id3" data-journey-step><span>03</span><div><strong>Telusuri jalurnya</strong><small>Pohon keputusan ID3</small></div><?= icon('chevron') ?></a></li>
+          <li><a href="#tahap-diskusi" data-journey-step><span>04</span><div><strong>Bicarakan hasil</strong><small>Pendampingan guru BK</small></div><?= icon('chevron') ?></a></li>
+        </ol>
+        <div class="journey-panels">
+          <article class="journey-panel" id="tahap-data" data-journey-panel><div class="journey-visual input-visual" aria-hidden="true"><div class="report-sheet"><span>SIMINAT / DATA MASUKAN</span><strong>Perjalanan belajarmu</strong><div><i></i> Nilai rapor <b>01</b></div><div><i></i> Peminatan <b>02</b></div><p>Disiapkan bersama guru BK</p></div><span class="sheet-stamp"><?= icon('book') ?></span></div><div class="journey-caption"><p class="visual-label">Tahap 01 / Masukan</p><h3>Mulai dari yang sudah kamu pelajari.</h3><p>Siapkan nilai rapor dan informasi peminatan. Guru BK membantu memastikan data yang digunakan sesuai dengan catatan belajarmu.</p></div></article>
+          <article class="journey-panel" id="tahap-kategori" data-journey-panel><div class="journey-visual category-visual" aria-hidden="true"><span>Nilai rapor</span><div class="category-flow"><span>Tinggi</span><span>Sedang</span><span>Rendah</span></div><p>Aturan kategori yang tersimpan di sistem</p></div><div class="journey-caption"><p class="visual-label">Tahap 02 / Kategorisasi</p><h3>Angka dikelompokkan agar dapat dibaca.</h3><p>Nilai dipetakan menjadi Tinggi, Sedang, atau Rendah sesuai aturan sistem. Kategori ini menjadi atribut yang dibaca oleh pohon keputusan.</p></div></article>
+          <article class="journey-panel" id="tahap-id3" data-journey-panel><div class="journey-visual branch-visual" aria-hidden="true"><span>Atribut terpilih</span><div class="mini-branches"><span>Cabang A</span><span>Cabang B</span></div><p>Gain tertinggi menentukan pemisah</p></div><div class="journey-caption"><p class="visual-label">Tahap 03 / Pengolahan ID3</p><h3>Setiap percabangan memiliki alasan.</h3><p>ID3 menggunakan information gain untuk memilih atribut pemisah. Data kemudian ditelusuri melalui jalur pohon hingga mencapai kelas rekomendasi.</p></div></article>
+          <article class="journey-panel" id="tahap-diskusi" data-journey-panel><div class="journey-visual discussion-visual" aria-hidden="true"><div class="discussion-bubble">Apa yang membuatmu<br>tertarik pada bidang ini?</div><div class="discussion-bubble">Mari lihat pilihan dan<br>alasan rekomendasinya.</div></div><div class="journey-caption"><p class="visual-label">Tahap 04 / Pendampingan</p><h3>Hasil menjadi pembuka percakapan.</h3><p>Baca rumpun rekomendasi beserta jalur keputusannya bersama guru BK. Hubungkan hasil dengan minat, pilihan program studi, dan rencana kuliahmu.</p></div></article>
+        </div>
       </div>
-      <ol class="process-list" role="list">
-        <li><span class="process-number" aria-hidden="true">01</span><div><h3>Data siswa</h3><p>Siapkan nilai rapor dan peminatan.</p><small>Masukan sistem</small></div></li>
-        <li><span class="process-number" aria-hidden="true">02</span><div><h3>Kategori nilai</h3><p>Nilai dipetakan menjadi Tinggi, Sedang, atau Rendah sesuai aturan sistem.</p><small>Atribut kategori</small></div></li>
-        <li><span class="process-number" aria-hidden="true">03</span><div><h3>Pohon ID3</h3><p><em>Information gain</em> memilih pemisah yang paling membantu membedakan rumpun.</p><small>Jalur keputusan</small></div></li>
-        <li><span class="process-number" aria-hidden="true">04</span><div><h3>Diskusi hasil</h3><p>Baca rekomendasi dan alasan jalurnya bersama guru BK.</p><small>Bahan konsultasi</small></div></li>
-      </ol>
-      <div class="process-note"><span class="process-note__statement"><small>Pesan utama</small>Rekomendasi memberi arah, bukan <em>jawaban akhir.</em></span><span class="process-note__detail">Gunakan hasil untuk menyiapkan pertanyaan dan berdiskusi bersama guru BK.</span></div>
+      <div class="journey-note"><span><?= icon('branch') ?> Pahami prosesnya, bukan hanya hasilnya.</span><p>Visual di atas menjelaskan alur sistem, bukan hasil prediksi siswa.</p></div>
     </div>
   </section>
 
-  <section class="landing-section section--navy" id="metode" aria-labelledby="metode-title" tabindex="-1">
-    <div class="container method-layout">
-      <div>
-        <p class="section-eyebrow">Metode ID3</p>
-        <h2 class="section-title" id="metode-title">Keputusan yang<br><em>bisa ditelusuri.</em></h2>
-        <p class="section-intro">ID3 memilih atribut dengan <em>information gain</em> tertinggi untuk membentuk percabangan pohon keputusan.</p>
-        <p class="method-summary">Sederhananya: sistem mencari pemisah paling informatif, membagi data, lalu mengulangi proses sampai jalur keputusan cukup jelas.</p>
+  <section class="landing-section section--navy method-section" id="metode" aria-labelledby="metode-title" tabindex="-1">
+    <div class="container">
+      <div class="chapter-heading"><p class="chapter-label"><span>03 /</span> Di balik rekomendasi</p><span class="chapter-aside">Metode Iterative Dichotomiser 3</span></div>
+      <div class="method-layout">
+      <div class="method-copy">
+        <h2 class="section-title" id="metode-title">Bukan sekadar hasil.<br><em>Ada alasan di setiap cabang.</em></h2>
+        <p class="section-intro">Pohon keputusan ID3 menghubungkan atribut dengan rumpun rekomendasi melalui jalur yang dapat dibaca kembali.</p>
+        <dl class="method-principles"><div><dt><span>01</span> Ukur keragamannya</dt><dd>Entropy mengukur seberapa beragam kelas dalam satu kelompok data.</dd></div><div><dt><span>02</span> Pilih pemisahnya</dt><dd>Information gain menunjukkan atribut yang paling mengurangi keragaman tersebut.</dd></div><div><dt><span>03</span> Ikuti percabangannya</dt><dd>Proses berulang pada kelompok berikutnya sampai kondisi berhenti tercapai.</dd></div></dl>
+        <details class="method-technical"><summary>Lihat rumus &amp; kondisi berhenti<span aria-hidden="true">+</span></summary>
         <div class="method-formulas">
           <div class="formula">
             <p class="formula__expression" role="math" aria-label="Entropy S sama dengan negatif jumlah proporsi setiap kelas dikali logaritma basis dua proporsi kelas tersebut."><span>Entropy(S) =</span><span>− ∑<sub>c</sub> p(c) log<sub>2</sub> p(c)</span></p>
@@ -147,9 +165,11 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <p class="formula-notation">S adalah kelompok data, p(c) adalah proporsi kelas c, dan S<sub>v</sub> adalah bagian data dengan nilai atribut v. Jika p(c) = 0, suku tersebut dianggap 0.</p>
         <h3 class="stop-title">Kapan percabangan berhenti?</h3>
         <ul class="stop-list"><li>Seluruh data pada node memiliki kelas yang sama.</li><li>Atribut untuk memisahkan data sudah habis.</li><li>Data pada cabang habis; kelas mayoritas induk digunakan.</li></ul>
+        </details>
       </div>
       <figure class="method-tree">
-        <p class="tree-heading">Dari atribut<br><em>menuju rekomendasi.</em></p>
+        <div class="tree-toolbar"><span>Memahami pohon keputusan</span><span>ID3</span></div>
+        <p class="tree-heading">Satu titik awal.<br><em>Beberapa kemungkinan.</em></p>
         <svg viewBox="0 0 560 380" role="img" aria-labelledby="tree-title tree-description">
           <title id="tree-title">Ilustrasi struktur pohon keputusan ID3</title>
           <desc id="tree-description">Atribut terpilih bercabang berdasarkan nilai A dan nilai B. Cabang A memiliki atribut berikutnya, dengan daun Saintek atau Campuran. Cabang B memiliki daun Soshum. Skema ini hanya ilustrasi struktur, bukan hasil data siswa.</desc>
@@ -157,54 +177,47 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
           <g class="tree-labels"><text x="184" y="115">Nilai A</text><text x="394" y="115">Nilai B</text></g>
           <g class="tree-node"><rect x="175" y="16" width="210" height="54" rx="3"/><text x="280" y="50">Atribut terpilih</text></g>
           <g class="tree-node"><rect x="50" y="148" width="220" height="54" rx="3"/><text x="160" y="182">Atribut berikutnya</text></g>
-          <g class="tree-node tree-node--leaf"><rect x="365" y="148" width="145" height="54" rx="3"/><text x="437.5" y="182">Soshum</text></g>
-          <g class="tree-node tree-node--leaf"><rect x="20" y="288" width="142" height="50" rx="3"/><text x="91" y="320">Saintek</text></g>
-          <g class="tree-node tree-node--leaf"><rect x="200" y="288" width="160" height="50" rx="3"/><text x="280" y="320">Campuran</text></g>
+          <g class="tree-node tree-node--leaf tree-leaf--soshum"><rect x="365" y="148" width="145" height="54" rx="3"/><text x="437.5" y="182">Soshum</text></g>
+          <g class="tree-node tree-node--leaf tree-leaf--saintek"><rect x="20" y="288" width="142" height="50" rx="3"/><text x="91" y="320">Saintek</text></g>
+          <g class="tree-node tree-node--leaf tree-leaf--campuran"><rect x="200" y="288" width="160" height="50" rx="3"/><text x="280" y="320">Campuran</text></g>
         </svg>
         <figcaption>Ilustrasi, bukan pohon hasil data siswa</figcaption>
         <p>Nama node dan jalur menggambarkan struktur percabangan, bukan aturan rekomendasi yang sebenarnya.</p>
         <button type="button" class="tree-replay" data-tree-replay hidden>Putar ulang ilustrasi <?= icon('arrow') ?></button>
       </figure>
+      </div>
+      <div class="method-bottom"><span>Transparan dalam proses.</span><p>Jalur membantu menjelaskan rekomendasi. Pilihan kuliah tetap perlu mempertimbangkan minat dan percakapan dengan guru BK.</p></div>
     </div>
   </section>
 
-  <section class="landing-section section--ivory" id="panduan" aria-labelledby="panduan-title" tabindex="-1">
+  <section class="landing-section section--ivory preparation-section" id="panduan" aria-labelledby="panduan-title" tabindex="-1">
     <div class="container">
-      <div class="guide-layout">
-        <div>
-          <p class="section-eyebrow">Panduan siswa</p>
-          <h2 class="section-title" id="panduan-title">Siapkan pilihanmu,<br><em>bicarakan bersama.</em></h2>
-          <p class="section-intro">Mulai dengan memahami minatmu dan menyiapkan informasi yang dibutuhkan.</p>
-          <ol class="student-steps" role="list">
-            <li><span aria-hidden="true">01</span><p><strong>Siapkan data</strong><br>Nilai rapor dan informasi peminatanmu.</p></li>
-            <li><span aria-hidden="true">02</span><p><strong>Minta pendampingan</strong><br>Guru BK menjalankan rekomendasi melalui panel SIMINAT.</p></li>
-            <li><span aria-hidden="true">03</span><p><strong>Baca alasannya</strong><br>Periksa jalur keputusan, bukan hanya kelas hasil.</p></li>
-            <li><span aria-hidden="true">04</span><p><strong>Bicarakan pilihan</strong><br>Pertimbangkan minat, rencana kuliah, dan masukan guru BK.</p></li>
-          </ol>
-        </div>
-        <div class="teacher-guide">
-          <figure class="editorial-photo">
-            <div class="editorial-photo__frame"><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/pendampingan-guru-ai.webp" srcset="assets/img/landing/pendampingan-guru-ai-768.webp 768w, assets/img/landing/pendampingan-guru-ai.webp 1536w" sizes="(min-width: 768px) 38vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi guru BK mendampingi siswi membaca catatan pilihan kuliah."></div></div>
-          </figure>
-          <div class="teacher-guide__content"><h3>Untuk Guru BK</h3>
-          <p>Dampingi siswa membaca rekomendasi, lalu hubungkan dengan ketertarikan dan rencana kariernya.</p>
-          <a class="button button--navy" href="<?= e($accountUrl) ?>">Masuk ke Panel <?= icon('arrow') ?></a></div>
+      <div class="chapter-heading"><p class="chapter-label"><span>04 /</span> Langkah berikutnya</p><span class="chapter-aside">Kamu tidak perlu memikirkannya sendiri.</span></div>
+      <div class="preparation-layout">
+        <div class="preparation-photo"><figure><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/pendampingan-guru-ai.webp" srcset="assets/img/landing/pendampingan-guru-ai-768.webp 768w, assets/img/landing/pendampingan-guru-ai.webp 1536w" sizes="(min-width: 768px) 44vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi guru BK mendampingi siswi membaca catatan pilihan kuliah."></div><figcaption>Rencanakan bersama.<br><em>Melangkah lebih terarah.</em></figcaption></figure><div class="counselor-access"><div><span>Ruang pendampingan</span><h3>Untuk guru BK</h3><p>Jalankan rekomendasi dan dampingi siswa membaca alasan di balik hasilnya.</p></div><a href="<?= e($accountUrl) ?>" class="counselor-link" aria-label="Masuk ke panel guru BK"><?= icon('arrow') ?></a></div></div>
+        <div class="preparation-copy">
+          <h2 class="section-title" id="panduan-title">Pilihanmu layak<br><em>dibicarakan.</em></h2>
+          <p class="section-intro">Sebelum bertemu guru BK, luangkan waktu untuk menyiapkan ini. Centang yang sudah siap.</p>
+          <fieldset class="preparation-checklist" data-checklist><legend>Persiapan konsultasi</legend>
+            <label><input type="checkbox"><span class="check-mark" aria-hidden="true"></span><span><strong>Catatan nilai rapor</strong><small>Siapkan nilai yang dibutuhkan untuk pengolahan data.</small></span></label>
+            <label><input type="checkbox"><span class="check-mark" aria-hidden="true"></span><span><strong>Hal yang kamu sukai</strong><small>Catat pelajaran dan aktivitas yang membuatmu tertarik.</small></span></label>
+            <label><input type="checkbox"><span class="check-mark" aria-hidden="true"></span><span><strong>Bidang yang ingin dijelajahi</strong><small>Tulis rumpun atau program studi yang membuatmu penasaran.</small></span></label>
+            <label><input type="checkbox"><span class="check-mark" aria-hidden="true"></span><span><strong>Pertanyaan untuk guru BK</strong><small>Mulai dari hal yang masih membuatmu ragu.</small></span></label>
+          </fieldset>
+          <div class="preparation-progress" data-checklist-progress hidden><div><span data-checklist-status role="status" aria-live="polite">0 dari 4 persiapan selesai</span><span>Daftar persiapanmu</span></div><progress value="0" max="4" aria-label="Progres persiapan konsultasi"></progress><p>Centang hanya untuk membantumu bersiap, tidak disimpan setelah halaman dimuat ulang.</p></div>
         </div>
       </div>
-      <p class="guide-note">Rekomendasi adalah bahan pertimbangan, bukan keputusan akhir.</p>
+      <p class="preparation-reminder"><?= icon('cap') ?><span>Rekomendasi adalah bahan pertimbangan.<br><strong>Keputusan akhirnya tumbuh dari pemahaman tentang dirimu.</strong></span></p>
     </div>
   </section>
 </main>
 
-<footer class="landing-footer" aria-label="Informasi dan kontak SIMINAT">
+<footer class="landing-footer redesigned-footer" aria-label="Informasi dan kontak SIMINAT">
   <div class="container">
-    <div class="footer-invitation"><p>Pilihan yang matang<br>dimulai dari <em>percakapan.</em></p><a href="#beranda" class="footer-top" aria-label="Kembali ke beranda"><?= icon('arrow') ?></a></div>
-    <div class="footer-groups">
-      <div class="footer-identity"><?= brand() ?><p>Pendamping diskusi pilihan kuliah untuk siswa dan guru BK.</p></div>
-      <div class="footer-schools"><h2>Dua madrasah,<br>satu tujuan.</h2><ul><li><strong>MAN 4 Matangkuli</strong><span>Matangkuli</span></li><li><strong>MAS Al-Muslimun Lhoksukon</strong><span>Lhoksukon</span></li></ul></div>
-      <div class="footer-contact"><p class="section-eyebrow">Ada pertanyaan?</p><h2>Mulai percakapan<br>dengan guru BK.</h2><p>Hubungi guru BK di madrasah masing-masing untuk informasi dan pendampingan.</p></div>
-    </div>
+    <div class="closing-invitation"><div><p>Langkah kecil hari ini.</p><h2>Arah yang lebih jelas<br><em>untuk esok hari.</em></h2></div><div><p>Mulai percakapan dengan guru BK di madrasahmu. Bawa rasa ingin tahu dan rencana yang ingin kamu wujudkan.</p><a href="#panduan">Siapkan bahan konsultasimu <?= icon('arrow') ?></a></div></div>
+    <div class="closing-identity"><div><?= brand() ?><p>Pendamping diskusi pilihan kuliah<br>untuk siswa dan guru BK.</p></div><div class="closing-schools"><p>Dua madrasah. Satu tujuan.</p><span>MAN 4 Matangkuli</span><span>MAS Al-Muslimun Lhoksukon</span></div></div>
     <div class="footer-navigation"><nav aria-label="Navigasi footer"><a href="#rumpun">Rumpun Jurusan</a><a href="#cara-kerja">Cara Kerja</a><a href="#metode">Metode ID3</a><a href="#panduan">Panduan</a></nav><a class="back-to-top" href="#beranda">Kembali ke atas <?= icon('arrow') ?></a></div>
+    <div class="footer-wordmark" aria-hidden="true">SIMINAT<span>Kenali minat.<br>Rencanakan masa depan.</span></div>
   </div>
 </footer>
 

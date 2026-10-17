@@ -1,0 +1,63 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;color:#071D31;font-family:Inter;isolation:isolate}
+    .f02-ground{position:absolute;inset:0;background:#FFFDF6}
+    .f02-brand{position:absolute;left:108px;right:108px;top:230px;height:50px;display:flex;align-items:center;gap:17px;font-size:28px;font-weight:700;letter-spacing:3px}
+    .f02-brand img{display:block;width:41px;height:49px;object-fit:contain}
+    .f02-count{margin-left:auto;font-size:24px;font-weight:400;letter-spacing:0}
+    .f02-eyebrow{position:absolute;left:108px;top:350px;display:flex;align-items:center;gap:19px;font-size:26px;line-height:1.3;font-weight:700;letter-spacing:3px}
+    .f02-eyebrow::before{content:'';display:block;width:42px;height:5px;background:#F8C454}
+    .f02-heading{position:absolute;left:108px;top:422px;width:864px;font-size:85px;line-height:1.12;letter-spacing:-4px;font-weight:800;margin:0}
+    .f02-line{display:block;overflow:hidden;padding-bottom:13px;margin-bottom:-5px}
+    .f02-word{display:block}
+    .f02-steps{position:absolute;left:108px;top:735px;width:864px}
+    .f02-step{position:relative;height:245px;padding-left:160px;padding-top:5px}
+    .f02-step::after{content:'';position:absolute;left:160px;right:0;bottom:44px;height:1px;background:#071D31;opacity:.18}
+    .f02-number{position:absolute;left:0;top:0;display:flex;width:88px;height:88px;align-items:center;justify-content:center;font-size:34px;line-height:1;font-weight:700;border:2px solid #071D31;border-radius:50%;background:#FFFDF6;z-index:2}
+    .f02-text{font-size:40px;font-weight:600;line-height:1.36;letter-spacing:-1.1px}
+    .f02-emphasis{display:inline-block;background:#F8C454;padding:0 10px;margin-left:-10px;color:#071D31}
+    .f02-path{position:absolute;left:150px;top:779px;width:4px;height:490px;background:#F8C454;transform-origin:center top}
+    .f02-source{position:absolute;left:108px;top:1504px;width:864px;font-size:24px;line-height:1.55;letter-spacing:-.3px;color:#071D31}
+    .f02-source span{display:block;font-size:24px;opacity:.7}
+  </style>
+  <div data-hf-id="hf-p2va" id="root" data-composition-id="02-national">
+    <div data-hf-id="hf-s439" id="f02-ground" class="clip f02-ground" data-start="0" data-duration="8.348" data-track-index="0"></div>
+    <div data-hf-id="hf-0olo" class="f02-brand"><img data-hf-id="hf-t3bd" src="assets/logo.svg" alt=""><span data-hf-id="hf-z25m">SIMINAT</span><span data-hf-id="hf-2vqn" class="f02-count">02 / 07</span></div>
+    <div data-hf-id="hf-zvot" class="f02-eyebrow">UPAYA NASIONAL</div>
+    <h1 data-hf-id="hf-71fb" class="f02-heading">
+      <span data-hf-id="hf-271m" class="f02-line"><span data-hf-id="hf-3gjd" class="f02-word f02-title-a">Kenali potensi.</span></span>
+      <span data-hf-id="hf-0smm" class="f02-line"><span data-hf-id="hf-47kf" class="f02-word f02-title-b">Rencanakan studi.</span></span>
+    </h1>
+    <div data-hf-id="hf-9egt" class="f02-path" aria-hidden="true"></div>
+    <div data-hf-id="hf-nq2a" class="f02-steps">
+      <div data-hf-id="hf-0y6s" class="f02-step f02-step-a"><div data-hf-id="hf-bhnt" class="f02-number">01</div><div data-hf-id="hf-z0ip" class="f02-text"><span data-hf-id="hf-5p0w" class="f02-emphasis">Kenali minat, bakat,</span><br data-hf-id="hf-x5px">kemampuan</div></div>
+      <div data-hf-id="hf-btof" class="f02-step f02-step-b"><div data-hf-id="hf-cokw" class="f02-number">02</div><div data-hf-id="hf-iwxf" class="f02-text">Pilih mata pelajaran<br data-hf-id="hf-rsrt"><span data-hf-id="hf-rsa5" class="f02-emphasis">sesuai rencana studi</span></div></div>
+      <div data-hf-id="hf-7vke" class="f02-step f02-step-c"><div data-hf-id="hf-ca9v" class="f02-number">03</div><div data-hf-id="hf-a1jm" class="f02-text">Susun rencana<br data-hf-id="hf-szow"><span data-hf-id="hf-25b1" class="f02-emphasis">bersama guru BK</span></div></div>
+    </div>
+    <div data-hf-id="hf-cvli" class="f02-source">Panduan Pemilihan Mapel SMA/MA · Edisi 2024<span data-hf-id="hf-nqv6">Kemendikbudristek</span></div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="02-national"]');
+      const el=s=>root.querySelector(s);
+      const timeline=gsap.timeline({paused:true});
+      timeline.fromTo(el('.f02-brand'),{y:-12,opacity:0},{y:0,opacity:1,duration:.25,ease:'power2.out'},0);
+      timeline.fromTo(el('.f02-eyebrow'),{x:-24,opacity:0},{x:0,opacity:1,duration:.28,ease:'power2.out'},0);
+      timeline.fromTo(el('.f02-title-a'),{y:100,opacity:.2},{y:0,opacity:1,duration:.4,ease:'power3.out'},0);
+      timeline.fromTo(el('.f02-title-b'),{y:100,opacity:0},{y:0,opacity:1,duration:.4,ease:'power3.out'},.17);
+      timeline.fromTo(el('.f02-path'),{scaleY:0},{scaleY:.5,duration:.45,ease:'power2.out'},2.35);
+      timeline.to(el('.f02-path'),{scaleY:1,duration:.45,ease:'power2.out'},4.45);
+      [['a',.5],['b',2.6],['c',4.7]].forEach(([suffix,time])=>{
+        const step=el('.f02-step-'+suffix);
+        timeline.fromTo(step,{x:38,opacity:0},{x:0,opacity:1,duration:.4,ease:'power3.out'},time);
+        timeline.fromTo(step.querySelector('.f02-number'),{scale:.75},{scale:1,duration:.36,ease:'power2.out'},time);
+        timeline.fromTo(step.querySelector('.f02-emphasis'),{scaleX:.92,opacity:.2},{scaleX:1,opacity:1,duration:.35,ease:'power2.out'},time+.15);
+      });
+      timeline.fromTo(el('.f02-source'),{y:14,opacity:0},{y:0,opacity:1,duration:.35,ease:'power2.out'},5.8);
+      timeline.to({}, {duration:2.198},6.15);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['02-national']=timeline;
+    })();
+  </script>
+</template>

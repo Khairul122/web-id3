@@ -1,0 +1,229 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 9
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 1.16,
+        "selector": "span.f01-word.f01-third",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 108,
+          "top": 743.58,
+          "right": 687.85,
+          "bottom": 900.42,
+          "width": 579.85,
+          "height": 156.84
+        },
+        "containerSelector": "h1.f01-heading > span:nth-of-type(3)",
+        "text": "jurusan?",
+        "fixHint": "Text is 580px x 157px inside 864px x 178px and overflows by up to 42px; increase the container height to at least ~220px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 108,
+          "top": 680.88,
+          "right": 972,
+          "bottom": 858.56,
+          "width": 864,
+          "height": 177.69
+        },
+        "overflow": {
+          "bottom": 41.86
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-cje1"
+        },
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 108,
+          "y": 743.58,
+          "width": 579.85,
+          "height": 156.84
+        },
+        "firstSeen": 1.16,
+        "lastSeen": 1.16,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.16
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 1.16,
+        "selector": "span.f01-word.f01-third",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 108,
+          "top": 731.8,
+          "right": 687.85,
+          "bottom": 912.2,
+          "width": 579.85,
+          "height": 180.4
+        },
+        "containerSelector": "#f01-ground",
+        "text": "jurusan?",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {
+          "data-hf-id": "hf-cje1"
+        },
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 108,
+          "y": 731.8,
+          "width": 579.85,
+          "height": 180.4
+        },
+        "firstSeen": 1.16,
+        "lastSeen": 1.16,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.16
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.16,
+        "selector": "span.f01-word.f01-third",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 108,
+          "top": 744.41,
+          "right": 945.99,
+          "bottom": 901.23,
+          "width": 837.99,
+          "height": 156.82
+        },
+        "containerSelector": "h1.f01-heading > span:nth-of-type(3)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 108,
+          "top": 680.88,
+          "right": 972,
+          "bottom": 858.56,
+          "width": 864,
+          "height": 177.69
+        },
+        "overflow": {
+          "bottom": 42.67
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-cje1"
+        },
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 108,
+          "y": 744.41,
+          "width": 837.99,
+          "height": 156.82
+        },
+        "firstSeen": 1.16,
+        "lastSeen": 1.16,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.16
+        ]
+      }
+    ],
+    "duration": 41.748,
+    "samples": [
+      1.16,
+      3.479,
+      5.798,
+      8.118,
+      10.437,
+      12.756,
+      15.076,
+      17.395,
+      19.714,
+      22.034,
+      24.353,
+      26.672,
+      28.992,
+      31.311,
+      33.63,
+      35.95,
+      38.269,
+      40.588
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.16,
+      10.437,
+      19.714,
+      28.992,
+      40.588
+    ],
+    "checked": 52,
+    "passed": 52
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": true,
+    "files": [
+      ".hyperframes\\artifacts\\snapshots\\a41cc197-ae09-438c-bcb1-6caef0bb93bd\\frame-00-at-1.2s.png",
+      ".hyperframes\\artifacts\\snapshots\\a41cc197-ae09-438c-bcb1-6caef0bb93bd\\frame-01-at-10.4s.png",
+      ".hyperframes\\artifacts\\snapshots\\a41cc197-ae09-438c-bcb1-6caef0bb93bd\\frame-02-at-19.7s.png",
+      ".hyperframes\\artifacts\\snapshots\\a41cc197-ae09-438c-bcb1-6caef0bb93bd\\frame-03-at-29.0s.png",
+      ".hyperframes\\artifacts\\snapshots\\a41cc197-ae09-438c-bcb1-6caef0bb93bd\\frame-04-at-40.6s.png"
+    ],
+    "times": [
+      1.16,
+      10.437,
+      19.714,
+      28.992,
+      40.588
+    ],
+    "findingFiles": []
+  }
+}

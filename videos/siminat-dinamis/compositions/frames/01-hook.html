@@ -1,0 +1,79 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;color:#FFFDF6;font-family:Inter;isolation:isolate}
+    .f01-ground{position:absolute;inset:0;background:#071D31}
+    .f01-brand{position:absolute;left:108px;right:108px;top:222px;height:54px;display:flex;align-items:center;gap:17px;font-size:28px;font-weight:700;letter-spacing:3px}
+    .f01-brand img{display:block;width:41px;height:49px;object-fit:contain}
+    .f01-count{margin-left:auto;color:#B9C8D3;font-size:24px;font-weight:400;letter-spacing:0}
+    .f01-heading{position:absolute;left:108px;top:408px;width:864px;margin:0;font-size:112px;line-height:1.12;font-weight:800;letter-spacing:-6px}
+    .f01-line{display:block;overflow:hidden;padding-bottom:16px;margin-bottom:-5px}
+    .f01-word{display:block;transform-origin:0 70%}
+    .f01-question{color:#F8C454}
+    .f01-last{font-size:154px;line-height:1.05;letter-spacing:-9px}
+    .f01-support{position:absolute;left:108px;top:891px;font-size:36px;line-height:1.4;letter-spacing:-.7px;color:#B9C8D3}
+    .f01-path{position:absolute;left:108px;top:1020px;width:92px;height:435px}
+    .f01-spine{position:absolute;left:24px;top:0;width:3px;height:398px;background:#F8C454;opacity:.5;transform-origin:center top}
+    .f01-arm{position:absolute;left:24px;width:54px;height:3px;background:#F8C454;opacity:.6;transform-origin:left center}
+    .f01-arm-a{top:99px}.f01-arm-b{top:239px}.f01-arm-c{top:379px}
+    .f01-node{position:absolute;left:70px;width:16px;height:16px;border:3px solid #F8C454;border-radius:50%;background:#071D31}
+    .f01-node-a{top:92px}.f01-node-b{top:232px}.f01-node-c{top:372px}
+    .f01-marker{position:absolute;left:17px;top:0;width:17px;height:17px;border-radius:50%;background:#F8C454}
+    .f01-choices{position:absolute;left:226px;top:1070px;width:746px}
+    .f01-choice{height:140px;display:flex;align-items:center;border-bottom:1px solid #31495D;font-size:62px;line-height:1;font-weight:500;letter-spacing:-2px}
+    .f01-choice-index{display:inline-block;width:72px;color:#B9C8D3;font-size:24px;font-weight:400;letter-spacing:0}
+  </style>
+  <div data-hf-id="hf-kyyg" id="root" data-composition-id="01-hook">
+    <div data-hf-id="hf-7yry" id="f01-ground" class="clip f01-ground" data-start="0" data-duration="4.174" data-track-index="0"></div>
+    <div data-hf-id="hf-5j27" class="f01-brand"><img data-hf-id="hf-t3bd" src="assets/logo.svg" alt=""><span data-hf-id="hf-z25m">SIMINAT</span><span data-hf-id="hf-qezx" class="f01-count">01 / 07</span></div>
+    <h1 data-hf-id="hf-1yxs" class="f01-heading">
+      <span data-hf-id="hf-y6a7" class="f01-line"><span data-hf-id="hf-7va7" class="f01-word f01-first">Bingung</span></span>
+      <span data-hf-id="hf-wjox" class="f01-line f01-question"><span data-hf-id="hf-7ymw" class="f01-word f01-second">memilih</span></span>
+      <span data-hf-id="hf-clvn" class="f01-line f01-question f01-last"><span data-hf-id="hf-cje1" class="f01-word f01-third">jurusan?</span></span>
+    </h1>
+    <p data-hf-id="hf-fxd2" class="f01-support">Nilai sudah ada.<br data-hf-id="hf-x5px">Arah kuliah belum jelas.</p>
+    <div data-hf-id="hf-ckto" class="f01-path" aria-hidden="true">
+      <div data-hf-id="hf-gyf1" class="f01-spine"></div>
+      <div data-hf-id="hf-ymcq" class="f01-arm f01-arm-a"></div><div data-hf-id="hf-17km" class="f01-node f01-node-a"></div>
+      <div data-hf-id="hf-sgmx" class="f01-arm f01-arm-b"></div><div data-hf-id="hf-x9gl" class="f01-node f01-node-b"></div>
+      <div data-hf-id="hf-roz4" class="f01-arm f01-arm-c"></div><div data-hf-id="hf-whss" class="f01-node f01-node-c"></div>
+      <div data-hf-id="hf-12pi" class="f01-marker"></div>
+    </div>
+    <div data-hf-id="hf-oe3c" class="f01-choices">
+      <div data-hf-id="hf-dyrp" class="f01-choice f01-choice-a"><span data-hf-id="hf-ull4" class="f01-choice-index">01</span>Saintek</div>
+      <div data-hf-id="hf-1rfg" class="f01-choice f01-choice-b"><span data-hf-id="hf-teo1" class="f01-choice-index">02</span>Soshum</div>
+      <div data-hf-id="hf-n3fr" class="f01-choice f01-choice-c"><span data-hf-id="hf-tsz2" class="f01-choice-index">03</span>Campuran</div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="01-hook"]');
+      const el=s=>root.querySelector(s);
+      const timeline=gsap.timeline({paused:true});
+      timeline.fromTo(el('.f01-brand'),{opacity:0,y:-12},{opacity:1,y:0,duration:.28,ease:'power2.out'},0);
+      timeline.fromTo(el('.f01-first'),{y:125,rotation:3,opacity:.1},{y:0,rotation:0,opacity:1,duration:.46,ease:'power3.out'},0);
+      timeline.fromTo(el('.f01-second'),{y:125,rotation:3,opacity:0},{y:0,rotation:0,opacity:1,duration:.43,ease:'power3.out'},.52);
+      timeline.fromTo(el('.f01-third'),{y:160,scale:.92,opacity:0},{y:0,scale:1,opacity:1,duration:.43,ease:'power3.out'},1.04);
+      timeline.fromTo(el('.f01-support'),{y:18,opacity:0},{y:0,opacity:1,duration:.32,ease:'power2.out'},1.27);
+      timeline.fromTo(el('.f01-spine'),{scaleY:0},{scaleY:1,duration:1.23,ease:'none'},1.42);
+      timeline.fromTo(el('.f01-marker'),{opacity:0,y:0},{opacity:1,y:91,duration:.23,ease:'power1.in'},1.36);
+      [['a',1.55],['b',2.1],['c',2.65]].forEach(([suffix,time])=>{
+        timeline.fromTo(el('.f01-arm-'+suffix),{scaleX:0},{scaleX:1,duration:.22,ease:'power2.out'},time);
+        timeline.fromTo(el('.f01-node-'+suffix),{scale:0,opacity:0},{scale:1,opacity:1,duration:.22,ease:'power2.out'},time+.12);
+        timeline.fromTo(el('.f01-choice-'+suffix),{x:48,opacity:0},{x:0,opacity:1,duration:.32,ease:'power3.out'},time+.05);
+      });
+      timeline.to(el('.f01-marker'),{x:52,duration:.17,ease:'power2.out'},1.59);
+      timeline.to(el('.f01-marker'),{x:0,duration:.14,ease:'power1.in'},1.81);
+      timeline.to(el('.f01-marker'),{y:231,duration:.15,ease:'power1.inOut'},1.95);
+      timeline.to(el('.f01-marker'),{x:52,duration:.17,ease:'power2.out'},2.14);
+      timeline.to(el('.f01-marker'),{x:0,duration:.14,ease:'power1.in'},2.36);
+      timeline.to(el('.f01-marker'),{y:371,duration:.15,ease:'power1.inOut'},2.5);
+      timeline.to(el('.f01-marker'),{x:52,duration:.17,ease:'power2.out'},2.69);
+      timeline.to(el('.f01-marker'),{x:0,duration:.17,ease:'power1.in'},2.98);
+      timeline.to(el('.f01-marker'),{y:407,duration:.22,ease:'power2.out'},3.15);
+      timeline.to({}, {duration:.804},3.37);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['01-hook']=timeline;
+    })();
+  </script>
+</template>

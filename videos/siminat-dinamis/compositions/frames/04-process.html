@@ -1,0 +1,70 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;color:#FFFDF6;font-family:Inter;isolation:isolate}
+    .f04-ground{position:absolute;inset:0;background:#071D31}
+    .f04-brand{position:absolute;left:108px;right:108px;top:115px;height:50px;display:flex;align-items:center;gap:17px;font-size:28px;font-weight:700;letter-spacing:3px}
+    .f04-brand img{display:block;width:41px;height:49px;object-fit:contain}
+    .f04-count{margin-left:auto;color:#B9C8D3;font-size:24px;font-weight:400;letter-spacing:0}
+    .f04-heading{position:absolute;left:108px;top:250px;width:864px;margin:0;font-size:85px;line-height:1.14;letter-spacing:-4px;font-weight:800}
+    .f04-line{display:block;overflow:hidden;padding-bottom:13px;margin-bottom:-5px}
+    .f04-word{display:block}
+    .f04-example{position:absolute;left:170px;top:548px;font-size:26px;font-weight:700;line-height:1.3;letter-spacing:3px;color:#F8C454}
+    .f04-path{position:absolute;left:179px;top:664px;width:3px;height:660px;background:#31495D;transform-origin:center top}
+    .f04-segment{position:absolute;left:179px;width:3px;height:165px;background:#F8C454;transform-origin:center top}
+    .f04-segment-b{top:664px}.f04-segment-c{top:829px}.f04-segment-d{top:994px}.f04-segment-e{top:1159px}
+    .f04-row{position:absolute;left:170px;width:770px;height:112px;padding-left:72px;display:flex;align-items:flex-start;justify-content:space-between}
+    .f04-row::after{content:'';position:absolute;left:72px;right:0;bottom:5px;height:1px;background:#31495D}
+    .f04-row-a{top:640px}.f04-row-b{top:805px}.f04-row-c{top:970px}.f04-row-d{top:1135px}.f04-row-e{top:1300px}
+    .f04-label{font-size:34px;font-weight:600;line-height:1.4;letter-spacing:-.8px}
+    .f04-value{font-size:42px;font-weight:700;line-height:1.2;letter-spacing:-1px;color:#F8C454}
+    .f04-node{position:absolute;left:0;top:13px;width:21px;height:21px;border:3px solid #F8C454;border-radius:50%;background:#071D31}
+    .f04-marker{position:absolute;left:174px;top:658px;width:13px;height:13px;border-radius:50%;background:#F8C454}
+    .f04-method{position:absolute;left:108px;top:1490px;font-size:28px;font-weight:600;line-height:1.3;letter-spacing:-.4px;color:#F8C454}
+    .f04-note{position:absolute;left:108px;top:1540px;font-size:32px;line-height:1.25;letter-spacing:-.6px;color:#B9C8D3}
+  </style>
+  <div data-hf-id="hf-wrnp" id="root" data-composition-id="04-process">
+    <div data-hf-id="hf-rxeh" id="f04-ground" class="clip f04-ground" data-start="0" data-duration="6.261" data-track-index="0"></div>
+    <div data-hf-id="hf-foa6" class="f04-brand"><img data-hf-id="hf-t3bd" src="assets/logo.svg" alt=""><span data-hf-id="hf-z25m">SIMINAT</span><span data-hf-id="hf-foiu" class="f04-count">05 / 07</span></div>
+    <h1 data-hf-id="hf-m1l5" class="f04-heading"><span data-hf-id="hf-fim4" class="f04-line"><span data-hf-id="hf-1sjs" class="f04-word f04-title-a">Rekomendasi yang</span></span><span data-hf-id="hf-rpf8" class="f04-line"><span data-hf-id="hf-001t" class="f04-word f04-title-b">bisa ditelusuri.</span></span></h1>
+    <div data-hf-id="hf-yfea" class="f04-example">DATA CONTOH</div>
+    <div data-hf-id="hf-hoh7" class="f04-path" aria-hidden="true"></div>
+    <div data-hf-id="hf-p0mi" class="f04-segment f04-segment-b" aria-hidden="true"></div><div data-hf-id="hf-syqj" class="f04-segment f04-segment-c" aria-hidden="true"></div><div data-hf-id="hf-5h90" class="f04-segment f04-segment-d" aria-hidden="true"></div><div data-hf-id="hf-68wt" class="f04-segment f04-segment-e" aria-hidden="true"></div>
+    <div data-hf-id="hf-arhm" class="f04-row f04-row-a"><span data-hf-id="hf-caux" class="f04-node" aria-hidden="true"></span><span data-hf-id="hf-hgif" class="f04-label">Peminatan</span><span data-hf-id="hf-m1bt" class="f04-value">Umum</span></div>
+    <div data-hf-id="hf-4lrt" class="f04-row f04-row-b"><span data-hf-id="hf-wyq5" class="f04-node" aria-hidden="true"></span><span data-hf-id="hf-doag" class="f04-label">Kecenderungan</span><span data-hf-id="hf-ixe8" class="f04-value">MIPA</span></div>
+    <div data-hf-id="hf-3u40" class="f04-row f04-row-c"><span data-hf-id="hf-y5n8" class="f04-node" aria-hidden="true"></span><span data-hf-id="hf-vft5" class="f04-label">Agama</span><span data-hf-id="hf-e9s5" class="f04-value">Sedang</span></div>
+    <div data-hf-id="hf-zvzz" class="f04-row f04-row-d"><span data-hf-id="hf-xrc7" class="f04-node" aria-hidden="true"></span><span data-hf-id="hf-mhkq" class="f04-label">Bahasa</span><span data-hf-id="hf-7yhl" class="f04-value">Sedang</span></div>
+    <div data-hf-id="hf-vxvy" class="f04-row f04-row-e"><span data-hf-id="hf-yy9a" class="f04-node" aria-hidden="true"></span><span data-hf-id="hf-565k" class="f04-label">Matematika</span><span data-hf-id="hf-5ned" class="f04-value">Tinggi</span></div>
+    <div data-hf-id="hf-pxbc" class="f04-marker" aria-hidden="true"></div>
+    <div data-hf-id="hf-unit" class="f04-method">Metode ID3 • Contoh alur model aktif</div>
+    <div data-hf-id="hf-xub0" class="f04-note">Hasil dari pola data pelatihan.</div>
+  </div>
+  <script>
+    (function(){
+      const root=document.querySelector('[data-composition-id="04-process"]');
+      const el=s=>root.querySelector(s);
+      const timeline=gsap.timeline({paused:true});
+      timeline.fromTo(el('.f04-brand'),{y:-12,opacity:0},{y:0,opacity:1,duration:.25,ease:'power2.out'},0);
+      timeline.fromTo(el('.f04-title-a'),{y:100,opacity:.2},{y:0,opacity:1,duration:.4,ease:'power3.out'},0);
+      timeline.fromTo(el('.f04-title-b'),{y:100,opacity:0},{y:0,opacity:1,duration:.4,ease:'power3.out'},.17);
+      timeline.fromTo(el('.f04-example'),{x:-20,opacity:0},{x:0,opacity:1,duration:.3,ease:'power2.out'},.32);
+      timeline.fromTo(el('.f04-path'),{scaleY:0},{scaleY:1,duration:.45,ease:'power2.out'},.5);
+      timeline.fromTo(el('.f04-marker'),{opacity:0,scale:.3},{opacity:1,scale:1,duration:.25,ease:'power2.out'},.7);
+      [['a',.7],['b',1.5],['c',2.3],['d',3.1],['e',3.9]].forEach(([suffix,time],index)=>{
+        const row=el('.f04-row-'+suffix);
+        timeline.fromTo(row,{x:34,opacity:0},{x:0,opacity:1,duration:.34,ease:'power3.out'},time);
+        timeline.fromTo(row.querySelector('.f04-value'),{scale:.9,opacity:.4},{scale:1,opacity:1,duration:.32,ease:'power2.out'},time+.12);
+        if(index>0){
+          timeline.fromTo(el('.f04-segment-'+suffix),{scaleY:0},{scaleY:1,duration:.34,ease:'power2.inOut'},time-.24);
+          timeline.to(el('.f04-marker'),{y:index*165,duration:.34,ease:'power2.inOut'},time-.24);
+          timeline.to(el('.f04-row-'+['a','b','c','d','e'][index-1]).querySelector('.f04-value'),{color:'#FFFDF6',duration:.2,ease:'none'},time+.08);
+        }
+      });
+      timeline.fromTo(el('.f04-method'),{y:18,opacity:0},{y:0,opacity:1,duration:.32,ease:'power2.out'},4.8);
+      timeline.fromTo(el('.f04-note'),{y:18,opacity:0},{y:0,opacity:1,duration:.32,ease:'power2.out'},4.94);
+      timeline.to({}, {duration:1.001},5.26);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['04-process']=timeline;
+    })();
+  </script>
+</template>

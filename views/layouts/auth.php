@@ -21,10 +21,15 @@
   <aside class="auth-story" aria-label="SIMINAT untuk pendampingan siswa">
     <?= brand() ?>
     <div class="auth-story__copy">
-      <h2>Mendampingi langkah,<br><em>merencanakan<br>masa depan.</em></h2>
+      <h2><span>Mendampingi langkah,</span><em><span>merencanakan</span><span>masa depan.</span></em></h2>
       <p>Ruang kerja untuk guru BK dan administrator sekolah.</p>
+      <ul class="auth-story__signals" aria-label="Fokus SIMINAT">
+        <li><strong>01</strong><span>Kenali minat</span></li>
+        <li><strong>02</strong><span>Baca jalur</span></li>
+        <li><strong>03</strong><span>Diskusikan pilihan</span></li>
+      </ul>
     </div>
-    <span class="auth-story__credit">Visual ilustrasi dibuat dengan AI</span>
+    <div class="auth-story__stamp"><span>SIMINAT</span><strong>RUANG KERJA</strong></div>
   </aside>
   <section class="auth-content" aria-labelledby="auth-title">
     <nav class="auth-content__nav" aria-label="Navigasi halaman masuk"><a class="auth-back" href="<?= e(url()) ?>"><?= icon('back') ?> Kembali ke Beranda</a></nav>

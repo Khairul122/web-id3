@@ -1,0 +1,45 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;color:#FFFDF6;font-family:Inter}
+    #root #f05-result-ground{background:#071D31}
+    #root #f05-result-brand{position:absolute;left:108px;right:108px;top:108px;height:60px;display:flex;align-items:center;gap:16px;font-size:28px;font-weight:700;letter-spacing:3px}
+    #root #f05-result-brand img{width:42px;height:48px}
+    #root #f05-result-count{margin-left:auto;color:#B9C8D3;font-size:24px;font-weight:400;letter-spacing:0}
+    #root #f05-result-heading{position:absolute;left:108px;top:250px;width:864px;font-size:96px;font-weight:800;letter-spacing:-5px;line-height:1.02}
+    #root #f05-result-heading span{display:block}
+    #root #f05-result-rumpun{position:absolute;left:108px;top:460px;width:864px;font-size:44px;font-weight:700;line-height:1.3;letter-spacing:-1.6px;color:#F8C454}
+    #root #f05-result-screen{position:absolute;left:108px;top:610px;width:864px;height:790px;overflow:hidden;background:#FFFDF6;border:2px solid #B9C8D3;border-radius:22px}
+    #root #f05-result-page{position:absolute;left:0;top:0;display:block;width:1728px;max-width:none;height:auto;transform-origin:0 0}
+    #root #f05-result-demo{position:absolute;left:108px;top:1450px;width:864px;color:#B9C8D3;font-size:25px;font-weight:700;line-height:1.3;letter-spacing:2px;display:flex;align-items:center;gap:18px}
+    #root #f05-result-demo i{display:block;width:10px;height:10px;border-radius:50%;background:#F8C454;flex:none}
+    #root #f05-result-guidance{position:absolute;left:108px;top:1510px;width:864px;font-size:38px;line-height:1.3;letter-spacing:-1.3px;color:#FFFDF6}
+  </style>
+  <div data-hf-id="hf-70qe" id="root" data-composition-id="05-result">
+    <div data-hf-id="hf-dltu" id="f05-result-ground" class="clip" data-start="0" data-duration="6.261" data-track-index="0"></div>
+    <div data-hf-id="hf-9csy" id="f05-result-brand"><img data-hf-id="hf-t3bd" src="assets/logo.svg" alt=""/><span data-hf-id="hf-z25m">SIMINAT</span><span data-hf-id="hf-hvml" id="f05-result-count">06 / 07</span></div>
+    <h2 data-hf-id="hf-018y" id="f05-result-heading"><span data-hf-id="hf-cw69" id="f05-result-line-one">Lihat arah</span><span data-hf-id="hf-1ql4" id="f05-result-line-two">pilihanmu.</span></h2>
+    <p data-hf-id="hf-1wql" id="f05-result-rumpun">Rekomendasi rumpun: Soshum</p>
+    <div data-hf-id="hf-bpez" id="f05-result-screen"><img data-hf-id="hf-v2ja" id="f05-result-page" src="assets/detail.png" alt="Hasil rekomendasi contoh anonim SIMINAT: rumpun Soshum, jalur keputusan, dan contoh program studi." data-layout-allow-overflow="true"/></div>
+    <div data-hf-id="hf-z84a" id="f05-result-demo"><i data-hf-id="hf-wt6k"></i><span data-hf-id="hf-cyg4">DATA CONTOH ANONIM</span></div>
+    <p data-hf-id="hf-vdph" id="f05-result-guidance">Bahan diskusi bersama guru BK.</p>
+  </div>
+  <script>
+    (function(){
+      const q = (name) => '#f05-result-' + name;
+      const tl = gsap.timeline({paused:true});
+      tl.set(q('page'),{x:0,y:-180},0);
+      tl.fromTo(q('line-one'),{y:38,opacity:0},{y:0,opacity:1,duration:0.5,ease:'power3.out'},0.05);
+      tl.fromTo(q('line-two'),{y:38,opacity:0},{y:0,opacity:1,duration:0.5,ease:'power3.out'},0.18);
+      tl.fromTo(q('rumpun'),{x:-30,opacity:0},{x:0,opacity:1,duration:0.5,ease:'power3.out'},0.3);
+      tl.fromTo(q('screen'),{y:35,opacity:0},{y:0,opacity:1,duration:0.45,ease:'power3.out'},0.1);
+      tl.fromTo(q('demo'),{opacity:0},{opacity:1,duration:0.3,ease:'none'},0.15);
+      tl.to(q('page'),{x:-800,y:-400,duration:0.5,ease:'power2.inOut'},2);
+      tl.to(q('page'),{x:0,y:-980,duration:0.5,ease:'power2.inOut'},3.8);
+      tl.fromTo(q('guidance'),{y:24,opacity:0},{y:0,opacity:1,duration:0.5,ease:'power3.out'},4.85);
+      tl.to({}, {duration:6.261},0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines['05-result'] = tl;
+    })();
+  </script>
+</template>

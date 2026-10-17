@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Regular.woff2') format('woff2');font-weight:100 900;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;color:#FFFDF6;font-family:Inter,sans-serif}
+    #root *{box-sizing:border-box}
+    #f02-brand-ground{position:absolute;inset:0;background:#071D31}
+    #f02-brand-line{position:absolute;left:108px;right:108px;top:108px;height:60px;display:flex;align-items:center;gap:16px;font-size:28px;font-weight:700;letter-spacing:3px}
+    #f02-brand-logo{width:42px;height:48px}
+    #f02-brand-count{margin-left:auto;color:#B9C8D3;font-size:24px;letter-spacing:0}
+    #f02-brand-title{position:absolute;left:100px;top:269px;margin:0;font-size:156px;line-height:1;letter-spacing:-9px;font-weight:900}
+    #f02-brand-copy{position:absolute;left:108px;top:440px;width:864px;margin:0;font-size:52px;line-height:1.12;letter-spacing:-1.7px;font-weight:600}
+    #f02-brand-photo-frame{position:absolute;left:108px;top:650px;width:864px;height:520px;overflow:hidden;border-radius:4px}
+    #f02-brand-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:63% center;transform-origin:68% 50%}
+    #f02-brand-photo-rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:#F8C454;transform-origin:left}
+    #f02-brand-strips{position:absolute;left:108px;top:1242px;width:864px}
+    #f02-brand-strip-one,#f02-brand-strip-two{height:114px;display:flex;align-items:center;padding:0 34px;background:#F8C454;color:#071D31;overflow:hidden}
+    #f02-brand-strip-two{margin-top:18px}
+    #f02-brand-label-one,#f02-brand-label-two{font-size:55px;font-weight:750;letter-spacing:-2px;line-height:1}
+    #f02-brand-marker-one,#f02-brand-marker-two{margin-left:auto;font-size:36px;line-height:1}
+    #f02-brand-photo-corner{position:absolute;left:108px;top:626px;width:76px;height:8px;background:#F8C454;transform-origin:left}
+  </style>
+  <div data-hf-id="hf-rrt3" id="root" data-composition-id="02-brand">
+    <div data-hf-id="hf-feey" id="f02-brand-ground" class="clip" data-start="0" data-duration="4.174" data-track-index="0"></div>
+    <div data-hf-id="hf-qenm" id="f02-brand-line"><img data-hf-id="hf-gean" id="f02-brand-logo" src="assets/logo.svg" alt=""><span data-hf-id="hf-ws3x" id="f02-brand-wordmark">SIMINAT</span><span data-hf-id="hf-g5zl" id="f02-brand-count">03 / 07</span></div>
+    <h1 data-hf-id="hf-4tjx" id="f02-brand-title">SIMINAT</h1>
+    <p data-hf-id="hf-dqlg" id="f02-brand-copy">Nilai rapor dan peminatan<br data-hf-id="hf-x5px">menjadi rekomendasi<br data-hf-id="hf-rsrt">rumpun kuliah.</p>
+    <div data-hf-id="hf-9en6" id="f02-brand-photo-corner"></div>
+    <div data-hf-id="hf-exj8" id="f02-brand-photo-frame"><img data-hf-id="hf-vmdm" id="f02-brand-photo" src="assets/kelas-madrasah-ai.png" alt="Siswa madrasah mengangkat tangan di kelas"><div data-hf-id="hf-skvf" id="f02-brand-photo-rule"></div></div>
+    <div data-hf-id="hf-oimh" id="f02-brand-strips">
+      <div data-hf-id="hf-vipx" id="f02-brand-strip-one"><span data-hf-id="hf-qidz" id="f02-brand-label-one">Nilai rapor</span><span data-hf-id="hf-o215" id="f02-brand-marker-one">01</span></div>
+      <div data-hf-id="hf-gtvv" id="f02-brand-strip-two"><span data-hf-id="hf-lg3k" id="f02-brand-label-two">+ Peminatan</span><span data-hf-id="hf-mcxa" id="f02-brand-marker-two">02</span></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const scope=document.querySelector('[data-composition-id="02-brand"]');
+      const el=(id)=>scope.querySelector('#f02-brand-'+id);
+      const tl=gsap.timeline({paused:true});
+      tl.fromTo(el('title'),{y:44,opacity:0},{y:0,opacity:1,duration:.44,ease:'power3.out'},0)
+        .fromTo(el('copy'),{y:30,opacity:0},{y:0,opacity:1,duration:.42,ease:'power3.out'},.25)
+        .fromTo(el('photo-frame'),{y:48,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'},.48)
+        .fromTo(el('photo'),{scale:1.08},{scale:1,duration:1.06,ease:'power2.out'},.48)
+        .fromTo(el('photo-corner'),{scaleX:0},{scaleX:1,duration:.35,ease:'power2.out'},.68)
+        .fromTo(el('photo-rule'),{scaleX:0},{scaleX:1,duration:.42,ease:'power3.out'},1.18)
+        .fromTo(el('strip-one'),{x:-58,opacity:0},{x:0,opacity:1,duration:.36,ease:'power3.out'},1.6)
+        .fromTo(el('label-one'),{x:-18},{x:0,duration:.36,ease:'power3.out'},1.69)
+        .fromTo(el('marker-one'),{opacity:0},{opacity:1,duration:.18},1.96)
+        .fromTo(el('strip-two'),{x:-58,opacity:0},{x:0,opacity:1,duration:.36,ease:'power3.out'},2.6)
+        .fromTo(el('label-two'),{x:-18},{x:0,duration:.36,ease:'power3.out'},2.69)
+        .fromTo(el('marker-two'),{opacity:0},{opacity:1,duration:.18},2.96);
+      window.__timelines=window.__timelines||{};
+      window.__timelines['02-brand']=tl;
+    })();
+  </script>
+</template>

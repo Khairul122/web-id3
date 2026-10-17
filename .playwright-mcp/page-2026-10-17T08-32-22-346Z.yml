@@ -1,0 +1,50 @@
+- generic [active] [ref=e1]:
+  - link "Lewati ke konten" [ref=e2] [cursor=pointer]:
+    - /url: "#form-area"
+  - main [ref=e3]:
+    - complementary "SIMINAT untuk pendampingan siswa" [ref=e4]:
+      - link "SIMINAT, beranda" [ref=e5] [cursor=pointer]:
+        - /url: /web-id3/
+        - generic [ref=e10]:
+          - generic [ref=e11]: SIMINAT
+          - generic [ref=e12]: Kenali minat. Rencanakan masa depan.
+      - generic [ref=e13]:
+        - heading [level=2] [ref=e14]:
+          - text: Mendampingi langkah,
+          - emphasis [ref=e15]: merencanakanmasa depan.
+        - paragraph [ref=e16]: Ruang kerja untuk guru BK dan administrator sekolah.
+        - list "Fokus SIMINAT" [ref=e17]:
+          - listitem [ref=e18]:
+            - strong [ref=e19]: "01"
+            - generic [ref=e20]: Kenali minat
+          - listitem [ref=e21]:
+            - strong [ref=e22]: "02"
+            - generic [ref=e23]: Baca jalur
+          - listitem [ref=e24]:
+            - strong [ref=e25]: "03"
+            - generic [ref=e26]: Diskusikan pilihan
+    - region [ref=e27]:
+      - navigation "Navigasi halaman masuk" [ref=e28]:
+        - link "Kembali ke Beranda" [ref=e29] [cursor=pointer]:
+          - /url: /web-id3/
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: Akses Pengelola
+        - heading "Selamat datang kembali." [level=1] [ref=e35]
+        - paragraph [ref=e36]: Masuk untuk melanjutkan ke ruang kerja SIMINAT.
+        - generic [ref=e37]:
+          - generic [ref=e39]:
+            - generic [ref=e40]: AKSES TERLINDUNGI
+            - generic [ref=e41]: SIMINAT / 01
+          - generic [ref=e42]:
+            - generic [ref=e43]: Username
+            - textbox "Username" [ref=e44]:
+              - /placeholder: Masukkan username Anda
+          - generic [ref=e45]:
+            - generic [ref=e46]: Kata sandi
+            - generic [ref=e47]:
+              - textbox "Kata sandi" [ref=e48]:
+                - /placeholder: Masukkan kata sandi Anda
+              - button "Tampilkan kata sandi" [ref=e49] [cursor=pointer]
+          - button "Masuk ke SIMINAT" [ref=e53] [cursor=pointer]
+        - button "Butuh bantuan masuk?" [ref=e56] [cursor=pointer]
+      - generic [ref=e57]: Akses khusus administrator dan guru BK.

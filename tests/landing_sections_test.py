@@ -20,8 +20,8 @@ with sync_playwright() as p:
     assert page.locator('#info-dialog, template[id^="content-"]').count() == 0
     assert page.locator('#metode').get_by_text('Ilustrasi, bukan pohon hasil data siswa', exact=True).count() == 1
     assert page.locator('#metode .stop-list li').count() == 3
-    assert page.locator('#cara-kerja .process-list > li').count() == 4
-    assert page.locator('#rumpun .rumpun-definitions > div').count() == 3
+    assert page.locator('#cara-kerja [data-journey-step]').count() == 4
+    assert page.locator('#rumpun [role="tab"]').count() == 3
     assert page.locator('footer').count() == 1
     assert page.locator('main footer').count() == 0
     assert not page.locator('a[href^="mailto:"], a[href^="tel:"]').count()
@@ -29,6 +29,36 @@ with sync_playwright() as p:
     assert page.locator('.hero__actions a[href="#rumpun"]').count() == 1
     assert page.locator('.hero__actions a[href="#cara-kerja"]').count() == 1
     assert page.locator('#panduan a[href$="login.php"]').count() == 1
+    for tab in page.get_by_role('tab').all():
+        tab.click()
+        assert tab.get_attribute('aria-selected') == 'true'
+        assert page.locator('#' + tab.get_attribute('aria-controls')).is_visible()
+        assert page.locator('[role="tabpanel"]:visible').count() == 1
+    page.get_by_role('tab').first.focus()
+    page.keyboard.press('End')
+    assert page.get_by_role('tab').last.get_attribute('aria-selected') == 'true'
+    page.keyboard.press('ArrowRight')
+    assert page.get_by_role('tab').first.get_attribute('aria-selected') == 'true'
+    page.keyboard.press('ArrowLeft')
+    assert page.get_by_role('tab').last.get_attribute('aria-selected') == 'true'
+    page.keyboard.press('Home')
+    assert page.get_by_role('tab').first.get_attribute('aria-selected') == 'true'
+    for step in page.locator('[data-journey-step]').all():
+        step.click()
+        assert step.get_attribute('aria-current') == 'step'
+        assert page.locator(step.get_attribute('href')).is_visible()
+        assert page.locator('[data-journey-panel]:visible').count() == 1
+    for index, checkbox in enumerate(page.locator('[data-checklist] input').all(), 1):
+        checkbox.check()
+        assert page.locator('.preparation-progress progress').get_attribute('value') == str(index)
+    assert 'Semua siap' in page.locator('[data-checklist-status]').inner_text()
+    page.locator('[data-checklist] input').first.uncheck()
+    assert '3 dari 4' in page.locator('[data-checklist-status]').inner_text()
+    page.locator('.method-technical summary').click()
+    assert page.locator('.method-formulas').is_visible()
+    assert page.locator('#metode .stop-list').is_visible()
+    page.locator('.method-technical summary').click()
+    assert not page.locator('.method-formulas').is_visible()
     for href in page.locator('a[href^="#"]').evaluate_all('(links) => links.map(a => a.getAttribute("href"))'):
         assert len(href) > 1 and page.locator(f'[id="{href[1:]}"]').count() == 1, href
     assert '−' in page.locator('#metode').inner_text()
@@ -122,6 +152,10 @@ with sync_playwright() as p:
     for section in SECTIONS:
         assert static.locator('#'+section).count() == 1
     assert static.locator('noscript').is_visible()
+    assert static.locator('[data-tab-panel]:visible').count() == 3
+    assert static.locator('[data-journey-panel]:visible').count() == 4
+    static.locator('.method-technical summary').click()
+    assert static.locator('.method-formulas').is_visible()
     no_js.close()
     result={'viewports':sizes,'consoleErrors':errors,'failedAssets':failed_assets,'states':'PASS: native anchors, mobile focus trap and closing, reduced motion, images, noscript'}
     (OUT/'landing-results.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
