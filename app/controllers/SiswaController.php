@@ -112,7 +112,7 @@ final class SiswaController extends Controller
     public function import(): void
     {
         $this->requireAdmin();
-        $serverFile = APP_ROOT . '/Dataset_Bersih_ID3.xlsx';
+        $serverFile = APP_ROOT . '/data/Dataset_Bersih_ID3.xlsx';
         $flash = null;
         if (is_post()) {
             $this->verifyPost('siswa/import', self::MAX_UPLOAD + 65536);

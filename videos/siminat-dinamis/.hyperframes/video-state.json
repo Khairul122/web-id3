@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "9c3a2204-425c-45fe-9252-9c82172fb1a4",
-  "currentRevision": "0f5c353b-24ee-41a8-868f-b647091f695b",
+  "currentRevision": "495a21a2-b75e-400a-a7ba-bc41da69af6c",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -119,42 +119,6 @@
     "assets/review.png": {
       "hash": "619c0a49c52c51e7164c43655693834444abf757c57ebf5b8a7ef8a6ae17567b",
       "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\61\\619c0a49c52c51e7164c43655693834444abf757c57ebf5b8a7ef8a6ae17567b"
-    },
-    "boards/stills/contact-sheet.jpg": {
-      "hash": "ae727bd9fc2172e52527cbd1dc0c5d9f1346f30fa8d9d6ca186c1a45f5eb131a",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\ae\\ae727bd9fc2172e52527cbd1dc0c5d9f1346f30fa8d9d6ca186c1a45f5eb131a"
-    },
-    "boards/stills/frame-00-at-2s.png": {
-      "hash": "0190353b366525711503c84f7fa2884ac5f73a652fa5b5a553bad80c4849b4a3",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\01\\0190353b366525711503c84f7fa2884ac5f73a652fa5b5a553bad80c4849b4a3"
-    },
-    "boards/stills/frame-01-at-9s.png": {
-      "hash": "1c85e1c87af7564f13d0e0b16ea76b6a1131915a7065d8285e76ef1673d870c2",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\1c\\1c85e1c87af7564f13d0e0b16ea76b6a1131915a7065d8285e76ef1673d870c2"
-    },
-    "boards/stills/frame-02-at-15s.png": {
-      "hash": "5634ff326a54e03e2118d2629832e63569fd66cc5886d1afcdb3b60a8a42c612",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\56\\5634ff326a54e03e2118d2629832e63569fd66cc5886d1afcdb3b60a8a42c612"
-    },
-    "boards/stills/frame-03-at-21s.png": {
-      "hash": "e10ea037f68774ac0fd37b6045f2ee60a56b81baca3ad416dc6ae1f3ec09a0e0",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\e1\\e10ea037f68774ac0fd37b6045f2ee60a56b81baca3ad416dc6ae1f3ec09a0e0"
-    },
-    "boards/stills/frame-04-at-27s.png": {
-      "hash": "11a0d283c8eeca07cdd1819b0463287542b95cd61e9ff1cf1c7ffd5ae7c75faa",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\11\\11a0d283c8eeca07cdd1819b0463287542b95cd61e9ff1cf1c7ffd5ae7c75faa"
-    },
-    "boards/stills/frame-05-at-33s.png": {
-      "hash": "e2233b9a621d91c2549b72a483b6e7f74121a1ac5f70571f05b2f798cd124092",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\e2\\e2233b9a621d91c2549b72a483b6e7f74121a1ac5f70571f05b2f798cd124092"
-    },
-    "boards/stills/frame-06-at-40s.png": {
-      "hash": "412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\41\\412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5"
-    },
-    "boards/stills/frame-07-at-40.496s.png": {
-      "hash": "412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5",
-      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\41\\412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5"
     },
     "capture/detail-boxes.json": {
       "hash": "a18fbf8538f2157b8a15c3cda8ae3dfa3d83b065070fb0108cd6af4049605b45",
@@ -623,6 +587,53 @@
         "VALIDATION.md": {
           "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\06\\0671f2209563b3bef58310a6ea1732578ad3acac682140a2d3c0886cd04d738d",
           "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\06\\0690d37d0aaa7e0b42c4e54131c272b50fb3774ca3cf65a05ddf997e4b8a77fe"
+        }
+      }
+    },
+    "495a21a2-b75e-400a-a7ba-bc41da69af6c": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792226804293,
+      "endedAt": 1792226806301,
+      "files": {
+        "boards/stills/contact-sheet.jpg": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\ae\\ae727bd9fc2172e52527cbd1dc0c5d9f1346f30fa8d9d6ca186c1a45f5eb131a",
+          "after": null
+        },
+        "boards/stills/frame-00-at-2s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\01\\0190353b366525711503c84f7fa2884ac5f73a652fa5b5a553bad80c4849b4a3",
+          "after": null
+        },
+        "boards/stills/frame-01-at-9s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\1c\\1c85e1c87af7564f13d0e0b16ea76b6a1131915a7065d8285e76ef1673d870c2",
+          "after": null
+        },
+        "boards/stills/frame-02-at-15s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\56\\5634ff326a54e03e2118d2629832e63569fd66cc5886d1afcdb3b60a8a42c612",
+          "after": null
+        },
+        "boards/stills/frame-03-at-21s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\e1\\e10ea037f68774ac0fd37b6045f2ee60a56b81baca3ad416dc6ae1f3ec09a0e0",
+          "after": null
+        },
+        "boards/stills/frame-04-at-27s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\11\\11a0d283c8eeca07cdd1819b0463287542b95cd61e9ff1cf1c7ffd5ae7c75faa",
+          "after": null
+        },
+        "boards/stills/frame-05-at-33s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\e2\\e2233b9a621d91c2549b72a483b6e7f74121a1ac5f70571f05b2f798cd124092",
+          "after": null
+        },
+        "boards/stills/frame-06-at-40s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\41\\412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5",
+          "after": null
+        },
+        "boards/stills/frame-07-at-40.496s.png": {
+          "before": "C:\\Users\\khair\\.cache\\hyperframes\\history\\9c3a2204-425c-45fe-9252-9c82172fb1a4\\blobs\\41\\412724c581066ac75360726af5666f46ddb593b9aa41f7cbcca7c03a8b2b6cb5",
+          "after": null
         }
       }
     }

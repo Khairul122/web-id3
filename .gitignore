@@ -5,3 +5,13 @@
 __pycache__/
 /node_modules/
 npm-debug.log*
+.pytest_cache/
+.playwright-mcp/
+**/.thumbnails/
+**/.waveform-cache/
+**/.hyperframes/artifacts/
+**/.hyperframes/preview/
+**/.hyperframes/*-lock/
+**/.hyperframes/check-report.json
+**/.hyperframes/timeline.json
+**/.hyperframes/video-state.json

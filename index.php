@@ -87,7 +87,7 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
   <section class="landing-section section--ivory explore-section" id="rumpun" aria-labelledby="rumpun-title" tabindex="-1">
     <div class="container">
       <div class="chapter-heading"><p class="chapter-label"><span>01 /</span> Kenali pilihanmu</p><span class="chapter-aside">Rasa ingin tahu adalah titik awal.</span></div>
-      <div class="explore-heading"><h2 class="section-title" id="rumpun-title">Ada banyak jalan.<br><em>Mana yang membuatmu penasaran?</em></h2><p class="section-intro">Kenali tiga rumpun jurusan, lihat bidang yang dipelajari, lalu hubungkan dengan hal yang kamu sukai.</p></div>
+      <div class="explore-heading"><h2 class="section-title" id="rumpun-title">Ada banyak jalan.<br><em>Jelajahi bidangmu.</em></h2><p class="section-intro">Kenali tiga rumpun jurusan, lihat bidang yang dipelajari, lalu hubungkan dengan hal yang kamu sukai.</p></div>
       <div class="field-explorer" data-tabs>
         <div class="field-tabs" data-tab-list aria-label="Jelajahi rumpun jurusan" hidden>
           <button id="tab-saintek" type="button" data-tab="panel-saintek"><span>01</span> Saintek <?= icon('arrow') ?></button>

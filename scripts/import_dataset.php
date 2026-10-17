@@ -8,7 +8,7 @@ if (PHP_SAPI !== 'cli') {
 }
 require dirname(__DIR__) . '/app/core/bootstrap.php';
 
-$file = $argv[1] ?? APP_ROOT . '/Dataset_Bersih_ID3.xlsx';
+$file = $argv[1] ?? APP_ROOT . '/data/Dataset_Bersih_ID3.xlsx';
 $parsed = Importer::parse(Importer::readXlsx($file), Atribut::domains());
 if ($parsed['errors']) {
     fwrite(STDERR, "Import dihentikan:\n- " . implode("\n- ", $parsed['errors']) . "\n");

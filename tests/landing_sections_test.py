@@ -61,7 +61,7 @@ with sync_playwright() as p:
     assert not page.locator('.method-formulas').is_visible()
     for href in page.locator('a[href^="#"]').evaluate_all('(links) => links.map(a => a.getAttribute("href"))'):
         assert len(href) > 1 and page.locator(f'[id="{href[1:]}"]').count() == 1, href
-    assert '−' in page.locator('#metode').inner_text()
+    assert '−' in page.locator('.method-formulas').text_content()
     assert all('−' not in t for t in page.locator('#rumpun, #cara-kerja, #panduan').all_inner_texts())
 
     sizes = []
@@ -71,6 +71,10 @@ with sync_playwright() as p:
         page.goto(URL, wait_until='networkidle')
         page.evaluate('document.fonts.ready')
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+        page.locator('.method-technical summary').click()
+        assert page.locator('.method-formulas').is_visible()
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), ('formula', width)
+        page.locator('.method-technical summary').click()
         if width >= 1024:
             hero_bottom = page.locator('.hero').bounding_box()['y'] + page.locator('.hero').bounding_box()['height']
             assert hero_bottom <= height + 1, (width, hero_bottom, height)

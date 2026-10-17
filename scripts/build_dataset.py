@@ -8,7 +8,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 from extract import man_legger, mas_legger, ptkin_2026, sim, norm
 from raw_labels import TKA, TKA_KELAS, SPAN, AZHAR
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Dataset_Bersih_ID3.xlsx")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "Dataset_Bersih_ID3.xlsx")
 man, iss_man = man_legger(); mas, iss_mas = mas_legger(); ptk = ptkin_2026()
 log = []  # (Kategori, Sekolah, Nama, Keterangan, Tindakan)
 

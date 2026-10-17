@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 (redesign section landing)
+
+- Rumpun jurusan menjadi eksplorasi bertab dengan contoh bidang dan pertanyaan refleksi; cara kerja menjadi empat tahap interaktif dengan ilustrasi masing-masing.
+- Metode ID3 memakai penjelasan bertahap, diagram berwarna sesuai kelas, replay, dan detail rumus yang dapat dibuka. Panduan memiliki checklist persiapan konsultasi dan progres sementara.
+- Footer diperbarui dengan ajakan konsultasi dan tipografi besar. Warna dan tipografi mengikuti hero; markup, stylesheet, dan JavaScript hero tetap dipertahankan.
+- Verifikasi browser tujuh viewport, tabs lewat keyboard, pemilih tahap, checklist, rumus, navigasi, reduced motion, tanpa JavaScript, dan akses panel guru BK. Perbandingan piksel hero desktop identik.
+
 ## 2026-10-17 (perkakas video HyperFrames)
 
 - HyperFrames CLI dipasang sebagai devDependency (`package.json`, `package-lock.json`); `node_modules/` diabaikan Git. Aplikasi PHP tidak berubah dan tetap tanpa Node saat dibuka.

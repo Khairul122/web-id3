@@ -121,7 +121,7 @@ def compare(mine, system, where, problems):
 def main():
     system = json.loads(subprocess.run(['php', str(ROOT / 'tests/export_id3.php')], capture_output=True, text=True, check=True).stdout)
     attrs, domains, k = system['atribut'], system['domains'], system['k']
-    labeled = read_sheet(ROOT / 'Dataset_Bersih_ID3.xlsx', 'Data_ID3')
+    labeled = read_sheet(ROOT / 'data' / 'Dataset_Bersih_ID3.xlsx', 'Data_ID3')
     data = {r['ID_Siswa']: {'x': {a: r[a] for a in attrs}, 'y': r['Minat_Jurusan'], 'sekolah': r['Sekolah_Asal']} for r in labeled}
     scenario_filter = {
         'semua': lambda r: True,
