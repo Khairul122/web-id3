@@ -277,3 +277,13 @@ details[open] > summary .tree-node__toggle::after { content: '−'; }
 .admin-content > .page-head + * { margin-top: 0; }
 .admin-content > .stat-grid { margin-bottom: 0; }
 .tree { overflow-x: auto; padding-bottom: 4px; }
+.tree-image { overflow: auto; max-height: 640px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
+.tree-image img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+.tree-image.is-zoomed img { width: auto; max-width: none; cursor: zoom-out; }
+.tree-image--print { margin-bottom: 16px; }
+@media print {
+  .tree-image { overflow: visible; max-height: none; border: 0; }
+  .tree-image img { max-width: 100%; height: auto; }
+  .tree-image--print + .tree { display: none; }
+}
+@media print { .page-head:has(+ .print-head) { display: none; } }

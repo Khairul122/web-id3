@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17 (gambar pohon)
+
+- Pohon keputusan dibuat otomatis sebagai gambar SVG (`app/services/TreeImage.php`, rute `admin/training/pohon?id=`), tampil di detail model dan laporan cetak, dengan unduhan SVG dan PNG.
+
 ## 2026-10-17 (persiapan dibagikan)
 
 - Teks landing diperbarui: tidak lagi menyebut fitur klasifikasi "dalam pengembangan"; dialog Metode ID3 menampilkan ringkasan model aktif dari database.

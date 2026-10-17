@@ -89,6 +89,9 @@ try:
     assert flash(page) == 'Training berhasil' and 'Pohon keputusan' in page and 'Aturan IF-THEN' in page
     model_id = re.search(r'training/aktifkan|pengujian/form\?model_id=(\d+)', page).group(1)
 
+    status, svg, ctype, _ = admin.request('admin/training/pohon?id=' + model_id)
+    assert status == 200 and 'image/svg+xml' in ctype and svg.startswith('<svg') and 'UJI-OTOMATIS' in svg
+
     # Validasi form training
     status, page, _, _ = admin.request('admin/training/form', {'_csrf': csrf(page), 'nama': '', 'skenario': 'x', 'min_sampel': '0'})
     assert status == 422 and flash(page) == 'Gagal menyimpan' and 'Pilih minimal satu atribut' in page

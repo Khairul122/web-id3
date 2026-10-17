@@ -26,8 +26,22 @@
   <div class="stat"><span class="stat__label">Akurasi uji</span><span class="stat__value"><?= $evaluation ? e(pct($evaluation['akurasi'])) : '-' ?></span><span class="stat__note"><?= $evaluation ? e($evaluation['k'] . '-fold cross validation') : 'Belum diuji' ?></span></div>
 </div>
 
+<?php $treeUrl = admin_url('training/pohon?id=' . $model['id']); ?>
+<section class="card" aria-labelledby="tree-image-title">
+  <div class="card__head">
+    <h2 id="tree-image-title">Gambar pohon keputusan</h2>
+    <div class="page-actions">
+      <a class="btn btn--outline btn--sm" href="<?= e($treeUrl) ?>" target="_blank" rel="noopener"><?= icon('eye') ?> Buka Ukuran Penuh</a>
+      <a class="btn btn--outline btn--sm" href="<?= e($treeUrl . '&unduh=1') ?>"><?= icon('download') ?> Unduh SVG</a>
+      <button class="btn btn--sm" type="button" data-svg-png="<?= e($treeUrl) ?>" data-filename="pohon-id3-model-<?= (int) $model['id'] ?>.png" hidden><?= icon('download') ?> Unduh PNG</button>
+    </div>
+    <p>Dibuat otomatis dari model ini. SVG tetap tajam saat diperbesar dan dapat disisipkan ke Word; PNG beresolusi dua kali untuk dokumen. Klik gambar untuk memperbesar.</p>
+  </div>
+  <div class="tree-image" data-zoom><img src="<?= e($treeUrl) ?>" alt="Pohon keputusan ID3 <?= e($model['nama']) ?>. Rincian setiap cabang tersedia pada daftar pohon dan aturan IF-THEN di bawah." loading="lazy"></div>
+</section>
+
 <section class="card" aria-labelledby="tree-title">
-  <div class="card__head"><h2 id="tree-title">Pohon keputusan</h2><p>Klik node atribut untuk melipat atau membuka cabang. Label pada garis adalah nilai atribut.</p></div>
+  <div class="card__head"><h2 id="tree-title">Pohon keputusan (daftar)</h2><p>Klik node atribut untuk melipat atau membuka cabang. Label pada garis adalah nilai atribut.</p></div>
   <ul class="tree"><?= tree_html($model['tree']) ?></ul>
 </section>
 

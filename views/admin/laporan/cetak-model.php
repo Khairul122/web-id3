@@ -12,6 +12,7 @@
 </section>
 <section class="card">
   <div class="card__head"><h2>Pohon keputusan</h2></div>
+  <div class="tree-image tree-image--print"><img src="<?= e(admin_url('training/pohon?id=' . $model['id'])) ?>" alt="Pohon keputusan ID3 <?= e($model['nama']) ?>"></div>
   <ul class="tree"><?= tree_html($model['tree'], null, 0, true) ?></ul>
 </section>
 <section class="card">
