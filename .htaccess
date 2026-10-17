@@ -1,0 +1,11 @@
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(?:app|views|data|docs|scripts|output|config|database|storage|tests)(?:/|$) - [F,L,NC]
+</IfModule>
+
+<FilesMatch "(?:^\.|\.(?:xlsx|pdf|py|md|log|sql)$)">
+    Require all denied
+</FilesMatch>

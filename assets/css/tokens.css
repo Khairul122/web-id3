@@ -1,0 +1,24 @@
+:root {
+  --navy: #071d31;
+  --navy-deep: #041625;
+  --ivory: #fffdf6;
+  --muted: #d7dee5;
+  --gold: #f8c454;
+  --gold-hover: #ffda86;
+  --ink: #172c3e;
+  --paper: #f8f6f0;
+  --field: #fffefa;
+  --field-line: #89949d;
+  --text-secondary: #526170;
+  --gold-ink: #88601b;
+  --error: #a12626;
+  --error-bg: #fbeeee;
+  --auth-overlay: linear-gradient(180deg, rgba(4, 22, 37, .5) 0%, rgba(4, 22, 37, .2) 33%, rgba(4, 22, 37, .92) 75%, rgba(4, 22, 37, .99) 100%);
+  --line: rgba(255, 253, 246, .22);
+  --overlay: linear-gradient(90deg, rgba(4, 22, 37, .97) 0%, rgba(4, 22, 37, .86) 28%, rgba(4, 22, 37, .42) 52%, rgba(4, 22, 37, .04) 78%);
+  --mobile-overlay: linear-gradient(90deg, rgba(4, 22, 37, .93), rgba(4, 22, 37, .57));
+  --base-font: 'Inter', Arial, sans-serif;
+  --display-font: Georgia, 'Times New Roman', serif;
+  --container: 1360px;
+  --gutter: clamp(24px, 5.2vw, 80px);
+}
