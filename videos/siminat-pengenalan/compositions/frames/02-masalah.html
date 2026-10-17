@@ -1,0 +1,249 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="02-masalah"
+    data-width="1920"
+    data-height="1080" data-duration="4.57"
+  >
+    <!-- full-bleed ground + atmosphere (clip layer, never #root) -->
+    <div class="clip" id="02-masalah-bg" data-start="0" data-duration="4.57" data-track-index="0">
+      <div id="02-masalah-sun"></div>
+      <div id="02-masalah-ember"></div>
+    </div>
+
+    <!-- type scene -->
+    <div class="clip" id="02-masalah-stage" data-start="0" data-duration="4.57" data-track-index="1">
+      <div id="02-masalah-slot"><span id="02-masalah-word">Saintek</span><span id="02-masalah-q">?</span></div>
+
+      <div id="02-masalah-question"><span>Bingung memilih</span><span>jurusan?</span></div>
+
+      <div id="02-masalah-rule"></div>
+
+      <div id="02-masalah-small"><span id="02-masalah-small-text">Banyak pilihan. Sedikit arahan.</span></div>
+
+      <div id="02-masalah-pagenum">02</div>
+    </div>
+  </div>
+
+  <style>
+    /* Local faces — normative block from frame.md (no network fonts). */
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+    }
+
+    [id="02-masalah-bg"],
+    [id="02-masalah-stage"] {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Scene 1 — deep navy ground, dim sun bloom top-right, ember counter-bloom bottom-left */
+    [id="02-masalah-bg"] {
+      background: #071D31;
+    }
+    [id="02-masalah-sun"] {
+      position: absolute;
+      top: -25cqw;
+      right: -12cqw;
+      width: 66cqw;
+      height: 66cqw;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(248, 196, 84, 0.92) 0%,
+        rgba(103, 72, 4, 0.64) 30%,
+        rgba(140, 98, 6, 0.32) 55%,
+        rgba(7, 29, 49, 0) 78%
+      );
+      opacity: 0.6;
+    }
+    [id="02-masalah-ember"] {
+      position: absolute;
+      left: -10cqw;
+      bottom: -8cqw;
+      width: 50cqw;
+      height: 50cqw;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(31, 95, 158, 1) 0%,
+        rgba(31, 95, 158, 0.5) 45%,
+        rgba(31, 95, 158, 0) 72%
+      );
+      opacity: 0.15;
+    }
+
+    /* The one slot, center-top — only the word changes, size identical across states */
+    [id="02-masalah-slot"] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 320px;
+      font-family: "Georgia";
+      font-weight: 400;
+      font-size: 13.6cqw;
+      line-height: 0.86;
+      letter-spacing: -0.018em;
+      color: #FFFDF6;
+      text-align: center;
+      white-space: nowrap;
+    }
+    [id="02-masalah-q"] {
+      color: #FFFDF6;
+    }
+
+    /* Scene 2 — the held question, landing in the same slot */
+    [id="02-masalah-question"] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 270px;
+      font-family: "Georgia";
+      font-weight: 400;
+      font-size: 8.8cqw;
+      line-height: 0.96;
+      letter-spacing: -0.005em;
+      color: #FFFDF6;
+      text-align: center;
+      transform-origin: 50% 50%;
+      will-change: transform, filter;
+    }
+    [id="02-masalah-question"] > span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* Scene 3 — hairline tick + small line */
+    [id="02-masalah-rule"] {
+      position: absolute;
+      left: calc(50% - 110px);
+      top: 652px;
+      width: 220px;
+      height: 1px;
+      background: rgba(255, 253, 246, 0.2);
+      transform-origin: 0% 50%;
+    }
+    [id="02-masalah-small"] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 690px;
+      font-family: "Inter";
+      font-weight: 400;
+      font-size: 1.85cqw;
+      line-height: 1.5;
+      letter-spacing: 0;
+      color: #FFFDF6;
+      text-align: center;
+    }
+    [id="02-masalah-small-text"] {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    /* Persistent chrome */
+    [id="02-masalah-pagenum"] {
+      position: absolute;
+      right: 4cqw;
+      bottom: 4cqw;
+      font-family: "Inter";
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: rgba(255, 253, 246, 0.75);
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+
+    (function () {
+      var TOTAL = 4.17; /* frame duration — fixed upstream */
+      var INK = "#FFFDF6";
+      var GOLD = "#F8C454"; /* the one emphasized glyph: the ? on the final token */
+
+      var slot = document.getElementById("02-masalah-slot");
+      var word = document.getElementById("02-masalah-word");
+      var qmark = document.getElementById("02-masalah-q");
+      var question = document.getElementById("02-masalah-question");
+      var rule = document.getElementById("02-masalah-rule");
+      var smallText = document.getElementById("02-masalah-small-text");
+      var ember = document.getElementById("02-masalah-ember");
+
+      var tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0–2.09s) — in-place token cycle (discrete-text-sequence):
+         whole states swap on the ~0.52s sub-beat; only the word changes, the ?
+         holds; identical size across states; instant — no fade, no slide. */
+      var TOKENS = [
+        { t: 0.0, word: "Saintek", gold: false },
+        { t: 0.52, word: "Soshum", gold: false },
+        { t: 1.04, word: "Campuran", gold: true }
+      ];
+      var seq = { t: 0 };
+      var state = -1;
+      tl.to(
+        seq,
+        {
+          t: TOTAL,
+          duration: TOTAL,
+          ease: "none",
+          onUpdate: function () {
+            var i = 0;
+            for (var k = TOKENS.length - 1; k >= 0; k--) {
+              if (seq.t >= TOKENS[k].t) {
+                i = k;
+                break;
+              }
+            }
+            if (i !== state) {
+              state = i;
+              word.textContent = TOKENS[i].word;
+              qmark.style.color = TOKENS[i].gold ? GOLD : INK;
+            }
+          }
+        },
+        0
+      );
+
+      /* Hard cut on the 2.09s bar line — the slot is gone, the question is there */
+      tl.to(slot, { opacity: 0, duration: 0.01, ease: "none" }, 2.09);
+      tl.fromTo(question, { opacity: 0 }, { opacity: 1, duration: 0.01, ease: "none" }, 2.09);
+
+      /* Scene 2 (2.09–3.13s) — slam: scale from big, blur off, long-tail settle,
+         then the phrase is held */
+      tl.fromTo(
+        question,
+        { scale: 1.36, filter: "blur(10px)" },
+        { scale: 1, filter: "blur(0px)", duration: 0.7, ease: "power4.out" },
+        2.09
+      );
+      tl.set(question, { clearProps: "filter" }, 2.79);
+
+      /* ember counter-bloom lights faintly behind as the line lands (2.61s beat) */
+      tl.fromTo(ember, { opacity: 0.15 }, { opacity: 0.22, duration: 0.16, ease: "power2.out" }, 2.61);
+      tl.to(ember, { opacity: 0.18, duration: 0.9, ease: "power1.inOut" }, 2.77);
+
+      /* Scene 3 (3.13–4.17s) — hairline draws, small line mask-reveals left→right,
+         then everything is still and readable to the cut */
+      tl.fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: 0.34, ease: "power3.out" }, 3.13);
+      tl.fromTo(
+        smallText,
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.52, ease: "power2.out" },
+        3.22
+      );
+
+      window.__timelines["02-masalah"] = tl;
+    })();
+  </script>
+</template>

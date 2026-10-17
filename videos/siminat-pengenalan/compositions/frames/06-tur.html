@@ -1,0 +1,396 @@
+<template>
+  <!--
+    06-tur — "Tur situs: Jelajahi SIMINAT" (SIMINAT launch video, frame 6).
+
+    Contract: bare <template> fragment; root styled via #root, carries
+    data-composition-id="06-tur"; one paused GSAP timeline registered at
+    window.__timelines["06-tur"]; every style/script inside the template.
+
+    Shot — blueprint "camera-journey" (Adapt, sub-shape B: cursorless flight +
+    held landing) on one continuous world = assets/full-page.png (1905x5908)
+    seen through a 0-radius hairline-ivory viewport (no browser chrome). The
+    camera (rule viewport-change: single .world wrapper, one `cam` state +
+    drift, one writer applyCamera(); rule multi-phase-camera: sequenced legs +
+    drift; rule coordinate-target-zoom: each stop holds its station centred)
+    glides down the plate and stops at RUMPUN JURUSAN (t=2.09), METODE ID3
+    (t=4.18) and PANDUAN (t=5.29). At each stop the matching full-viewport
+    capture (assets/02|04|05) swaps in sharp INSIDE the window (never replaces
+    the world); its baked-in sticky header (capture rows 0..66) always sits
+    above the window's top edge. After PANDUAN the camera pulls back — scale +
+    counter-translate share one tween — to reveal the whole plate and holds to
+    the cut. Left rail = page-position ruler; station micro-labels appear on
+    arrival; no cursor anywhere. No exits (assembler owns the between-frame
+    transition).
+
+    Baked alignment (measured against the real PNGs; world unit = plate px):
+      plate section tops ....... 1080 / 3045 / 4020
+      capture scroll offsets ... 984 / 2950 / 3924   (SAD match, mean |d| < 1.1/255)
+      capture x-offsets ........ +7 / +8 / +7 px (1920-viewport capture vs 1905 plate)
+      stop framing ............. plate rows yTop .. yTop+915.5 at scale 1519/1905
+  -->
+  <style>
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+  </style>
+  <style>
+    #root,
+    #root * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-radius: 0;
+    }
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      background: transparent;
+      font-family: "Inter", sans-serif;
+      color: #fffdf6;
+    }
+
+    /* full-frame layers */
+    [id="06-tur-ground"],
+    [id="06-tur-scene"],
+    [id="06-tur-chrome"] {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ground + atmosphere (one sun bloom, ember counter-bloom; depth, never shadow) */
+    [id="06-tur-ground"] {
+      background: #071d31;
+    }
+    [id="06-tur-sun"] {
+      position: absolute;
+      left: -180px;
+      top: -200px;
+      width: 1940px;
+      height: 1480px;
+      background: radial-gradient(
+        closest-side,
+        rgba(248, 196, 84, 0.7) 0%,
+        rgba(212, 164, 52, 0.44) 26%,
+        rgba(103, 72, 4, 0.3) 46%,
+        rgba(140, 98, 6, 0.16) 62%,
+        rgba(7, 29, 49, 0) 80%
+      );
+    }
+    [id="06-tur-ember"] {
+      position: absolute;
+      left: 1280px;
+      top: -320px;
+      width: 1200px;
+      height: 960px;
+      background: radial-gradient(
+        closest-side,
+        rgba(31, 95, 158, 0.22) 0%,
+        rgba(31, 95, 158, 0.1) 55%,
+        rgba(31, 95, 158, 0) 78%
+      );
+    }
+
+    /* the viewport window — rect, 0 radius, 1px hairline ivory, overflow clip */
+    [id="06-tur-window"] {
+      position: absolute;
+      left: 322px;
+      top: 148px;
+      width: 1521px;
+      height: 732px;
+      border: 1px solid rgba(255, 253, 246, 0.9);
+      overflow: hidden;
+      clip-path: inset(0% 0% 97% 0%);
+    }
+    /* the travelling world (camera transform is written by applyCamera) */
+    [id="06-tur-world"] {
+      position: absolute;
+      inset: 0;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+    /* the plate (world) — native 1905x5908 px = one world unit per plate px */
+    [id="06-tur-plate"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1905px;
+      height: 5908px;
+      display: block;
+    }
+    /* sharp section swaps — aligned to the plate (left/top = baked offsets) */
+    [id="06-tur-shot-rumpun"],
+    [id="06-tur-shot-metode"],
+    [id="06-tur-shot-panduan"] {
+      position: absolute;
+      width: 1920px;
+      height: 1080px;
+      display: block;
+      opacity: 0;
+    }
+    [id="06-tur-shot-rumpun"] {
+      left: 7px;
+      top: 984px;
+    }
+    [id="06-tur-shot-metode"] {
+      left: 8px;
+      top: 2950px;
+    }
+    [id="06-tur-shot-panduan"] {
+      left: 7px;
+      top: 3924px;
+    }
+
+    /* left rail — page-position ruler + travelling marker + station micro-labels */
+    [id="06-tur-rail"] {
+      position: absolute;
+      left: 77px;
+      top: 148px;
+      width: 1px;
+      height: 732px;
+      background: rgba(255, 253, 246, 0.22);
+      transform-origin: 50% 0;
+    }
+    [id="06-tur-marker"] {
+      position: absolute;
+      left: 75px;
+      top: 138px; /* rail top 148 minus half marker height */
+      width: 5px;
+      height: 20px;
+      background: #f8c454;
+      opacity: 0;
+    }
+    /* label tops = the marker's y when the camera lands on that station */
+    [id^="06-tur-label-"] {
+      position: absolute;
+      left: 77px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+    }
+    [id^="06-tur-label-"] > i {
+      width: 14px;
+      height: 1px;
+      background: rgba(255, 253, 246, 0.35);
+      transform-origin: 0 50%;
+    }
+    [id^="06-tur-label-"] > span {
+      margin-left: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #fffdf6;
+      white-space: nowrap;
+    }
+    [id="06-tur-label-rumpun"] {
+      top: 328.5px;
+    }
+    [id="06-tur-label-metode"] {
+      top: 572.1px;
+    }
+    [id="06-tur-label-panduan"] {
+      top: 692.8px;
+    }
+
+    /* top chrome + pagenum (the only foot chrome) */
+    [id="06-tur-eyebrow"] {
+      position: absolute;
+      left: 77px;
+      top: 88px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+    }
+    [id="06-tur-eyebrow"] > i {
+      width: 24px;
+      height: 1px;
+      background: rgba(255, 253, 246, 0.5);
+    }
+    [id="06-tur-eyebrow"] > span {
+      margin-left: 12px;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fffdf6;
+      white-space: nowrap;
+    }
+    [id="06-tur-plateinfo"] {
+      position: absolute;
+      top: 88px;
+      right: 77px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 0.73cqw;
+      letter-spacing: 0.04em;
+      color: rgba(255, 253, 246, 0.85);
+      white-space: nowrap;
+      opacity: 0;
+    }
+    [id="06-tur-pagenum"] {
+      position: absolute;
+      right: 77px;
+      bottom: 42px;
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      color: #fffdf6;
+      opacity: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-tur" data-width="1920" data-height="1080" data-duration="6.86">
+    <div id="06-tur-ground" class="clip" data-start="0" data-duration="6.86" data-track-index="0">
+      <div id="06-tur-sun" aria-hidden="true"></div>
+      <div id="06-tur-ember" aria-hidden="true"></div>
+    </div>
+
+    <div id="06-tur-scene" class="clip" data-start="0" data-duration="6.86" data-track-index="1">
+      <div id="06-tur-window">
+        <div id="06-tur-world" data-layout-allow-overflow>
+          <img id="06-tur-plate" src="assets/full-page.png" alt="SIMINAT — plat penuh halaman beranda (1920 × 5908)" />
+          <img id="06-tur-shot-rumpun" src="assets/02-rumpun.png" alt="Section Rumpun Jurusan" />
+          <img id="06-tur-shot-metode" src="assets/04-metode.png" alt="Section Metode ID3" />
+          <img id="06-tur-shot-panduan" src="assets/05-panduan.png" alt="Section Panduan" />
+        </div>
+      </div>
+    </div>
+
+    <div id="06-tur-chrome" class="clip" data-start="0" data-duration="6.86" data-track-index="2">
+      <div id="06-tur-rail" aria-hidden="true"></div>
+      <div id="06-tur-marker" aria-hidden="true"></div>
+      <div id="06-tur-label-rumpun"><i aria-hidden="true"></i><span>Rumpun Jurusan</span></div>
+      <div id="06-tur-label-metode"><i aria-hidden="true"></i><span>Metode ID3</span></div>
+      <div id="06-tur-label-panduan"><i aria-hidden="true"></i><span>Panduan</span></div>
+      <div id="06-tur-eyebrow"><i aria-hidden="true"></i><span>Tur Situs</span></div>
+      <div id="06-tur-plateinfo">PLAT PENUH · 1920 × 5908</div>
+      <div id="06-tur-pagenum">06</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var FRAME = "06-tur";
+      var DUR = 6.26;
+
+      /* ---- geometry -------------------------------------------------------
+         Window is 1521x732 outer; the 1px hairline leaves a 1519x730 content
+         box — that box is the camera viewport and the world's local space. */
+      var WW = 1519,
+        HW = 730;
+      var CEN = { x: WW / 2, y: HW / 2 }; /* 759.5, 365 — transform-origin */
+      var PLATE_W = 1905,
+        PLATE_H = 5908; /* full-page.png native; 1 world unit = 1 plate px */
+      var RAIL_LEN = 732; /* marker track length (rail top 148, height 732) */
+      var S1 = WW / PLATE_W; /* 0.797375 — stop scale: plate fills window width */
+      var S2 = 678 / PLATE_H; /* 0.114760 — overview: whole plate in view */
+      var HALF = (HW / S1) / 2; /* 457.75 — half of the visible world height at S1 */
+
+      /* Counter-translate for the single-wrapper camera: T = -S * (target - centre).
+         (viewport-change's single-wrapper form; measured plate geometry, baked.) */
+      function pose(cy, s) {
+        return { x: -s * (PLATE_W / 2 - CEN.x), y: -s * (cy - CEN.y) };
+      }
+      var P = {
+        start: pose(HALF, S1), /* plate top — site header + hero, rows 0..915.5 */
+        rumpun: pose(1080 + HALF, S1), /* rows 1080..1995.5 */
+        metode: pose(3045 + HALF, S1), /* rows 3045..3960.5 */
+        panduan: pose(4020 + HALF, S1), /* rows 4020..4935.5 */
+        overview: pose(PLATE_H / 2, S2) /* whole plate, held to the cut */
+      };
+
+      var world = document.getElementById("06-tur-world");
+      var marker = document.getElementById("06-tur-marker");
+      var cam = { scale: S1, x: P.start.x, y: P.start.y };
+      var drift = { p: 0 };
+
+      /* ONE writer: camera composite (phase transform + drift) and rail marker
+         (page position of the visible centre). Nothing else touches transforms. */
+      function applyCamera() {
+        var dx = Math.sin(drift.p) * 4;
+        var dy = Math.sin(drift.p * 1.31) * 2.5;
+        var x = cam.x + dx,
+          y = cam.y + dy;
+        world.style.transform = "translate(" + x + "px," + y + "px) scale(" + cam.scale + ")";
+        var pageY = Math.min(Math.max(CEN.y - y / cam.scale, 0), PLATE_H);
+        marker.style.transform = "translateY(" + (pageY / PLATE_H) * RAIL_LEN + "px)";
+      }
+      applyCamera(); /* seed frame 0 */
+
+      function byId(id) {
+        return document.getElementById(id);
+      }
+      var win = byId("06-tur-window");
+      var eyebrow = byId("06-tur-eyebrow");
+      var info = byId("06-tur-plateinfo");
+      var pagenum = byId("06-tur-pagenum");
+      var rail = byId("06-tur-rail");
+      var shots = {
+        rumpun: byId("06-tur-shot-rumpun"),
+        metode: byId("06-tur-shot-metode"),
+        panduan: byId("06-tur-shot-panduan")
+      };
+      var labels = {
+        rumpun: byId("06-tur-label-rumpun"),
+        metode: byId("06-tur-label-metode"),
+        panduan: byId("06-tur-label-panduan")
+      };
+      function tickOf(label) {
+        return label.firstElementChild;
+      }
+
+      var tl = gsap.timeline({ paused: true });
+
+      /* full-span drift — keeps the holds alive; also the timeline span anchor */
+      tl.to(drift, { p: Math.PI * 2 * 1.5, duration: DUR, ease: "none", onUpdate: applyCamera }, 0);
+
+      /* Scene 1 (0.0–2.09) — viewport opens at the top of the plate; world camera
+         glides down with soft easing; no cursor anywhere */
+      tl.fromTo(win, { clipPath: "inset(0% 0% 97% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power3.inOut" }, 0.08);
+      tl.fromTo(eyebrow, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.12);
+      tl.fromTo(info, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0.18);
+      tl.fromTo(pagenum, { opacity: 0 }, { opacity: 0.75, duration: 0.45, ease: "power2.out" }, 0.24);
+      tl.fromTo(rail, { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power2.inOut" }, 0.25);
+      tl.fromTo(marker, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0.72);
+      tl.to(cam, { y: P.rumpun.y, duration: 1.64, ease: "power2.inOut", onUpdate: applyCamera }, 0.45);
+
+      /* Scene 2 (2.09–4.18) — land at RUMPUN JURUSAN: rail label appears, sharp
+         swap-in while stopped, then the next leg of the multi-phase camera */
+      tl.fromTo(labels.rumpun, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.1);
+      tl.fromTo(tickOf(labels.rumpun), { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "power2.out" }, 2.1);
+      tl.fromTo(shots.rumpun, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power1.out" }, 2.14);
+      tl.to(cam, { y: P.metode.y, duration: 1.38, ease: "power2.inOut", onUpdate: applyCamera }, 2.8);
+      tl.to(shots.rumpun, { opacity: 0, duration: 0.2, ease: "power1.in" }, 2.84);
+
+      /* Scene 3a (4.18–5.29) — brief stop at METODE ID3, then a short hop */
+      tl.fromTo(labels.metode, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.19);
+      tl.fromTo(tickOf(labels.metode), { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "power2.out" }, 4.19);
+      tl.fromTo(shots.metode, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power1.out" }, 4.23);
+      tl.to(cam, { y: P.panduan.y, duration: 0.36, ease: "power3.out", onUpdate: applyCamera }, 4.93);
+      tl.to(shots.metode, { opacity: 0, duration: 0.2, ease: "power1.in" }, 4.95);
+
+      /* Scene 3b (5.29–6.26) — stop at PANDUAN; then pull back to the whole
+         plate (scale + counter-translate in ONE tween, shared ease) and hold */
+      tl.fromTo(labels.panduan, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.3);
+      tl.fromTo(tickOf(labels.panduan), { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "power2.out" }, 5.3);
+      tl.fromTo(shots.panduan, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power1.out" }, 5.34);
+      tl.to(cam, { scale: S2, x: P.overview.x, y: P.overview.y, duration: 0.34, ease: "power2.inOut", onUpdate: applyCamera }, 5.74);
+      tl.to(shots.panduan, { opacity: 0, duration: 0.18, ease: "power1.in" }, 5.76);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FRAME] = tl;
+    })();
+  </script>
+</template>

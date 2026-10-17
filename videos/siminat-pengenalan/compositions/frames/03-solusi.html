@@ -1,0 +1,310 @@
+<template>
+  <div id="root" data-composition-id="03-solusi" data-width="1920" data-height="1080" data-duration="6.76">
+    <style>
+      @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+      @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+      @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+      @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+      @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        display: block;
+        overflow: hidden;
+        container-type: size;
+      }
+      #root, #root * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* full-bleed ground rides on its own clip layer, never on #root */
+      .f03-layer { position: absolute; inset: 0; }
+      .f03-bg { background: #071D31; overflow: hidden; }
+
+      /* one sun bloom (right of center) + subordinate ember counter-bloom */
+      .f03-bloom-sun {
+        position: absolute;
+        left: 725px;
+        top: 5px;
+        width: 1240px;
+        height: 1000px;
+        background-image: radial-gradient(closest-side,
+          rgba(248,196,84,0.90) 0%,
+          rgba(248,196,84,0.44) 24%,
+          rgba(103,72,4,0.50) 48%,
+          rgba(140,98,6,0.20) 66%,
+          rgba(7,29,49,0) 86%);
+      }
+      .f03-bloom-ember {
+        position: absolute;
+        left: -160px;
+        top: 320px;
+        width: 980px;
+        height: 820px;
+        background-image: radial-gradient(closest-side,
+          rgba(31,95,158,0.20) 0%,
+          rgba(31,95,158,0.11) 46%,
+          rgba(31,95,158,0) 100%);
+      }
+
+      /* camera viewport: the pan leaks past the frame without this clip */
+      .f03-stage { overflow: hidden; }
+      .f03-world {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4440px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+
+      /* connector rail — the frame's one drawn line (svg-path-draw) */
+      .f03-rail { position: absolute; left: 0; top: 0; width: 4440px; height: 1080px; }
+      .f03-rail-seg {
+        fill: none;
+        stroke: rgba(248,196,84,0.85);
+        stroke-width: 1;
+        stroke-linecap: round;
+      }
+
+      /* stations pre-placed on the oversized canvas */
+      .f03-station { position: absolute; top: 0; height: 1080px; }
+      .f03-station-1 { left: 480px; width: 500px; }
+      .f03-station-2 { left: 1460px; width: 580px; }
+      .f03-station-3 { left: 2440px; width: 1760px; }
+
+      .f03-marker {
+        position: absolute;
+        left: 0;
+        top: 182px;
+        width: 8px;
+        height: 8px;
+        background: #F8C454;
+      }
+      .f03-microlabel {
+        position: absolute;
+        left: 0;
+        top: 200px;
+        font-family: "Inter";
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        line-height: 1;
+        color: #FFFDF6;
+        white-space: nowrap;
+      }
+
+      /* station 1 · MASUKAN — two labeled rows, 1px hairline between */
+      .f03-row {
+        position: absolute;
+        left: 0;
+        font-family: "Georgia";
+        font-size: 2.9cqw;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.005em;
+        color: #FFFDF6;
+        white-space: nowrap;
+      }
+      .f03-row-1 { top: 284px; }
+      .f03-row-2 { top: 404px; }
+      .f03-rowrule {
+        position: absolute;
+        left: 0;
+        top: 372px;
+        width: 460px;
+        height: 1px;
+        background: rgba(255,253,246,0.20);
+        transform-origin: 0% 50%;
+      }
+
+      /* stations 2 + 3 — Georgia display lines */
+      .f03-head { position: absolute; left: 0; top: 284px; }
+      .f03-head-2 { width: 580px; }
+      .f03-head-3 { width: 780px; }
+      .f03-line {
+        font-family: "Georgia";
+        font-size: 4.6cqw;
+        font-weight: 400;
+        line-height: 1.06;
+        letter-spacing: -0.005em;
+        color: #FFFDF6;
+        white-space: nowrap;
+      }
+
+      /* the evidence window — rect, 0 radius, 1px hairline, no browser chrome */
+      .f03-window {
+        position: absolute;
+        left: 810px;
+        top: 284px;
+        width: 950px;
+        height: 534.375px;
+        background: #071D31;
+        outline: 1px solid rgba(255,253,246,0.55);
+        outline-offset: 0;
+        overflow: hidden;
+      }
+      .f03-window img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+      .f03-chrome { pointer-events: none; }
+      .f03-pagenum {
+        position: absolute;
+        right: 76px;
+        bottom: 44px;
+        font-family: "Inter";
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        color: rgba(255,253,246,0.75);
+      }
+    </style>
+
+    <div class="clip f03-layer f03-bg" id="03-solusi-bg" data-start="0" data-duration="6.76" data-track-index="0">
+      <div class="f03-bloom-sun"></div>
+      <div class="f03-bloom-ember"></div>
+    </div>
+
+    <div class="clip f03-layer f03-stage" id="03-solusi-stage" data-start="0" data-duration="6.76" data-track-index="1">
+      <div class="f03-world" id="03-solusi-world">
+        <svg class="f03-rail" viewBox="0 0 4440 1080" width="4440" height="1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line class="f03-rail-seg" id="03-solusi-seg1" x1="484" y1="186" x2="1464" y2="186"></line>
+          <line class="f03-rail-seg" id="03-solusi-seg2" x1="1464" y1="186" x2="2444" y2="186"></line>
+        </svg>
+
+        <div class="f03-station f03-station-1" id="03-solusi-station1">
+          <div class="f03-marker" id="03-solusi-marker1"></div>
+          <div class="f03-microlabel" id="03-solusi-label1">MASUKAN</div>
+          <div class="f03-row f03-row-1" id="03-solusi-row1">Nilai rapor</div>
+          <div class="f03-rowrule" id="03-solusi-rowrule"></div>
+          <div class="f03-row f03-row-2" id="03-solusi-row2">Peminatan</div>
+        </div>
+
+        <div class="f03-station f03-station-2" id="03-solusi-station2">
+          <div class="f03-marker" id="03-solusi-marker2"></div>
+          <div class="f03-microlabel" id="03-solusi-label2">PROSES</div>
+          <div class="f03-head f03-head-2" id="03-solusi-head2">
+            <div class="f03-line" id="03-solusi-h2a">Dibaca dengan</div>
+            <div class="f03-line" id="03-solusi-h2b">metode ID3</div>
+          </div>
+        </div>
+
+        <div class="f03-station f03-station-3" id="03-solusi-station3">
+          <div class="f03-marker" id="03-solusi-marker3"></div>
+          <div class="f03-microlabel" id="03-solusi-label3">HASIL</div>
+          <div class="f03-head f03-head-3" id="03-solusi-head3">
+            <div class="f03-line" id="03-solusi-h3a">Rekomendasi</div>
+            <div class="f03-line" id="03-solusi-h3b">rumpun jurusanmu</div>
+          </div>
+          <div class="f03-window" id="03-solusi-window">
+            <img src="assets/01-hero.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clip f03-layer f03-chrome" id="03-solusi-chrome" data-start="0" data-duration="6.76" data-track-index="2">
+      <div class="f03-pagenum" id="03-solusi-pagenum">03</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var FRAME_ID = "03-solusi";
+        var DUR = 6.26;
+        var VIEW_W = 1920;
+
+        var $ = function (id) { return document.getElementById(id); };
+        var stage = $("03-solusi-stage");
+        var world = $("03-solusi-world");
+
+        // ---- camera: ONE writer for the single .world transform (viewport-change) ----
+        var cam = { x: 0, y: 0, scale: 1 };
+        var drift = { p: 0 };
+        var DRIFT_X = 3;       // 2-8 px, imperceptible per frame
+        var DRIFT_Y = 1.8;     // 1-4 px
+        var DRIFT_RATIO = 1.3; // organic Lissajous, not a mechanical diagonal
+        var DRIFT_CYCLES = 1;  // one slow breath across the whole shot
+
+        function applyCamera() {
+          var dx = Math.sin(drift.p) * DRIFT_X;
+          var dy = Math.sin(drift.p * DRIFT_RATIO) * DRIFT_Y;
+          world.style.transform =
+            "translate(" + (cam.x + dx) + "px, " + (cam.y + dy) + "px) scale(" + cam.scale + ")";
+        }
+
+        // ---- pan-to-target: measure each station's real laid-out center once at
+        // setup and bake it (no zoom -> counter-translate T = -offset; measure,
+        // never hand-derive). The authored centers are the fallback only if the
+        // frame is not laid out yet when this runs. ----
+        var AUTHORED_CENTER_X = [730, 1750, 3320];
+        var stageRect = stage.getBoundingClientRect();
+        var camAt = ["03-solusi-station1", "03-solusi-station2", "03-solusi-station3"].map(function (id, i) {
+          var r = $(id).getBoundingClientRect();
+          var centerX = r.width > 0 ? r.left + r.width / 2 - stageRect.left : AUTHORED_CENTER_X[i];
+          return -(centerX - VIEW_W / 2);
+        });
+
+        cam.x = camAt[0];
+        applyCamera(); // seed frame 0 - the camera opens on station 1
+
+        // ---- connector rail: measured dash setup (svg-path-draw) ----
+        [ $("03-solusi-seg1"), $("03-solusi-seg2") ].forEach(function (seg) {
+          var len = typeof seg.getTotalLength === "function" ? seg.getTotalLength() : 980;
+          seg.style.strokeDasharray = len + "px";
+          seg.style.strokeDashoffset = len + "px";
+        });
+
+        // ---- one paused timeline, built synchronously ----
+        var tl = gsap.timeline({ paused: true });
+
+        // drift spine: continuous micro-drift under every camera phase
+        tl.to(drift, { p: Math.PI * 2 * DRIFT_CYCLES, duration: DUR, ease: "none", onUpdate: applyCamera }, 0);
+
+        // ---- Scene 1 (0.00-2.09) - opens on station 1: MASUKAN ----
+        tl.fromTo($("03-solusi-marker1"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.06);
+        tl.fromTo($("03-solusi-label1"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+        tl.fromTo($("03-solusi-row1"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.22);
+        tl.fromTo($("03-solusi-rowrule"), { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.35, ease: "power2.out" }, 0.48);
+        tl.fromTo($("03-solusi-row2"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.56);
+        tl.fromTo($("03-solusi-pagenum"), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.5, ease: "power1.out" }, 0.3);
+
+        // pan 1 - the camera slides right and lands station 2 on the beat (local 2.09)
+        tl.to(cam, { x: camAt[1], duration: 1.01, ease: "power2.inOut", onUpdate: applyCamera }, 1.08);
+
+        // ---- Scene 2 (2.09-4.18) - lands on station 2: PROSES ----
+        tl.fromTo($("03-solusi-marker2"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.16);
+        tl.fromTo($("03-solusi-label2"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.2);
+        tl.fromTo($("03-solusi-h2a"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.52, ease: "power3.out" }, 2.3);
+        tl.fromTo($("03-solusi-h2b"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.52, ease: "power3.out" }, 2.44);
+
+        // connector segment 1 draws itself left -> right, landing on station 2
+        tl.to($("03-solusi-seg1"), { strokeDashoffset: "0px", duration: 0.6, ease: "power2.out" }, 2.5);
+
+        // pan 2 - calm traverse; the camera follows the line, landing on the beat (local 4.18)
+        tl.to(cam, { x: camAt[2], duration: 1.2, ease: "power1.inOut", onUpdate: applyCamera }, 2.98);
+        // connector segment 2 draws ahead of the camera, toward station 3
+        tl.to($("03-solusi-seg2"), { strokeDashoffset: "0px", duration: 0.6, ease: "power2.out" }, 3.0);
+        // station 3's marker waits at the line's far end
+        tl.fromTo($("03-solusi-marker3"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.35);
+
+        // ---- Scene 3 (4.18-6.26) - lands on station 3: HASIL ----
+        tl.fromTo($("03-solusi-label3"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.2);
+        tl.fromTo($("03-solusi-h3a"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.32);
+        tl.fromTo($("03-solusi-h3b"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.46);
+        // the live-site window slides in from the right and stops at its hero
+        // position on the beat (local 5.22); everything is still afterwards
+        tl.fromTo($("03-solusi-window"), { x: 1150 }, { x: 0, duration: 0.8, ease: "power2.out" }, 4.42);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[FRAME_ID] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </div>
+</template>

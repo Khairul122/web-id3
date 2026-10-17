@@ -1,0 +1,153 @@
+<template>
+  <!-- 01-cover — "Kenali Minat" cover (SIMINAT launch). One paused timeline, registered on window.__timelines["01-cover"].
+       Silent frame: reveals ride the shot sequence's windows against the 115 BPM bed — BEAT 0.5217s = the 2.09s measure grid;
+       scene onsets 0 / 2.0 / 4.08. Three scenes: brand wing settle -> display slam -> gold italic + footer band, locked finale. -->
+  <style>
+    /* Fonts — local only: Inter woff2 (variable) + Georgia OS face. No network fonts. */
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+    /* Frame root — styled via #root only (never a class); the ground rides the .clip layer below, not this element. */
+    #root{
+      position:absolute; inset:0; overflow:hidden;
+      container-type:size;
+      font-family:"Inter",sans-serif;
+      color:#FFFDF6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Ground — navy paper + one sun-bloom (left-of-center) + subordinate ember counter-bloom (opposite, top-right corner). */
+    #root [id="01-cover-bg"]{ position:absolute; inset:0; overflow:hidden; background:#071D31; }
+    #root [id="01-cover-halo"],
+    #root [id="01-cover-sun"],
+    #root [id="01-cover-ember"]{ position:absolute; border-radius:50%; }
+    #root [id="01-cover-halo"]{
+      left:calc(35% - 36cqw); top:calc(46% - 36cqw); width:72cqw; height:72cqw;
+      background:radial-gradient(closest-side,rgba(140,98,6,0.30) 0%,rgba(140,98,6,0.19) 42%,rgba(7,29,49,0) 88%);
+    }
+    #root [id="01-cover-sun"]{
+      left:calc(30% - 21cqw); top:calc(31% - 21cqw); width:42cqw; height:42cqw;
+      background:radial-gradient(closest-side,rgba(248,196,84,0.58) 0%,rgba(248,196,84,0.36) 26%,rgba(103,72,4,0.44) 56%,rgba(140,98,6,0.20) 78%,rgba(7,29,49,0) 100%);
+    }
+    #root [id="01-cover-ember"]{
+      left:calc(87% - 23cqw); top:calc(15% - 23cqw); width:46cqw; height:46cqw;
+      background:radial-gradient(closest-side,rgba(31,95,158,0.22) 0%,rgba(31,95,158,0.13) 44%,rgba(7,29,49,0) 92%);
+    }
+
+    /* Scene 1 — brand wing, upper-left: mark (soft bloom-open) with its glow, eyebrow micro-label below. */
+    #root [id="01-cover-brand"]{ position:absolute; left:4cqw; top:4cqw; }
+    #root [id="01-cover-glow"]{
+      position:absolute; left:-1.5cqw; top:-1.5cqw; width:6.4cqw; height:6.8cqw; border-radius:50%;
+      background:radial-gradient(closest-side,rgba(248,196,84,0.50) 0%,rgba(248,196,84,0.16) 55%,rgba(248,196,84,0) 100%);
+      opacity:0.5;
+    }
+    #root [id="01-cover-logo"]{ position:relative; display:block; width:3.4cqw; height:auto; }
+    #root [id="01-cover-eyebrow"]{
+      margin-top:1.7cqw;
+      font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; line-height:1.5;
+      white-space:nowrap; color:#FFFDF6;
+    }
+
+    /* Scenes 2/3 — two-line display, left-aligned on the pad edge (fit-to-measure, block <= 78cqw). */
+    #root [id="01-cover-display"]{ position:absolute; left:4cqw; top:37cqh; }
+    #root [id="01-cover-line-1"]{
+      font-family:"Georgia",serif; font-weight:400; font-style:normal;
+      font-size:9.7cqw; line-height:0.86; letter-spacing:-0.018em;
+      white-space:nowrap; color:#FFFDF6;
+    }
+    #root [id="01-cover-line-2"]{
+      margin-top:1.3cqw;
+      font-family:"Georgia",serif; font-weight:400; font-style:italic;
+      font-size:6.6cqw; line-height:1.04; letter-spacing:-0.005em;
+      white-space:nowrap; color:#F8C454;
+    }
+
+    /* Scene 3 — footer band: 4 metadata cells at the foot, 1px ink hairline over each. */
+    #root [id="01-cover-footer"]{ position:absolute; left:4cqw; right:4cqw; bottom:4cqw; display:flex; gap:2.4cqw; }
+    #root [id^="01-cover-cell-"]{ position:relative; flex:1 1 0; min-width:0; padding-top:1.15cqw; }
+    #root [id^="01-cover-cell-"] > i{ position:absolute; top:0; left:0; width:100%; height:1px; background:#FFFDF6; transform-origin:0 50%; }
+    #root [id^="01-cover-cell-"] > span{
+      display:block; font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; line-height:1.4;
+      color:#FFFDF6;
+    }
+
+    /* Persistent chrome — pagenum, bottom-right. */
+    #root [id="01-cover-pagenum"]{
+      position:absolute; right:4cqw; bottom:4cqw;
+      font-size:13px; font-weight:400; letter-spacing:0.08em; line-height:1.4;
+      color:rgba(255,253,246,0.75);
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-cover" data-width="1920" data-height="1080" data-duration="6.665">
+    <div id="01-cover-bg" class="clip" data-start="0" data-duration="6.665" data-track-index="0">
+      <div id="01-cover-halo"></div>
+      <div id="01-cover-sun"></div>
+      <div id="01-cover-ember"></div>
+    </div>
+
+    <div id="01-cover-brand">
+      <div id="01-cover-glow" aria-hidden="true"></div>
+      <img id="01-cover-logo" src="assets/logo.svg" alt="SIMINAT" />
+      <div id="01-cover-eyebrow">Dari ruang kelas, menuju masa depan</div>
+    </div>
+
+    <div id="01-cover-display">
+      <div id="01-cover-line-1">Kenali Minatmu.</div>
+      <div id="01-cover-line-2">Temukan Arah Kuliahmu.</div>
+    </div>
+
+    <div id="01-cover-footer">
+      <div id="01-cover-cell-1"><i aria-hidden="true"></i><span>MAN 4 Matangkuli</span></div>
+      <div id="01-cover-cell-2"><i aria-hidden="true"></i><span>MAS Al-Muslimun Lhoksukon</span></div>
+      <div id="01-cover-cell-3"><i aria-hidden="true"></i><span>Nilai rapor &#183; Peminatan</span></div>
+      <div id="01-cover-cell-4"><i aria-hidden="true"></i><span>Klasifikasi ID3</span></div>
+    </div>
+
+    <div id="01-cover-pagenum">01</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const byId = function (id) { return document.getElementById(id); };
+
+      /* Beat spine — the bed is 115 BPM; four beats make the 2.09s measure grid.
+         Scene onsets are the packet windows (0 / 2.0 / 4.08, the frame's downbeats). */
+      const BEAT = 60 / 115; /* 0.5217s — every accent below reads off this one grid */
+      const S2 = 2.0;        /* Scene 2 — display line 1 + pagenum */
+      const S3 = 4.08;       /* Scene 3 — gold italic + footer band */
+      const DUR = 6.165;     /* frame duration, fixed upstream */
+
+      /* Scene 1 — ground settles; the mark blooms open, the eyebrow follows one beat later (one run, long tails). */
+      tl.fromTo(byId("01-cover-sun"), { opacity: 0.58, scale: 1.07 }, { opacity: 1, scale: 1, duration: 1.9, ease: "power2.out" }, 0);
+      tl.fromTo(byId("01-cover-halo"), { opacity: 0.55, scale: 1.05 }, { opacity: 1, scale: 1, duration: 2.2, ease: "power2.out" }, 0);
+      tl.fromTo(byId("01-cover-ember"), { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 2.4, ease: "sine.out" }, 0);
+      tl.fromTo(byId("01-cover-glow"), { opacity: 0, scale: 0.45 }, { opacity: 0.5, scale: 1.3, duration: 1.3, ease: "power2.out" }, BEAT * 0.5);
+      tl.fromTo(byId("01-cover-logo"), { opacity: 0, scale: 0.84, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "expo.out" }, BEAT * 0.5);
+      tl.fromTo(byId("01-cover-eyebrow"), { opacity: 0, y: 10, letterSpacing: "0.34em", filter: "blur(3px)" }, { opacity: 1, y: 0, letterSpacing: "0.18em", filter: "blur(0px)", duration: 1.2, ease: "power3.out" }, BEAT);
+
+      /* Scene 2 — beat one of the type: the line dives in (hard slam, lands left); pagenum tags on the next beat. */
+      tl.fromTo(byId("01-cover-line-1"), { opacity: 0, scale: 1.5, y: -70, filter: "blur(16px)", transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.62, ease: "power4.out" }, S2);
+      tl.fromTo(byId("01-cover-pagenum"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, S2 + BEAT);
+
+      /* Scene 3 — gold italic lands on the downbeat; the footer band ticks in cell by cell on the half-beat. */
+      tl.fromTo(byId("01-cover-line-2"), { opacity: 0, y: 58, rotation: 2.2, transformOrigin: "0% 50%" }, { opacity: 1, y: 0, rotation: 0, duration: 0.72, ease: "circ.out" }, S3);
+      Array.prototype.slice.call(document.querySelectorAll('[id^="01-cover-cell-"]')).forEach(function (cell, i) {
+        const at = S3 + BEAT * 0.5 * i; /* each cell lands on the half-beat, left to right */
+        tl.fromTo(cell.querySelector("i"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, at);
+        tl.fromTo(cell.querySelector("span"), { opacity: 0, y: 14, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.62, ease: "power3.out" }, at);
+      });
+
+      /* Finale hold — the type locks and holds; only the sun breathes (ambient push under the last beat, no exit). */
+      tl.to(byId("01-cover-sun"), { scale: 1.02, duration: DUR - 4.2, ease: "sine.inOut" }, 4.2);
+
+      window.__timelines["01-cover"] = tl;
+    })();
+  </script>
+</template>

@@ -28,7 +28,7 @@ Tanpa narasi (tidak ada `SCRIPT.md`): teks di layar + musik host. Semua batas fr
 - scene: Cover tipografis — mark logo + eyebrow "DARI RUANG KELAS, MENUJU MASA DEPAN", lalu display dua baris "Kenali Minatmu." / italic gold "Temukan Arah Kuliahmu.", footer-band sekolah.
 - duration: 6.165s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-cover.html
 - type: hook
 - persuasion: Future pacing — kalimat pembuka memakai bahasa hasil milik penonton (arah kuliah), bukan fitur.
@@ -53,7 +53,7 @@ Scene 3 (4.08–6.165s): baris kedua "Temukan Arah Kuliahmu." italic gold masuk 
 - scene: Kinetic pain — "Saintek? Soshum? Campuran?" berganti cepat di satu slot, hard-cut ke "Bingung memilih jurusan?", lalu baris kecil "Banyak pilihan. Sedikit arahan."
 - duration: 4.17s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-masalah.html
 - type: pain_point
 - persuasion: Pain agitation — menamai kebimbangan jurusan yang dirasakan siswa kelas XI–XII.
@@ -78,7 +78,7 @@ Scene 3 (3.13–4.17s): baris kecil "Banyak pilihan. Sedikit arahan." reveal di 
 - scene: Spatial pan stations — "Nilai rapor · Peminatan" → "Dibaca dengan metode ID3" → "Rekomendasi rumpun jurusanmu", pan berakhir saat jendela situs (hero asli) mendarat.
 - duration: 6.26s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/03-solusi.html
 - type: product_intro
 - persuasion: Show-don't-tell proof — konsep didekode stasiun demi stasiun lalu mendarat di permukaan situs yang benar-benar ada.
@@ -103,7 +103,7 @@ Scene 3 (4.18–6.26s): kamera mendarat di stasiun 3: "Rekomendasi rumpun jurusa
 - scene: Ledger rows — 01 Data siswa · 02 Kategori nilai · 03 Pohon ID3 · 04 Diskusi hasil; satu baris menyala per bar musik.
 - duration: 8.345s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/04-cara-kerja.html
 - type: feature_showcase
 - persuasion: Friction reduction — prosesnya transparan dan tenang, bukan kotak hitam.
@@ -129,7 +129,7 @@ Scene 4 (6.27–8.345s): baris 04 "Diskusi hasil" — "Baca jalur keputusan bers
 - scene: Formula Entropy(S) dan Gain(S,A) (Georgia italic, seperti situs), pohon keputusan kecil menggambar (node Peminatan → cabang → daun Soshum/Saintek/Campuran) + count-up "88,9%" dan "9 atribut".
 - duration: 6.27s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/05-metode.html
 - type: social_proof
 - persuasion: Statistical proof — angka akurasi terverifikasi projek + metode yang terbuka untuk diperiksa.
@@ -154,7 +154,7 @@ Scene 3 (4.18–6.27s): count-up numeral-jumbo "88,9%" naik 0→88,9 dengan skal
 - scene: Kamera terbang menuruni plat penuh situs (1920×5908) — berhenti singkat di Rumpun Jurusan → Metode ID3 → Panduan; label mikro muncul per stasiun di rel kiri.
 - duration: 6.26s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/06-tur.html
 - type: benefit_highlight
 - persuasion: Future pacing — penonton melihat dirinya sendiri menjelajahi situs; buktinya ada di depan mata.
@@ -179,7 +179,7 @@ Scene 3 (4.18–6.26s): dua berhenti singkat berurutan — "METODE ID3" (±4.18�
 - scene: Display "Pilihan yang matang" / italic gold "dimulai dari percakapan." → baris CTA + catatan "Rekomendasi adalah bahan pertimbangan, bukan keputusan akhir." → lockup mark + SIMINAT + tagline, footer "Dua madrasah, satu tujuan."
 - duration: 7.53s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/07-cta.html
 - type: cta
 - persuasion: Risk reversal — rekomendasi bukan keputusan akhir; langkah amannya adalah berdiskusi dengan guru BK.

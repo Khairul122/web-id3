@@ -1,0 +1,434 @@
+<template>
+  <style>
+    /* SIMINAT · frame 05-metode — design tokens from frame.md (normative).
+       Ground navy, one ivory ink, gold as the single chromatic event (sun bloom + one
+       emphasized headline phrase), 1px hairlines only, 0 radius, no shadows.
+       Scene map: 1 (0.00-2.09) headline + Entropy(S) + context window · 2 (2.09-4.18)
+       Gain(S,A) + decision tree self-draws · 3 (4.18-6.27) count-up 88,9% + labels. */
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+
+    #root {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: transparent; /* full-bleed ground rides on the bg clip layer below */
+      color: #FFFDF6;
+      font-family: Inter, sans-serif;
+    }
+    .clip { position: absolute; inset: 0; }
+
+    /* own-scope reset (never a document-wide reset — sibling frames share this CSS scope) */
+    #f05-metode-bg, #f05-metode-bg *, #f05-metode-content, #f05-metode-content * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* the frame's own size container: cqw in every frame.md display token resolves here */
+    #f05-metode-content { container-type: size; }
+
+    /* ── ground: paper + one sun bloom + subordinate ember counter-bloom ───────── */
+    #f05-metode-bg { background: #071D31; }
+    .f05-bloom-sun {
+      position: absolute;
+      left: 437px;  /* core at 54% x */
+      top: -125px;  /* core at 44% y */
+      width: 1200px;
+      height: 1200px;
+      background: radial-gradient(circle closest-side,
+        rgba(248,196,84,0.50) 0%,
+        rgba(248,196,84,0.26) 18%,
+        rgba(103,72,4,0.24) 34%,
+        rgba(140,98,6,0.12) 56%,
+        rgba(7,29,49,0) 78%);
+    }
+    .f05-bloom-ember {
+      position: absolute;
+      left: 1230px; /* opposite corner, bottom-right */
+      top: 390px;
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle closest-side,
+        rgba(31,95,158,0.20) 0%,
+        rgba(31,95,158,0.10) 44%,
+        rgba(7,29,49,0) 76%);
+    }
+
+    /* ── macro camera (slow continuous zoom-in runs the whole shot) ────────────── */
+    .f05-cam { position: absolute; inset: 0; will-change: transform; }
+
+    /* ── left editorial rail ──────────────────────────────────────────────────── */
+    .f05-micro-row {
+      position: absolute;
+      left: 77px;
+      top: 78px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .f05-dash { display: block; width: 32px; height: 1px; background: rgba(255,253,246,0.62); }
+    .f05-micro {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,253,246,0.84);
+    }
+    .f05-hl {
+      position: absolute;
+      left: 77px;
+      top: 108px;
+      width: 760px;
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 2.9cqw;   /* headline-sm */
+      line-height: 1.0;
+      letter-spacing: -0.012em;
+      color: #FFFDF6;
+    }
+    .f05-hl-1, .f05-hl-2 { display: block; }
+    .f05-hl-2 { color: #F8C454; font-style: italic; } /* the one emphasized phrase */
+
+    .f05-rule-a, .f05-rule-b, .f05-rule-c, .f05-foot-rule {
+      position: absolute;
+      height: 1px;
+      background: rgba(255,253,246,0.20);
+      transform-origin: 0% 50%;
+    }
+    .f05-rule-a { left: 77px; top: 250px; width: 780px; }
+    .f05-rule-b { left: 77px; top: 316px; width: 780px; }
+    .f05-rule-c { left: 77px; top: 394px; width: 1050px; background: rgba(255,253,246,0.26); }
+    .f05-foot-rule { left: 77px; top: 850px; width: 1767px; background: rgba(255,253,246,0.18); }
+
+    .f05-formula {
+      position: absolute;
+      left: 77px;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 30px;      /* instrument line — stays above the 1.4cqw floor */
+      line-height: 1.35;
+      color: rgba(255,253,246,0.95);
+      white-space: nowrap;
+    }
+    .f05-f1 { top: 262px; }
+    .f05-f2 { top: 328px; }
+    .f05-formula sub { font-size: 0.6em; vertical-align: -0.16em; }
+
+    .f05-labels {
+      position: absolute;
+      left: 77px;
+      top: 404px;
+      width: 1050px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .f05-label {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,253,246,0.80);
+      white-space: nowrap;
+    }
+
+    /* the hero metric — counts up while its transform scale grows to the final size */
+    .f05-counter-wrap {
+      position: absolute;
+      left: 77px;
+      top: 450px;
+      width: 1050px;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+    .f05-counter {
+      display: inline-block;
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 20cqw;      /* sized to the content band, not to fill the canvas */
+      line-height: 0.84;
+      letter-spacing: -0.04em;
+      color: #FFFDF6;
+      font-variant-numeric: tabular-nums; /* mandatory: digits keep equal width */
+      transform-origin: 50% 50%;
+    }
+    .f05-pct {
+      display: inline-block;
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 9cqw;       /* suffix punctuation of the numeral */
+      line-height: 0.84;
+      color: #FFFDF6;
+      margin-left: 0.06em;
+    }
+
+    .f05-footnote {
+      position: absolute;
+      left: 77px;
+      top: 862px;
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,253,246,0.58);
+    }
+
+    /* ── decision tree: hairline wires (drawn) + pop-in nodes ─────────────────── */
+    .f05-tree { position: absolute; left: 1060px; top: 104px; width: 780px; height: 420px; }
+    .f05-wires { position: absolute; left: 0; top: 0; width: 780px; height: 420px; overflow: visible; }
+    .f05-wire { fill: none; stroke: rgba(255,253,246,0.38); stroke-width: 1; }
+    .f05-node {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255,253,246,0.30);
+    }
+    .f05-node-root { left: 290px; top: 6px; width: 200px; height: 54px; border-color: rgba(255,253,246,0.55); }
+    .f05-leaf { width: 170px; height: 54px; }
+    .f05-leaf-l { left: 40px; top: 356px; }
+    .f05-leaf-m { left: 305px; top: 356px; }
+    .f05-leaf-r { left: 570px; top: 356px; }
+    .f05-node-label {
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FFFDF6;
+      white-space: nowrap;
+    }
+    .f05-chip { display: block; width: 10px; height: 10px; flex: 0 0 auto; } /* class marker ≤12px — the only chroma in the diagram */
+    .f05-chip-saintek { background: #1F5F9E; }
+    .f05-chip-soshum { background: #8A4B08; }
+    .f05-chip-campuran { background: #6B3C8F; }
+    .f05-note {
+      position: absolute;
+      left: 506px;
+      top: 22px;
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,253,246,0.66);
+      white-space: nowrap;
+    }
+
+    /* ── small context window: the live site's method section, dimmed ─────────── */
+    .f05-win {
+      position: absolute;
+      left: 1516px;
+      top: 640px;
+      width: 328px;
+      height: 200px;
+      border: 1px solid rgba(255,253,246,0.26);
+      background-color: #071D31;
+      background-image: url("assets/04-metode.png");
+      background-size: 400% auto;   /* reads the live page's method card, not a thumbnail */
+      background-position: 67% 55%;
+      background-repeat: no-repeat;
+    }
+    .f05-win-dim { position: absolute; inset: 0; background: rgba(7,29,49,0.42); }
+
+    /* ── foot chrome (the only elements allowed below the 83% content cut) ────── */
+    .f05-chrome-rule { position: absolute; left: 77px; top: 930px; width: 1767px; height: 1px; background: rgba(255,253,246,0.14); }
+    .f05-pagenum {
+      position: absolute;
+      right: 77px;
+      top: 942px;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(255,253,246,0.75);
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-metode" data-width="1920" data-height="1080" data-duration="6.67">
+    <!-- ground layer: lowest track, full duration, never animated -->
+    <div id="f05-metode-bg" class="clip" data-start="0" data-duration="6.67" data-track-index="0">
+      <div class="f05-bloom-sun"></div>
+      <div class="f05-bloom-ember"></div>
+    </div>
+
+    <!-- content layer: the macro camera scales this wrapper, never the clip itself -->
+    <div id="f05-metode-content" class="clip" data-start="0" data-duration="6.67" data-track-index="1">
+      <div class="f05-cam">
+        <!-- Scene 1 — headline, Entropy(S), context window -->
+        <div class="f05-micro-row">
+          <span class="f05-dash"></span>
+          <span class="f05-micro">Metode</span>
+        </div>
+
+        <div class="f05-hl">
+          <span class="f05-hl-1">Keputusan yang</span>
+          <span class="f05-hl-2">bisa ditelusuri.</span>
+        </div>
+
+        <div class="f05-rule-a"></div>
+        <div class="f05-formula f05-f1">Entropy(S) = &minus; &Sigma; p(c) log<sub>2</sub> p(c)</div>
+
+        <!-- Scene 2 — Gain(S,A) lands under the first formula -->
+        <div class="f05-rule-b"></div>
+        <div class="f05-formula f05-f2">Gain(S, A) = Entropy(S) &minus; &Sigma; (|S<sub>v</sub>| / |S|) Entropy(S<sub>v</sub>)</div>
+
+        <!-- Scene 3 — the hero metric band -->
+        <div class="f05-rule-c"></div>
+        <div class="f05-labels">
+          <span class="f05-label f05-label-a">Akurasi 5-fold &middot; 135 data</span>
+          <span class="f05-label f05-label-b">9 atribut</span>
+        </div>
+        <div class="f05-counter-wrap">
+          <span class="f05-counter" id="f05-metode-counter">88,9</span>
+          <span class="f05-pct">%</span>
+        </div>
+
+        <div class="f05-foot-rule"></div>
+        <div class="f05-footnote">Ilustrasi struktur, bukan hasil data siswa</div>
+
+        <!-- decision tree: Peminatan → Saintek / Soshum / Campuran -->
+        <div class="f05-tree">
+          <svg class="f05-wires" viewBox="0 0 780 420" width="780" height="420" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path id="f05-metode-trunk" class="f05-wire" d="M390 60 L390 96" />
+            <path id="f05-metode-wire-left" class="f05-wire" d="M390 96 Q390 112 374 112 L141 112 Q125 112 125 128 L125 356" />
+            <path id="f05-metode-wire-mid" class="f05-wire" d="M390 96 L390 356" />
+            <path id="f05-metode-wire-right" class="f05-wire" d="M390 96 Q390 112 406 112 L639 112 Q655 112 655 128 L655 356" />
+          </svg>
+          <div class="f05-node f05-node-root" id="f05-metode-node-root">
+            <span class="f05-node-label">Peminatan</span>
+          </div>
+          <div class="f05-note">gain 0,4827</div>
+          <div class="f05-node f05-leaf f05-leaf-l" id="f05-metode-leaf-left">
+            <span class="f05-chip f05-chip-saintek"></span>
+            <span class="f05-node-label">Saintek</span>
+          </div>
+          <div class="f05-node f05-leaf f05-leaf-m" id="f05-metode-leaf-mid">
+            <span class="f05-chip f05-chip-soshum"></span>
+            <span class="f05-node-label">Soshum</span>
+          </div>
+          <div class="f05-node f05-leaf f05-leaf-r" id="f05-metode-leaf-right">
+            <span class="f05-chip f05-chip-campuran"></span>
+            <span class="f05-node-label">Campuran</span>
+          </div>
+        </div>
+
+        <!-- context window (Scene 1, soft landing at the bottom-right of the content area) -->
+        <div class="f05-win"><div class="f05-win-dim"></div></div>
+
+        <!-- foot chrome -->
+        <div class="f05-chrome-rule"></div>
+        <div class="f05-pagenum">05</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      /* svg-path-draw setup — real measured geometry, set before the first render */
+      function primeWires() {
+        var wires = document.querySelectorAll(".f05-wire");
+        for (var i = 0; i < wires.length; i += 1) {
+          var len = wires[i].getTotalLength();
+          wires[i].style.strokeDasharray = String(len);
+          wires[i].style.strokeDashoffset = String(len);
+        }
+      }
+
+      function build() {
+        var EASE = "power3.out";
+        var tl = gsap.timeline({ paused: true });
+
+        /* blueprinted macro camera: a very slow continuous zoom-in under the whole shot */
+        tl.fromTo(".f05-cam", { scale: 1 }, { scale: 1.035, duration: 6.27, ease: "none" }, 0);
+
+        /* ── Scene 1 (0.00–2.09): the method announces itself ─────────────────── */
+        tl.fromTo(".f05-micro-row", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: EASE }, 0.06);
+        tl.fromTo(".f05-hl-1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: EASE }, 0.14);
+        tl.fromTo(".f05-hl-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: EASE }, 0.26);
+        tl.fromTo(".f05-rule-a", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.42);
+        tl.fromTo(".f05-f1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: EASE }, 0.5);
+        /* context window lands softly at the bottom-right of the content area */
+        tl.fromTo(".f05-win", { opacity: 0, y: 22, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power2.out" }, 0.66);
+
+        /* ── Scene 2 (2.09–4.18): formula 2 + the tree draws itself ───────────── */
+        tl.fromTo(".f05-rule-b", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 2.14);
+        tl.fromTo(".f05-f2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: EASE }, 2.16);
+        /* root node pops in as the draw's origin (spring-pop-entrance, smooth settle) */
+        tl.fromTo("#f05-metode-node-root", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.46, ease: EASE }, 2.09);
+        /* svg-path-draw: trunk, then three branches at ~85% overlap of the previous */
+        tl.to("#f05-metode-trunk", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 2.26);
+        tl.to("#f05-metode-wire-left", { strokeDashoffset: 0, duration: 0.34, ease: "power2.out" }, 2.56);
+        tl.to("#f05-metode-wire-mid", { strokeDashoffset: 0, duration: 0.34, ease: "power2.out" }, 2.62);
+        tl.to("#f05-metode-wire-right", { strokeDashoffset: 0, duration: 0.34, ease: "power2.out" }, 2.68);
+        /* each leaf node pops in at the end of its own branch draw */
+        tl.fromTo("#f05-metode-leaf-left", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: EASE }, 2.9);
+        tl.fromTo("#f05-metode-leaf-mid", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: EASE }, 2.96);
+        tl.fromTo("#f05-metode-leaf-right", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.42, ease: EASE }, 3.02);
+        tl.fromTo(".f05-note", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.48);
+
+        /* ── Scene 3 (4.18–6.27): the number ─────────────────────────────────── */
+        tl.fromTo(".f05-rule-c", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power2.out" }, 4.18);
+
+        /* counting-dynamic-scale: value climbs 0 → 88,9 and the transform scale grows
+           to the final type size on the SAME ease. Value steps are discrete, seek-safe
+           keyframes (same pattern as the platform's own counter composition). */
+        var counterEl = document.getElementById("f05-metode-counter");
+        var COUNT_AT = 4.18;
+        var COUNT_DUR = 1.2;
+        var TARGET = 88.9;
+        var STEPS = 36;
+        var START_SCALE = 0.45;
+        for (var i = 0; i <= STEPS; i += 1) {
+          var p = i / STEPS;
+          var eased = 1 - Math.pow(1 - p, 3); /* mirrors ease: power3.out */
+          tl.set(counterEl, { textContent: (TARGET * eased).toFixed(1).replace(".", ",") }, COUNT_AT + p * COUNT_DUR);
+        }
+        tl.fromTo(counterEl, { scale: START_SCALE, opacity: 0 }, { scale: 1, opacity: 1, duration: COUNT_DUR, ease: EASE }, COUNT_AT);
+
+        /* suffix slides in after the count lands — never during */
+        tl.fromTo(".f05-pct", { opacity: 0, y: 26, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "back.out(1.7)" }, 5.38);
+        tl.fromTo(".f05-label-a", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34, ease: EASE }, 5.4);
+        tl.fromTo(".f05-label-b", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.34, ease: EASE }, 5.5);
+        tl.fromTo(".f05-foot-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 5.48);
+        tl.fromTo(".f05-footnote", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, 5.54);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["05-metode"] = tl;
+        tl.seek(0); /* hold the landed composition still through the cut */
+      }
+
+      function boot() {
+        primeWires();
+        build();
+      }
+
+      if (window.gsap) {
+        boot();
+      } else {
+        /* the host preloads gsap; this only covers a cold standalone preview */
+        var tries = 0;
+        var iv = setInterval(function () {
+          tries += 1;
+          if (window.gsap) {
+            clearInterval(iv);
+            boot();
+          } else if (tries > 600) {
+            clearInterval(iv);
+          }
+        }, 10);
+      }
+    })();
+  </script>
+</template>
