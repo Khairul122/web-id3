@@ -55,7 +55,7 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
       <div class="hero__copy">
         <p class="hero__eyebrow">Dari ruang kelas, menuju masa depan</p>
         <h1 id="hero-title"><span class="hero__line"><span>Kenali Minatmu.</span></span><span class="hero__line"><span>Temukan</span></span><span class="hero__line"><span><em>Arah Kuliahmu.</em></span></span></h1>
-        <p class="hero__description">Langkah awal mengenali rumpun jurusan kuliah<br class="desktop-break"> melalui nilai rapor dan peminatanmu.</p>
+        <p class="hero__description">Langkah awal mengenali rumpun jurusan kuliah melalui nilai rapor dan peminatanmu.</p>
         <div class="hero__actions">
           <a class="button button--primary" href="#rumpun">Kenali Rumpun Jurusan <?= icon('arrow') ?></a>
           <a class="text-link" href="#cara-kerja">Bagaimana cara kerjanya?</a>
@@ -68,15 +68,15 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
       <div class="foundation container" role="group" aria-label="Dasar pendekatan SIMINAT">
         <article class="foundation__item">
           <?= icon('book', 'foundation__icon') ?>
-          <div><h2>Berangkat dari Nilai Rapor</h2><p>Nilai rapor dan peminatan menjadi<br class="desktop-break"> dasar untuk mengenali rumpun jurusan.</p></div>
+          <div><h2>Nilai dan Peminatan</h2><p>Data masukan untuk mengenali kecenderungan bidang.</p></div>
         </article>
         <article class="foundation__item">
           <?= icon('branch', 'foundation__icon') ?>
-          <div><h2>Metode ID3 yang Terbuka</h2><p>Pelajari bagaimana pohon keputusan<br class="desktop-break"> membentuk hasil klasifikasi.</p></div>
+          <div><h2>Pohon Keputusan ID3</h2><p>Jalur keputusan dapat dibaca kembali.</p></div>
         </article>
         <article class="foundation__item">
           <?= icon('cap', 'foundation__icon') ?>
-          <div><h2>Diskusi Bersama Guru BK</h2><p>Kenali pilihanmu sebagai bahan diskusi<br class="desktop-break"> untuk merencanakan langkah berikutnya.</p></div>
+          <div><h2>Pendampingan Guru BK</h2><p>Hasil dibahas sebelum menentukan langkah.</p></div>
         </article>
       </div>
       <div class="hero__credit container"><span>SIMINAT · Klasifikasi Minat Jurusan Kuliah</span></div>
@@ -96,15 +96,15 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <dl class="rumpun-definitions">
           <div>
             <dt><span class="row-number" aria-hidden="true">01</span>Saintek</dt>
-            <dd><strong>Sains dan teknologi</strong><p>Matematika, ilmu alam, informatika, dan bidang teknologi.</p></dd>
+            <dd><strong>Sains dan teknologi</strong><p>Matematika, ilmu alam, informatika, teknik, kesehatan, dan bidang teknologi.</p></dd>
           </div>
           <div>
             <dt><span class="row-number" aria-hidden="true">02</span>Soshum</dt>
-            <dd><strong>Sosial dan humaniora</strong><p>Ekonomi, ilmu sosial, bahasa, dan humaniora.</p></dd>
+            <dd><strong>Sosial dan humaniora</strong><p>Ekonomi, hukum, pendidikan, komunikasi, bahasa, dan humaniora.</p></dd>
           </div>
           <div>
             <dt><span class="row-number" aria-hidden="true">03</span>Campuran</dt>
-            <dd><strong>Pilihan lintas rumpun</strong><p>Pilihan yang mencakup bidang Saintek dan Soshum.</p></dd>
+            <dd><strong>Pilihan lintas rumpun</strong><p>Bidang yang memadukan sains, sosial, teknologi, atau pendekatan lintas disiplin.</p></dd>
           </div>
         </dl>
         <p class="section-note">Contoh bidang di atas membantu mengenali pilihan, tanpa membatasi ketertarikanmu pada bidang lain.</p>
@@ -118,12 +118,12 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <p class="section-intro">Kenali alur pengolahan sebelum membaca rekomendasinya.</p>
       </div>
       <ol class="process-list" role="list">
-        <li><span class="process-number" aria-hidden="true">01</span><div><h3>Data siswa</h3><p>Siapkan nilai rapor dan informasi peminatan sebagai masukan untuk sistem.</p></div></li>
-        <li><span class="process-number" aria-hidden="true">02</span><div><h3>Kategori nilai</h3><p>Nilai diubah menjadi kategori sesuai aturan diskretisasi yang digunakan sistem.</p></div></li>
-        <li><span class="process-number" aria-hidden="true">03</span><div><h3>Pohon ID3</h3><p>Sistem menelusuri cabang pohon keputusan berdasarkan atribut siswa.</p></div></li>
-        <li><span class="process-number" aria-hidden="true">04</span><div><h3>Diskusi hasil</h3><p>Baca rekomendasi dan jalur keputusannya bersama guru BK untuk memahami dasar hasilnya.</p></div></li>
+        <li><span class="process-number" aria-hidden="true">01</span><div><h3>Data siswa</h3><p>Siapkan nilai rapor dan peminatan.</p><small>Masukan sistem</small></div></li>
+        <li><span class="process-number" aria-hidden="true">02</span><div><h3>Kategori nilai</h3><p>Nilai dipetakan menjadi Tinggi, Sedang, atau Rendah sesuai aturan sistem.</p><small>Atribut kategori</small></div></li>
+        <li><span class="process-number" aria-hidden="true">03</span><div><h3>Pohon ID3</h3><p><em>Information gain</em> memilih pemisah yang paling membantu membedakan rumpun.</p><small>Jalur keputusan</small></div></li>
+        <li><span class="process-number" aria-hidden="true">04</span><div><h3>Diskusi hasil</h3><p>Baca rekomendasi dan alasan jalurnya bersama guru BK.</p><small>Bahan konsultasi</small></div></li>
       </ol>
-      <p class="process-note"><span class="process-note__statement">Hasil menjadi <em>bahan percakapan</em> bersama guru BK.</span><span class="process-note__detail">Kenali dasarnya, lalu pertimbangkan pilihanmu.</span></p>
+      <div class="process-note"><span class="process-note__statement"><small>Pesan utama</small>Rekomendasi memberi arah, bukan <em>jawaban akhir.</em></span><span class="process-note__detail">Gunakan hasil untuk menyiapkan pertanyaan dan berdiskusi bersama guru BK.</span></div>
     </div>
   </section>
 
@@ -133,6 +133,7 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <p class="section-eyebrow">Metode ID3</p>
         <h2 class="section-title" id="metode-title">Keputusan yang<br><em>bisa ditelusuri.</em></h2>
         <p class="section-intro">ID3 memilih atribut dengan <em>information gain</em> tertinggi untuk membentuk percabangan pohon keputusan.</p>
+        <p class="method-summary">Sederhananya: sistem mencari pemisah paling informatif, membagi data, lalu mengulangi proses sampai jalur keputusan cukup jelas.</p>
         <div class="method-formulas">
           <div class="formula">
             <p class="formula__expression" role="math" aria-label="Entropy S sama dengan negatif jumlah proporsi setiap kelas dikali logaritma basis dua proporsi kelas tersebut."><span>Entropy(S) =</span><span>− ∑<sub>c</sub> p(c) log<sub>2</sub> p(c)</span></p>
@@ -175,10 +176,10 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
           <h2 class="section-title" id="panduan-title">Siapkan pilihanmu,<br><em>bicarakan bersama.</em></h2>
           <p class="section-intro">Mulai dengan memahami minatmu dan menyiapkan informasi yang dibutuhkan.</p>
           <ol class="student-steps" role="list">
-            <li><span aria-hidden="true">01</span><p>Siapkan nilai rapor dan informasi peminatanmu.</p></li>
-            <li><span aria-hidden="true">02</span><p>Minta pendampingan guru BK untuk menjalankan rekomendasi melalui panel SIMINAT.</p></li>
-            <li><span aria-hidden="true">03</span><p>Baca jalur keputusan dan catat pertanyaanmu tentang hasil rekomendasi.</p></li>
-            <li><span aria-hidden="true">04</span><p>Diskusikan pilihan bersama guru BK dan orang tua, sesuai minat dan rencana kuliahmu.</p></li>
+            <li><span aria-hidden="true">01</span><p><strong>Siapkan data</strong><br>Nilai rapor dan informasi peminatanmu.</p></li>
+            <li><span aria-hidden="true">02</span><p><strong>Minta pendampingan</strong><br>Guru BK menjalankan rekomendasi melalui panel SIMINAT.</p></li>
+            <li><span aria-hidden="true">03</span><p><strong>Baca alasannya</strong><br>Periksa jalur keputusan, bukan hanya kelas hasil.</p></li>
+            <li><span aria-hidden="true">04</span><p><strong>Bicarakan pilihan</strong><br>Pertimbangkan minat, rencana kuliah, dan masukan guru BK.</p></li>
           </ol>
         </div>
         <div class="teacher-guide">
