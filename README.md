@@ -1,68 +1,70 @@
 # SIMINAT
 
-**Sistem Klasifikasi Minat Jurusan Kuliah dengan Algoritma ID3**
+**English** | [Bahasa Indonesia](README.id.md)
 
-SIMINAT membantu guru Bimbingan dan Konseling (BK) membaca kecenderungan rumpun studi siswa berdasarkan nilai rapor, peminatan, dan sekolah asal. Sistem menampilkan hasil klasifikasi beserta jalur keputusan agar hasilnya dapat dibahas bersama siswa.
+**University Study Field Classification Using the ID3 Algorithm**
 
-Proyek ini dikembangkan untuk penelitian skripsi Nadia Umaira, Teknik Informatika, Universitas Malikussaleh, dengan data siswa MAN 4 Aceh Utara (Matangkuli) dan MAS Al-Muslimun Lhoksukon.
+SIMINAT helps school guidance counselors interpret students' study field tendencies using report card grades, academic tracks, and school of origin. It displays classification results alongside their decision paths so counselors can discuss the reasoning with students.
 
-Hasil sistem merupakan rekomendasi **rumpun studi**, yaitu Saintek, Soshum, atau Campuran sesuai skenario model. Hasil tersebut menjadi bahan pertimbangan bersama guru BK dan orang tua.
+The project was developed for Nadia Umaira's undergraduate thesis in Informatics at Universitas Malikussaleh, using student data from MAN 4 Aceh Utara (Matangkuli) and MAS Al-Muslimun Lhoksukon.
 
-## Fitur
+The system recommends a **broad study field**, labeled Saintek, Soshum, or Campuran depending on the model scenario. These recommendations support discussions with guidance counselors and parents. The application's interface is in Indonesian; this README preserves interface labels and dataset values where needed.
 
-| Modul | Fungsi |
+## Features
+
+| Module | Function |
 |---|---|
-| Halaman publik | Pengenalan SIMINAT, eksplorasi rumpun, alur penggunaan, penjelasan ID3, dan panduan konsultasi. |
-| Autentikasi | Login, logout, pengaturan akun, dan penggantian kata sandi. |
-| Dashboard | Ringkasan data siswa, model aktif, pengujian, dan prediksi terbaru. |
-| Data siswa | Pencarian, filter, tambah, ubah, hapus, detail nilai, dan impor Excel dengan pratinjau. |
-| Master data | Pengelolaan sekolah, atribut ID3, domain atribut, dan batas diskretisasi nilai. |
-| Training model | Pelatihan ID3, langkah entropy dan information gain, pohon keputusan, aturan IF-THEN, dan aktivasi model. |
-| Pengujian model | Stratified k-fold, confusion matrix, akurasi, precision, recall, dan F1. |
-| Prediksi | Rekomendasi dari input nilai, penelusuran keputusan, contoh program studi, serta prediksi massal siswa tanpa label. |
-| Laporan | Cetak data siswa, model, hasil pengujian, dan hasil prediksi; ekspor CSV sesuai jenis laporan. |
-| Pengguna | Pengelolaan akun admin dan guru BK oleh administrator. |
+| Public website | Introduction to SIMINAT, study field exploration, usage workflow, ID3 explanation, and consultation guidance. |
+| Authentication | Login, logout, account settings, and password changes. |
+| Dashboard | Student data summary, active model, evaluation results, and recent predictions. |
+| Student records | Search, filters, create, edit, delete, grade details, and Excel import with a preview. |
+| Reference data | Management of schools, ID3 attributes, attribute domains, and grade discretization thresholds. |
+| Model training | ID3 training, entropy and information gain calculations, decision trees, IF-THEN rules, and model activation. |
+| Model evaluation | Stratified k-fold cross-validation, confusion matrices, accuracy, precision, recall, and F1. |
+| Predictions | Recommendations from grade inputs, decision paths, example degree programs, and batch predictions for unlabeled students. |
+| Reports | Printable student, model, evaluation, and prediction reports; CSV export where supported by the report type. |
+| User management | Administrator management of admin and guidance counselor accounts. |
 
-Administrator mengelola data, pelatihan, pengujian, dan akun pengguna. Guru BK dapat membaca data dan hasil, menjalankan rekomendasi melalui form, serta menggunakan laporan sesuai hak aksesnya.
+Administrators manage data, training, evaluation, and user accounts. Guidance counselors can view records and results, request recommendations through the input form, and use reports according to their permissions.
 
-## Teknologi dan kebutuhan
+## Technology and requirements
 
-- **PHP 8.1 atau lebih baru**, dengan ekstensi `PDO`, `pdo_mysql`, `mbstring`, `zip`, `SimpleXML`, dan `fileinfo`.
-- **MySQL 8 atau MariaDB** untuk penyimpanan data.
-- **Apache** dengan `mod_rewrite` dan dukungan `.htaccess`.
-- **CSS native dan JavaScript ES6** untuk antarmuka.
-- **Python 3** untuk verifikasi independen dan pengolahan data penelitian, bila diperlukan.
+- **PHP 8.1 or later**, with the `PDO`, `pdo_mysql`, `mbstring`, `zip`, `SimpleXML`, and `fileinfo` extensions.
+- **MySQL 8 or MariaDB** for data storage.
+- **Apache** with `mod_rewrite` and `.htaccess` support.
+- **Native CSS and JavaScript ES6** for the interface.
+- **Python 3** for independent verification and research data processing, when needed.
 
-Aplikasi menggunakan pola MVC dengan lapisan service. Instalasi situs tidak memerlukan Composer maupun proses build frontend.
+The application uses MVC with a service layer. Website installation does not require Composer or a frontend build step.
 
-## Instalasi lokal
+## Local installation
 
-Contoh berikut memakai Laragon di Windows. Jalankan perintah dari root proyek, tempat `index.php` berada.
+The examples below use Laragon on Windows. Run commands from the project root, where `index.php` is located.
 
-### 1. Siapkan folder dan server
+### 1. Set up the directory and server
 
-Tempatkan proyek pada document root Laragon, misalnya:
+Place the project in Laragon's document root, for example:
 
 ```text
 C:\laragon\www\web-id3
 ```
 
-Untuk XAMPP, gunakan folder `htdocs`. Jalankan Apache dan MySQL/MariaDB, lalu pastikan perintah `php` tersedia pada terminal.
+For XAMPP, use the `htdocs` directory. Start Apache and MySQL/MariaDB, then make sure the `php` command is available in your terminal.
 
 ```powershell
 php --version
 php -m
 ```
 
-### 2. Atur koneksi database
+### 2. Configure the database connection
 
-Pada instalasi baru, salin contoh konfigurasi:
+For a fresh installation, copy the example configuration:
 
 ```powershell
 Copy-Item config/config.example.php config/config.php
 ```
 
-Jika `config/config.php` sudah tersedia, sesuaikan file tersebut tanpa menimpanya dengan contoh konfigurasi. Isinya mengembalikan array berikut:
+If `config/config.php` already exists, update that file instead of overwriting it with the example. It returns the following configuration array:
 
 ```php
 <?php
@@ -77,168 +79,170 @@ return [
 ];
 ```
 
-Nama database dan kredensial harus sesuai dengan server lokal. File konfigurasi lokal diabaikan Git. Jika tetap memakai konfigurasi contoh, nilainya juga dapat diisi melalui variabel lingkungan `SIMINAT_DB_HOST`, `SIMINAT_DB_PORT`, `SIMINAT_DB_NAME`, `SIMINAT_DB_USER`, dan `SIMINAT_DB_PASSWORD`.
+The database name and credentials must match your local server. Git ignores the local configuration file. If you keep the example configuration logic, you can also supply values through the `SIMINAT_DB_HOST`, `SIMINAT_DB_PORT`, `SIMINAT_DB_NAME`, `SIMINAT_DB_USER`, and `SIMINAT_DB_PASSWORD` environment variables.
 
-### 3. Siapkan database dan akun awal
+### 3. Initialize the database and default account
 
 ```powershell
 php scripts/setup_auth.php
 ```
 
-Script membuat database jika belum ada, menyiapkan tabel, menjalankan migrasi kebijakan penggantian kata sandi, dan mengisi akun serta master data awal. Akun dan master data yang sudah tersedia tidak ditimpa. Pengguna database memerlukan hak pembuatan database bila database belum tersedia.
+The script creates the database if it does not exist, prepares the tables, applies the password-change policy migration, and seeds the initial account and reference data. It does not overwrite existing accounts or reference data. The database user needs database creation privileges if the database has not been created yet.
 
-File SQL untuk pemeriksaan atau instalasi manual tersedia di `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, dan `database/migrations/`.
+SQL files for inspection or manual installation are available in `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, and `database/migrations/`.
 
-### 4. Buka aplikasi
+### 4. Open the application
 
-| Halaman | Contoh URL |
+| Page | Example URL |
 |---|---|
-| Beranda | `http://localhost/web-id3/` |
+| Home | `http://localhost/web-id3/` |
 | Login | `http://localhost/web-id3/login.php` |
-| Panel | `http://localhost/web-id3/admin/` |
+| Dashboard | `http://localhost/web-id3/admin/` |
 
-Jika virtual host Laragon aktif, gunakan `http://web-id3.test/`. Sesuaikan URL dengan nama folder atau virtual host pada komputer Anda.
+If Laragon's virtual host is enabled, use `http://web-id3.test/`. Adjust the URL to match your directory or virtual host name.
 
-Akun awal dari seed:
+Default seeded account:
 
-| Username | Kata sandi | Peran |
+| Username | Password | Role |
 |---|---|---|
 | `admin` | `admin123` | Administrator |
 
-Ganti kata sandi akun awal melalui menu akun sebelum aplikasi digunakan bersama pengguna lain.
+Change the default password through the account menu before making the application available to other users.
 
-## Menyiapkan data dan model
+## Preparing data and models
 
-### Impor dataset
+### Import the dataset
 
-Dataset utama berada di [data/Dataset_Bersih_ID3.xlsx](data/Dataset_Bersih_ID3.xlsx). Importer membaca sheet `Data_Numerik` dan `Data_Tanpa_Label`. Dataset penelitian yang diterima berjumlah 247 siswa: 147 berlabel dan 100 tanpa label.
+The main dataset is [data/Dataset_Bersih_ID3.xlsx](data/Dataset_Bersih_ID3.xlsx). The importer reads the `Data_Numerik` and `Data_Tanpa_Label` worksheets. The expected research dataset contains 247 students: 147 labeled and 100 unlabeled.
 
-Melalui panel, buka **Data Siswa → Import**, pilih dataset server atau unggah workbook `.xlsx`, lalu tinjau data sebelum menyimpannya.
+In the dashboard, open **Data Siswa → Import**, select the server dataset or upload an `.xlsx` workbook, then review the data before saving it.
 
-Impor juga tersedia melalui CLI:
+You can also import through the CLI:
 
 ```powershell
 php scripts/import_dataset.php
 ```
 
-Untuk memakai file lain dengan struktur yang sama:
+To use another file with the same structure:
 
 ```powershell
 php scripts/import_dataset.php "D:/dataset/Dataset_Bersih_ID3.xlsx"
 ```
 
-**Impor mengganti seluruh data siswa.** Gunakan langkah ini ketika memang ingin memuat ulang dataset dan cadangkan database yang sudah berisi pekerjaan penting.
+**Import replaces all student records.** Use this step when you intend to reload the dataset, and back up databases that contain important work.
 
-### Latih dan aktifkan model
+### Train and activate a model
 
-Setelah data tersedia:
+Once the data is available:
 
-1. Buka **Training Model**, pilih atribut dan skenario data, lalu jalankan pelatihan.
-2. Periksa langkah perhitungan, pohon keputusan, dan aturan yang terbentuk.
-3. Aktifkan model yang akan digunakan untuk rekomendasi.
-4. Buka **Pengujian Model** untuk mengevaluasinya dengan k-fold.
-5. Gunakan **Prediksi** untuk input siswa atau prediksi massal.
+1. Open **Training Model**, select the attributes and data scenario, then run training.
+2. Review the calculation steps, decision tree, and generated rules.
+3. Activate the model you want to use for recommendations.
+4. Open **Pengujian Model** to evaluate it with k-fold cross-validation.
+5. Use **Prediksi** for individual inputs or batch predictions.
 
-Skenario yang tersedia:
+Available scenarios:
 
-| Kode | Data pelatihan |
+| Code | Training data |
 |---|---|
-| `semua` | Seluruh siswa berlabel. |
-| `man` | Siswa berlabel dari MAN 4 Aceh Utara. |
-| `mas` | Siswa berlabel dari MAS Al-Muslimun Lhoksukon. |
-| `tanpa_campuran` | Siswa dengan label Saintek atau Soshum. |
+| `semua` | All labeled students. |
+| `man` | Labeled students from MAN 4 Aceh Utara. |
+| `mas` | Labeled students from MAS Al-Muslimun Lhoksukon. |
+| `tanpa_campuran` | Students labeled Saintek or Soshum. |
 
-Untuk menjalankan rangkaian penelitian melalui CLI:
+To run the research workflow through the CLI:
 
 ```powershell
 php scripts/proses_penelitian.php tanpa_campuran 5
 ```
 
-Perintah tersebut **menyimpan model dan pengujian untuk seluruh skenario**, mengaktifkan model `tanpa_campuran`, lalu menjalankan prediksi massal. Argumen pertama memilih skenario aktif; argumen kedua memilih jumlah fold dari 3 sampai 10. Nilai defaultnya adalah `tanpa_campuran` dan `5`.
+This command **saves models and evaluations for all scenarios**, activates the `tanpa_campuran` model, and runs batch predictions. The first argument selects the active scenario; the second selects the number of folds, from 3 to 10. Defaults are `tanpa_campuran` and `5`.
 
-## Metode ID3
+## ID3 method
 
-Sistem menghitung entropy dan information gain untuk memilih atribut pemisah pada setiap node. Jika gain sama, urutan atribut menentukan pilihan agar hasil konsisten. Cabang tanpa data memakai kelas mayoritas induknya; input dengan nilai atribut yang tidak dikenal memakai kelas mayoritas node terakhir yang dicapai.
+The system calculates entropy and information gain to select the splitting attribute at each node. Attribute order breaks ties to keep results consistent. Empty branches use the parent node's majority class; inputs with unknown attribute values use the majority class of the last node reached.
 
-Sembilan atribut awal mencakup sekolah asal, peminatan, kategori Agama, Bahasa Arab, Bahasa, Matematika, MIPA, IPS, dan kecenderungan MIPA/IPS. Batas diskretisasi dibaca dari database dengan nilai awal:
+The nine initial attributes cover school of origin, academic track, grade categories for Religion, Arabic, Languages, Mathematics, Natural Sciences (MIPA), Social Sciences (IPS), and MIPA/IPS tendency. Discretization thresholds are read from the database, with these initial values:
 
-| Kategori | Nilai |
+| Stored category | Meaning and grade range |
 |---|---|
-| Tinggi | ≥ 95 |
-| Sedang | ≥ 92 dan < 95 |
-| Rendah | < 92 |
-| Tidak Ada | Nilai mata pelajaran tidak tersedia. |
+| Tinggi | High: ≥ 95. |
+| Sedang | Medium: ≥ 92 and < 95. |
+| Rendah | Low: < 92. |
+| Tidak Ada | The subject grade is unavailable. |
 
-Pengujian k-fold menggunakan stratifikasi dan seed tetap 42. Angka keyakinan pada hasil prediksi berasal dari distribusi kelas pada daun pohon; angka itu berbeda dari akurasi model pada data uji. Perhitungan, hasil penelitian, dan batas interpretasinya dijelaskan pada [verifikasi metode](docs/verifikasi-metode.md).
+K-fold evaluation uses stratification and a fixed seed of 42. Prediction confidence comes from the class distribution at the decision tree's leaf; it differs from model accuracy on test data. See the [method verification report](docs/verifikasi-metode.md) for calculations, research results, and interpretation limits.
 
-## Struktur aplikasi
+## Application structure
 
-| Lokasi | Isi |
+| Location | Contents |
 |---|---|
-| `index.php` | Halaman publik. |
-| `login.php`, `logout.php` | Pintu masuk autentikasi. |
-| `admin/` | Front controller dan aturan URL panel. |
-| `app/core/` | Bootstrap, router, koneksi PDO, autentikasi, CSRF, dan helper. |
-| `app/controllers/` | Penanganan permintaan dan alur halaman. |
-| `app/models/` | Akses data. |
-| `app/services/` | Logika ID3, impor, pelatihan, evaluasi, dan prediksi. |
-| `views/` | Layout, halaman, dan komponen tampilan. |
-| `assets/` | Stylesheet, JavaScript, logo, gambar WebP, dan font lokal. |
-| `config/` | Konfigurasi database. |
-| `database/` | Skema, seed, dan migrasi SQL. |
-| `data/` | Dataset dan dokumen sumber penelitian. |
-| `scripts/` | Perkakas persiapan dan pengolahan data. |
-| `tests/` | Pengujian algoritma, HTTP, dan browser. |
-| `storage/` | Upload dan log aplikasi. |
-| `output/` | Hasil pemeriksaan lokal yang diabaikan Git. |
-| `docs/` | Dokumentasi dan arsip proses pengembangan. |
+| `index.php` | Public website. |
+| `login.php`, `logout.php` | Authentication entry points. |
+| `admin/` | Dashboard front controller and URL rewrite rules. |
+| `app/core/` | Bootstrap, router, PDO connection, authentication, CSRF, and helpers. |
+| `app/controllers/` | Request handling and page workflows. |
+| `app/models/` | Data access. |
+| `app/services/` | ID3, import, training, evaluation, and prediction logic. |
+| `views/` | Layouts, pages, and view components. |
+| `assets/` | Stylesheets, JavaScript, logo, WebP images, and local fonts. |
+| `config/` | Database configuration. |
+| `database/` | SQL schema, seeds, and migrations. |
+| `data/` | Dataset and research source documents. |
+| `scripts/` | Setup and data processing tools. |
+| `tests/` | Algorithm, HTTP, and browser tests. |
+| `storage/` | Uploads and application logs. |
+| `output/` | Local verification output ignored by Git. |
+| `docs/` | Documentation and development archives. |
 
-## Pengujian
+## Testing
 
-Jalankan dari root proyek:
+Run commands from the project root:
 
-| Perintah | Cakupan dan kebutuhan |
+| Command | Coverage and requirements |
 |---|---|
-| `php tests/id3_manual_test.php` | Entropy, gain, pohon, kasus batas, dan k-fold; tidak memerlukan database. |
-| `python tests/verify_id3_dataset.py` | Menghitung ulang ID3 dari workbook dan membandingkannya dengan sistem; membutuhkan PHP, database terisi, dan dataset. |
-| `python tests/auth_http_test.py` | Alur autentikasi melalui HTTP dengan akun fixture sementara. |
-| `python tests/admin_http_test.py` | Halaman panel, CRUD, impor, training, pengujian, prediksi, laporan, dan hak akses. |
-| `python tests/auth_browser_test.py` | Alur login dan akun melalui browser. |
-| `python tests/landing_sections_test.py` | Navigasi, komponen interaktif, aset, dan responsivitas landing. |
-| `python tests/landing_motion_test.py` | Animasi, replay diagram, menu ponsel, dan reduced motion. |
+| `php tests/id3_manual_test.php` | Entropy, gain, decision trees, edge cases, and k-fold; no database required. |
+| `python tests/verify_id3_dataset.py` | Recalculates ID3 from the workbook and compares it with the system; requires PHP, a populated database, and the dataset. |
+| `python tests/auth_http_test.py` | HTTP authentication workflows using a temporary fixture account. |
+| `python tests/admin_http_test.py` | Dashboard pages, CRUD, import, training, evaluation, predictions, reports, and permissions. |
+| `python tests/auth_browser_test.py` | Browser-based login and account workflows. |
+| `python tests/landing_sections_test.py` | Landing page navigation, interactive components, assets, and responsive layouts. |
+| `python tests/landing_motion_test.py` | Animations, diagram replay, mobile menu, and reduced motion. |
 
-Tes HTTP dan browser memakai alamat `http://localhost/web-id3/`, sehingga Apache, database, serta nama folder tersebut perlu sesuai. Fixture pengujian membuat data sementara dan membersihkannya setelah pengujian. Hasil pemeriksaan browser disimpan di `output/qa/`.
+HTTP and browser tests use `http://localhost/web-id3/`, so Apache, the database, and that directory name must match the test setup. Test fixtures create temporary data and clean it up afterward. Browser verification output is saved in `output/qa/`.
 
-Untuk menyiapkan pengujian browser:
+To set up browser testing:
 
 ```powershell
 python -m pip install playwright
 python -m playwright install chromium
 ```
 
-Pengolahan ulang dataset dari sumber penelitian membutuhkan `openpyxl` dan perintah Poppler `pdftotext`. Script utamanya adalah `scripts/build_dataset.py`; `extract.py` dan `raw_labels.py` menjadi sumber pendukung. Tahap ini diperlukan bila ingin membangun ulang workbook dari data mentah.
+Rebuilding the dataset from research sources requires `openpyxl` and Poppler's `pdftotext` command. The main script is `scripts/build_dataset.py`, supported by `extract.py` and `raw_labels.py`. This step is needed when rebuilding the workbook from raw data.
 
-## Kendala umum
+## Troubleshooting
 
-| Kendala | Pemeriksaan |
+| Problem | What to check |
 |---|---|
-| Koneksi database gagal | Periksa layanan MySQL/MariaDB dan nilai pada `config/config.php`. |
-| Tabel belum tersedia | Jalankan persiapan database dan periksa migrasi yang sesuai dengan database lama. |
-| URL panel menghasilkan 404 | Pastikan `mod_rewrite` aktif dan Apache mengizinkan `.htaccess`. |
-| `ZipArchive` atau fungsi XML tidak ditemukan | Aktifkan ekstensi `zip` dan `SimpleXML` pada PHP yang digunakan server maupun CLI. |
-| Dataset server tidak ditemukan | Pastikan file berada di `data/Dataset_Bersih_ID3.xlsx`. |
-| Rekomendasi belum dapat dijalankan | Impor data, latih model, dan aktifkan satu model. |
-| PHP CLI berbeda dari PHP Apache | Periksa `php --ini` dan versi PHP yang dipilih pada Laragon. |
+| Database connection fails | Check the MySQL/MariaDB service and values in `config/config.php`. |
+| Tables are missing | Run database initialization and review migrations appropriate for an existing database. |
+| Dashboard URLs return 404 | Enable `mod_rewrite` and make sure Apache allows `.htaccess` overrides. |
+| `ZipArchive` or XML functions are unavailable | Enable `zip` and `SimpleXML` in the PHP configurations used by both the server and CLI. |
+| Server dataset cannot be found | Make sure the file is located at `data/Dataset_Bersih_ID3.xlsx`. |
+| Recommendations cannot run yet | Import data, train a model, and activate one model. |
+| CLI PHP differs from Apache PHP | Check `php --ini` and the PHP version selected in Laragon. |
 
-Detail error aplikasi tersimpan di `storage/logs/app.log`. Folder `storage/logs/` dan `storage/uploads/` perlu dapat ditulis oleh proses PHP.
+Application error details are stored in `storage/logs/app.log`. The PHP process needs write access to `storage/logs/` and `storage/uploads/`.
 
-## Data dan dokumentasi
+## Data and documentation
 
-Data penelitian memuat identitas siswa. Pertahankan aturan `.htaccess` yang membatasi akses HTTP ke folder internal dan gunakan data tersebut hanya untuk keperluan yang diizinkan. Pada server selain Apache, terapkan pembatasan akses yang setara.
+Research data contains student identities. Keep the `.htaccess` rules that restrict HTTP access to internal directories, and use the data only for authorized purposes. Apply equivalent access restrictions when using a server other than Apache.
 
-- [Verifikasi metode dan hasil penelitian](docs/verifikasi-metode.md).
-- [Rencana awal proyek](docs/plan.md).
-- [Rancangan landing terbaru](docs/landing-redesign.md).
-- [Peta struktur dan pembersihan proyek](docs/struktur-proyek.md).
-- [Panduan pengembangan](docs/agents.md).
-- [Riwayat perubahan](CHANGELOG.md).
+Supporting documentation is currently in Indonesian:
+
+- [Method verification and research results](docs/verifikasi-metode.md).
+- [Initial project plan](docs/plan.md).
+- [Latest landing page design](docs/landing-redesign.md).
+- [Project structure and cleanup](docs/struktur-proyek.md).
+- [Development guide](docs/agents.md).
+- [Changelog](CHANGELOG.md).
