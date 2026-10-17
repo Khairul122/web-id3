@@ -24,12 +24,6 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
 </head>
 <body>
 <a class="skip-link" href="#konten">Lewati ke konten</a>
-<div class="school-bar">
-  <div class="container school-bar__inner">
-    <p>MAN 4 Matangkuli <span aria-hidden="true">/</span> MAS Al-Muslimun Lhoksukon</p>
-    <p class="school-bar__purpose">Sistem pendukung bimbingan karier</p>
-  </div>
-</div>
 <main id="konten" tabindex="-1">
   <section class="hero" id="beranda" aria-labelledby="hero-title" tabindex="-1">
     <div class="hero__visual" aria-hidden="true"><div class="hero__photo" data-parallax="hero"></div></div>

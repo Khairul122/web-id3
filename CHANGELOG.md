@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 (pembersihan struktur proyek)
+
+- Video lama dipindahkan ke `videos/archive/`, catatan iterasi dan konsep visual ke `docs/archive/`, serta PNG sumber dipisahkan dari gambar WebP yang digunakan situs.
+- Cache browser, bytecode, thumbnail, waveform dan snapshot video awal dibersihkan. MP3 duplikat di root dihapus setelah hash dicocokkan; aset sumber dan hasil video tetap tersedia.
+- Lokasi dataset diseragamkan menjadi `data/Dataset_Bersih_ID3.xlsx` untuk impor admin, impor CLI, pembentukan dataset dan pengujian independen.
+- README dan peta struktur ditambahkan; pola `.gitignore` diperluas untuk berkas sementara.
+
 ## 2026-10-17 (redesign section landing)
 
 - Rumpun jurusan menjadi eksplorasi bertab dengan contoh bidang dan pertanyaan refleksi; cara kerja menjadi empat tahap interaktif dengan ilustrasi masing-masing.
@@ -15,7 +22,7 @@
 
 ## 2026-10-17 (section landing)
 
-- Implementasi docs/plan-landing-sections.md: Rumpun Jurusan, Cara Kerja, Metode ID3, Panduan, dan footer.
+- Implementasi docs/archive/iterations/plan-landing-sections.md: Rumpun Jurusan, Cara Kerja, Metode ID3, Panduan, dan footer.
 - Navigasi dan CTA hero menuju section; menu ponsel menutup saat tautan dipilih dan memindahkan fokus ke bagian tujuan. Dialog informasi lama dihapus.
 - Halaman umum hanya memuat penjelasan; ringkasan model aktif dan hasil penelitian dihapus dari landing.
 - Dua foto baru dibuat dengan GPT Image, tersedia sebagai WebP responsif 768/1536 px. Skema pohon ilustratif berupa SVG dan rumus berupa teks HTML.

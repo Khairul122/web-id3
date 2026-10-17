@@ -194,10 +194,11 @@
   .process-note__detail { padding-left: 24px; border-left: 1px solid var(--line); }
 }
 @media (min-width: 1024px) {
+  .hero .container { max-width: none; }
   .header-space { height: 115px; }
   .hero__main { padding-block: 24px 32px; }
   .header-shell.is-scrolled .brand__tagline { font-size: 7px; }
-  .hero__scroll { display: flex; align-items: center; gap: 18px; position: absolute; right: var(--gutter); bottom: 42px; padding: 14px 10px; background: var(--navy); font-size: 10px; letter-spacing: .06em; writing-mode: vertical-rl; }
+  .hero__scroll { display: flex; align-items: center; gap: 18px; position: absolute; right: 0; bottom: 42px; padding: 14px 10px; background: var(--navy); font-size: 10px; letter-spacing: .06em; writing-mode: vertical-rl; }
   .hero__scroll .icon { transform: rotate(90deg); color: var(--gold); width: 18px; height: 18px; }
   .landing-section { padding-block: 112px; }
   .rumpun-layout { gap: 48px; }

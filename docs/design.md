@@ -1,4 +1,5 @@
 # Design System
+> Rancangan awal proyek. Implementasi landing terbaru tercatat di [landing-redesign.md](landing-redesign.md); nilai warna dan tipografi yang digunakan aplikasi berada di `assets/css/tokens.css`.
 ## SIMINAT: Sistem Klasifikasi Minat Jurusan Kuliah
 
 Gaya visual mengikuti referensi "Sekolah Nusantara". Ciri utamanya: hero foto siswa dengan overlay biru gelap, aksen kuning, pita statistik biru, dan kartu putih yang lembut. Nama, logo, dan foto memakai milik MAN 4 Matangkuli dan MAS Al-Muslimun. Jangan memakai foto atau nama dari referensi.

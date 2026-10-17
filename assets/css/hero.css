@@ -14,12 +14,7 @@ p, h1, h2 { margin: 0; }
 .icon { width: 24px; height: 24px; flex-shrink: 0; }
 .skip-link { position: fixed; z-index: 20; left: 16px; top: -100px; padding: 16px 24px; color: var(--navy); background: var(--gold); }
 .skip-link:focus { top: 12px; }
-.school-bar { position: relative; z-index: 2; background: var(--navy-deep); }
-.school-bar::after { position: absolute; content: ''; inset: auto 0 0; height: 1px; background: var(--line); }
-.school-bar__inner { min-height: 38px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; line-height: 1.6; color: var(--muted); padding-block: 9px; }
-.school-bar__inner span { margin-inline: 7px; color: var(--gold); }
-.school-bar__purpose { display: none; }
-.hero { isolation: isolate; position: relative; display: flex; flex-direction: column; min-height: calc(100svh - 38px); }
+.hero { isolation: isolate; position: relative; display: flex; flex-direction: column; min-height: 100svh; }
 .hero__photo { position: absolute; z-index: -2; inset: 0; background: var(--navy) url('../img/hero/kelas-madrasah-ai.webp') 67% top / cover no-repeat; }
 .hero::before { content: ''; position: absolute; z-index: -1; inset: 0; background: var(--mobile-overlay); }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; }
@@ -79,7 +74,6 @@ dialog::backdrop { background: rgba(4, 22, 37, .76); backdrop-filter: blur(5px);
 .rumpun-list dd { margin: 0; }
 .noscript-notice { padding: 20px var(--gutter); font-size: 14px; line-height: 1.7; }
 @media (min-width: 480px) {
-  .school-bar__inner { font-size: 11px; }
   .brand__mark { width: 47px; height: 54px; }
   .brand__name { font-size: 30px; }
   .brand__tagline { max-width: none; font-size: 7.5px; }
@@ -87,9 +81,6 @@ dialog::backdrop { background: rgba(4, 22, 37, .76); backdrop-filter: blur(5px);
   .hero__eyebrow { font-size: 11px; }
 }
 @media (min-width: 768px) {
-  .school-bar__inner { min-height: 40px; font-size: 11px; }
-  .school-bar__purpose { display: block; }
-  .hero { min-height: calc(100svh - 40px); }
   .hero__photo { background-position: center; }
   .hero__main { padding-top: 42px; padding-bottom: 62px; }
   .hero__actions { flex-direction: row; align-items: center; gap: 25px; }
@@ -131,8 +122,6 @@ dialog::backdrop { background: rgba(4, 22, 37, .76); backdrop-filter: blur(5px);
   .foundation p { font-size: 12px; }
 }
 @media (min-width: 1440px) {
-  .school-bar__inner { min-height: 44px; font-size: 12px; }
-  .hero { min-height: calc(100svh - 44px); }
   .site-header { padding-block: 32px; }
   .brand__name { font-size: 36px; }
   .brand__mark { width: 54px; height: 62px; }
