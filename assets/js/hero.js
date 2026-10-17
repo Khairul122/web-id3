@@ -1,32 +1,25 @@
 'use strict';
 
 const menu = document.querySelector('#mobile-menu');
-const info = document.querySelector('#info-dialog');
-const content = document.querySelector('#dialog-content');
 const menuTrigger = document.querySelector('[data-menu-open]');
-let returnFocus = null;
 
-document.querySelectorAll('[data-dialog]').forEach((button) => {
-  button.addEventListener('click', () => {
-    const template = document.getElementById(`content-${button.dataset.dialog}`);
-    if (!template) return;
-    returnFocus = menu.open ? menuTrigger : button;
-    if (menu.open) menu.close();
-    content.replaceChildren(template.content.cloneNode(true));
-    info.showModal();
+if (menu && menuTrigger) {
+  menuTrigger.hidden = false;
+  menuTrigger.addEventListener('click', () => menu.showModal());
+  menu.querySelector('[data-close]').addEventListener('click', () => menu.close());
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      menu.close();
+      if (href.startsWith('#')) {
+        const target = document.getElementById(href.slice(1));
+        requestAnimationFrame(() => target?.focus({ preventScroll: true }));
+      }
+    });
   });
-});
-
-menuTrigger.addEventListener('click', () => menu.showModal());
-
-document.querySelectorAll('[data-close]').forEach((button) => {
-  button.addEventListener('click', () => button.closest('dialog').close());
-});
-
-[menu, info].forEach((dialog) => {
-  dialog.addEventListener('keydown', (event) => {
+  menu.addEventListener('keydown', (event) => {
     if (event.key !== 'Tab') return;
-    const controls = [...dialog.querySelectorAll('a[href], button:not([disabled])')]
+    const controls = [...menu.querySelectorAll('a[href], button:not([disabled])')]
       .filter((control) => control.getClientRects().length);
     const first = controls[0];
     const last = controls.at(-1);
@@ -38,14 +31,23 @@ document.querySelectorAll('[data-close]').forEach((button) => {
       first.focus();
     }
   });
-  dialog.addEventListener('click', (event) => {
-    const rect = dialog.getBoundingClientRect();
-    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) {
-      dialog.close();
+  menu.addEventListener('click', (event) => {
+    const rect = menu.getBoundingClientRect();
+    if (event.target === menu && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) {
+      menu.close();
     }
   });
-});
+}
 
-info.addEventListener('close', () => {
-  if (returnFocus) returnFocus.focus();
-});
+const sectionLinks = document.querySelectorAll('.desktop-nav a[href^="#"], #mobile-menu a[href^="#"]');
+function updateCurrentSection() {
+  const current = location.hash || '#beranda';
+  sectionLinks.forEach((link) => {
+    const active = link.getAttribute('href') === current;
+    link.classList.toggle('nav-link--active', active && link.classList.contains('nav-link'));
+    if (active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('hashchange', updateCurrentSection);
+updateCurrentSection();

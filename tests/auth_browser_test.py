@@ -80,6 +80,9 @@ try:
         assert page.locator('main').get_by_text('Guru BK',exact=True).is_visible()
         page.screenshot(path=str(OUT/'workspace.png'),full_page=True)
         page.goto(URL,wait_until='networkidle')
+        for href in page.locator('a[href^="#"]').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'):
+            assert page.locator(f'[id="{href[1:]}"]').count()==1
+        assert page.locator('#info-dialog').count()==0
         page.get_by_role('link',name='Panel Saya',exact=True).filter(visible=True).click()
         page.wait_for_url('**/admin/')
         page.locator('.sidebar__logout').click()
@@ -94,6 +97,10 @@ try:
         page.wait_for_url('**/login.php')
         page.set_viewport_size({'width':360,'height':800})
         page.goto(URL)
+        page.locator('[data-menu-open]').click()
+        page.locator('#mobile-menu a[href="#rumpun"]').click()
+        page.wait_for_url(URL+'#rumpun')
+        assert not page.locator('#mobile-menu').evaluate('(d)=>d.open')
         page.locator('[data-menu-open]').click()
         page.locator('#mobile-menu').get_by_role('link',name='Masuk').click()
         page.wait_for_url('**/login.php')
