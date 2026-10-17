@@ -63,7 +63,7 @@ final class AuthController
         if (!$user) {
             redirect('login.php');
         }
-        $change = (bool) $user['must_change_password'] || ($_GET['page'] ?? '') === 'password';
+        $change = ($_GET['page'] ?? '') === 'password';
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$this->verifyPost()) {
@@ -98,8 +98,8 @@ final class AuthController
         View::auth($change ? 'password' : 'welcome', [
             'user' => $user,
             'errors' => $errors,
-            'heading' => $change ? 'Perbarui kata sandi.' : 'Ruang kerja Anda.',
-            'intro' => $change ? 'Buat kata sandi pribadi sebelum melanjutkan ke ruang kerja.' : 'Selamat datang, ' . $user['nama'] . '.',
+            'heading' => $change ? 'Ganti kata sandi.' : 'Ruang kerja Anda.',
+            'intro' => $change ? 'Ganti kata sandi akun saat Anda menginginkannya.' : 'Selamat datang, ' . $user['nama'] . '.',
         ]);
     }
 
@@ -124,7 +124,7 @@ final class AuthController
             return false;
         }
         if (!Csrf::verify()) {
-            http_response_code(419);
+            http_response_code(403);
             View::auth('error', ['heading' => 'Sesi form telah berakhir.', 'intro' => 'Buka kembali halaman masuk untuk melanjutkan.']);
             return false;
         }

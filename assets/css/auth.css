@@ -1,10 +1,11 @@
 .auth-page { background: var(--paper); color: var(--ink); color-scheme: light; }
 .auth-shell { display: grid; min-height: 100svh; }
 .auth-story { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 28px 24px; min-height: 116px; color: var(--ivory); background: var(--navy); }
-.auth-story::before { content: ''; position: absolute; z-index: -2; inset: 0; background: url('../img/hero/kelas-madrasah-ai.webp') 65% 44% / cover no-repeat; }
-.auth-story::after { content: ''; position: absolute; z-index: -1; inset: 0; background: var(--auth-overlay); }
+.auth-story::before { content: ''; position: absolute; z-index: -2; inset: 0; background: url('../img/auth/bimbingan-karier-ai.webp') 50% 30% / cover no-repeat; }
+.auth-story::after { content: ''; position: absolute; z-index: -1; inset: 0; background: var(--auth-mobile-overlay); }
 .auth-story .brand { width: fit-content; }
-.auth-story__copy, .auth-story__credit { display: none; }
+.auth-story__copy { display: none; }
+.auth-story__credit { position: absolute; right: 24px; bottom: 8px; color: var(--muted); font-size: 8px; line-height: 1.7; }
 .auth-content { display: flex; flex-direction: column; padding: 12px 24px 24px; }
 .auth-content__nav { display: flex; justify-content: flex-end; }
 .auth-back { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; }
@@ -62,6 +63,8 @@
 @media (min-width: 1024px) {
   .auth-shell { grid-template-columns: 52% 48%; }
   .auth-story { padding: 42px 40px 30px; min-height: 100svh; }
+  .auth-story::before { background-position: 50% 42%; }
+  .auth-story::after { background: var(--auth-overlay); }
   .auth-story .brand__mark { width: 50px; height: 57px; }
   .auth-story .brand__name { font-size: 34px; }
   .auth-story .brand__tagline { font-size: 7px; }
@@ -69,7 +72,7 @@
   .auth-story__copy h2 { font: 700 clamp(36px, 3.4vw, 56px)/1.13 var(--display-font); letter-spacing: -.04em; }
   .auth-story__copy h2 em { color: var(--gold); font-weight: 400; }
   .auth-story__copy p { margin-top: 22px; max-width: 440px; font-size: 13px; line-height: 1.9; color: var(--muted); }
-  .auth-story__credit { display: block; margin-top: 18px; color: var(--muted); font-size: 9px; line-height: 1.7; }
+  .auth-story__credit { position: static; display: block; margin-top: 18px; color: var(--muted); font-size: 9px; line-height: 1.7; }
   .auth-content { padding: 24px 48px 26px; }
   .auth-content__main { padding-block: 36px; }
   .auth-content h1 { font-size: clamp(38px, 3.5vw, 54px); }

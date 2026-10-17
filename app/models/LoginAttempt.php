@@ -8,6 +8,8 @@ final class LoginAttempt
         $pdo = Database::pdo();
         $key = hash('sha256', $ip);
         $now = time();
+        $statement = $pdo->prepare('DELETE FROM login_attempts WHERE window_start < ?');
+        $statement->execute([$now - 900]);
         $pdo->beginTransaction();
         try {
             $statement = $pdo->prepare('INSERT IGNORE INTO login_attempts (ip_hash, attempts, window_start) VALUES (?, 0, ?)');

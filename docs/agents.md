@@ -36,7 +36,7 @@ cp config/config.example.php config/config.php
 php tests/id3_manual_test.php
 ```
 
-Akun awal (`seed.sql`): `admin` / `admin123`. Wajib diganti saat login pertama.
+Akun awal (`seed.sql`): `admin` / `admin123`. Sesuai keputusan pengguna, login langsung membuka ruang kerja. Kata sandi dapat diganti sendiri melalui menu Ganti kata sandi.
 
 ## 4. Aturan Kode
 

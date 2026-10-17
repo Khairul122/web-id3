@@ -100,7 +100,9 @@ siminat/
 ## 6. Skema Database
 
 ```sql
-users(id, nama, username UNIQUE, password_hash, role ENUM('admin','guru_bk'), last_login, created_at)
+users(id, nama, username UNIQUE, password_hash, role ENUM('admin','guru_bk'),
+      must_change_password, session_version, last_login, created_at)
+login_attempts(ip_hash CHAR(64) PK, attempts, window_start)            -- batas percobaan per IP
 
 sekolah(id, kode ENUM('MAN','MAS') UNIQUE, nama, alamat)
 

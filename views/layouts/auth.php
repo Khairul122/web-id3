@@ -7,6 +7,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title><?= e($heading) ?> | SIMINAT</title>
   <link rel="icon" href="<?= e(url('assets/img/logo.svg')) ?>" type="image/svg+xml">
+  <link rel="preload" href="<?= e(url('assets/img/auth/bimbingan-karier-ai.webp')) ?>" as="image" fetchpriority="high">
   <link rel="stylesheet" href="<?= e(url('assets/css/tokens.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/hero.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/auth.css')) ?>">
