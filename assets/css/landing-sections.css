@@ -234,6 +234,8 @@
   .closing-identity { grid-template-columns: 1.5fr 1fr; gap: 48px; padding-block: 48px 40px; }
 }
 @media (min-width: 1024px) {
+  .redesigned-footer > .container { max-width: none; }
+  .closing-schools { justify-self: end; }
   .explore-section, .journey-section, .preparation-section, .method-section { padding-block: 88px 96px; }
   .chapter-heading { margin-bottom: 48px; }
   .explore-heading { grid-template-columns: 1.7fr 1fr; gap: 80px; }
