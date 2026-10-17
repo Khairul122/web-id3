@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1",
-  "currentRevision": "8a3fb8e5-051e-47c3-a442-0a6560d21ab0",
+  "currentRevision": "b0d86e00-38ab-4b63-b8ca-b53eb3f64b58",
   "pendingChanges": false,
   "files": {
     ".media/manifest.jsonl": {
@@ -235,6 +235,18 @@
     "compositions/frames-portrait/04-cara-kerja.html": {
       "hash": "ce2ecb08af2e186745c1d7cc274e39fd5e660d1dea2c75efeccadb728bbb5577",
       "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\ce\\ce2ecb08af2e186745c1d7cc274e39fd5e660d1dea2c75efeccadb728bbb5577"
+    },
+    "compositions/frames-portrait/03-solusi.html": {
+      "hash": "4bacbed2196bf48bdb54b48e38719ffc6564ecdef20469e571da5075697af717",
+      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\4b\\4bacbed2196bf48bdb54b48e38719ffc6564ecdef20469e571da5075697af717"
+    },
+    "compositions/frames-portrait/05-metode.html": {
+      "hash": "a696a2fbaae7280faa3304133645c0ecf7c42433e35a1a541783ca4dfe274e85",
+      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\a6\\a696a2fbaae7280faa3304133645c0ecf7c42433e35a1a541783ca4dfe274e85"
+    },
+    "compositions/frames-portrait/02-masalah.html": {
+      "hash": "8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e",
+      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\8c\\8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e"
     }
   },
   "revisions": {
@@ -368,6 +380,51 @@
         "compositions/frames-portrait/04-cara-kerja.html": {
           "before": null,
           "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\ce\\ce2ecb08af2e186745c1d7cc274e39fd5e660d1dea2c75efeccadb728bbb5577"
+        }
+      }
+    },
+    "2b928fa8-e899-4b75-842b-6a225c2acd02": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792224639133,
+      "endedAt": 1792224641134,
+      "files": {
+        "compositions/frames-portrait/03-solusi.html": {
+          "before": null,
+          "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\4b\\4bacbed2196bf48bdb54b48e38719ffc6564ecdef20469e571da5075697af717"
+        }
+      }
+    },
+    "2a711a35-2529-446b-98a5-a15df3f0dc5f": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792224684937,
+      "endedAt": 1792224686938,
+      "files": {
+        "compositions/frames-portrait/05-metode.html": {
+          "before": null,
+          "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\a6\\a696a2fbaae7280faa3304133645c0ecf7c42433e35a1a541783ca4dfe274e85"
+        }
+      }
+    },
+    "b0d86e00-38ab-4b63-b8ca-b53eb3f64b58": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792224700917,
+      "endedAt": 1792224702927,
+      "files": {
+        "compositions/frames-portrait/02-masalah.html": {
+          "before": null,
+          "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\8c\\8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e"
         }
       }
     }

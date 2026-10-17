@@ -1,0 +1,187 @@
+<template>
+  <style>
+    /* ── SIMINAT · 02-masalah — portrait 1080×1920 · 1cqw = 10.8px ── */
+
+    /* fonts — local files only */
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    #root{
+      position:relative;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      container-type:size;
+    }
+
+    /* full-frame clip layers */
+    .clip{position:absolute;inset:0;}
+
+    /* ── ground — navy paper; one dim sun-bloom (upper-right), ember counter-bloom (lower-left) ── */
+    [id="02-masalah-ground"]{background:#071D31;}
+
+    [id="02-masalah-sun"]{
+      position:absolute;
+      left:405px;top:-295px;
+      width:1050px;height:1050px;
+      opacity:0.85;
+      background:radial-gradient(circle closest-side,
+        rgba(248,196,84,0.82) 0%,
+        rgba(248,196,84,0.46) 22%,
+        rgba(103,72,4,0.60) 40%,
+        rgba(140,98,6,0.32) 58%,
+        rgba(7,29,49,0) 76%);
+    }
+
+    [id="02-masalah-ember"]{
+      position:absolute;
+      left:-280px;top:930px;
+      width:900px;height:900px;
+      opacity:0.6;
+      background:radial-gradient(circle closest-side,
+        rgba(31,95,158,0.30) 0%,
+        rgba(31,95,158,0.18) 42%,
+        rgba(31,95,158,0) 72%);
+    }
+
+    /* ── scene 1 — the held token slot, centre-top (slot centre ≈ y569) ── */
+    [id="02-masalah-slot"]{
+      position:absolute;
+      left:0;right:0;top:510px;
+      text-align:center;
+      white-space:nowrap;
+      font-family:"Georgia";font-weight:400;
+      font-size:9.5cqw;line-height:1.15;letter-spacing:-0.018em;
+      color:#FFFDF6;
+    }
+    [id="02-masalah-token"]{
+      display:inline-block;
+      min-width:48cqw;
+      text-align:center;
+    }
+
+    /* ── scene 2 — the slam line, wrapped to three portrait lines ── */
+    [id="02-masalah-big"]{
+      position:absolute;
+      left:0;right:0;top:485px;
+      text-align:center;
+      font-family:"Georgia";font-weight:400;
+      font-size:18cqw;line-height:0.86;letter-spacing:-0.018em;
+      color:#FFFDF6;
+    }
+    [id="02-masalah-big"] span{display:block;}
+
+    /* ── scene 3 — the quiet coda beneath the line ── */
+    [id="02-masalah-small"]{
+      position:absolute;
+      left:0;right:0;top:1134px;
+      text-align:center;
+      white-space:nowrap;
+      font-family:"Inter";font-weight:400;
+      font-size:3.2cqw;line-height:1.5;
+      color:#FFFDF6;
+    }
+
+    /* ── chrome — hairline footer rule + pagenum ── */
+    [id="02-masalah-rule"]{
+      position:absolute;
+      left:60px;right:60px;top:1660px;
+      height:1px;
+      background:#FFFDF6;
+    }
+    [id="02-masalah-pagenum"]{
+      position:absolute;
+      right:60px;top:1691px;
+      font-family:"Inter";font-weight:400;
+      font-size:15px;line-height:1;letter-spacing:0.08em;
+      color:rgba(255,253,246,0.75);
+    }
+  </style>
+
+  <div id="root"
+    data-composition-id="02-masalah"
+    data-start="0"
+    data-duration="4.17"
+    data-width="1080"
+    data-height="1920"
+  >
+    <!-- ground + atmosphere -->
+    <div id="02-masalah-ground" class="clip" data-start="0" data-duration="4.17" data-track-index="0">
+      <div id="02-masalah-sun"></div>
+      <div id="02-masalah-ember"></div>
+    </div>
+
+    <!-- typography track — the whole shot is type -->
+    <div id="02-masalah-type" class="clip" data-start="0" data-duration="4.17" data-track-index="1">
+      <div id="02-masalah-slot"><span id="02-masalah-token">Saintek?</span></div>
+      <div id="02-masalah-big"><span>Bingung</span><span>memilih</span><span>jurusan?</span></div>
+      <div id="02-masalah-small">Banyak pilihan. Sedikit arahan.</div>
+    </div>
+
+    <!-- chrome -->
+    <div id="02-masalah-chrome" class="clip" data-start="0" data-duration="4.17" data-track-index="2">
+      <div id="02-masalah-rule"></div>
+      <div id="02-masalah-pagenum">02</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      window.__timelines["02-masalah"] = tl;
+
+      var slot = document.getElementById("02-masalah-slot");
+      var token = document.getElementById("02-masalah-token");
+      var big = document.getElementById("02-masalah-big");
+      var small = document.getElementById("02-masalah-small");
+      var ember = document.getElementById("02-masalah-ember");
+
+      // ── scene 1 (0.00–2.09) — in-place token cycle by instantaneous hard cuts ──
+      // discrete-text-sequence: whole-string states replaced at time thresholds.
+      var SEQ = [
+        { t: 0.00, text: "Saintek?" },
+        { t: 0.52, text: "Soshum?" },
+        { t: 1.04, text: "Campuran?" }
+      ];
+      function tokenAt(time) {
+        for (var i = SEQ.length - 1; i >= 0; i--) {
+          if (time >= SEQ[i].t) return SEQ[i].text;
+        }
+        return SEQ[0].text;
+      }
+      var driver = { t: 0 };
+      tl.to(driver, {
+        t: 2.09,
+        duration: 2.09,
+        ease: "none",
+        onUpdate: function () { token.textContent = tokenAt(driver.t); }
+      }, 0);
+
+      // the hard cut — the slot clears the instant the question lands
+      tl.set(slot, { autoAlpha: 0 }, 2.09);
+
+      // ── scene 2 (2.09–3.13) — slam scale-in from big, long tail; ember kindles behind ──
+      tl.fromTo(big,
+        { opacity: 0, scale: 1.8 },
+        { opacity: 1, scale: 1, duration: 0.9, ease: "expo.out" }, 2.09);
+      tl.fromTo(ember,
+        { opacity: 0.6 },
+        { opacity: 0.72, duration: 0.8, ease: "power2.out" }, 2.09);
+
+      // ── scene 3 (3.13–4.17) — soft left→right mask reveal, then still ──
+      tl.fromTo(small,
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.68, ease: "power2.inOut" }, 3.13);
+
+      // full-span anchor — frame timeline duration == 4.17
+      tl.to({}, { duration: 4.17 }, 0);
+    })();
+  </script>
+</template>
