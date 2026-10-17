@@ -1,0 +1,262 @@
+- generic [active] [ref=f1e1]:
+  - link "Lewati ke konten" [ref=f1e2] [cursor=pointer]:
+    - /url: "#konten"
+  - generic [ref=f1e4]:
+    - paragraph [ref=f1e5]: MAN 4 Matangkuli / MAS Al-Muslimun Lhoksukon
+    - paragraph [ref=f1e6]: Sistem pendukung bimbingan karier
+  - main [ref=f1e7]:
+    - region [ref=f1e8]:
+      - generic [ref=f1e11]:
+        - link "SIMINAT, beranda" [ref=f1e12] [cursor=pointer]:
+          - /url: ./
+          - generic [ref=f1e17]:
+            - generic [ref=f1e18]: SIMINAT
+            - generic [ref=f1e19]: Kenali minat. Rencanakan masa depan.
+        - navigation "Navigasi utama" [ref=f1e20]:
+          - link "Beranda" [ref=f1e21] [cursor=pointer]:
+            - /url: "#beranda"
+          - link "Rumpun Jurusan" [ref=f1e22] [cursor=pointer]:
+            - /url: "#rumpun"
+          - link "Cara Kerja" [ref=f1e23] [cursor=pointer]:
+            - /url: "#cara-kerja"
+          - link "Metode ID3" [ref=f1e24] [cursor=pointer]:
+            - /url: "#metode"
+          - link "Panduan" [ref=f1e25] [cursor=pointer]:
+            - /url: "#panduan"
+          - link "Masuk" [ref=f1e26] [cursor=pointer]:
+            - /url: /login.php
+      - generic [ref=f1e27]:
+        - generic [ref=f1e28]:
+          - paragraph [ref=f1e29]: Dari ruang kelas, menuju masa depan
+          - heading "Kenali Minatmu. Temukan Arah Kuliahmu." [level=1] [ref=f1e30]:
+            - generic [ref=f1e31]: Kenali Minatmu.
+            - generic [ref=f1e33]: Temukan
+            - emphasis [ref=f1e37]: Arah Kuliahmu.
+          - paragraph [ref=f1e38]: Langkah awal mengenali rumpun jurusan kuliah melalui nilai rapor dan peminatanmu.
+          - generic [ref=f1e39]:
+            - link "Kenali Rumpun Jurusan" [ref=f1e40] [cursor=pointer]:
+              - /url: "#rumpun"
+            - link "Bagaimana cara kerjanya?" [ref=f1e43] [cursor=pointer]:
+              - /url: "#cara-kerja"
+        - link "Jelajahi pilihanmu" [ref=f1e44] [cursor=pointer]:
+          - /url: "#rumpun"
+      - generic [ref=f1e48]:
+        - group "Dasar pendekatan SIMINAT" [ref=f1e49]:
+          - article [ref=f1e50]:
+            - generic [ref=f1e54]:
+              - heading "Berangkat dari Nilai Rapor" [level=2] [ref=f1e55]
+              - paragraph [ref=f1e56]: Nilai rapor dan peminatan menjadi dasar untuk mengenali rumpun jurusan.
+          - article [ref=f1e57]:
+            - generic [ref=f1e63]:
+              - heading "Metode ID3 yang Terbuka" [level=2] [ref=f1e64]
+              - paragraph [ref=f1e65]: Pelajari bagaimana pohon keputusan membentuk hasil klasifikasi.
+          - article [ref=f1e66]:
+            - generic [ref=f1e69]:
+              - heading "Diskusi Bersama Guru BK" [level=2] [ref=f1e70]
+              - paragraph [ref=f1e71]: Kenali pilihanmu sebagai bahan diskusi untuk merencanakan langkah berikutnya.
+        - generic [ref=f1e72]:
+          - generic [ref=f1e73]: SIMINAT · Klasifikasi Minat Jurusan Kuliah
+          - generic [ref=f1e74]: Visual ilustrasi dibuat dengan AI
+    - region [ref=f1e75]:
+      - generic [ref=f1e76]:
+        - generic [ref=f1e77]:
+          - paragraph [ref=f1e78]: Rumpun jurusan
+          - heading [level=2] [ref=f1e79]:
+            - text: Kenali bidangnya.
+            - emphasis [ref=f1e80]: Temukan minatmu.
+          - paragraph [ref=f1e81]: Setiap rumpun membuka banyak pilihan. Mulailah dengan memahami bidang yang ingin kamu pelajari.
+          - figure "Ilustrasi dibuat dengan AI." [ref=f1e82]:
+            - generic [ref=f1e83]:
+              - img "Ilustrasi dua siswa madrasah membaca panduan bidang studi bersama di perpustakaan." [ref=f1e85]
+              - paragraph [ref=f1e86]: Mulai dari rasa ingin tahu.
+        - generic [ref=f1e88]:
+          - generic [ref=f1e89]:
+            - generic [ref=f1e90]:
+              - term [ref=f1e91]:
+                - generic [aria-hidden] [ref=f1e92]: "01"
+                - text: Saintek
+              - definition [ref=f1e93]:
+                - strong [ref=f1e94]: Sains dan teknologi
+                - paragraph [ref=f1e95]: Matematika, ilmu alam, informatika, dan bidang teknologi.
+            - generic [ref=f1e96]:
+              - term [ref=f1e97]:
+                - generic [aria-hidden] [ref=f1e98]: "02"
+                - text: Soshum
+              - definition [ref=f1e99]:
+                - strong [ref=f1e100]: Sosial dan humaniora
+                - paragraph [ref=f1e101]: Ekonomi, ilmu sosial, bahasa, dan humaniora.
+            - generic [ref=f1e102]:
+              - term [ref=f1e103]:
+                - generic [aria-hidden] [ref=f1e104]: "03"
+                - text: Campuran
+              - definition [ref=f1e105]:
+                - strong [ref=f1e106]: Pilihan lintas rumpun
+                - paragraph [ref=f1e107]: Pilihan yang mencakup bidang Saintek dan Soshum.
+          - paragraph [ref=f1e108]: Contoh bidang di atas membantu mengenali pilihan, tanpa membatasi ketertarikanmu pada bidang lain.
+    - region [ref=f1e109]:
+      - generic [ref=f1e110]:
+        - generic [ref=f1e111]:
+          - generic [ref=f1e112]:
+            - paragraph [ref=f1e113]: Cara kerja
+            - heading [level=2] [ref=f1e114]:
+              - text: Dari nilai raporke
+              - emphasis [ref=f1e115]: bahan diskusi.
+          - paragraph [ref=f1e116]: Kenali alur pengolahan sebelum membaca rekomendasinya.
+        - list [ref=f1e117]:
+          - listitem [ref=f1e118]:
+            - generic [aria-hidden] [ref=f1e119]: "01"
+            - generic [ref=f1e120]:
+              - heading "Data siswa" [level=3] [ref=f1e121]
+              - paragraph [ref=f1e122]: Siapkan nilai rapor dan informasi peminatan sebagai masukan untuk sistem.
+          - listitem [ref=f1e123]:
+            - generic [aria-hidden] [ref=f1e124]: "02"
+            - generic [ref=f1e125]:
+              - heading "Kategori nilai" [level=3] [ref=f1e126]
+              - paragraph [ref=f1e127]: Nilai diubah menjadi kategori sesuai aturan diskretisasi yang digunakan sistem.
+          - listitem [ref=f1e128]:
+            - generic [aria-hidden] [ref=f1e129]: "03"
+            - generic [ref=f1e130]:
+              - heading "Pohon ID3" [level=3] [ref=f1e131]
+              - paragraph [ref=f1e132]: Sistem menelusuri cabang pohon keputusan berdasarkan atribut siswa.
+          - listitem [ref=f1e133]:
+            - generic [aria-hidden] [ref=f1e134]: "04"
+            - generic [ref=f1e135]:
+              - heading "Diskusi hasil" [level=3] [ref=f1e136]
+              - paragraph [ref=f1e137]: Baca rekomendasi dan jalur keputusannya bersama guru BK untuk memahami dasar hasilnya.
+        - paragraph [ref=f1e138]:
+          - generic [ref=f1e139]:
+            - text: Hasil menjadi
+            - emphasis [ref=f1e140]: bahan percakapan
+            - text: bersama guru BK.
+          - generic [ref=f1e141]: Kenali dasarnya, lalu pertimbangkan pilihanmu.
+    - region [ref=f1e142]:
+      - generic [ref=f1e143]:
+        - generic [ref=f1e144]:
+          - paragraph [ref=f1e145]: Metode ID3
+          - heading [level=2] [ref=f1e146]:
+            - text: Keputusan yang
+            - emphasis [ref=f1e147]: bisa ditelusuri.
+          - paragraph [ref=f1e148]:
+            - text: ID3 memilih atribut dengan
+            - emphasis [ref=f1e149]: information gain
+            - text: tertinggi untuk membentuk percabangan pohon keputusan.
+          - generic [ref=f1e150]:
+            - generic [ref=f1e151]:
+              - math "Entropy S sama dengan negatif jumlah proporsi setiap kelas dikali logaritma basis dua proporsi kelas tersebut." [ref=f1e152]:
+                - generic [ref=f1e153]: Entropy(S) =
+                - generic [ref=f1e154]:
+                  - text: − ∑
+                  - subscript [ref=f1e155]: c
+                  - text: p(c) log
+                  - subscript [ref=f1e156]: "2"
+                  - text: p(c)
+              - paragraph [ref=f1e157]: Entropy mengukur keragaman kelas dalam sekelompok data.
+            - generic [ref=f1e158]:
+              - math "Gain S A sama dengan entropy S dikurangi jumlah bobot tiap bagian data dikali entropy bagian tersebut." [ref=f1e159]:
+                - generic [ref=f1e160]: Gain(S, A) = Entropy(S)
+                - generic [ref=f1e161]:
+                  - text: − ∑
+                  - subscript [ref=f1e162]: v
+                  - text: (|S
+                  - subscript [ref=f1e163]: v
+                  - text: "| / |S|) Entropy(S"
+                  - subscript [ref=f1e164]: v
+                  - text: )
+              - paragraph [ref=f1e165]: Gain menunjukkan berkurangnya keragaman setelah data dipisahkan menurut suatu atribut.
+          - paragraph [ref=f1e166]:
+            - text: S adalah kelompok data, p(c) adalah proporsi kelas c, dan S
+            - subscript [ref=f1e167]: v
+            - text: adalah bagian data dengan nilai atribut v. Jika p(c) = 0, suku tersebut dianggap 0.
+          - heading "Kapan percabangan berhenti?" [level=3] [ref=f1e168]
+          - list [ref=f1e169]:
+            - listitem [ref=f1e170]: Seluruh data pada node memiliki kelas yang sama.
+            - listitem [ref=f1e171]: Atribut untuk memisahkan data sudah habis.
+            - listitem [ref=f1e172]: Data pada cabang habis; kelas mayoritas induk digunakan.
+        - figure "Ilustrasi, bukan pohon hasil data siswa" [ref=f1e173]:
+          - paragraph [ref=f1e174]:
+            - text: Dari atribut
+            - emphasis [ref=f1e175]: menuju rekomendasi.
+          - img "Ilustrasi struktur pohon keputusan ID3 Atribut terpilih bercabang berdasarkan nilai A dan nilai B. Cabang A memiliki atribut berikutnya, dengan daun Saintek atau Campuran. Cabang B memiliki daun Soshum. Skema ini hanya ilustrasi struktur, bukan hasil data siswa." [ref=f1e176]:
+            - generic [ref=f1e182]:
+              - generic [ref=f1e183]: Nilai A
+              - generic [ref=f1e184]: Nilai B
+            - generic [ref=f1e185]: Atribut terpilih
+            - generic [ref=f1e188]: Atribut berikutnya
+            - generic [ref=f1e191]: Soshum
+            - generic [ref=f1e194]: Saintek
+            - generic [ref=f1e197]: Campuran
+          - paragraph [ref=f1e201]: Nama node dan jalur menggambarkan struktur percabangan, bukan aturan rekomendasi yang sebenarnya.
+          - button "Putar ulang ilustrasi" [ref=f1e202] [cursor=pointer]
+    - region [ref=f1e205]:
+      - generic [ref=f1e206]:
+        - generic [ref=f1e207]:
+          - generic [ref=f1e208]:
+            - paragraph [ref=f1e209]: Panduan siswa
+            - heading [level=2] [ref=f1e210]:
+              - text: Siapkan pilihanmu,
+              - emphasis [ref=f1e211]: bicarakan bersama.
+            - paragraph [ref=f1e212]: Mulai dengan memahami minatmu dan menyiapkan informasi yang dibutuhkan.
+            - list [ref=f1e213]:
+              - listitem [ref=f1e214]:
+                - generic [aria-hidden] [ref=f1e215]: "01"
+                - paragraph [ref=f1e216]: Siapkan nilai rapor dan informasi peminatanmu.
+              - listitem [ref=f1e217]:
+                - generic [aria-hidden] [ref=f1e218]: "02"
+                - paragraph [ref=f1e219]: Minta pendampingan guru BK untuk menjalankan rekomendasi melalui panel SIMINAT.
+              - listitem [ref=f1e220]:
+                - generic [aria-hidden] [ref=f1e221]: "03"
+                - paragraph [ref=f1e222]: Baca jalur keputusan dan catat pertanyaanmu tentang hasil rekomendasi.
+              - listitem [ref=f1e223]:
+                - generic [aria-hidden] [ref=f1e224]: "04"
+                - paragraph [ref=f1e225]: Diskusikan pilihan bersama guru BK dan orang tua, sesuai minat dan rencana kuliahmu.
+          - generic [ref=f1e226]:
+            - figure "Ilustrasi dibuat dengan AI." [ref=f1e227]:
+              - img "Ilustrasi guru BK mendampingi siswi membaca catatan pilihan kuliah." [ref=f1e230]
+            - generic [ref=f1e232]:
+              - heading "Untuk Guru BK" [level=3] [ref=f1e233]
+              - paragraph [ref=f1e234]: Dampingi siswa membaca rekomendasi, lalu hubungkan dengan ketertarikan dan rencana kariernya.
+              - link "Masuk ke Panel" [ref=f1e235] [cursor=pointer]:
+                - /url: /login.php
+        - paragraph [ref=f1e238]: Rekomendasi adalah bahan pertimbangan, bukan keputusan akhir.
+  - contentinfo "Informasi dan kontak SIMINAT" [ref=f1e239]:
+    - generic [ref=f1e240]:
+      - generic [ref=f1e241]:
+        - paragraph [ref=f1e242]:
+          - text: Pilihan yang matangdimulai dari
+          - emphasis [ref=f1e243]: percakapan.
+        - link "Kembali ke beranda" [ref=f1e244] [cursor=pointer]:
+          - /url: "#beranda"
+      - generic [ref=f1e247]:
+        - generic [ref=f1e248]:
+          - link "SIMINAT, beranda" [ref=f1e249] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f1e254]:
+              - generic [ref=f1e255]: SIMINAT
+              - generic [ref=f1e256]: Kenali minat. Rencanakan masa depan.
+          - paragraph [ref=f1e257]: Pendamping diskusi pilihan kuliah untuk siswa dan guru BK.
+        - generic [ref=f1e258]:
+          - heading "Dua madrasah, satu tujuan." [level=2] [ref=f1e259]: Dua madrasah,satu tujuan.
+          - list [ref=f1e260]:
+            - listitem [ref=f1e261]:
+              - strong [ref=f1e262]: MAN 4 Matangkuli
+              - generic [ref=f1e263]: Matangkuli
+            - listitem [ref=f1e264]:
+              - strong [ref=f1e265]: MAS Al-Muslimun Lhoksukon
+              - generic [ref=f1e266]: Lhoksukon
+        - generic [ref=f1e267]:
+          - paragraph [ref=f1e268]: Ada pertanyaan?
+          - heading "Mulai percakapan dengan guru BK." [level=2] [ref=f1e269]: Mulai percakapandengan guru BK.
+          - paragraph [ref=f1e270]: Hubungi guru BK di madrasah masing-masing untuk informasi dan pendampingan.
+      - generic [ref=f1e271]:
+        - navigation "Navigasi footer" [ref=f1e272]:
+          - link "Rumpun Jurusan" [ref=f1e273] [cursor=pointer]:
+            - /url: "#rumpun"
+          - link "Cara Kerja" [ref=f1e274] [cursor=pointer]:
+            - /url: "#cara-kerja"
+          - link "Metode ID3" [ref=f1e275] [cursor=pointer]:
+            - /url: "#metode"
+          - link "Panduan" [ref=f1e276] [cursor=pointer]:
+            - /url: "#panduan"
+        - link "Kembali ke atas" [ref=f1e277] [cursor=pointer]:
+          - /url: "#beranda"
+      - paragraph [ref=f1e280]: Foto pada halaman ini merupakan ilustrasi yang dibuat dengan AI.

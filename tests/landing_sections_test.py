@@ -54,11 +54,15 @@ with sync_playwright() as p:
             page.wait_for_function('(hash) => location.hash === hash', arg='#' + section)
             if width < 1024:
                 assert not page.locator('#mobile-menu').evaluate('(d) => d.open')
-            page.wait_for_function('(id) => Math.abs(document.getElementById(id).getBoundingClientRect().top) < 4', arg=section)
+            page.wait_for_function('''(id) => {
+                const target = document.getElementById(id);
+                const top = target.getBoundingClientRect().top;
+                const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+                const header = document.querySelector('[data-header]').getBoundingClientRect();
+                return Math.abs(top - offset) < 4 && (id === 'beranda' || top >= header.bottom);
+            }''', arg=section)
+        page.locator('#beranda').scroll_into_view_if_needed()
         page.screenshot(path=str(OUT/f'landing-{width}.png'), full_page=True)
-        if width in [360,768]:
-            for name in ['rumpun','metode','panduan']:
-                page.locator('#'+name).screenshot(path=str(OUT/f'landing-section-{name}-{width}.png'), style='.skip-link:not(:focus) { visibility: hidden; }')
         sizes.append({'width':width,'overflow':False,'allMenuTargetsReached':True})
 
     page.set_viewport_size({'width':360,'height':800})
@@ -100,6 +104,17 @@ with sync_playwright() as p:
     page.locator('footer').screenshot(path=str(OUT/'landing-section-footer.png'))
     assert not errors, errors
     assert not failed_assets, failed_assets
+    visual = browser.new_page(bypass_csp=True, reduced_motion='reduce')
+    for width,height in [(360,800),(768,1024)]:
+        visual.set_viewport_size({'width':width,'height':height})
+        visual.goto(URL,wait_until='networkidle')
+        for name in ['rumpun','metode','panduan']:
+            element = visual.locator('#'+name)
+            element.scroll_into_view_if_needed()
+            for photo in element.locator('img').all():
+                photo.evaluate('(img)=>img.decode()')
+            element.screenshot(path=str(OUT/f'landing-section-{name}-{width}.png'), style='.skip-link:not(:focus) { visibility: hidden; }')
+    visual.close()
     browser.close()
     no_js = p.chromium.launch()
     static = no_js.new_page(java_script_enabled=False,viewport={'width':360,'height':800})

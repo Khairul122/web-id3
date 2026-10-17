@@ -39,6 +39,8 @@ Dokumen ini adalah rencana kerja untuk membangun web dengan PHP native dan MySQL
 
 Catatan: proposal Bab I menulis "PHP dan MySql". Folder kerja saat ini bernama `flask-id3`. Sebaiknya Batasan Masalah ditulis "PHP native dengan basis data MySQL" agar konsisten.
 
+Catatan: HyperFrames (CLI Node.js, devDependency di `package.json`) tersedia sebagai perkakas pengembangan untuk produksi video demo/promosi; tidak dipakai aplikasi saat runtime.
+
 ## 4. Data Sumber
 
 Sumber utama adalah `Dataset_Bersih_ID3.xlsx` (sheet `Data_ID3`, `Data_Numerik`, `Data_Tanpa_Label`).

@@ -39,6 +39,8 @@
   --heat-5: #1f4f86;
   --backdrop: rgba(4, 22, 37, .55);
   --shadow: 0 12px 32px rgba(4, 22, 37, .18);
+  --landing-header-shadow: 0 8px 30px rgba(4, 22, 37, .16);
+  --landing-stage-shadow: 16px 20px 0 rgba(4, 22, 37, .35);
   --base-font: 'Inter', Arial, sans-serif;
   --display-font: Georgia, 'Times New Roman', serif;
   --container: 1360px;

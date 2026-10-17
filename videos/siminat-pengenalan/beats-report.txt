@@ -1,0 +1,8 @@
+﻿assets/bgm.mp3  60.865 s
+  ÔûåÔûåÔûäÔûåÔûåÔûàÔûåÔûåÔûåÔûàÔûàÔûçÔûäÔûçÔûâÔûüÔûçÔûåÔûçÔûàÔûàÔûêÔûäÔûçÔûäÔûåÔûàÔûäÔûéÔûäÔûçÔûåÔûåÔûçÔûäÔûàÔûåÔûåÔûåÔûàÔûçÔûéÔûçÔûàÔûåÔûçÔûäÔûå
+  tempo 115 BPM
+  downbeats in 4, a guess: 0.065 1.995 4.075 6.165 8.255 10.335 12.425 14.515 16.595 18.705 20.775 22.855 +18
+  sections A 0.000ÔÇô4.605  B 4.605ÔÇô18.705  C 18.705ÔÇô34.865  D 34.865ÔÇô49.475  E 49.475ÔÇô60.865; 4/4 snapped to signal beats, median 135 ms
+  ! beats: used signal; api unavailable (HYPERFRAMES_AUDIO_API_URL is not set); apple-mu unavailable (macOS only); beat-this unavailable (HYPERFRAMES_BEAT_THIS_PYTHON is not set)
+  ! downbeats: used signal; api unavailable (HYPERFRAMES_AUDIO_API_URL is not set); apple-mu unavailable (macOS only); beat-this unavailable (HYPERFRAMES_BEAT_THIS_PYTHON is not set)
+  ! sections: used signal; api unavailable (HYPERFRAMES_AUDIO_API_URL is not set); apple-mu unavailable (macOS only)

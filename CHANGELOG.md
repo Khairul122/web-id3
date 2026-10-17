@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-17 (perkakas video HyperFrames)
+
+- HyperFrames CLI dipasang sebagai devDependency (`package.json`, `package-lock.json`); `node_modules/` diabaikan Git. Aplikasi PHP tidak berubah dan tetap tanpa Node saat dibuka.
+- Sepuluh core skills HyperFrames terpasang lewat `npx hyperframes skills update` untuk OpenCode dan agent lain (`~/.config/opencode/skills`, `~/.claude/skills`, `~/.agents/skills`); workflow pembuatan video lain dipasang sesuai kebutuhan.
+- Prasyarat terverifikasi dengan `npx hyperframes doctor`: Node 24, FFmpeg 9, Chrome. Preview komposisi: `npx hyperframes preview`; render MP4: `npx hyperframes render`.
+
+## 2026-10-17 (section landing)
+
+- Implementasi docs/plan-landing-sections.md: Rumpun Jurusan, Cara Kerja, Metode ID3, Panduan, dan footer.
+- Navigasi dan CTA hero menuju section; menu ponsel menutup saat tautan dipilih dan memindahkan fokus ke bagian tujuan. Dialog informasi lama dihapus.
+- Halaman umum hanya memuat penjelasan; ringkasan model aktif dan hasil penelitian dihapus dari landing.
+- Dua foto baru dibuat dengan GPT Image, tersedia sebagai WebP responsif 768/1536 px. Skema pohon ilustratif berupa SVG dan rumus berupa teks HTML.
+- Pengujian landing mencakup tujuh viewport, native anchors, keyboard, reduced motion, gambar, dan akses tanpa JavaScript. Tes autentikasi diperbarui untuk memeriksa tautan section.
+
 ## 2026-10-17 (gambar pohon)
 
 - Pohon keputusan dibuat otomatis sebagai gambar SVG (`app/services/TreeImage.php`, rute `admin/training/pohon?id=`), tampil di detail model dan laporan cetak, dengan unduhan SVG dan PNG.

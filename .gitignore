@@ -3,3 +3,5 @@
 !/storage/logs/.gitkeep
 /output/
 __pycache__/
+/node_modules/
+npm-debug.log*

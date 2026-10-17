@@ -1,6 +1,6 @@
 # Rencana: Section Tambahan Landing Page
 
-Status: rencana, belum dikerjakan. Antislop diterapkan selama pengerjaan dan ditutup dengan Delivery Gate.
+Status: selesai diimplementasikan. Antislop diterapkan selama pengerjaan; hasil verifikasi dan Delivery Gate dicatat di docs/landing-validation.md. Foto tambahan pada Rumpun Jurusan dan Panduan dibuat menggunakan GPT Image sesuai permintaan pengguna.
 
 Design Read: landing informasi publik untuk siswa XII, orang tua, dan guru BK, gaya editorial institusi pendidikan yang meneruskan hero (navy, ivory, satu aksen kuning, judul Georgia, teks Inter lokal). Dial ENERGY 2 / RHYTHM 2 / MOTION 1.
 

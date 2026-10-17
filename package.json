@@ -1,0 +1,9 @@
+{
+  "name": "web-id3",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Perkakas pengembangan projek SIMINAT web-id3 — HyperFrames CLI untuk produksi video dari HTML.",
+  "devDependencies": {
+    "hyperframes": "^0.8.167"
+  }
+}

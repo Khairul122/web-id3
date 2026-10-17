@@ -18,11 +18,22 @@ Referensi pengguna menjadi acuan foto layar penuh, hierarki judul di kiri, navig
 
 ## Perilaku
 
-Satu section hero. Semua menu selain Beranda membuka dialog penjelasan. Tombol utama membuka pengenalan Saintek, Soshum, dan Campuran, bukan prediksi. Dialog menjelaskan fitur klasifikasi masih dalam pengembangan.
+Halaman publik kini terdiri dari hero, Rumpun Jurusan, Cara Kerja, Metode ID3, Panduan, dan footer sesuai docs/plan-landing-sections.md. Tombol hero menuju #rumpun dan #cara-kerja. Navigasi desktop serta ponsel memakai tautan ke section yang tersedia; Masuk/Panel Saya tetap menuju halaman akun.
 
-Menu mobile menggunakan dialog native, tertutup dengan Escape, tombol tutup, atau backdrop. Dialog informasi mengembalikan fokus ke pemicu; bila berasal dari menu mobile, fokus kembali ke tombol menu. Tidak ada pemuatan API sehingga state loading/error data tidak diperlukan. Tanpa JavaScript, tampil pemberitahuan.
+Menu mobile menggunakan dialog native, tertutup dengan Escape, tombol tutup, backdrop, atau pemilihan tautan. Fokus dikunci selama menu terbuka; pemilihan tautan mengarahkan fokus ke section tujuan. Dialog informasi dan template lama dihapus. Penjelasan umum dapat dibaca tanpa JavaScript, dengan navigasi alternatif pada noscript.
 
-Implementasi: PHP native, CSS variables, vanilla JavaScript, ikon SVG lokal, dan font lokal. Tidak memerlukan database, Composer, npm, atau koneksi internet saat dibuka.
+Implementasi: PHP native, CSS variables, vanilla JavaScript, ikon SVG lokal, dan font lokal. Section publik berisi penjelasan umum tanpa meminta data siswa, jumlah data, atau hasil model. Login dan panel tetap menggunakan autentikasi yang sudah tersedia. Tidak ada Composer, npm, atau CDN yang dibutuhkan saat halaman dibuka.
+
+## Section tambahan
+
+- Rumpun Jurusan: dua kolom, pengantar dan foto di kiri, tiga definisi bergaris di kanan. Baris definisi digunakan karena pembaca perlu membandingkan rumpun, bukan membuka kartu fitur.
+- Cara Kerja: empat tahap sesuai alur sistem. Nomor Georgia besar mempertahankan motif editorial; penghubung horizontal menjadi vertikal pada ponsel.
+- Metode ID3: latar navy menandai bagian teknis. Rumus Entropy dan Gain berupa HTML dengan minus U+2212, dilengkapi tiga kriteria berhenti sesuai docs/verifikasi-metode.md. Diagram SVG statis diberi label ilustrasi, bukan hasil data siswa.
+- Panduan: daftar tindakan siswa dan blok guru BK dengan CTA ke akun. Foto pendampingan memperlihatkan konteks diskusi. Ukuran judul dan label pohon disesuaikan untuk ponsel agar tetap terbaca.
+- Footer: identitas, madrasah, dan ajakan menghubungi guru BK memakai tiga kelompok berbeda. Tautan kembali menuju section; tidak menambahkan email atau telepon yang belum diberikan.
+- Latar ivory/paper menjaga keterbacaan teks panjang; warna gold-ink dipakai untuk teks aksen pada latar terang. Seluruh warna memakai token yang sudah ada. Radius foto 3px dan tanpa shadow tambahan.
+
+Konsep setiap section dibuat terpisah dengan GPT Image sebelum implementasi, lalu diterjemahkan menjadi HTML/CSS. Konsep disimpan di docs/visuals/landing/. Foto yang dipakai pada halaman dibuat sebagai aset standalone, bukan potongan gambar UI. Daftar aset dan prompt: docs/landing-image-prompts.md. Hasil pengujian: docs/landing-validation.md.
 
 ## Aset GPT Image
 
