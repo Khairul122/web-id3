@@ -1,0 +1,203 @@
+<!-- SIMINAT landing — visible text (innerText), http://web-id3.test/ — captured 2026-10-17 via Playwright -->
+
+Lewati ke konten
+
+MAN 4 Matangkuli / MAS Al-Muslimun Lhoksukon
+
+Sistem pendukung bimbingan karier
+
+SIMINAT
+KENALI MINAT. RENCANAKAN MASA DEPAN.
+Beranda
+Rumpun Jurusan
+Cara Kerja
+Metode ID3
+Panduan
+Masuk
+
+DARI RUANG KELAS, MENUJU MASA DEPAN
+
+Kenali Minatmu.
+Temukan
+Arah Kuliahmu.
+
+Langkah awal mengenali rumpun jurusan kuliah
+melalui nilai rapor dan peminatanmu.
+
+Kenali Rumpun Jurusan
+Bagaimana cara kerjanya?
+Jelajahi pilihanmu
+Berangkat dari Nilai Rapor
+
+Nilai rapor dan peminatan menjadi
+dasar untuk mengenali rumpun jurusan.
+
+Metode ID3 yang Terbuka
+
+Pelajari bagaimana pohon keputusan
+membentuk hasil klasifikasi.
+
+Diskusi Bersama Guru BK
+
+Kenali pilihanmu sebagai bahan diskusi
+untuk merencanakan langkah berikutnya.
+
+SIMINAT · Klasifikasi Minat Jurusan Kuliah
+
+RUMPUN JURUSAN
+
+Kenali bidangnya.
+Temukan minatmu.
+
+Setiap rumpun membuka banyak pilihan. Mulailah dengan memahami bidang yang ingin kamu pelajari.
+
+Mulai dari rasa ingin tahu.
+
+01
+Saintek
+Sains dan teknologi
+
+Matematika, ilmu alam, informatika, dan bidang teknologi.
+
+02
+Soshum
+Sosial dan humaniora
+
+Ekonomi, ilmu sosial, bahasa, dan humaniora.
+
+03
+Campuran
+Pilihan lintas rumpun
+
+Pilihan yang mencakup bidang Saintek dan Soshum.
+
+Contoh bidang di atas membantu mengenali pilihan, tanpa membatasi ketertarikanmu pada bidang lain.
+
+CARA KERJA
+
+Dari nilai rapor
+ke bahan diskusi.
+
+Kenali alur pengolahan sebelum membaca rekomendasinya.
+
+01
+Data siswa
+
+Siapkan nilai rapor dan informasi peminatan sebagai masukan untuk sistem.
+
+02
+Kategori nilai
+
+Nilai diubah menjadi kategori sesuai aturan diskretisasi yang digunakan sistem.
+
+03
+Pohon ID3
+
+Sistem menelusuri cabang pohon keputusan berdasarkan atribut siswa.
+
+04
+Diskusi hasil
+
+Baca rekomendasi dan jalur keputusannya bersama guru BK untuk memahami dasar hasilnya.
+
+Hasil menjadi bahan percakapan bersama guru BK.
+Kenali dasarnya, lalu pertimbangkan pilihanmu.
+
+METODE ID3
+
+Keputusan yang
+bisa ditelusuri.
+
+ID3 memilih atribut dengan information gain tertinggi untuk membentuk percabangan pohon keputusan.
+
+Entropy(S) =
+− ∑c p(c) log2 p(c)
+
+Entropy mengukur keragaman kelas dalam sekelompok data.
+
+Gain(S, A) = Entropy(S)
+− ∑v (|Sv| / |S|) Entropy(Sv)
+
+Gain menunjukkan berkurangnya keragaman setelah data dipisahkan menurut suatu atribut.
+
+S adalah kelompok data, p(c) adalah proporsi kelas c, dan Sv adalah bagian data dengan nilai atribut v. Jika p(c) = 0, suku tersebut dianggap 0.
+
+Kapan percabangan berhenti?
+Seluruh data pada node memiliki kelas yang sama.
+Atribut untuk memisahkan data sudah habis.
+Data pada cabang habis; kelas mayoritas induk digunakan.
+
+Dari atribut
+menuju rekomendasi.
+
+Nilai A
+Nilai B
+Atribut terpilih
+Atribut berikutnya
+Soshum
+Saintek
+Campuran
+Ilustrasi, bukan pohon hasil data siswa
+
+Nama node dan jalur menggambarkan struktur percabangan, bukan aturan rekomendasi yang sebenarnya.
+
+Putar ulang ilustrasi
+
+PANDUAN SISWA
+
+Siapkan pilihanmu,
+bicarakan bersama.
+
+Mulai dengan memahami minatmu dan menyiapkan informasi yang dibutuhkan.
+
+01
+
+Siapkan nilai rapor dan informasi peminatanmu.
+
+02
+
+Minta pendampingan guru BK untuk menjalankan rekomendasi melalui panel SIMINAT.
+
+03
+
+Baca jalur keputusan dan catat pertanyaanmu tentang hasil rekomendasi.
+
+04
+
+Diskusikan pilihan bersama guru BK dan orang tua, sesuai minat dan rencana kuliahmu.
+
+Untuk Guru BK
+
+Dampingi siswa membaca rekomendasi, lalu hubungkan dengan ketertarikan dan rencana kariernya.
+
+Masuk ke Panel
+
+Rekomendasi adalah bahan pertimbangan, bukan keputusan akhir.
+
+Pilihan yang matang
+dimulai dari percakapan.
+
+SIMINAT
+KENALI MINAT. RENCANAKAN MASA DEPAN.
+
+Pendamping diskusi pilihan kuliah untuk siswa dan guru BK.
+
+Dua madrasah,
+satu tujuan.
+MAN 4 Matangkuli
+Matangkuli
+MAS Al-Muslimun Lhoksukon
+Lhoksukon
+
+ADA PERTANYAAN?
+
+Mulai percakapan
+dengan guru BK.
+
+Hubungi guru BK di madrasah masing-masing untuk informasi dan pendampingan.
+
+Rumpun Jurusan
+Cara Kerja
+Metode ID3
+Panduan
+Kembali ke atas

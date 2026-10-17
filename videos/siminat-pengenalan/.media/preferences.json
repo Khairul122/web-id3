@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "preferences": {
+    "aspect": {
+      "value": "1920x1080",
+      "confirmed_in": [
+        "siminat-pengenalan"
+      ],
+      "updated_at": "2026-10-17T07:00:03.588Z"
+    },
+    "language": {
+      "value": "id",
+      "confirmed_in": [
+        "siminat-pengenalan"
+      ],
+      "updated_at": "2026-10-17T07:00:03.663Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "siminat-pengenalan"
+      ],
+      "updated_at": "2026-10-17T07:00:03.732Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "siminat-pengenalan"
+      ],
+      "updated_at": "2026-10-17T07:00:03.802Z"
+    },
+    "style_preset.product-launch-video": {
+      "value": "biennale-yellow",
+      "confirmed_in": [
+        "siminat-pengenalan"
+      ],
+      "updated_at": "2026-10-17T07:00:03.969Z"
+    }
+  },
+  "sightings": {}
+}
