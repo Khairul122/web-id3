@@ -1,0 +1,1 @@
+[  205465ms] [ERROR] Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-Dod54iLNGRDX5p1p+SwQ1AUDQoPLezeYQ9adWuE24so='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked. @ :0

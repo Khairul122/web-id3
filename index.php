@@ -79,7 +79,7 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
           <div><h2>Diskusi Bersama Guru BK</h2><p>Kenali pilihanmu sebagai bahan diskusi<br class="desktop-break"> untuk merencanakan langkah berikutnya.</p></div>
         </article>
       </div>
-      <div class="hero__credit container"><span>SIMINAT · Klasifikasi Minat Jurusan Kuliah</span><span>Visual ilustrasi dibuat dengan AI</span></div>
+      <div class="hero__credit container"><span>SIMINAT · Klasifikasi Minat Jurusan Kuliah</span></div>
     </div>
   </section>
   <section class="landing-section section--ivory" id="rumpun" aria-labelledby="rumpun-title" tabindex="-1">
@@ -90,7 +90,6 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <p class="section-intro">Setiap rumpun membuka banyak pilihan. Mulailah dengan memahami bidang yang ingin kamu pelajari.</p>
         <figure class="editorial-photo">
           <div class="editorial-photo__frame"><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/jelajah-rumpun-ai.webp" srcset="assets/img/landing/jelajah-rumpun-ai-768.webp 768w, assets/img/landing/jelajah-rumpun-ai.webp 1536w" sizes="(min-width: 768px) 44vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi dua siswa madrasah membaca panduan bidang studi bersama di perpustakaan."></div><p class="photo-caption">Mulai dari rasa ingin tahu.</p></div>
-          <figcaption>Ilustrasi dibuat dengan AI.</figcaption>
         </figure>
       </div>
       <div class="rumpun-details">
@@ -185,7 +184,6 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
         <div class="teacher-guide">
           <figure class="editorial-photo">
             <div class="editorial-photo__frame"><div class="photo-window"><img data-parallax="photo" src="assets/img/landing/pendampingan-guru-ai.webp" srcset="assets/img/landing/pendampingan-guru-ai-768.webp 768w, assets/img/landing/pendampingan-guru-ai.webp 1536w" sizes="(min-width: 768px) 38vw, 100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Ilustrasi guru BK mendampingi siswi membaca catatan pilihan kuliah."></div></div>
-            <figcaption>Ilustrasi dibuat dengan AI.</figcaption>
           </figure>
           <div class="teacher-guide__content"><h3>Untuk Guru BK</h3>
           <p>Dampingi siswa membaca rekomendasi, lalu hubungkan dengan ketertarikan dan rencana kariernya.</p>
@@ -206,7 +204,6 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
       <div class="footer-contact"><p class="section-eyebrow">Ada pertanyaan?</p><h2>Mulai percakapan<br>dengan guru BK.</h2><p>Hubungi guru BK di madrasah masing-masing untuk informasi dan pendampingan.</p></div>
     </div>
     <div class="footer-navigation"><nav aria-label="Navigasi footer"><a href="#rumpun">Rumpun Jurusan</a><a href="#cara-kerja">Cara Kerja</a><a href="#metode">Metode ID3</a><a href="#panduan">Panduan</a></nav><a class="back-to-top" href="#beranda">Kembali ke atas <?= icon('arrow') ?></a></div>
-    <p class="footer-disclosure">Foto pada halaman ini merupakan ilustrasi yang dibuat dengan AI.</p>
   </div>
 </footer>
 
