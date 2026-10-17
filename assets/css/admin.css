@@ -276,3 +276,4 @@ details[open] > summary .tree-node__toggle::after { content: '−'; }
 .admin-content > * + * { margin-top: 20px; }
 .admin-content > .page-head + * { margin-top: 0; }
 .admin-content > .stat-grid { margin-bottom: 0; }
+.tree { overflow-x: auto; padding-bottom: 4px; }

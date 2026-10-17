@@ -53,8 +53,18 @@ function tree_html(array $node, ?string $edge = null, int $depth = 0, bool $open
             . '<small>' . ($empty ? 'cabang tanpa data, mayoritas induk' : e($node['jumlah'] . ' data: ' . distribution_text($node['distribusi']))) . '</small></span></li>';
     }
     $children = '';
+    $empty = [];
     foreach ($node['cabang'] as $value => $child) {
+        if (!empty($child['kosong'])) {
+            $empty[] = (string) $value;
+            continue;
+        }
         $children .= tree_html($child, (string) $value, $depth + 1, $openAll);
+    }
+    // Cabang tanpa data digabung satu baris agar pohon tetap terbaca; semuanya memakai mayoritas node ini.
+    if ($empty) {
+        $children .= '<li><span class="tree-edge">' . e(implode(', ', $empty)) . '</span><span class="tree-leaf tree-leaf--empty">' . badge(Id3::majority($node['distribusi']))
+            . '<small>cabang tanpa data, memakai mayoritas node</small></span></li>';
     }
     return '<li>' . $edgeHtml . '<details' . ($openAll || $depth < 2 ? ' open' : '') . '><summary><span class="tree-node"><span class="tree-node__toggle" aria-hidden="true"></span><strong>'
         . e($node['atribut']) . '</strong><small>' . e($node['jumlah'] . ' data · entropy ' . num($node['entropy'], 4)) . '</small></span></summary><ul>' . $children . '</ul></details></li>';

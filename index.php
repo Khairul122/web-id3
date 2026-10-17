@@ -4,6 +4,20 @@ declare(strict_types=1);
 require __DIR__ . '/app/core/bootstrap.php';
 $accountUrl = url(Auth::isSignedIn() ? 'admin/' : 'login.php');
 $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
+// Ringkasan model aktif untuk dialog Metode ID3. Halaman tetap tampil bila database belum siap.
+$modelSummary = '';
+try {
+    $model = ModelId3::active();
+    $evaluation = $model ? Evaluasi::latestForModel((int) $model['id']) : null;
+    if ($model) {
+        $modelSummary = 'Model aktif saat ini dilatih dari ' . (int) $model['jumlah_data'] . ' data siswa berlabel ('
+            . strtolower(ModelId3::SCENARIOS[$model['skenario']] ?? $model['skenario']) . ') dengan akar pohon '
+            . ($model['tree']['atribut'] ?? $model['tree']['kelas']) . '.'
+            . ($evaluation ? ' Pada pengujian ' . (int) $evaluation['k'] . '-fold cross validation, akurasinya ' . pct($evaluation['akurasi']) . ' dan F1 macro ' . pct($evaluation['f1_macro']) . '.' : '');
+    }
+} catch (Throwable $exception) {
+    error_log('Ringkasan model beranda: ' . $exception->getMessage());
+}
 ?>
 <!doctype html>
 <html lang="id">
@@ -95,11 +109,11 @@ $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
   <button class="button button--dialog" type="button" data-close>Kembali ke beranda</button>
 </dialog>
 
-<template id="content-tentang"><h2 id="dialog-title">Mengenal SIMINAT</h2><p>SIMINAT adalah proyek sistem klasifikasi minat jurusan kuliah untuk siswa kelas XII MAN 4 Matangkuli dan MAS Al-Muslimun Lhoksukon.</p><p>Sistem ini dirancang menggunakan nilai rapor dan peminatan untuk mengenali rumpun Saintek, Soshum, atau Campuran melalui algoritma ID3.</p><p>Hasilnya menjadi bahan pertimbangan bersama guru BK. Pilihan akhir tetap mempertimbangkan minat, tujuan, dan kondisi masing-masing siswa.</p></template>
-<template id="content-metode"><h2 id="dialog-title">Bagaimana ID3 bekerja?</h2><p>ID3 membentuk pohon keputusan dari data siswa yang sudah memiliki label rumpun jurusan.</p><ol><li>Nilai rapor diubah menjadi kategori sesuai aturan diskretisasi.</li><li>Entropy dan information gain dihitung untuk memilih atribut pemisah.</li><li>Pohon keputusan ditelusuri menggunakan atribut siswa untuk menghasilkan klasifikasi.</li></ol><p>Jalur keputusan direncanakan tampil bersama hasil agar dasar klasifikasi dapat ditinjau.</p></template>
-<template id="content-panduan"><h2 id="dialog-title">Mulai dari mengenali dirimu</h2><ol><li>Kenali perbedaan rumpun Saintek, Soshum, dan Campuran.</li><li>Siapkan nilai rapor serta informasi peminatanmu.</li><li>Diskusikan pilihan jurusan dengan guru BK dan orang tua.</li></ol><p class="info-dialog__notice">Fitur klasifikasi berdasarkan nilai rapor akan tersedia pada tahap pengembangan berikutnya.</p></template>
-<template id="content-guru"><h2 id="dialog-title">Untuk Guru Bimbingan Konseling</h2><p>SIMINAT dirancang untuk mendukung percakapan tentang pilihan kuliah melalui nilai rapor, peminatan, dan jalur keputusan yang dapat ditinjau.</p><p>Gunakan klasifikasi sebagai bahan diskusi bersama siswa, dengan tetap memperhatikan ketertarikan dan rencana karier mereka.</p><p class="info-dialog__notice">Panel pengelolaan data dan rekomendasi masih dalam tahap pengembangan.</p></template>
-<template id="content-rumpun"><h2 id="dialog-title">Kenali rumpun jurusanmu</h2><dl class="rumpun-list"><div><dt>Saintek</dt><dd>Rumpun sains dan teknologi, seperti matematika, ilmu alam, dan informatika.</dd></div><div><dt>Soshum</dt><dd>Rumpun sosial dan humaniora, seperti ekonomi, ilmu sosial, dan bahasa.</dd></div><div><dt>Campuran</dt><dd>Kategori dalam dataset untuk pilihan yang mencakup rumpun Saintek dan Soshum.</dd></div></dl><p class="info-dialog__notice">Fitur klasifikasi berdasarkan nilai rapor akan tersedia pada tahap berikutnya. Saat ini, kamu dapat mengenali rumpun jurusan terlebih dahulu.</p></template>
-<noscript><p class="noscript-notice">Aktifkan JavaScript untuk membuka menu dan penjelasan. SIMINAT merupakan proyek klasifikasi rumpun jurusan dengan ID3. Fitur rekomendasi masih dalam pengembangan.</p></noscript>
+<template id="content-tentang"><h2 id="dialog-title">Mengenal SIMINAT</h2><p>SIMINAT adalah proyek sistem klasifikasi minat jurusan kuliah untuk siswa kelas XII MAN 4 Matangkuli dan MAS Al-Muslimun Lhoksukon.</p><p>Sistem ini menggunakan nilai rapor dan peminatan untuk mengenali rumpun Saintek, Soshum, atau Campuran melalui algoritma ID3.</p><p>Hasilnya menjadi bahan pertimbangan bersama guru BK. Pilihan akhir tetap mempertimbangkan minat, tujuan, dan kondisi masing-masing siswa.</p></template>
+<template id="content-metode"><h2 id="dialog-title">Bagaimana ID3 bekerja?</h2><p>ID3 membentuk pohon keputusan dari data siswa yang sudah memiliki label rumpun jurusan.</p><ol><li>Nilai rapor diubah menjadi kategori sesuai aturan diskretisasi.</li><li>Entropy dan information gain dihitung untuk memilih atribut pemisah.</li><li>Pohon keputusan ditelusuri menggunakan atribut siswa untuk menghasilkan klasifikasi.</li></ol><p>Jalur keputusan ditampilkan bersama hasil agar dasar klasifikasi dapat ditinjau.</p><?php if ($modelSummary !== ''): ?><p class="info-dialog__notice"><?= e($modelSummary) ?></p><?php endif; ?></template>
+<template id="content-panduan"><h2 id="dialog-title">Mulai dari mengenali dirimu</h2><ol><li>Kenali perbedaan rumpun Saintek, Soshum, dan Campuran.</li><li>Siapkan nilai rapor serta informasi peminatanmu.</li><li>Minta guru BK menjalankan Cek Rekomendasi di panel SIMINAT, lalu diskusikan hasil dan jalur keputusannya bersama orang tua.</li></ol><p class="info-dialog__notice">Hasil SIMINAT adalah rekomendasi, bukan keputusan akhir.</p></template>
+<template id="content-guru"><h2 id="dialog-title">Untuk Guru Bimbingan Konseling</h2><p>SIMINAT dirancang untuk mendukung percakapan tentang pilihan kuliah melalui nilai rapor, peminatan, dan jalur keputusan yang dapat ditinjau.</p><p>Gunakan klasifikasi sebagai bahan diskusi bersama siswa, dengan tetap memperhatikan ketertarikan dan rencana karier mereka.</p><p class="info-dialog__notice">Masuk ke panel untuk mengelola data siswa, melatih dan menguji model, serta menjalankan Cek Rekomendasi.</p></template>
+<template id="content-rumpun"><h2 id="dialog-title">Kenali rumpun jurusanmu</h2><dl class="rumpun-list"><div><dt>Saintek</dt><dd>Rumpun sains dan teknologi, seperti matematika, ilmu alam, dan informatika.</dd></div><div><dt>Soshum</dt><dd>Rumpun sosial dan humaniora, seperti ekonomi, ilmu sosial, dan bahasa.</dd></div><div><dt>Campuran</dt><dd>Kategori dalam dataset untuk pilihan yang mencakup rumpun Saintek dan Soshum.</dd></div></dl><p class="info-dialog__notice">Rekomendasi rumpun berdasarkan nilai rapor dijalankan oleh guru BK melalui panel SIMINAT, lengkap dengan jalur keputusannya.</p></template>
+<noscript><p class="noscript-notice">Aktifkan JavaScript untuk membuka menu dan penjelasan. SIMINAT mengklasifikasikan minat rumpun jurusan kuliah dengan algoritma ID3. Rekomendasi dijalankan oleh guru BK melalui panel.</p></noscript>
 </body>
 </html>

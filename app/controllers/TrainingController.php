@@ -23,6 +23,21 @@ final class TrainingController extends Controller
         ]);
     }
 
+    /** Gambar pohon keputusan (SVG). ?id=…&unduh=1 untuk mengunduh. */
+    public function pohon(): void
+    {
+        $model = ModelId3::find(query_int('id')) ?? $this->notFound('training/', 'Model yang dipilih tidak tersedia.');
+        $evaluation = Evaluasi::latestForModel((int) $model['id']);
+        $subtitle = (ModelId3::SCENARIOS[$model['skenario']] ?? $model['skenario']) . ' · ' . $model['jumlah_data'] . ' data latih · '
+            . count(ModelId3::rules((int) $model['id'])) . ' aturan · akurasi latih ' . pct($model['akurasi_latih'])
+            . ($evaluation ? ' · akurasi ' . $evaluation['k'] . '-fold ' . pct($evaluation['akurasi']) : '');
+        header('Content-Type: image/svg+xml; charset=utf-8');
+        if (query('unduh') === '1') {
+            header('Content-Disposition: attachment; filename="pohon-id3-model-' . (int) $model['id'] . '.svg"');
+        }
+        echo TreeImage::svg($model['tree'], 'Pohon Keputusan ID3 · ' . $model['nama'], $subtitle);
+    }
+
     /** Langkah 1: konfigurasi skenario, atribut, dan pruning. */
     public function form(): void
     {

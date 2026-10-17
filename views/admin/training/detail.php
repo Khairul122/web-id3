@@ -21,7 +21,7 @@
 
 <div class="stat-grid">
   <div class="stat"><span class="stat__label">Data latih</span><span class="stat__value"><?= (int) $model['jumlah_data'] ?></span><span class="stat__note"><?= e(distribution_text($model['tree']['distribusi'])) ?></span></div>
-  <div class="stat"><span class="stat__label">Node / daun</span><span class="stat__value"><?= (int) $model['jumlah_node'] ?>/<?= (int) $model['jumlah_daun'] ?></span><span class="stat__note">Kedalaman <?= (int) $model['kedalaman'] ?></span></div>
+  <div class="stat"><span class="stat__label">Node / daun</span><span class="stat__value"><?= (int) $model['jumlah_node'] ?>/<?= (int) $model['jumlah_daun'] ?></span><span class="stat__note">Kedalaman <?= (int) $model['kedalaman'] ?> · <?= count($rules) ?> daun berisi data</span></div>
   <div class="stat"><span class="stat__label">Akurasi latih</span><span class="stat__value"><?= e(pct($model['akurasi_latih'])) ?></span><span class="stat__note">Prediksi data latih sendiri</span></div>
   <div class="stat"><span class="stat__label">Akurasi uji</span><span class="stat__value"><?= $evaluation ? e(pct($evaluation['akurasi'])) : '-' ?></span><span class="stat__note"><?= $evaluation ? e($evaluation['k'] . '-fold cross validation') : 'Belum diuji' ?></span></div>
 </div>

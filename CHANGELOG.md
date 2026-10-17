@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-17 (persiapan dibagikan)
+
+- Teks landing diperbarui: tidak lagi menyebut fitur klasifikasi "dalam pengembangan"; dialog Metode ID3 menampilkan ringkasan model aktif dari database.
+- Pohon keputusan: cabang tanpa data digabung satu baris per node; jumlah daun berisi data ditampilkan.
+- Nilai mapel mengikuti urutan legger; pohon pada halaman cetak dapat digulir di ponsel.
+
+## 2026-10-17 (verifikasi metode)
+
+- Mesin ID3 disesuaikan dengan kriteria berhenti proposal: aturan berhenti saat gain 0 dihapus.
+- Verifikasi independen `tests/verify_id3_dataset.py` (Python, langsung dari Excel) lulus untuk 4 skenario.
+- Data diolah dengan `scripts/proses_penelitian.php`: 4 model, 4 pengujian 5-fold, model aktif skenario Saintek dan Soshum, prediksi massal 100 siswa.
+- Laporan kesesuaian metode dan data: `docs/verifikasi-metode.md`.
+
 ## 2026-10-17 (panel admin)
 
 - Panel admin berstruktur MVC + service: front controller `admin/index.php` (URL `/admin/{modul}/{aksi}`), controller di `app/controllers`, logika di `app/services`, query di `app/models`, tampilan di `views/admin/{modul}/index.php, form.php, review.php, detail.php`.

@@ -79,7 +79,9 @@ final class Siswa
             return null;
         }
         $row['nilai'] = Database::run('SELECT * FROM nilai_rata WHERE siswa_id = ?', [$id])->fetch() ?: null;
-        $row['mapel'] = array_column(Database::run('SELECT kode_mapel, nilai FROM nilai_mapel WHERE siswa_id = ?', [$id])->fetchAll(), 'nilai', 'kode_mapel');
+        $mapel = array_column(Database::run('SELECT kode_mapel, nilai FROM nilai_mapel WHERE siswa_id = ?', [$id])->fetchAll(), 'nilai', 'kode_mapel');
+        // Urutan kolom mengikuti legger sekolah.
+        $row['mapel'] = array_intersect_key(array_replace(array_flip(Importer::SUBJECTS), $mapel), $mapel);
         $row['atribut'] = self::attributeMap([$id])[$id] ?? [];
         return $row;
     }

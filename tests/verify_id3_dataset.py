@@ -137,7 +137,6 @@ def main():
         if ids != sorted(out['kode_siswa']):
             problems.append('himpunan data latih berbeda dengan Excel')
         rows = [data[i] for i in ids]
-        mismatch = sum(1 for i in out['kode_siswa'] if data[i]['x'] != data[i]['x'])
         steps = []
         tree = build(rows, attrs, domains, steps)
         compare(tree, out['tree'], 'Akar', problems)
