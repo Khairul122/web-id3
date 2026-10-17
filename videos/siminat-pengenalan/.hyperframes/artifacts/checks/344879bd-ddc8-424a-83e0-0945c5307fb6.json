@@ -1,0 +1,2097 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": true,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 126,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-bg\" starts with a digit, so the common selector `#01-cover-bg` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-bg",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-halo\" starts with a digit, so the common selector `#01-cover-halo` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-halo",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-sun\" starts with a digit, so the common selector `#01-cover-sun` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-sun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-ember\" starts with a digit, so the common selector `#01-cover-ember` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-ember",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-brand\" starts with a digit, so the common selector `#01-cover-brand` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-brand",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-glow\" starts with a digit, so the common selector `#01-cover-glow` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-glow",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-logo\" starts with a digit, so the common selector `#01-cover-logo` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-logo",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-eyebrow\" starts with a digit, so the common selector `#01-cover-eyebrow` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-eyebrow",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-display\" starts with a digit, so the common selector `#01-cover-display` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-display",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-line-1\" starts with a digit, so the common selector `#01-cover-line-1` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-line-1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-line-2\" starts with a digit, so the common selector `#01-cover-line-2` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-line-2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-footer\" starts with a digit, so the common selector `#01-cover-footer` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-footer",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-cell-1\" starts with a digit, so the common selector `#01-cover-cell-1` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-cell-1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-cell-2\" starts with a digit, so the common selector `#01-cover-cell-2` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-cell-2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-cell-3\" starts with a digit, so the common selector `#01-cover-cell-3` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-cell-3",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-cell-4\" starts with a digit, so the common selector `#01-cover-cell-4` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-cell-4",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"01-cover-pagenum\" starts with a digit, so the common selector `#01-cover-pagenum` throws a SyntaxError in querySelector().",
+        "selector": "#01-cover-pagenum",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-bg\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-bg\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-bg` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-halo\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-halo\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-halo` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-sun\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-sun\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-sun` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-ember\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-ember\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-ember` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-brand\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-brand\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-brand` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-glow\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-glow\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-glow` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-display\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-display\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-display` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-footer\"]\" sets left/right/bottom through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-footer\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-footer` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"#root [id=\"01-cover-pagenum\"]\" sets right/bottom through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "#root [id=\"01-cover-pagenum\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 1-cover-pagenum` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "gsap_non_transform_motion",
+        "severity": "error",
+        "message": "GSAP tween on \"__unresolved__\" uses motion that snaps to integer device pixels: letterSpacing. Layout and text-reflow properties snap during browser layout; roundProps rounds the tween value. Slow motion or an ease-out tail then stutters under the seek-by-frame capture engine. Animate transforms (x/y/scale/opacity) instead.",
+        "selector": "__unresolved__",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\01-cover.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "do not animate letterSpacing (they reflow text and snap glyph positions): for letterSpacing, split the text into per-character elements and animate each glyph's x (the spread), since uniform scale is NOT equivalent, or hold the final value statically. Transforms interpolate sub-pixel and stay smooth at any speed."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-bg\" starts with a digit, so the common selector `#02-masalah-bg` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-bg",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-sun\" starts with a digit, so the common selector `#02-masalah-sun` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-sun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-ember\" starts with a digit, so the common selector `#02-masalah-ember` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-ember",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-stage\" starts with a digit, so the common selector `#02-masalah-stage` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-stage",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-slot\" starts with a digit, so the common selector `#02-masalah-slot` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-slot",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-word\" starts with a digit, so the common selector `#02-masalah-word` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-word",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-q\" starts with a digit, so the common selector `#02-masalah-q` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-q",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-question\" starts with a digit, so the common selector `#02-masalah-question` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-question",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-rule\" starts with a digit, so the common selector `#02-masalah-rule` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-rule",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-small\" starts with a digit, so the common selector `#02-masalah-small` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-small",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-small-text\" starts with a digit, so the common selector `#02-masalah-small-text` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-small-text",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"02-masalah-pagenum\" starts with a digit, so the common selector `#02-masalah-pagenum` throws a SyntaxError in querySelector().",
+        "selector": "#02-masalah-pagenum",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-bg\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-bg\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-bg` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-stage\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-stage\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-stage` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-sun\"]\" sets top/right through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-sun\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-sun` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-ember\"]\" sets left/bottom through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-ember\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-ember` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-slot\"]\" sets left/right/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-slot\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-slot` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-question\"]\" sets left/right/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-question\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-question` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-rule\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-rule\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-rule` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-small\"]\" sets left/right/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-small\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-small` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"02-masalah-pagenum\"]\" sets right/bottom through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"02-masalah-pagenum\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\02-masalah.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 2-masalah-pagenum` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-bg\" starts with a digit, so the common selector `#03-solusi-bg` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-bg",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-stage\" starts with a digit, so the common selector `#03-solusi-stage` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-stage",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-world\" starts with a digit, so the common selector `#03-solusi-world` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-world",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-seg1\" starts with a digit, so the common selector `#03-solusi-seg1` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-seg1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-seg2\" starts with a digit, so the common selector `#03-solusi-seg2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-seg2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-station1\" starts with a digit, so the common selector `#03-solusi-station1` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-station1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-marker1\" starts with a digit, so the common selector `#03-solusi-marker1` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-marker1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-label1\" starts with a digit, so the common selector `#03-solusi-label1` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-label1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-row1\" starts with a digit, so the common selector `#03-solusi-row1` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-row1",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-rowrule\" starts with a digit, so the common selector `#03-solusi-rowrule` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-rowrule",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-row2\" starts with a digit, so the common selector `#03-solusi-row2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-row2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-station2\" starts with a digit, so the common selector `#03-solusi-station2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-station2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-marker2\" starts with a digit, so the common selector `#03-solusi-marker2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-marker2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-label2\" starts with a digit, so the common selector `#03-solusi-label2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-label2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-head2\" starts with a digit, so the common selector `#03-solusi-head2` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-head2",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-h2a\" starts with a digit, so the common selector `#03-solusi-h2a` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-h2a",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-h2b\" starts with a digit, so the common selector `#03-solusi-h2b` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-h2b",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-station3\" starts with a digit, so the common selector `#03-solusi-station3` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-station3",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-marker3\" starts with a digit, so the common selector `#03-solusi-marker3` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-marker3",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-label3\" starts with a digit, so the common selector `#03-solusi-label3` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-label3",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-head3\" starts with a digit, so the common selector `#03-solusi-head3` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-head3",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-h3a\" starts with a digit, so the common selector `#03-solusi-h3a` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-h3a",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-h3b\" starts with a digit, so the common selector `#03-solusi-h3b` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-h3b",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-window\" starts with a digit, so the common selector `#03-solusi-window` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-window",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-chrome\" starts with a digit, so the common selector `#03-solusi-chrome` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-chrome",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"03-solusi-pagenum\" starts with a digit, so the common selector `#03-solusi-pagenum` throws a SyntaxError in querySelector().",
+        "selector": "#03-solusi-pagenum",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\03-solusi.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f04-ground\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\04-cara-kerja.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f04-stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\04-cara-kerja.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-ground\" starts with a digit, so the common selector `#06-tur-ground` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-ground",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-sun\" starts with a digit, so the common selector `#06-tur-sun` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-sun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-ember\" starts with a digit, so the common selector `#06-tur-ember` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-ember",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-scene\" starts with a digit, so the common selector `#06-tur-scene` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-scene",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-window\" starts with a digit, so the common selector `#06-tur-window` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-window",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-world\" starts with a digit, so the common selector `#06-tur-world` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-world",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-plate\" starts with a digit, so the common selector `#06-tur-plate` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-plate",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-shot-rumpun\" starts with a digit, so the common selector `#06-tur-shot-rumpun` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-shot-rumpun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-shot-metode\" starts with a digit, so the common selector `#06-tur-shot-metode` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-shot-metode",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-shot-panduan\" starts with a digit, so the common selector `#06-tur-shot-panduan` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-shot-panduan",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-chrome\" starts with a digit, so the common selector `#06-tur-chrome` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-chrome",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-rail\" starts with a digit, so the common selector `#06-tur-rail` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-rail",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-marker\" starts with a digit, so the common selector `#06-tur-marker` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-marker",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-label-rumpun\" starts with a digit, so the common selector `#06-tur-label-rumpun` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-label-rumpun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-label-metode\" starts with a digit, so the common selector `#06-tur-label-metode` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-label-metode",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-label-panduan\" starts with a digit, so the common selector `#06-tur-label-panduan` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-label-panduan",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-eyebrow\" starts with a digit, so the common selector `#06-tur-eyebrow` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-eyebrow",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-plateinfo\" starts with a digit, so the common selector `#06-tur-plateinfo` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-plateinfo",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"06-tur-pagenum\" starts with a digit, so the common selector `#06-tur-pagenum` throws a SyntaxError in querySelector().",
+        "selector": "#06-tur-pagenum",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-ground\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-ground\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-ground` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-scene\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-scene\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-scene` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-chrome\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-chrome\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-chrome` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-sun\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-sun\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-sun` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-ember\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-ember\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-ember` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-window\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-window\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-window` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-world\"]\" sets inset through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-world\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-world` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-plate\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-plate\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-plate` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-shot-rumpun\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-shot-rumpun\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-shot-rumpun` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-shot-metode\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-shot-metode\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-shot-metode` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-shot-panduan\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-shot-panduan\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-shot-panduan` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-rail\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-rail\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-rail` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-marker\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-marker\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-marker` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-label-rumpun\"]\" sets top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-label-rumpun\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-label-rumpun` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-label-metode\"]\" sets top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-label-metode\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-label-metode` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-label-panduan\"]\" sets top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-label-panduan\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-label-panduan` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-eyebrow\"]\" sets left/top through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-eyebrow\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-eyebrow` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-plateinfo\"]\" sets top/right through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-plateinfo\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-plateinfo` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_override_reduced_specificity",
+        "severity": "warning",
+        "message": "Selector \"[id=\"06-tur-pagenum\"]\" sets right/bottom through [id=...] or :where(#id), which has class-level or zero specificity, so a compound class rule (e.g. \".parent .row\") on the same element can silently win over this override.",
+        "selector": "[id=\"06-tur-pagenum\"]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\06-tur.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use `#\\30 6-tur-pagenum` instead; id specificity beats any selector built only from classes."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-sun\" starts with a digit, so the common selector `#07-cta-sun` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-sun",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-lede\" starts with a digit, so the common selector `#07-cta-lede` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-lede",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-note\" starts with a digit, so the common selector `#07-cta-note` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-note",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-lockup\" starts with a digit, so the common selector `#07-cta-lockup` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-lockup",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-markwrap\" starts with a digit, so the common selector `#07-cta-markwrap` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-markwrap",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-mark\" starts with a digit, so the common selector `#07-cta-mark` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-mark",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-wordmark\" starts with a digit, so the common selector `#07-cta-wordmark` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-wordmark",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-tagline\" starts with a digit, so the common selector `#07-cta-tagline` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-tagline",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"07-cta-veil\" starts with a digit, so the common selector `#07-cta-veil` throws a SyntaxError in querySelector().",
+        "selector": "#07-cta-veil",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"cta-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"cta-stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"cta-footwrap\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"cta-veilwrap\" data-start=\"0\" data-track-index=\"9\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "D:\\Alternatif_D\\laragon\\www\\web-id3\\videos\\siminat-pengenalan\\compositions\\frames\\07-cta.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      }
+    ],
+    "filesScanned": 8
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 0,
+    "samples": [],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

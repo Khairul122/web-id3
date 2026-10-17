@@ -1,0 +1,165 @@
+<template>
+  <!-- 01-cover — PORTRAIT cover (1080x1920) for the SIMINAT launch film. Recomposed from the 16:9 pass,
+       not cropped: the brand wing (mark + eyebrow) keeps the top-left, the display is wrapped into four
+       vertical lines (two-line main slab + two-line gold italic), and the footer band stacks as four
+       hairline rows at the foot — the 9:16 cover treatment in frame.md ("display top, footer stacks").
+       One paused timeline registered at window.__timelines["01-cover"]. Silent frame: the reveals ride the
+       packet's scene windows (0 / 2.0 / 4.08) on the 115 BPM bed — BEAT 0.5217s, the 2.09s measure grid. -->
+  <style>
+    /* Fonts — local only: Inter woff2 (variable) + Georgia OS face. No network fonts. */
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+    /* Frame root — styled via #root only (never a class); the ground rides the .clip layer below, not this element. */
+    #root{
+      position:absolute; inset:0; overflow:hidden;
+      container-type:size;
+      font-family:"Inter",sans-serif;
+      color:#FFFDF6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Ground — navy paper + one sun-bloom (left-of-center, rising behind the display) + subordinate ember
+       counter-bloom in the opposite (top-right) corner. Portrait: the same three-layer atmosphere as 16:9,
+       scaled to the 1080 width. */
+    #cover01-bg{ position:absolute; inset:0; overflow:hidden; background:#071D31; }
+    #cover01-halo,#cover01-sun,#cover01-ember{ position:absolute; border-radius:50%; }
+    #cover01-halo{
+      left:calc(32% - 52cqw); top:calc(48% - 52cqw); width:104cqw; height:104cqw;
+      background:radial-gradient(closest-side,rgba(140,98,6,0.30) 0%,rgba(140,98,6,0.19) 42%,rgba(7,29,49,0) 88%);
+    }
+    #cover01-sun{
+      left:calc(30% - 29cqw); top:calc(27% - 29cqw); width:58cqw; height:58cqw;
+      background:radial-gradient(closest-side,rgba(248,196,84,0.58) 0%,rgba(248,196,84,0.36) 26%,rgba(103,72,4,0.44) 56%,rgba(140,98,6,0.20) 78%,rgba(7,29,49,0) 100%);
+    }
+    #cover01-ember{
+      left:calc(86% - 32cqw); top:calc(13% - 32cqw); width:64cqw; height:64cqw;
+      background:radial-gradient(closest-side,rgba(31,95,158,0.22) 0%,rgba(31,95,158,0.13) 44%,rgba(7,29,49,0) 92%);
+    }
+
+    /* Scene 1 — brand wing, upper-left: mark (soft bloom-open) with its glow, eyebrow micro-label below. */
+    #cover01-brand{ position:absolute; left:5.6cqw; top:6.9cqh; }
+    #cover01-glow{
+      position:absolute; left:-1.6cqw; top:-1.7cqw; width:9.8cqw; height:10.6cqw; border-radius:50%;
+      background:radial-gradient(closest-side,rgba(248,196,84,0.50) 0%,rgba(248,196,84,0.16) 55%,rgba(248,196,84,0) 100%);
+      opacity:0.5;
+    }
+    #cover01-logo{ position:relative; display:block; width:6.6cqw; height:auto; }
+    #cover01-eyebrow{
+      margin-top:1.7cqw;
+      font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; line-height:1.5;
+      white-space:nowrap; color:#FFFDF6;
+    }
+
+    /* Scenes 2/3 — the display, wrapped for portrait: "Kenali / Minatmu." in ink, then the gold italic
+       "Temukan Arah / Kuliahmu." Stepped down from `display` so the widest line stays inside the 78cqw block cap. */
+    #cover01-display{ position:absolute; left:5.6cqw; top:33.4cqh; }
+    #cover01-line-1,#cover01-line-2{
+      font-family:"Georgia",serif; font-weight:400; font-style:normal;
+      font-size:17cqw; line-height:0.86; letter-spacing:-0.018em;
+      white-space:nowrap; color:#FFFDF6;
+    }
+    #cover01-line-3,#cover01-line-4{
+      font-family:"Georgia",serif; font-weight:400; font-style:italic;
+      font-size:11cqw; line-height:1.04; letter-spacing:-0.005em;
+      white-space:nowrap; color:#F8C454;
+    }
+    #cover01-line-3{ margin-top:2.2cqw; }
+
+    /* Scene 3 — footer band, stacked for 9:16: four metadata rows at the foot, 1px ink hairline over each cell. */
+    #cover01-footer{ position:absolute; left:5.6cqw; right:5.6cqw; top:86.4cqh; }
+    #cover01-footer .cover01-row{ position:relative; padding-top:1cqw; }
+    #cover01-footer .cover01-row + .cover01-row{ margin-top:0.5cqw; }
+    #cover01-footer .cover01-row > i{ position:absolute; top:0; left:0; width:100%; height:1px; background:#FFFDF6; transform-origin:0 50%; }
+    #cover01-footer .cover01-row > span{
+      display:block; font-size:13px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; line-height:1.4;
+      color:#FFFDF6;
+    }
+
+    /* Persistent chrome — pagenum, riding the last footer row's line at the right edge. */
+    #cover01-pagenum{
+      position:absolute; right:5.6cqw; bottom:6.7cqh;
+      font-size:13px; font-weight:400; letter-spacing:0.08em; line-height:1.4;
+      color:rgba(255,253,246,0.75);
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-cover" data-width="1080" data-height="1920" data-duration="6.165">
+    <div id="cover01-bg" class="clip" data-start="0" data-duration="6.165" data-track-index="0">
+      <div id="cover01-halo" data-layout-allow-overflow aria-hidden="true"></div>
+      <div id="cover01-sun" data-layout-allow-overflow aria-hidden="true"></div>
+      <div id="cover01-ember" data-layout-allow-overflow aria-hidden="true"></div>
+    </div>
+
+    <div id="cover01-brand">
+      <div id="cover01-glow" aria-hidden="true"></div>
+      <img id="cover01-logo" src="assets/logo.svg" alt="SIMINAT" />
+      <div id="cover01-eyebrow">Dari ruang kelas, menuju masa depan</div>
+    </div>
+
+    <div id="cover01-display">
+      <div id="cover01-line-1">Kenali</div>
+      <div id="cover01-line-2">Minatmu.</div>
+      <div id="cover01-line-3">Temukan Arah</div>
+      <div id="cover01-line-4">Kuliahmu.</div>
+    </div>
+
+    <div id="cover01-footer">
+      <div class="cover01-row" id="cover01-row-1"><i aria-hidden="true"></i><span>MAN 4 Matangkuli</span></div>
+      <div class="cover01-row" id="cover01-row-2"><i aria-hidden="true"></i><span>MAS Al-Muslimun Lhoksukon</span></div>
+      <div class="cover01-row" id="cover01-row-3"><i aria-hidden="true"></i><span>Nilai rapor &#183; Peminatan</span></div>
+      <div class="cover01-row" id="cover01-row-4"><i aria-hidden="true"></i><span>Klasifikasi ID3</span></div>
+    </div>
+
+    <div id="cover01-pagenum">01</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const el = function (id) { return document.getElementById(id); };
+
+      /* Beat spine — the bed is 115 BPM; four beats make the 2.09s measure grid.
+         Scene onsets are the packet windows (0 / 2.0 / 4.08, the frame's downbeats). */
+      const BEAT = 60 / 115; /* 0.5217s — every accent below reads off this one grid */
+      const S2 = 2.0;        /* Scene 2 — "Kenali" slam, "Minatmu." snap, pagenum */
+      const S3 = 4.08;       /* Scene 3 — gold italic pair + footer rows */
+      const DUR = 6.165;     /* frame duration, fixed upstream */
+
+      /* Scene 1 — the ground settles open (sun core, haze halo, subordinate ember), then the mark blooms
+         open with its glow and the eyebrow follows one beat later: one run, long tails, nothing else yet. */
+      tl.fromTo(el("cover01-sun"), { opacity: 0.58, scale: 1.07 }, { opacity: 1, scale: 1, duration: 1.9, ease: "power2.out" }, 0);
+      tl.fromTo(el("cover01-halo"), { opacity: 0.55, scale: 1.05 }, { opacity: 1, scale: 1, duration: 2.2, ease: "power2.out" }, 0);
+      tl.fromTo(el("cover01-ember"), { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 2.4, ease: "sine.out" }, 0);
+      tl.fromTo(el("cover01-glow"), { opacity: 0, scale: 0.45 }, { opacity: 0.5, scale: 1.3, duration: 1.3, ease: "power2.out" }, BEAT * 0.5);
+      tl.fromTo(el("cover01-logo"), { opacity: 0, scale: 0.84, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "expo.out" }, BEAT * 0.5);
+      tl.fromTo(el("cover01-eyebrow"), { opacity: 0, y: 10, filter: "blur(3px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out" }, BEAT);
+
+      /* Scene 2 — beat one of the type: "Kenali" dives in (scale+blur slam, lands on the pad edge);
+         "Minatmu." side-snaps in on the next beat; the pagenum tags on that same beat. */
+      tl.fromTo(el("cover01-line-1"), { opacity: 0, scale: 1.5, y: -70, filter: "blur(16px)", transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.62, ease: "power4.out" }, S2);
+      tl.fromTo(el("cover01-line-2"), { opacity: 0, x: -190, filter: "blur(10px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, S2 + BEAT);
+      tl.fromTo(el("cover01-pagenum"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, S2 + BEAT);
+
+      /* Scene 3 — the gold italic lands on the downbeat ("Temukan Arah") and its tail settles on the
+         half-beat ("Kuliahmu."); the stacked footer band ticks in row by row on the half-beat, hairline first. */
+      tl.fromTo(el("cover01-line-3"), { opacity: 0, y: 58, rotation: 2.2, transformOrigin: "0% 50%" }, { opacity: 1, y: 0, rotation: 0, duration: 0.72, ease: "circ.out" }, S3);
+      tl.fromTo(el("cover01-line-4"), { opacity: 0, y: 74, scale: 1.06, filter: "blur(8px)", transformOrigin: "0% 50%" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.66, ease: "power3.out" }, S3 + BEAT * 0.5);
+      Array.prototype.slice.call(el("cover01-footer").querySelectorAll(".cover01-row")).forEach(function (row, i) {
+        const at = S3 + BEAT * 0.5 * i; /* each row lands on the half-beat, top to bottom */
+        tl.fromTo(row.querySelector("i"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, at);
+        tl.fromTo(row.querySelector("span"), { opacity: 0, y: 14, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.62, ease: "power3.out" }, at);
+      });
+
+      /* Finale hold — the display locks and holds; only the sun keeps breathing underneath (no exit). */
+      tl.to(el("cover01-sun"), { scale: 1.02, duration: DUR - 4.2, ease: "sine.inOut" }, 4.2);
+
+      window.__timelines["01-cover"] = tl;
+    })();
+  </script>
+</template>

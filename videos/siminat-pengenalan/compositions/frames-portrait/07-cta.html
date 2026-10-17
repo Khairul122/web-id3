@@ -1,0 +1,199 @@
+<template>
+  <!-- Frame 7 · 07-cta — SIMINAT · 1080x1920 (portrait) · 7.53s · silent frame (captions off)
+       Beats: display reveal 0-2.09 · lede/note/shelf 2.09-4.18 · clear + lockup build 4.18-6.27 · hold + fade 6.27-7.53 -->
+  <style>
+    @font-face{font-family:"Inter";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Inter-Regular.woff2") format("woff2");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:normal;font-display:block;src:local("Georgia");}
+    @font-face{font-family:"Georgia";font-weight:400;font-style:italic;font-display:block;src:local("Georgia Italic"),local("Georgia-Italic");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:normal;font-display:block;src:local("Georgia Bold"),local("Georgia-Bold");}
+    @font-face{font-family:"Georgia";font-weight:700;font-style:italic;font-display:block;src:local("Georgia Bold Italic"),local("Georgia-BoldItalic");}
+
+    #root{position:relative;width:1080px;height:1920px;overflow:hidden;container-type:size;font-family:"Inter",sans-serif;}
+    #root,#root *{box-sizing:border-box;}
+
+    /* ---------- ground ---------- */
+    .cta-bg{position:absolute;inset:0;overflow:hidden;background:#071D31;}
+    .cta-sun{position:absolute;left:50%;top:40px;width:1500px;height:1500px;margin-left:-750px;border-radius:50%;
+      background:radial-gradient(circle closest-side,rgba(248,196,84,0.80) 0%,rgba(248,196,84,0.33) 15%,rgba(103,72,4,0.50) 36%,rgba(140,98,6,0.18) 56%,rgba(7,29,49,0) 76%);}
+    .cta-ember{position:absolute;right:-260px;top:-240px;width:1060px;height:1060px;border-radius:50%;opacity:0.33;
+      background:radial-gradient(circle closest-side,rgba(31,95,158,0.55) 0%,rgba(31,95,158,0) 70%);}
+
+    /* ---------- stage ---------- */
+    .cta-stage{position:absolute;inset:0;}
+
+    .cta-display{position:absolute;left:0;right:0;top:418px;text-align:center;}
+    .cta-line1{font-family:"Georgia",serif;font-weight:400;font-size:8.7cqw;line-height:1.06;letter-spacing:-0.005em;color:#FFFDF6;white-space:nowrap;}
+    .cta-line2{margin-top:22px;font-family:"Georgia",serif;font-weight:400;font-style:italic;font-size:7.35cqw;line-height:1.1;letter-spacing:-0.005em;color:#F8C454;white-space:nowrap;}
+    .cta-word{display:inline-block;}
+
+    .cta-lede{position:absolute;left:0;right:0;top:706px;text-align:center;font-family:"Inter",sans-serif;font-weight:400;
+      font-size:2.6cqw;line-height:1.5;letter-spacing:0.005em;color:rgba(255,253,246,0.96);white-space:nowrap;}
+    .cta-note{position:absolute;left:0;right:0;top:764px;text-align:center;font-family:"Inter",sans-serif;font-weight:400;
+      font-size:1.9cqw;line-height:1.45;letter-spacing:0.012em;color:rgba(255,253,246,0.66);white-space:nowrap;}
+
+    /* four site captures reflowed as a centred 2x2 shelf at the foot of the content area - hairline, 0-radius, dimmed */
+    .cta-shelf{position:absolute;left:0;right:0;top:1000px;display:grid;grid-template-columns:448px 448px;grid-auto-rows:252px;justify-content:center;gap:26px;}
+    .cta-win{position:relative;width:448px;height:252px;border:1px solid rgba(255,253,246,0.18);background:rgba(7,29,49,0.5);overflow:hidden;}
+    .cta-win img{display:block;width:100%;height:100%;object-fit:cover;opacity:0.65;filter:saturate(0.85) brightness(0.92);}
+    .cta-win::after{content:"";position:absolute;inset:0;background:rgba(7,29,49,0.28);}
+
+    /* closing lockup - mark + wordmark, tagline beneath; centred with room above the footer */
+    .cta-lockup{position:absolute;left:0;right:0;top:738px;display:flex;flex-direction:column;align-items:center;}
+    .cta-lockrow{display:flex;align-items:center;gap:42px;height:232px;}
+    .cta-markwrap{position:relative;z-index:2;flex:0 0 auto;width:211px;height:232px;}
+    .cta-markwrap svg{display:block;width:100%;height:100%;}
+    .cta-wordmark{position:relative;z-index:1;font-family:"Georgia",serif;font-weight:400;font-size:10.2cqw;line-height:1;letter-spacing:0.02em;color:#FFFDF6;white-space:nowrap;}
+    .cta-tag{margin-top:44px;font-family:"Inter",sans-serif;font-weight:600;font-size:17px;line-height:1.3;letter-spacing:0.28em;color:rgba(255,253,246,0.78);white-space:nowrap;}
+
+    /* ---------- foot chrome (portrait chrome band, below the caption keep-out) ---------- */
+    .cta-footwrap{position:absolute;inset:0;}
+    .cta-foot{position:absolute;left:60px;right:60px;top:1660px;display:flex;justify-content:space-between;align-items:flex-start;}
+    .cta-cell{border-top:1px solid rgba(255,253,246,0.2);padding-top:18px;}
+    .cta-cell-motto{width:500px;}
+    .cta-cell-names{flex:1 1 auto;display:flex;flex-direction:column;gap:4px;text-align:right;}
+    .cta-motto{display:inline-block;font-family:"Inter",sans-serif;font-weight:600;font-size:15px;line-height:1.3;letter-spacing:0.18em;color:rgba(255,253,246,0.8);text-transform:uppercase;}
+    .cta-name{display:inline-block;font-family:"Inter",sans-serif;font-weight:400;font-size:18px;line-height:1.35;letter-spacing:0.01em;color:rgba(255,253,246,0.92);white-space:nowrap;}
+    .cta-numwrap{position:absolute;right:60px;top:1770px;}
+    .cta-pagenum{display:inline-block;font-family:"Inter",sans-serif;font-weight:400;font-size:13px;line-height:1.3;letter-spacing:0.08em;color:rgba(255,253,246,0.75);}
+
+    .cta-veilwrap{position:absolute;inset:0;}
+    .cta-veil{position:absolute;inset:0;background:#071D31;opacity:0;}
+  </style>
+
+  <div id="root" data-composition-id="07-cta" data-width="1080" data-height="1920">
+    <div class="clip cta-bg" data-start="0" data-duration="7.53" data-track-index="0">
+      <div class="cta-sun" id="07-cta-sun"></div>
+      <div class="cta-ember"></div>
+    </div>
+
+    <div class="clip cta-stage" data-start="0" data-duration="7.53" data-track-index="1">
+      <div class="cta-display">
+        <div class="cta-line1"><span class="cta-word" data-cta-word>Pilihan</span> <span class="cta-word" data-cta-word>yang</span> <span class="cta-word" data-cta-word>matang</span></div>
+        <div class="cta-line2"><span class="cta-word" data-cta-word>dimulai</span> <span class="cta-word" data-cta-word>dari</span> <span class="cta-word" data-cta-word>percakapan.</span></div>
+      </div>
+
+      <div class="cta-lede" id="07-cta-lede">Mulai dari nilai rapor. Diskusikan bersama guru BK.</div>
+      <div class="cta-note" id="07-cta-note">Rekomendasi adalah bahan pertimbangan, bukan keputusan akhir.</div>
+
+      <div class="cta-shelf">
+        <div class="cta-win" data-cta-win data-target-x="-880" data-target-y="-40" data-rot="-7"><img src="assets/01-hero.png" alt=""></div>
+        <div class="cta-win" data-cta-win data-target-x="-420" data-target-y="-1560" data-rot="-4"><img src="assets/02-rumpun.png" alt=""></div>
+        <div class="cta-win" data-cta-win data-target-x="420" data-target-y="720" data-rot="4"><img src="assets/04-metode.png" alt=""></div>
+        <div class="cta-win" data-cta-win data-target-x="880" data-target-y="-40" data-rot="7"><img src="assets/05-panduan.png" alt=""></div>
+      </div>
+
+      <div class="cta-lockup" id="07-cta-lockup">
+        <div class="cta-lockrow">
+          <div class="cta-markwrap" id="07-cta-markwrap">
+            <svg id="07-cta-mark" viewBox="0 0 80 88" xmlns="http://www.w3.org/2000/svg">
+              <rect width="80" height="88" rx="12" fill="#071d31"/>
+              <g transform="translate(8 8)" fill="none" stroke="#f8c454" stroke-width="2.5">
+                <path d="M11 30V19L32 6l21 13v11"/>
+                <path d="M6 34c10-2 18 1 26 7 8-6 16-9 26-7v29c-10-2-18 1-26 7-8-6-16-9-26-7V34Z"/>
+                <path d="M32 41v29"/>
+                <path d="M10 57c8-1 15 2 22 7 7-5 14-8 22-7"/>
+              </g>
+            </svg>
+          </div>
+          <div class="cta-wordmark" id="07-cta-wordmark">SIMINAT</div>
+        </div>
+        <div class="cta-tag" id="07-cta-tagline">KENALI MINAT. RENCANAKAN MASA DEPAN.</div>
+      </div>
+    </div>
+
+    <div class="clip cta-footwrap" data-start="0" data-duration="7.53" data-track-index="2">
+      <div class="cta-foot">
+        <div class="cta-cell cta-cell-motto" data-cta-cell><span class="cta-motto">Dua madrasah, satu tujuan.</span></div>
+        <div class="cta-cell cta-cell-names" data-cta-cell>
+          <span class="cta-name">MAN 4 Matangkuli</span>
+          <span class="cta-name">MAS Al-Muslimun Lhoksukon</span>
+        </div>
+      </div>
+      <div class="cta-numwrap"><span class="cta-pagenum" data-cta-cell>07 / 07</span></div>
+    </div>
+
+    <div class="clip cta-veilwrap" data-start="0" data-duration="7.53" data-track-index="9">
+      <div class="cta-veil" id="07-cta-veil"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["07-cta"] = tl;
+
+      var sun = document.getElementById("07-cta-sun");
+      var words = document.querySelectorAll("[data-cta-word]");
+      var lede = document.getElementById("07-cta-lede");
+      var note = document.getElementById("07-cta-note");
+      var wins = document.querySelectorAll("[data-cta-win]");
+      var markWrap = document.getElementById("07-cta-markwrap");
+      var markSvg = document.getElementById("07-cta-mark");
+      var markRect = markSvg.querySelector("rect");
+      var markPaths = markSvg.querySelectorAll("path");
+      var wordmark = document.getElementById("07-cta-wordmark");
+      var tagline = document.getElementById("07-cta-tagline");
+      var lockup = document.getElementById("07-cta-lockup");
+      var cells = document.querySelectorAll("[data-cta-cell]");
+      var veil = document.getElementById("07-cta-veil");
+
+      /* --- Scene 1 (0.0-2.09): display reveals word-by-word on the downbeat; gold bloom rises behind the block --- */
+      tl.fromTo(sun, { opacity: 0, scale: 0.96 }, { opacity: 0.6, scale: 1, duration: 1.4, ease: "power2.out" }, 0);
+      words.forEach(function (w, i) {
+        var t = i < 3 ? 0.10 + i * 0.11 : 0.88 + (i - 3) * 0.11;
+        tl.fromTo(w, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, t);
+      });
+      tl.to(sun, { scale: 1.05, duration: 0.4, ease: "sine.out" }, 2.09);
+      tl.to(sun, { scale: 1.02, duration: 1.0, ease: "sine.inOut" }, 2.49);
+
+      /* --- Scene 2 (2.09-4.18): lede + micro note under the block; four-window shelf assembles at the foot --- */
+      tl.fromTo(lede, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 2.13);
+      tl.fromTo(note, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.40);
+      wins.forEach(function (w, i) {
+        tl.fromTo(w, { opacity: 0, y: 56, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 2.11 + i * 0.12);
+      });
+
+      /* --- Scene 3 (4.18-6.27): text clears, the shelf spreads outward off all four sides, then the mark draws itself --- */
+      words.forEach(function (w, i) {
+        tl.to(w, { opacity: 0, y: -14, duration: 0.32, ease: "power2.in" }, 4.18 + i * 0.05);
+      });
+      tl.to(lede, { opacity: 0, y: -10, duration: 0.38, ease: "power2.in" }, 4.22);
+      tl.to(note, { opacity: 0, y: -8, duration: 0.34, ease: "power2.in" }, 4.26);
+      wins.forEach(function (w, i) {
+        var t = 4.19 + i * 0.05;
+        tl.to(w, { x: Number(w.dataset.targetX), y: Number(w.dataset.targetY), rotation: Number(w.dataset.rot), scale: 0.94, duration: 0.65, ease: "power3.out" }, t);
+        tl.to(w, { opacity: 0, duration: 0.3, ease: "power1.in" }, t + 0.32);
+      });
+      tl.to(sun, { scale: 1.07, opacity: 0.52, duration: 2.0, ease: "sine.inOut" }, 4.35);
+
+      /* --- Scene 3b: stage clear -> mark stroke-draw, wordmark reveals to its right, tagline + foot cells complete --- */
+      markPaths.forEach(function (p) {
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = String(len);
+        p.style.strokeDashoffset = String(len);
+      });
+      var segs = [[0.00, 0.38], [0.29, 0.42], [0.61, 0.20], [0.76, 0.28]];
+      markPaths.forEach(function (p, i) {
+        tl.to(p, { strokeDashoffset: 0, duration: segs[i][1], ease: "power2.out" }, 5.02 + segs[i][0]);
+      });
+      tl.fromTo(markRect, { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "power1.out" }, 5.90);
+
+      gsap.set(markWrap, { x: 265 });
+      tl.to(markWrap, { x: 0, duration: 0.4, ease: "power2.inOut" }, 5.64);
+      tl.fromTo(wordmark, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.44, ease: "power2.out" }, 5.76);
+      tl.fromTo(tagline, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 5.88);
+      cells.forEach(function (c, i) {
+        tl.fromTo(c, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.90 + i * 0.035);
+      });
+
+      /* --- Scene 4 (6.27-7.53): calm hold (micro breathe) + soft final fade to the navy ground --- */
+      tl.to(lockup, { scale: 1.012, duration: 1.1, ease: "sine.inOut" }, 6.35);
+      tl.to(sun, { scale: 1.10, opacity: 0.48, duration: 1.1, ease: "sine.inOut" }, 6.42);
+      tl.fromTo(veil, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 7.13);
+
+      tl.seek(0);
+    })();
+  </script>
+</template>
