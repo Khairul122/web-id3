@@ -1,0 +1,70 @@
+{
+    "form": {
+        "nama": "Siswa Contoh",
+        "sekolah": "MAN",
+        "peminatan": "Umum",
+        "nilai": {
+            "rata_agama": "93",
+            "nilai_barab": "92",
+            "rata_bahasa": "93",
+            "nilai_mtk": "96",
+            "rata_mipa": "97",
+            "rata_ips": "90"
+        },
+        "manual": []
+    },
+    "attributes": {
+        "Sekolah_Asal": "MAN",
+        "Peminatan": "Umum",
+        "Kat_Agama": "Sedang",
+        "Kat_BArab": "Sedang",
+        "Kat_Bahasa": "Sedang",
+        "Kat_MTK": "Tinggi",
+        "Kat_MIPA": "Tinggi",
+        "Kat_IPS": "Rendah",
+        "Kecenderungan": "MIPA"
+    },
+    "result": {
+        "kelas": "Soshum",
+        "keyakinan": 1,
+        "distribusi": {
+            "Saintek": 0,
+            "Soshum": 1,
+            "Campuran": 0
+        },
+        "jalur": [
+            {
+                "atribut": "Peminatan",
+                "nilai": "Umum",
+                "dikenal": true
+            },
+            {
+                "atribut": "Kecenderungan",
+                "nilai": "MIPA",
+                "dikenal": true
+            },
+            {
+                "atribut": "Kat_Agama",
+                "nilai": "Sedang",
+                "dikenal": true
+            },
+            {
+                "atribut": "Kat_Bahasa",
+                "nilai": "Sedang",
+                "dikenal": true
+            },
+            {
+                "atribut": "Kat_MTK",
+                "nilai": "Tinggi",
+                "dikenal": true
+            }
+        ]
+    },
+    "prodi": [
+        "Pendidikan Agama Islam",
+        "Hukum Keluarga Islam",
+        "Ekonomi Syariah",
+        "Pendidikan Bahasa Arab",
+        "Kewirausahaan"
+    ]
+}

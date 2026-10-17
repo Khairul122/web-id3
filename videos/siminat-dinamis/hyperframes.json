@@ -9,5 +9,12 @@
   "media": {
     "autoProxy": true
   },
-  "authoringSkill": "product-launch-video"
+  "authoringSkill": "product-launch-video",
+  "registryItems": [
+    {
+      "name": "press-ripple",
+      "type": "hyperframes:component",
+      "target": "compositions/components/press-ripple.html"
+    }
+  ]
 }

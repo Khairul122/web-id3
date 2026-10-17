@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1",
-  "currentRevision": "b0d86e00-38ab-4b63-b8ca-b53eb3f64b58",
+  "currentRevision": "bdbf0a40-a458-4a96-9543-02947a91127b",
   "pendingChanges": false,
   "files": {
     ".media/manifest.jsonl": {
@@ -247,6 +247,10 @@
     "compositions/frames-portrait/02-masalah.html": {
       "hash": "8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e",
       "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\8c\\8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e"
+    },
+    "compositions/frames-portrait/06-tur.html": {
+      "hash": "456573642a10c09e73f5b4e0d1cf4c4da63da3cd0ed322a164c3de66ee2628d3",
+      "content": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\45\\456573642a10c09e73f5b4e0d1cf4c4da63da3cd0ed322a164c3de66ee2628d3"
     }
   },
   "revisions": {
@@ -425,6 +429,21 @@
         "compositions/frames-portrait/02-masalah.html": {
           "before": null,
           "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\8c\\8c5d156d7049a9e0087a139efa7c72f29d90db883bf3e295d34c34327302854e"
+        }
+      }
+    },
+    "bdbf0a40-a458-4a96-9543-02947a91127b": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792224844051,
+      "endedAt": 1792224846056,
+      "files": {
+        "compositions/frames-portrait/06-tur.html": {
+          "before": null,
+          "after": "C:\\Users\\khair\\.cache\\hyperframes\\history\\3c0beeff-d3d8-48bf-9a02-c64ffdb7cea1\\blobs\\45\\456573642a10c09e73f5b4e0d1cf4c4da63da3cd0ed322a164c3de66ee2628d3"
         }
       }
     }
