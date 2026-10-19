@@ -1,6 +1,6 @@
 # Verifikasi Hasil terhadap Metode Penelitian
 
-Tanggal: 17 Oktober 2026. Acuan metode: proposal `New Nadia.pdf` (BAB I 1.3, BAB II 2.5, BAB III 3.4). Data: `Dataset_Bersih_ID3.xlsx`.
+Tanggal: 17 Oktober 2026. Acuan metode: proposal `data/referensi/New Nadia.pdf` (BAB I 1.3, BAB II 2.5, BAB III 3.4). Data: `data/Dataset_Bersih_ID3.xlsx`.
 
 ## 1. Kesimpulan singkat
 

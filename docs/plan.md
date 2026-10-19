@@ -43,7 +43,7 @@ Catatan: HyperFrames (CLI Node.js, devDependency di `package.json`) tersedia seb
 
 ## 4. Data Sumber
 
-Sumber utama adalah `Dataset_Bersih_ID3.xlsx` (sheet `Data_ID3`, `Data_Numerik`, `Data_Tanpa_Label`).
+Sumber utama adalah `data/Dataset_Bersih_ID3.xlsx` (sheet `Data_ID3`, `Data_Numerik`, `Data_Tanpa_Label`). Dokumen asli berada di `data/sumber/`, proposal di `data/referensi/`, dan skrip pembentuk dataset di `scripts/penelitian/`.
 
 | Item | Jumlah |
 |---|---|
@@ -59,45 +59,7 @@ Sumber utama adalah `Dataset_Bersih_ID3.xlsx` (sheet `Data_ID3`, `Data_Numerik`,
 
 ## 5. Struktur Folder
 
-```
-siminat/
-├── index.php                 # router publik
-├── config/
-│   ├── config.php            # konstanta app, base URL
-│   └── database.php          # koneksi PDO (singleton)
-├── app/
-│   ├── core/                 # Router, View, Session, Csrf, Auth, Flash, Validator
-│   ├── models/               # Siswa, Atribut, Model, Prediksi, Evaluasi, Konten
-│   ├── services/
-│   │   ├── Id3.php           # entropy, gain, build tree, predict
-│   │   ├── Discretizer.php   # nilai angka ke kategori
-│   │   ├── Evaluator.php     # k-fold, confusion matrix, metrik
-│   │   └── Importer.php      # import CSV
-│   └── controllers/
-│       ├── public/           # Home, Metode, Statistik, Rekomendasi, Kontak
-│       └── admin/            # Dashboard, Siswa, Atribut, Training, Pohon, Pengujian, Prediksi, Laporan, Konten, User
-├── views/
-│   ├── layouts/              # public.php, admin.php, print.php
-│   ├── partials/             # navbar, footer, sidebar, flash, pagination
-│   ├── public/
-│   └── admin/
-├── admin/index.php           # router admin
-├── assets/
-│   ├── css/  (tokens.css, base.css, components.css, public.css, admin.css)
-│   ├── js/   (app.js, slider.js, counter.js, tree.js, charts.js, table.js)
-│   └── img/  (hero/, galeri/, logo/)
-├── storage/
-│   ├── uploads/              # file CSV import
-│   └── logs/
-├── database/
-│   ├── schema.sql
-│   ├── seed.sql              # admin default, atribut, aturan
-│   └── seed_dataset.sql      # hasil konversi 247 siswa
-├── tests/
-│   ├── id3_manual_test.php   # bandingkan dengan hitungan manual
-│   └── fixtures/sample_14.csv
-└── .htaccess
-```
+Struktur implementasi dan alur E2E dipelihara di [struktur-proyek.md](struktur-proyek.md). Gunakan peta tersebut untuk letak file aktual; rancangan awal sudah digantikan oleh MVC + service, impor XLSX, dan skrip penelitian yang terpisah dari runtime web.
 
 ## 6. Skema Database
 

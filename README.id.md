@@ -188,8 +188,8 @@ Pengujian k-fold menggunakan stratifikasi dan seed tetap 42. Angka keyakinan pad
 | `assets/` | Stylesheet, JavaScript, logo, gambar WebP, dan font lokal. |
 | `config/` | Konfigurasi database. |
 | `database/` | Skema, seed, dan migrasi SQL. |
-| `data/` | Dataset dan dokumen sumber penelitian. |
-| `scripts/` | Perkakas persiapan dan pengolahan data. |
+| `data/` | Dataset siap impor, dokumen asli di `sumber/`, dan proposal di `referensi/`. |
+| `scripts/` | Perintah PHP untuk setup, impor, dan proses penelitian; pengolahan sumber Python di `penelitian/`. |
 | `tests/` | Pengujian algoritma, HTTP, dan browser. |
 | `storage/` | Upload dan log aplikasi. |
 | `output/` | Hasil pemeriksaan lokal yang diabaikan Git. |
@@ -218,7 +218,7 @@ python -m pip install playwright
 python -m playwright install chromium
 ```
 
-Pengolahan ulang dataset dari sumber penelitian membutuhkan `openpyxl` dan perintah Poppler `pdftotext`. Script utamanya adalah `scripts/build_dataset.py`; `extract.py` dan `raw_labels.py` menjadi sumber pendukung. Tahap ini diperlukan bila ingin membangun ulang workbook dari data mentah.
+Pengolahan ulang dataset dari sumber penelitian membutuhkan `openpyxl` dan perintah Poppler `pdftotext`. Jalankan `python scripts/penelitian/build_dataset.py` dari root proyek. Skrip pendukung berada di folder yang sama, sedangkan dokumen asli dikelompokkan di `data/sumber/`. Perintah ini mengganti `data/Dataset_Bersih_ID3.xlsx`; gunakan hanya saat membangun ulang workbook dari data mentah. Lihat [peta sumber data](data/README.md).
 
 ## Kendala umum
 

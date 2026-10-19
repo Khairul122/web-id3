@@ -1,4 +1,4 @@
-"""Membangun Dataset_Bersih_ID3.xlsx dari data mentah di folder data/."""
+"""Membangun data/Dataset_Bersih_ID3.xlsx dari data mentah di data/sumber/."""
 import os, statistics as st
 from collections import Counter, OrderedDict
 from openpyxl import Workbook
@@ -8,7 +8,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 from extract import man_legger, mas_legger, ptkin_2026, sim, norm
 from raw_labels import TKA, TKA_KELAS, SPAN, AZHAR
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "Dataset_Bersih_ID3.xlsx")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "Dataset_Bersih_ID3.xlsx")
 man, iss_man = man_legger(); mas, iss_mas = mas_legger(); ptk = ptkin_2026()
 log = []  # (Kategori, Sekolah, Nama, Keterangan, Tindakan)
 
@@ -167,7 +167,7 @@ K = [
  ("Kat_IPS","Atribut","Rata-rata mapel pilihan IPS yang tersedia: EKO, SOS, GEO (Sejarah wajib, tidak dihitung)","Sama"),
  ("Kecenderungan","Atribut","Selisih Rata_MIPA dan Rata_IPS. Selisih >= 1 poin menentukan arah","MIPA, IPS, Seimbang, Tidak Terukur"),
  ("Minat_Jurusan","LABEL (kelas target)","MAN: rumpun 2 mapel pilihan TKA. MAS: rumpun prodi yang diterima SPAN-PTKIN 2026","Saintek, Soshum, Campuran (MAN saja)"),
- ("Batas kategori","Aturan","Batas 92 dan 94/95 diambil dari persentil 33 dan 67 seluruh nilai mapel MAN 4 (92 dan 94)","Ubah fungsi kat() di scripts/build_dataset.py bila perlu"),
+ ("Batas kategori","Aturan","Batas 92 dan 94/95 diambil dari persentil 33 dan 67 seluruh nilai mapel MAN 4 (92 dan 94)","Ubah fungsi kat() di scripts/penelitian/build_dataset.py bila perlu"),
  ("Sheet Data_Numerik","Info","Nilai asli per mapel dan rata-rata sebelum dikategorikan. Pakai untuk lampiran atau ID3 dengan diskretisasi lain",""),
  ("Sheet Data_Tanpa_Label","Info","Siswa dengan nilai lengkap tetapi tanpa label. Cocok untuk data uji prediksi sistem",""),
  ("Singkatan mapel","Info","QH Quran Hadis; AA Akidah Akhlak; FIK Fikih; SKI Sejarah Kebudayaan Islam; BAR B. Arab; PP Pendidikan Pancasila; BINDO B. Indonesia; MTK Matematika; BING B. Inggris; PJOK Penjas; SEJ Sejarah; SB Seni Budaya; ITaf Ilmu Tafsir; IHad Ilmu Hadis; UFiq Ushul Fikih; ABAR Bahasa Arab (peminatan); BIO Biologi; KIM Kimia; FIS Fisika; INFOP Informatika; MTL Matematika Tingkat Lanjut; SOS Sosiologi; EKO Ekonomi; GEO Geografi; BIDTL/BIGTL/BARTL B. Indonesia/Inggris/Arab Tingkat Lanjut; BKOR B. Korea; VKET Prakarya/Kewirausahaan",""),
@@ -200,7 +200,7 @@ notes = ["1. Sheet Data_ID3 adalah data latih siap olah. Kolom abu-abu = identit
          "2. Untuk ID3: gunakan kolom Sekolah_Asal sampai Kecenderungan sebagai atribut, Minat_Jurusan sebagai kelas.",
          "3. Bila dosen meminta 2 kelas saja, buang baris Campuran atau gabungkan sesuai keputusan pembimbing.",
          "4. Sheet Log_Pembersihan mencatat semua keputusan pembersihan data.",
-         "5. Dibangun ulang dengan: python scripts/build_dataset.py"]
+         "5. Dibangun ulang dengan: python scripts/penelitian/build_dataset.py"]
 for i, n in enumerate(notes, 2): ws[f"E{i}"] = n
 ws.column_dimensions["E"].width = 110
 wb.save(OUT)

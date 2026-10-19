@@ -1,4 +1,4 @@
-# Data hasil pembacaan manual foto (folder data/). Sumber: nama file foto.
+# Foto sumber: data/sumber/man/formulir-tka/ dan data/sumber/mas/poster-kelulusan/.
 # Formulir TKA MAN 4 Aceh Utara (18 Sep 2025): nama, NISN, 2 mapel pilihan
 TKA = [
  ("IMG-20261008-WA0007.jpg","NURLIA ILEZA","0081822386",["Matematika Tingkat Lanjut","Biologi"],""),

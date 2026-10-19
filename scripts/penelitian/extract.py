@@ -1,6 +1,6 @@
 import subprocess, re, glob, os, openpyxl, unicodedata
 from difflib import SequenceMatcher
-BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "sumber")
 MAN_COLS = ["QH","AA","FIK","SKI","BAR","PP","BINDO","MTK","BING","PJOK","SEJ","SB","BIO","KIM","FIS","MTL","EKO","BIDTL"]
 
 def norm(s):
@@ -16,7 +16,7 @@ def sim(a, b):
 
 def man_legger():
     rows, issues = [], []
-    for f in sorted(glob.glob(os.path.join(BASE, "Legger*.pdf"))):
+    for f in sorted(glob.glob(os.path.join(BASE, "man", "legger", "Legger*.pdf"))):
         txt = subprocess.run(["pdftotext","-layout",f,"-"],capture_output=True,text=True).stdout
         kelas = re.search(r"Kelas\s*:\s*(XII\.\d)", txt).group(1)
         for line in txt.splitlines():
@@ -32,7 +32,7 @@ def man_legger():
 
 def mas_legger():
     rows, issues = [], []
-    for f in sorted(glob.glob(os.path.join(BASE, "LEGGER NILAI KELAS*.xlsx"))):
+    for f in sorted(glob.glob(os.path.join(BASE, "mas", "legger", "LEGGER NILAI KELAS*.xlsx"))):
         ws = openpyxl.load_workbook(f, data_only=True).worksheets[0]
         h1 = [c.value for c in ws[6]]; h2 = [c.value for c in ws[7]]
         cols = []
@@ -54,7 +54,7 @@ def mas_legger():
     return rows, issues
 
 def ptkin_2026():
-    f = os.path.join(BASE, "SISWA MAN 4 ACEH UTARA YANG LOLOS PTKIN-SPAN PTKIN.xlsx")
+    f = os.path.join(BASE, "man", "SISWA MAN 4 ACEH UTARA YANG LOLOS PTKIN-SPAN PTKIN.xlsx")
     ws = openpyxl.load_workbook(f, data_only=True)["2026"]
     out = []
     for r in ws.iter_rows(min_row=7, values_only=True):

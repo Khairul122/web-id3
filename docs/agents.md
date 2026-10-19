@@ -7,8 +7,9 @@ SIMINAT adalah web klasifikasi minat jurusan kuliah siswa kelas XII MAN 4 Matang
 
 - Rencana kerja: `docs/plan.md`
 - Design system: `docs/design.md`
-- Data sumber: `Dataset_Bersih_ID3.xlsx` dan log pembersihannya
-- Script pembuat dataset: `scripts/build_dataset.py`
+- Dataset: `data/Dataset_Bersih_ID3.xlsx` dan sheet `Log_Pembersihan`; dokumen asli: `data/sumber/`
+- Script pembuat dataset: `scripts/penelitian/build_dataset.py`
+- Struktur file dan alur E2E: `docs/struktur-proyek.md`
 
 Baca ketiga dokumen itu sebelum menulis kode.
 
@@ -119,4 +120,4 @@ Ikuti tahap 0 sampai 10 di `plan.md`. Untuk setiap tahap:
 | Skema tabel | `plan.md` bagian 6 dan `database/schema.sql` |
 | Warna, font, komponen | `design.md` bagian 2 sampai 6 |
 | Daftar halaman | `plan.md` bagian 9 |
-| Keputusan pembersihan data | `Dataset_Bersih_ID3.xlsx` sheet `Log_Pembersihan` |
+| Keputusan pembersihan data | `data/Dataset_Bersih_ID3.xlsx` sheet `Log_Pembersihan` |

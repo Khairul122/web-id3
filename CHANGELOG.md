@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19 (perapian struktur sumber dan skrip penelitian)
+
+- 66 dokumen penelitian dipisahkan ke `data/sumber/` berdasarkan sekolah dan jenis sumber, serta `data/referensi/` untuk proposal. Dataset siap impor tetap di `data/Dataset_Bersih_ID3.xlsx`.
+- Empat skrip Python pengolahan sumber dikumpulkan di `scripts/penelitian/`; jalur input/output dan referensi perintah diperbarui.
+- Peta struktur, alur E2E, README dua bahasa, panduan agen, dan peta sumber data disesuaikan. Tidak ada perubahan skema database atau URL aplikasi.
+
 ## 2026-10-17 (pembersihan struktur proyek)
 
 - Video lama dipindahkan ke `videos/archive/`, catatan iterasi dan konsep visual ke `docs/archive/`, serta PNG sumber dipisahkan dari gambar WebP yang digunakan situs.

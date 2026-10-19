@@ -188,8 +188,8 @@ K-fold evaluation uses stratification and a fixed seed of 42. Prediction confide
 | `assets/` | Stylesheets, JavaScript, logo, WebP images, and local fonts. |
 | `config/` | Database configuration. |
 | `database/` | SQL schema, seeds, and migrations. |
-| `data/` | Dataset and research source documents. |
-| `scripts/` | Setup and data processing tools. |
+| `data/` | Import-ready dataset, original sources in `sumber/`, and proposal in `referensi/`. |
+| `scripts/` | PHP setup, import, and research workflow commands; Python source processing in `penelitian/`. |
 | `tests/` | Algorithm, HTTP, and browser tests. |
 | `storage/` | Uploads and application logs. |
 | `output/` | Local verification output ignored by Git. |
@@ -218,7 +218,7 @@ python -m pip install playwright
 python -m playwright install chromium
 ```
 
-Rebuilding the dataset from research sources requires `openpyxl` and Poppler's `pdftotext` command. The main script is `scripts/build_dataset.py`, supported by `extract.py` and `raw_labels.py`. This step is needed when rebuilding the workbook from raw data.
+Rebuilding the dataset from research sources requires `openpyxl` and Poppler's `pdftotext` command. Run `python scripts/penelitian/build_dataset.py` from the project root. Its supporting scripts are in the same directory, and original documents are grouped under `data/sumber/`. This command replaces `data/Dataset_Bersih_ID3.xlsx`; use it only when rebuilding the workbook from raw data. See the [source map](data/README.md).
 
 ## Troubleshooting
 
