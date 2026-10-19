@@ -93,6 +93,18 @@ Controller dimuat melalui daftar modul `Router`, kelas melalui autoloader, dan l
 - Direktori `data/` dan `scripts/` tetap berada di bawah aturan penolakan akses HTTP pada `.htaccess` root.
 - Manifest sumber, tujuan, dan SHA-256 sebelum pemindahan tersimpan lokal di `output/cleanup-manifest-2026-10-19.json`.
 
+### Verifikasi 19 Oktober
+
+- PASS: 66 hash dokumen sumber identik; 70 lokasi baru ditemukan dan lokasi lama sudah kosong.
+- PASS: seluruh 53 foto yang disebut `raw_labels.py` ditemukan pada kelompok sekolahnya; tiga PDF MAN dan delapan workbook MAS tersedia.
+- PASS: empat skrip Python lolos pemeriksaan sintaks. Pembacaan sumber dari lokasi baru menghasilkan 196 siswa MAS tanpa selisih total nilai, serta sheet PTKIN `2026` terbaca.
+- PASS: dataset siap impor tidak berubah; tes ID3 manual dan verifikasi independen empat skenario lulus.
+- PASS: `python -B tests/admin_http_test.py`, mencakup halaman panel, CRUD, training, pengujian, prediksi, impor, laporan, CSRF, dan hak akses.
+- PASS: tautan Markdown yang diperbarui valid; lima URL internal, termasuk foto, workbook, proposal, dan skrip di lokasi baru, mengembalikan HTTP 403.
+- Pembangunan ulang workbook dari seluruh sumber belum dijalankan karena Poppler `pdftotext` belum tersedia di PATH. Dataset yang ada tetap dipakai; pengujian ini tidak menimpa workbook.
+
+Ringkasan pemeriksaan struktur tersedia lokal di `output/cleanup-verification-2026-10-19.json`. Tes tampilan dan render video tidak diulang karena file antarmuka serta media video tidak dipindahkan.
+
 ## Riwayat pembersihan 17 Oktober 2026
 
 Tanggal: 17 Oktober 2026.
