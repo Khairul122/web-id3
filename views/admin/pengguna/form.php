@@ -19,7 +19,7 @@
   <div class="field">
     <label for="password">Kata sandi<?= $existing ? ' baru (opsional)' : '' ?></label>
     <input id="password" name="password" type="password" autocomplete="new-password" maxlength="72" <?= $existing ? '' : 'required' ?> <?= invalid_attr($errors, 'password') ?>>
-    <p class="field__help">12 sampai 72 karakter.</p>
+    <p class="field__help">8 sampai 72 byte.</p>
     <?= field_error($errors, 'password') ?>
   </div>
   <div class="field">

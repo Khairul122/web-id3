@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 PREFIX = '/web-id3/'
 USERNAME = 'auth_test_' + secrets.token_hex(6)
 PASSWORD = secrets.token_urlsafe(20)
-NEW_PASSWORD = secrets.token_urlsafe(20)
+NEW_PASSWORD = '87654321'
 
 class Client:
     def __init__(self):
@@ -80,6 +80,8 @@ try:
     assert other_client.request('login.php', {'_csrf':csrf(other_page),'username':USERNAME,'password':PASSWORD})[0] == 303
     status, _, page = client.request('admin/akun/password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':'different'})
     assert status == 422 and 'Konfirmasi kata sandi belum cocok' in page
+    status, _, page = client.request('admin/akun/password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':'1234567','password_confirmation':'1234567'})
+    assert status == 422 and '8 hingga 72 byte' in page
     status, _, _ = client.request('admin/akun/password', {'_csrf':csrf(page),'current_password':PASSWORD,'password':NEW_PASSWORD,'password_confirmation':NEW_PASSWORD})
     assert status == 303
     status, _, page = client.request('admin/')

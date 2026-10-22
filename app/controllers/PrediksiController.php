@@ -23,9 +23,13 @@ final class PrediksiController extends Controller
         $this->requireOwnSiswa();
         $model = $this->activeModel();
         $draft = $_SESSION['prediksi_draft'] ?? null;
-        $form = query('draft') === '1' && $draft ? $draft : PrediksiService::EMPTY;
+        $fromDraft = query('draft') === '1' && $draft;
+        $form = $fromDraft ? $draft : PrediksiService::EMPTY;
         if ($this->isSiswa) {
             $form = PrediksiService::withSiswaIdentity($form, $this->ownSiswa);
+            if (!$fromDraft) {
+                $form = PrediksiService::withSiswaScores($form, $this->ownSiswa);
+            }
         }
         $errors = [];
         $flash = null;
@@ -91,25 +95,28 @@ final class PrediksiController extends Controller
         ]);
     }
 
-    /** Prediksi massal siswa tanpa label: tinjau jumlah lalu jalankan. */
+    /** Prediksi massal: tinjau jumlah lalu jalankan. Cakupan bawaan siswa tanpa label; "semua" ikut memprediksi siswa berlabel. */
     public function massal(): void
     {
         $this->requireAdmin();
         $model = $this->activeModel();
-        $students = Siswa::unlabeled();
+        $all = (is_post() ? input('cakupan') : query('cakupan')) === 'semua';
+        $students = Siswa::forBatch($all);
         if (is_post()) {
             $this->verifyPost('prediksi/massal');
             if (!$students) {
-                flash('error', 'Prediksi massal gagal', 'Tidak ada siswa tanpa label.');
+                flash('error', 'Prediksi massal gagal', 'Tidak ada siswa untuk diprediksi.');
                 back_to('prediksi/massal');
             }
-            $summary = PrediksiService::runBatch($model, (int) $this->user['id']);
-            flash('success', 'Prediksi massal selesai', count($students) . ' siswa diprediksi: Saintek ' . $summary['Saintek'] . ', Soshum ' . $summary['Soshum'] . ', Campuran ' . $summary['Campuran'] . '.');
+            $summary = PrediksiService::runBatch($model, (int) $this->user['id'], $all);
+            flash('success', 'Prediksi massal selesai', count($students) . ' siswa diprediksi: Saintek ' . $summary['Saintek'] . ', Soshum ' . $summary['Soshum'] . ', Campuran ' . $summary['Campuran'] . '.'
+                . ($summary['berlabel'] ? ' ' . $summary['sesuai'] . ' dari ' . $summary['berlabel'] . ' siswa berlabel sesuai label asli.' : ''));
             back_to('prediksi/?sumber=massal');
         }
         $this->render('prediksi/massal', [
             'model' => $model,
             'students' => $students,
+            'all' => $all,
             'pageTitle' => 'Prediksi Massal', 'active' => 'prediksi', 'crumbs' => ['Prediksi' => 'prediksi/', 'Massal' => null],
         ]);
     }

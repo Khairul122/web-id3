@@ -108,7 +108,7 @@ final class Prediksi
 
     public static function countBatchByResult(int $modelId): array
     {
-        $counts = Database::run("SELECT p.hasil, COUNT(DISTINCT p.siswa_id) AS total FROM prediksi p JOIN siswa s ON s.id = p.siswa_id WHERE p.sumber = 'massal' AND p.model_id = ? GROUP BY p.hasil", [$modelId])->fetchAll();
+        $counts = Database::run("SELECT p.hasil, COUNT(DISTINCT p.siswa_id) AS total FROM prediksi p JOIN siswa s ON s.id = p.siswa_id WHERE p.sumber = 'massal' AND p.model_id = ? AND s.label IS NULL GROUP BY p.hasil", [$modelId])->fetchAll();
         return array_replace(array_fill_keys(Id3::CLASSES, 0), array_column($counts, 'total', 'hasil'));
     }
 

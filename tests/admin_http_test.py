@@ -120,6 +120,10 @@ try:
     _, page, _, _ = admin.request('admin/prediksi/massal')
     status, page, _, _ = admin.request('admin/prediksi/massal', {'_csrf': csrf(page)})
     assert flash(page) == 'Prediksi massal selesai', flash(page)
+    _, page, _, _ = admin.request('admin/prediksi/massal?cakupan=semua')
+    assert 'Semua siswa' in page and '<th>Label</th>' in page
+    status, page, _, _ = admin.request('admin/prediksi/massal', {'_csrf': csrf(page), 'cakupan': 'semua'})
+    assert flash(page) == 'Prediksi massal selesai' and 'siswa berlabel sesuai label asli' in page, flash(page)
 
     # Siswa: tambah -> tinjau -> simpan -> ubah -> hapus
     _, page, _, _ = admin.request('admin/siswa/form')
@@ -161,6 +165,9 @@ try:
     assert flash(siswa_client.request('admin/prediksi/hapus', {'id': other_prediction_id})[1]) == 'Akses ditolak'
     _, page, _, _ = siswa_client.request('admin/prediksi/form')
     assert 'name="sekolah"' not in page and 'name="peminatan"' not in page and 'name="nama"' not in page
+    # Nilai milik siswa terisi otomatis; mapel tanpa nilai kosong dengan kategori tersimpan terpilih.
+    assert re.search(r'name="rata_agama"[^>]*value="94\.00"', page) and re.search(r'name="rata_bahasa"[^>]*value="96\.00"', page)
+    assert re.search(r'name="nilai_barab"[^>]*value=""', page) and '<option selected>Sedang</option>' in page
     forged = dict(form, _csrf=csrf(page), nama='Nama Palsu', sekolah='MAS', peminatan='IPA')
     status, page, _, _ = siswa_client.request('admin/prediksi/form', forged)
     assert status == 200 and 'UJI Ubah ' + TAG in page and 'Nama Palsu' not in page

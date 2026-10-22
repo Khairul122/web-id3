@@ -5,8 +5,6 @@
 <?php endif; ?>
 <form class="auth-form" method="post" action="<?= e(url('login.php')) ?>" novalidate data-auth-form>
   <?= Csrf::field() ?>
-  <div class="auth-form__progress" aria-hidden="true"><span></span></div>
-  <div class="auth-form__meta"><span>AKSES TERLINDUNGI</span><span>SIMINAT / 01</span></div>
   <div class="form-field">
     <label for="username">Username</label>
     <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="100" value="<?= e($username) ?>" placeholder="Masukkan username Anda" required <?= isset($errors['username']) ? 'aria-invalid="true" aria-describedby="username-error"' : '' ?>>

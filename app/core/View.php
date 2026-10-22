@@ -9,7 +9,7 @@ final class View
             throw new InvalidArgumentException('View tidak tersedia.');
         }
         $heading = 'Selamat datang kembali.';
-        $intro = 'Masuk untuk melanjutkan ke ruang kerja SIMINAT.';
+        $intro = 'Masuk untuk melihat rekomendasi dan melanjutkan kegiatan sesuai peran Anda.';
         $errors = [];
         $notice = '';
         $username = '';

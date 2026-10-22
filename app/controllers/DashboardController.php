@@ -12,6 +12,7 @@ final class DashboardController extends Controller
                 'attributes' => $this->ownSiswa ? Atribut::all() : [],
                 'model' => $model,
                 'live' => $model ? Id3::predict($model['tree'], $this->ownSiswa['atribut']) : null,
+                'history' => $this->ownSiswa ? Prediksi::forSiswa((int) $this->ownSiswa['id']) : [],
                 'pageTitle' => 'Dashboard', 'active' => 'dashboard', 'crumbs' => ['Dashboard' => null],
             ]);
             return;

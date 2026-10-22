@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-22 (dashboard siswa dan prediksi massal semua siswa)
+
+- Form Simulasi Rekomendasi siswa terisi otomatis dengan nilai rapor dan kategori dari data siswa; nilai yang belum ada tetap kosong untuk diisi atau dipilih manual. Draf yang sedang diedit tidak ditimpa.
+- Dashboard siswa menampilkan kartu rekomendasi model aktif, profil nilai per rumpun, nilai mapel dengan nama lengkap, jalur keputusan, contoh prodi, dan riwayat prediksi.
+- Prediksi massal punya pilihan cakupan: siswa tanpa label (bawaan, sesuai metode) atau semua siswa. Cakupan semua mengisi riwayat siswa berlabel dan melaporkan kecocokan dengan label asli. Ringkasan dashboard guru BK tetap menghitung siswa tanpa label saja.
+- `tests/audit_data.php` mengaudit database: jumlah 247/147/100, domain atribut, kategori diskretisasi, prediksi tersimpan terhadap model aktif, dan tautan akun siswa.
+- Database lokal: prediksi massal semua siswa dengan model aktif. Siswa tanpa label tetap Saintek 5 dan Soshum 95; 126 dari 147 siswa berlabel sesuai label (126 dari 135 tanpa Campuran = akurasi latih 93,3%).
+
+## 2026-10-22 (akun login siswa dan guru BK)
+
+- Database lokal `siminat` diisi 247 akun siswa dari data master dan satu akun Guru BK. Akun siswa ditautkan lewat `kode_siswa`; admin yang sudah ada tidak diubah.
+- Batas kata sandi baru menjadi 8–72 byte pada form pengguna dan ganti kata sandi. Uji HTTP mencakup sandi 8 byte diterima dan 7 byte ditolak.
+
+## 2026-10-22 (remodel halaman masuk)
+
+- Halaman masuk memakai panel foto kelas dan form portal sekolah. Tata letak menyesuaikan ponsel, tablet, dan desktop.
+- Jam WIB dan panduan fitur siswa, guru BK, serta administrator memberi interaksi tanpa mengubah alur login. Bantuan, validasi, dan navigasi keyboard tetap tersedia.
+- Uji browser mencakup panduan peran, jam, alur autentikasi, serta judul dashboard guru BK.
+
 ## 2026-10-22 (panel multi-peran)
 
 - Tambah peran siswa, tautan akun melalui kode siswa, dashboard dan navigasi per peran, serta pembatasan riwayat dan detail prediksi siswa.

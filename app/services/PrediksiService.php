@@ -56,6 +56,18 @@ final class PrediksiService
         return array_replace($form, ['nama' => $siswa['nama'], 'sekolah' => $siswa['sekolah_kode'], 'peminatan' => $siswa['peminatan']]);
     }
 
+    /** Isi awal nilai rapor dari data siswa. Nilai kosong memakai kategori tersimpan sebagai pilihan manual. */
+    public static function withSiswaScores(array $form, array $siswa): array
+    {
+        foreach (array_keys(Discretizer::SCORE_LABELS) as $column) {
+            $form['nilai'][$column] = (string) ($siswa['nilai'][$column] ?? '');
+        }
+        foreach ([...array_keys(Discretizer::SOURCES), 'Kecenderungan'] as $attribute) {
+            $form['manual'][$attribute] = $siswa['atribut'][$attribute] ?? '';
+        }
+        return $form;
+    }
+
     /** Ubah isian form menjadi nilai atribut ID3. */
     public static function toAttributes(array $form, Discretizer $discretizer): array
     {
@@ -77,17 +89,21 @@ final class PrediksiService
         return Prediksi::create((int) $model['id'], 'form', $siswaId, $form['nama'] !== '' ? $form['nama'] : null, $input, Id3::predict($model['tree'], $attributes), $userId);
     }
 
-    /** Prediksi seluruh siswa tanpa label. Hasil massal lama dari model yang sama diganti. */
-    public static function runBatch(array $model, int $userId): array
+    /** Prediksi massal siswa tanpa label, atau semua siswa bila $includeLabeled. Hasil massal lama dari model yang sama diganti. */
+    public static function runBatch(array $model, int $userId, bool $includeLabeled = false): array
     {
-        $students = Siswa::unlabeled();
+        $students = Siswa::forBatch($includeLabeled);
         return Database::transaction(static function () use ($model, $students, $userId): array {
             Prediksi::deleteBatch((int) $model['id']);
-            $summary = array_fill_keys(Id3::CLASSES, 0);
+            $summary = array_fill_keys(Id3::CLASSES, 0) + ['berlabel' => 0, 'sesuai' => 0];
             foreach ($students as $student) {
                 $result = Id3::predict($model['tree'], $student['atribut']);
                 Prediksi::create((int) $model['id'], 'massal', (int) $student['id'], null, ['atribut' => $student['atribut']], $result, $userId);
                 $summary[$result['kelas']]++;
+                if ($student['label'] !== null) {
+                    $summary['berlabel']++;
+                    $summary['sesuai'] += (int) ($student['label'] === $result['kelas']);
+                }
             }
             return $summary;
         });

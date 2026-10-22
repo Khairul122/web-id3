@@ -218,10 +218,10 @@ final class Siswa
         return array_map(static fn (array $row): array => ['id' => (int) $row['id'], 'x' => $attributes[$row['id']] ?? [], 'y' => $row['label']], $rows);
     }
 
-    /** Siswa tanpa label untuk prediksi massal. */
-    public static function unlabeled(): array
+    /** Siswa untuk prediksi massal: tanpa label saja (sesuai metode) atau semua siswa. */
+    public static function forBatch(bool $includeLabeled = false): array
     {
-        $rows = Database::run('SELECT id, kode_siswa, nama FROM siswa WHERE label IS NULL ORDER BY kode_siswa')->fetchAll();
+        $rows = Database::run('SELECT id, kode_siswa, nama, label FROM siswa' . ($includeLabeled ? '' : ' WHERE label IS NULL') . ' ORDER BY kode_siswa')->fetchAll();
         $attributes = self::attributeMap(array_column($rows, 'id'));
         foreach ($rows as &$row) {
             $row['atribut'] = $attributes[$row['id']] ?? [];

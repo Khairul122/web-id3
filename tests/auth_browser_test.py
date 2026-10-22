@@ -29,6 +29,13 @@ try:
             assert page.locator('#username').is_visible()
             page.screenshot(path=str(OUT/f'login-{width}.png'),full_page=True)
             viewports.append({'width':width,'horizontalOverflow':False})
+        assert 'WIB' in page.locator('[data-auth-clock]').inner_text()
+        page.get_by_role('button',name='Guru BK',exact=True).click()
+        assert page.get_by_role('button',name='Guru BK',exact=True).get_attribute('aria-pressed')=='true'
+        assert 'Dampingi siswa' in page.locator('[data-role-description]').inner_text()
+        page.get_by_role('button',name='Siswa',exact=True).focus()
+        page.keyboard.press('Enter')
+        assert page.get_by_role('button',name='Siswa',exact=True).get_attribute('aria-pressed')=='true'
         page.locator('[data-help-open]').click()
         assert page.locator('#login-help').evaluate('(d)=>d.open')
         for _ in range(6):
@@ -63,7 +70,7 @@ try:
         page.wait_for_url('**/admin/dashboard/')
         assert page.get_by_role('heading',name='Berhasil masuk').is_visible()
         page.locator('dialog[data-flash] .alert-dialog__ok').click()
-        assert page.get_by_role('heading',name='Dashboard',exact=True).is_visible()
+        assert page.get_by_role('heading',name='Dashboard Guru BK',exact=True).is_visible()
         page.goto(URL+'admin/akun/',wait_until='networkidle')
         page.locator('main').get_by_role('link',name='Ganti Kata Sandi').click()
         page.wait_for_url('**/admin/akun/password')

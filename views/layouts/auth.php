@@ -7,7 +7,6 @@
   <meta name="robots" content="noindex, nofollow">
   <title><?= e($heading) ?> | SIMINAT</title>
   <link rel="icon" href="<?= e(url('assets/img/logo.svg')) ?>" type="image/svg+xml">
-  <link rel="preload" href="<?= e(url('assets/img/auth/bimbingan-karier-ai.webp')) ?>" as="image" fetchpriority="high">
   <link rel="stylesheet" href="<?= e(url('assets/css/tokens.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/hero.css')) ?>">
   <link rel="stylesheet" href="<?= e(url('assets/css/auth.css')) ?>">
@@ -18,37 +17,49 @@
 <body class="auth-page">
 <a class="skip-link" href="#form-area">Lewati ke konten</a>
 <main class="auth-shell">
-  <aside class="auth-story" aria-label="SIMINAT untuk pendampingan siswa">
-    <?= brand() ?>
-    <div class="auth-story__copy">
-      <h2><span>Mendampingi langkah,</span><em><span>merencanakan</span><span>masa depan.</span></em></h2>
-      <p>Ruang kerja untuk guru BK dan administrator sekolah.</p>
-      <ul class="auth-story__signals" aria-label="Fokus SIMINAT">
-        <li><strong>01</strong><span>Kenali minat</span></li>
-        <li><strong>02</strong><span>Baca jalur</span></li>
-        <li><strong>03</strong><span>Diskusikan pilihan</span></li>
-      </ul>
+  <aside class="auth-story" aria-label="Tentang SIMINAT">
+    <div class="auth-story__top">
+      <?= brand() ?>
+      <span class="auth-story__edition">Portal sekolah</span>
     </div>
-    <div class="auth-story__stamp"><span>SIMINAT</span><strong>RUANG KERJA</strong></div>
+    <div class="auth-story__main">
+      <p class="auth-story__label">Ruang belajar · ruang bertumbuh</p>
+      <h2>Masa depan<br>dimulai <em>di sini.</em></h2>
+      <p>Kenali minat, baca rekomendasi, dan lanjutkan percakapan bersama guru BK.</p>
+    </div>
+    <?php if ($view === 'login'): ?>
+    <div class="auth-roles" aria-label="Panduan akses per peran">
+      <p class="auth-roles__label">Kenali fitur tiap peran</p>
+      <div class="auth-roles__options">
+        <button type="button" data-role-copy="Lihat rekomendasi minat dan riwayat hasil milik Anda." aria-pressed="true">Siswa</button>
+        <button type="button" data-role-copy="Dampingi siswa dan tinjau hasil rekomendasi untuk bimbingan." aria-pressed="false">Guru BK</button>
+        <button type="button" data-role-copy="Kelola akun, data, dan model rekomendasi sekolah." aria-pressed="false">Admin</button>
+      </div>
+      <p class="auth-roles__description" data-role-description>Lihat rekomendasi minat dan riwayat hasil milik Anda.</p>
+    </div>
+    <?php endif; ?>
   </aside>
   <section class="auth-content" aria-labelledby="auth-title">
-    <nav class="auth-content__nav" aria-label="Navigasi halaman masuk"><a class="auth-back" href="<?= e(url()) ?>"><?= icon('back') ?> Kembali ke Beranda</a></nav>
+    <header class="auth-header">
+      <span class="auth-clock" data-auth-clock>Waktu Indonesia Barat</span>
+      <nav aria-label="Navigasi halaman masuk"><a class="auth-back" href="<?= e(url()) ?>"><?= icon('back') ?> Beranda</a></nav>
+    </header>
     <div class="auth-content__main" id="form-area" tabindex="-1">
       <div class="auth-form-wrap">
-        <p class="auth-eyebrow"><?= $user ? 'Ruang Pengelola' : 'Akses Pengelola' ?></p>
+        <p class="auth-eyebrow">Masuk ke akun SIMINAT</p>
         <h1 id="auth-title"><?= e($heading) ?></h1>
         <p class="auth-intro"><?= e($intro) ?></p>
         <?php require $contentView; ?>
+        <footer class="auth-footer">Akun disediakan oleh sekolah untuk siswa, guru BK, dan administrator.</footer>
       </div>
     </div>
-    <footer class="auth-footer">Akses khusus administrator dan guru BK.</footer>
   </section>
 </main>
 <?php if ($view === 'login'): ?>
 <dialog class="auth-help" id="login-help" aria-labelledby="help-title">
   <div class="auth-help__header"><span>SIMINAT</span><button class="icon-button" type="button" data-help-close aria-label="Tutup bantuan"><?= icon('close') ?></button></div>
   <h2 id="help-title">Butuh bantuan masuk?</h2>
-  <p>Gunakan akun yang diberikan oleh administrator sekolah. Jika Anda lupa username atau kata sandi, hubungi administrator sekolah untuk memulihkan akses.</p>
+  <p>Gunakan akun yang diberikan oleh sekolah. Jika lupa username atau kata sandi, siswa dapat menghubungi guru BK. Guru BK dan administrator dapat menghubungi administrator sekolah.</p>
   <p>Pendaftaran akun mandiri belum tersedia.</p>
   <button class="auth-submit" type="button" data-help-close>Kembali ke form masuk</button>
 </dialog>

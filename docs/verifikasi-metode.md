@@ -71,6 +71,7 @@ Prediksi massal 100 siswa tanpa label dengan model aktif: Saintek 5 (semua dari 
 php scripts/import_dataset.php                      # muat ulang 247 siswa dari Excel
 php scripts/proses_penelitian.php tanpa_campuran 5  # latih 4 skenario, uji 5-fold, aktifkan, prediksi massal
 php tests/id3_manual_test.php                       # uji rumus ID3 (play-tennis)
+php tests/audit_data.php                            # audit isi database terhadap metode dan model aktif
 python tests/verify_id3_dataset.py                  # verifikasi independen sistem terhadap Excel
 ```
 

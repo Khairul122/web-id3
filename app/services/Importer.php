@@ -9,6 +9,15 @@ final class Importer
     /** Kode mapel legger yang disimpan ke nilai_mapel. */
     public const SUBJECTS = ['QH', 'AA', 'FIK', 'SKI', 'BAR', 'PP', 'BINDO', 'MTK', 'BING', 'PJOK', 'SEJ', 'SB', 'ITaf', 'IHad', 'UFiq', 'ABAR', 'BIO', 'KIM', 'FIS', 'INFOP', 'MTL', 'SOS', 'EKO', 'GEO', 'BIDTL', 'BIGTL', 'BARTL', 'BKOR', 'VKET'];
 
+    /** Nama tampilan kode mapel; kode yang tidak tercantum tampil apa adanya. */
+    public const SUBJECT_NAMES = [
+        'QH' => 'Quran Hadis', 'AA' => 'Akidah Akhlak', 'FIK' => 'Fikih', 'SKI' => 'Sejarah Kebudayaan Islam', 'BAR' => 'Bahasa Arab',
+        'PP' => 'Pendidikan Pancasila', 'BINDO' => 'Bahasa Indonesia', 'MTK' => 'Matematika', 'BING' => 'Bahasa Inggris', 'PJOK' => 'PJOK',
+        'SEJ' => 'Sejarah Indonesia', 'SB' => 'Seni Budaya', 'BIO' => 'Biologi', 'KIM' => 'Kimia', 'FIS' => 'Fisika',
+        'INFOP' => 'Informatika', 'MTL' => 'Matematika Tingkat Lanjut', 'SOS' => 'Sosiologi', 'EKO' => 'Ekonomi', 'GEO' => 'Geografi',
+        'BIDTL' => 'Bahasa Indonesia Tingkat Lanjut', 'BIGTL' => 'Bahasa Inggris Tingkat Lanjut', 'BARTL' => 'Bahasa Arab Tingkat Lanjut',
+    ];
+
     private const SCORE_COLUMNS = [
         'Rata_Agama' => 'rata_agama', 'Nilai_BArab' => 'nilai_barab', 'Rata_Bahasa' => 'rata_bahasa',
         'Nilai_MTK' => 'nilai_mtk', 'Rata_MIPA' => 'rata_mipa', 'Rata_IPS' => 'rata_ips', 'Rata_Umum' => 'rata_umum',

@@ -6,11 +6,11 @@ final class PenggunaService
 {
     public const ROLES = ['admin' => 'Administrator', 'guru_bk' => 'Guru BK', 'siswa' => 'Siswa'];
 
-    /** Aturan kata sandi baru: 12 sampai 72 byte (batas bcrypt). Mengembalikan pesan error atau null. */
+    /** Aturan kata sandi baru: 8 sampai 72 byte (batas bcrypt). Mengembalikan pesan error atau null. */
     public static function passwordError(string $password, string $confirmation): ?string
     {
-        if (strlen($password) < 12 || strlen($password) > 72 || str_contains($password, "\0")) {
-            return 'Gunakan kata sandi sepanjang 12 hingga 72 byte.';
+        if (strlen($password) < 8 || strlen($password) > 72 || str_contains($password, "\0")) {
+            return 'Gunakan kata sandi sepanjang 8 hingga 72 byte.';
         }
         return $password === $confirmation ? null : 'Konfirmasi kata sandi belum cocok.';
     }

@@ -1,5 +1,25 @@
 'use strict';
 
+const clock = document.querySelector('[data-auth-clock]');
+if (clock) {
+  const formatter = new Intl.DateTimeFormat('id-ID', {
+    timeZone: 'Asia/Jakarta', weekday: 'long', day: 'numeric', month: 'long',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  });
+  const updateClock = () => { clock.textContent = formatter.format(new Date()) + ' WIB'; };
+  updateClock();
+  setInterval(updateClock, 60_000);
+}
+
+const roleDescription = document.querySelector('[data-role-description]');
+document.querySelectorAll('[data-role-copy]').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelector('[data-role-copy][aria-pressed="true"]')?.setAttribute('aria-pressed', 'false');
+    button.setAttribute('aria-pressed', 'true');
+    roleDescription.textContent = button.dataset.roleCopy;
+  });
+});
+
 document.querySelectorAll('[data-password-toggle]').forEach((button) => {
   const field = document.getElementById(button.dataset.passwordToggle);
   if (!field) return;
@@ -15,13 +35,6 @@ document.querySelectorAll('[data-password-toggle]').forEach((button) => {
 
 document.querySelectorAll('[data-auth-form]').forEach((form) => {
   const button = form.querySelector('[data-submit]');
-  const progress = form.querySelector('.auth-form__progress span');
-  const fields = [...form.querySelectorAll('input:not([type="hidden"])')];
-  const updateProgress = () => {
-    if (progress) progress.style.width = `${(fields.filter((field) => field.value.trim()).length / fields.length) * 100}%`;
-  };
-  fields.forEach((field) => field.addEventListener('input', updateProgress));
-  updateProgress();
   const status = form.querySelector('[data-submit-status]');
   form.addEventListener('submit', () => {
     button.disabled = true;
