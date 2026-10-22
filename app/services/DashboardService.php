@@ -3,6 +3,19 @@ declare(strict_types=1);
 
 final class DashboardService
 {
+    public static function guidance(): array
+    {
+        $model = ModelId3::active();
+        $modelId = (int) ($model['id'] ?? 0);
+        return [
+            'counts' => Siswa::counts(),
+            'byResult' => Prediksi::countBatchByResult($modelId),
+            'unpredicted' => Siswa::countUnpredicted($modelId),
+            'recent' => Prediksi::recent(6),
+            'model' => $model,
+        ];
+    }
+
     public static function summary(): array
     {
         $counts = Siswa::counts();

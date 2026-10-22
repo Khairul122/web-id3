@@ -1,10 +1,14 @@
-<div class="page-head"><div><h1>Cek Rekomendasi</h1><p>Langkah 1 dari 2: isi data siswa. Model aktif <strong><?= e($model['nama']) ?></strong> akan memberi rekomendasi rumpun beserta jalur keputusannya.</p></div></div>
+<div class="page-head"><div><h1><?= $isSiswa ? 'Simulasi Rekomendasi' : 'Cek Rekomendasi' ?></h1><p>Langkah 1 dari 2: isi nilai siswa. Model aktif <strong><?= e($model['nama']) ?></strong> akan memberi rekomendasi rumpun beserta jalur keputusannya.</p></div></div>
 
 <form class="card form-grid" method="post" novalidate data-tinggi="<?= e($rule->tinggi) ?>" data-sedang="<?= e($rule->sedang) ?>">
   <?= Csrf::field() ?>
   <section class="form-section form-grid form-grid--2" aria-labelledby="siswa-title">
     <div class="span-2"><h2 id="siswa-title">Sekolah dan peminatan</h2></div>
-    <?= text_field($form, $errors, 'nama', 'Nama siswa (opsional)', 150, 'autocomplete="off"') ?>
+    <?php if ($isSiswa): ?><div class="field"><strong>Nama siswa</strong><p><?= e($form['nama']) ?></p></div><?php else: ?><?= text_field($form, $errors, 'nama', 'Nama siswa (opsional)', 150, 'autocomplete="off"') ?><?php endif; ?>
+    <?php if ($isSiswa): ?>
+    <div class="field"><strong>Sekolah</strong><p><?= e($ownSiswa['sekolah_nama'] ?? $form['sekolah']) ?></p></div>
+    <div class="field"><strong>Peminatan</strong><p><?= e($form['peminatan']) ?></p></div>
+    <?php else: ?>
     <div class="field">
       <label for="sekolah">Sekolah</label>
       <select id="sekolah" name="sekolah" required <?= invalid_attr($errors, 'sekolah') ?>>
@@ -22,6 +26,7 @@
       <p class="field__help">Siswa MAN memakai Umum.</p>
       <?= field_error($errors, 'peminatan') ?>
     </div>
+    <?php endif; ?>
   </section>
 
   <section class="form-section form-grid" aria-labelledby="nilai-title">

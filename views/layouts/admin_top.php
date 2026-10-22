@@ -1,25 +1,27 @@
 <?php
-// Variabel: $pageTitle, $active (kunci menu), $crumbs ([label => url|null]), $user, $isAdmin.
+// Variabel: $pageTitle, $active (kunci menu), $crumbs ([label => url|null]), $user, $isAdmin, $isSiswa.
 $crumbs ??= [];
 $menu = [
     'Utama' => [
-        'dashboard' => ['Dashboard', 'dashboard/', 'grid', false],
+        'dashboard' => ['Dashboard', 'dashboard/', 'grid', null],
+        'simulasi' => ['Cek Rekomendasi', 'prediksi/form', 'target', ['siswa']],
+        'riwayat' => ['Riwayat Saya', 'prediksi/', 'list', ['siswa']],
     ],
     'Master Data' => [
-        'siswa' => ['Data Siswa', 'siswa/', 'users', false],
-        'sekolah' => ['Data Sekolah', 'sekolah/', 'school', false],
-        'atribut' => ['Atribut ID3', 'atribut/', 'list', false],
-        'diskretisasi' => ['Diskretisasi Nilai', 'diskretisasi/', 'sliders', false],
+        'siswa' => ['Data Siswa', 'siswa/', 'users', ['admin', 'guru_bk']],
+        'sekolah' => ['Data Sekolah', 'sekolah/', 'school', ['admin', 'guru_bk']],
+        'atribut' => ['Atribut ID3', 'atribut/', 'list', ['admin', 'guru_bk']],
+        'diskretisasi' => ['Diskretisasi Nilai', 'diskretisasi/', 'sliders', ['admin', 'guru_bk']],
     ],
     'Proses ID3' => [
-        'training' => ['Training Model', 'training/', 'branch', false],
-        'pengujian' => ['Pengujian Model', 'pengujian/', 'chart', false],
-        'prediksi' => ['Prediksi', 'prediksi/', 'target', false],
+        'training' => ['Training Model', 'training/', 'branch', ['admin', 'guru_bk']],
+        'pengujian' => ['Pengujian Model', 'pengujian/', 'chart', ['admin', 'guru_bk']],
+        'prediksi' => ['Prediksi', 'prediksi/', 'target', ['admin', 'guru_bk']],
     ],
     'Lainnya' => [
-        'laporan' => ['Laporan', 'laporan/', 'file', false],
-        'pengguna' => ['Pengguna', 'pengguna/', 'user', true],
-        'akun' => ['Akun Saya', 'akun/', 'sliders', false],
+        'laporan' => ['Laporan', 'laporan/', 'file', ['admin', 'guru_bk']],
+        'pengguna' => ['Pengguna', 'pengguna/', 'user', ['admin']],
+        'akun' => ['Akun Saya', 'akun/', 'sliders', null],
     ],
 ];
 ?>
@@ -44,13 +46,14 @@ $menu = [
   <aside class="sidebar" id="sidebar" aria-label="Menu panel">
     <a class="sidebar__brand" href="<?= e(admin_url('dashboard/')) ?>">
       <svg viewBox="0 0 64 72" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M11 30V19L32 6l21 13v11M6 34c10-2 18 1 26 7 8-6 16-9 26-7v29c-10-2-18 1-26 7-8-6-16-9-26-7V34Z"/><path d="M32 41v29M10 57c8-1 15 2 22 7 7-5 14-8 22-7"/><path d="m32 20 4 6-4 6-4-6 4-6Z" fill="currentColor" stroke="none"/></svg>
-      <span><strong>SIMINAT</strong><span>Panel Pengelola</span></span>
+      <span><strong>SIMINAT</strong><span><?= $isSiswa ? 'Panel Siswa' : 'Panel Pengelola' ?></span></span>
     </a>
     <nav aria-label="Navigasi panel">
       <?php foreach ($menu as $group => $items): ?>
+        <?php if (!array_filter($items, static fn ($item): bool => $item[3] === null || in_array($user['role'], $item[3], true))) continue; ?>
         <p class="nav-group"><?= e($group) ?></p>
-        <?php foreach ($items as $key => [$label, $path, $iconName, $adminOnly]): ?>
-          <?php if ($adminOnly && !$isAdmin) continue; ?>
+        <?php foreach ($items as $key => [$label, $path, $iconName, $roles]): ?>
+          <?php if ($roles !== null && !in_array($user['role'], $roles, true)) continue; ?>
           <a class="nav-item" href="<?= e(admin_url($path)) ?>" <?= $active === $key ? 'aria-current="page"' : '' ?>><?= icon($iconName) ?> <?= e($label) ?></a>
         <?php endforeach; ?>
       <?php endforeach; ?>
@@ -78,7 +81,7 @@ $menu = [
       </div>
       <a class="topbar__user" href="<?= e(admin_url('akun/')) ?>">
         <span class="topbar__avatar" aria-hidden="true"><?= e(mb_strtoupper(mb_substr($user['nama'], 0, 1))) ?></span>
-        <span><?= e($user['nama']) ?><small><?= $isAdmin ? 'Administrator' : 'Guru BK' ?></small></span>
+        <span><?= e($user['nama']) ?><small><?= e(PenggunaService::ROLES[$user['role']]) ?></small></span>
       </a>
     </header>
     <main class="admin-content" id="konten" tabindex="-1">

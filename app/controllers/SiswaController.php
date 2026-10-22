@@ -31,7 +31,40 @@ final class SiswaController extends Controller
             'model' => $model,
             'live' => $model ? Id3::predict($model['tree'], $siswa['atribut']) : null,
             'history' => Prediksi::forSiswa((int) $siswa['id']),
+            'account' => User::findByKodeSiswa($siswa['kode_siswa']),
             'pageTitle' => $siswa['nama'], 'active' => 'siswa', 'crumbs' => ['Data Siswa' => 'siswa/', $siswa['kode_siswa'] => null],
+        ]);
+    }
+
+    public function resetSandi(): void
+    {
+        $id = (int) $this->field('id');
+        $this->verifyPost('siswa/detail?id=' . $id);
+        $siswa = Siswa::find($id) ?? $this->notFound('siswa/', 'Siswa tidak tersedia.');
+        $account = User::findByKodeSiswa($siswa['kode_siswa']);
+        if (!$account) {
+            flash('error', 'Gagal mereset sandi', 'Siswa ini belum memiliki akun siswa.');
+            back_to('siswa/detail?id=' . $id);
+        }
+        $password = bin2hex(random_bytes(6));
+        User::changePassword((int) $account['id'], $password);
+        $_SESSION['kartu_akun'] = [['nama' => $siswa['nama'], 'kelas' => $siswa['kelas'], 'username' => $account['username'], 'password' => $password]];
+        back_to('siswa/kartu-akun');
+    }
+
+    public function kartuAkun(): void
+    {
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
+            http_response_code(405);
+            header('Allow: GET');
+            return;
+        }
+        header('Cache-Control: no-store, private');
+        $cards = $_SESSION['kartu_akun'] ?? [];
+        unset($_SESSION['kartu_akun']);
+        $this->render('siswa/kartu-akun', [
+            'cards' => $cards, 'pageTitle' => 'Kartu Akun Siswa', 'active' => 'siswa',
+            'crumbs' => ['Data Siswa' => 'siswa/', 'Kartu Akun' => null],
         ]);
     }
 

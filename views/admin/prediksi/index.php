@@ -1,7 +1,7 @@
 <div class="page-head">
   <div>
-    <h1>Prediksi</h1>
-    <p>Riwayat hasil Cek Rekomendasi dan prediksi massal. <?= $model ? 'Model aktif: ' . e($model['nama']) . '.' : 'Belum ada model aktif.' ?></p>
+    <h1><?= $isSiswa ? 'Riwayat Saya' : 'Prediksi' ?></h1>
+    <p><?= $isSiswa ? 'Hasil rekomendasi untuk Anda.' : 'Riwayat hasil Cek Rekomendasi dan prediksi massal.' ?> <?= $model ? 'Model aktif: ' . e($model['nama']) . '.' : 'Belum ada model aktif.' ?></p>
   </div>
   <?php if ($model): ?>
   <div class="page-actions">
@@ -12,10 +12,12 @@
 </div>
 
 <form class="toolbar" method="get" aria-label="Filter prediksi">
+  <?php if (!$isSiswa): ?>
   <label class="sr-only" for="sumber">Sumber</label>
   <select id="sumber" name="sumber">
     <?php foreach (['' => 'Semua sumber', 'form' => 'Form Cek Rekomendasi', 'massal' => 'Prediksi massal'] as $value => $text): ?><option value="<?= e($value) ?>" <?= $filter['sumber'] === $value ? 'selected' : '' ?>><?= e($text) ?></option><?php endforeach; ?>
   </select>
+  <?php endif; ?>
   <label class="sr-only" for="hasil">Hasil</label>
   <select id="hasil" name="hasil">
     <option value="">Semua hasil</option>
@@ -28,7 +30,7 @@
 </form>
 
 <?php if (!$result['rows']): ?>
-  <div class="card empty"><?= icon('target') ?><strong>Belum ada prediksi</strong>Jalankan Cek Rekomendasi atau prediksi massal.</div>
+  <div class="card empty"><?= icon('target') ?><strong>Belum ada prediksi</strong><?= $isSiswa ? 'Jalankan Simulasi Rekomendasi.' : 'Jalankan Cek Rekomendasi atau prediksi massal.' ?></div>
 <?php else: ?>
 <div class="table-wrap">
   <table class="table table--cards">

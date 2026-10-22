@@ -16,16 +16,22 @@ Hasil sistem merupakan rekomendasi **rumpun studi**, yaitu Saintek, Soshum, atau
 |---|---|
 | Halaman publik | Pengenalan SIMINAT, eksplorasi rumpun, alur penggunaan, penjelasan ID3, dan panduan konsultasi. |
 | Autentikasi | Login, logout, pengaturan akun, dan penggantian kata sandi. |
-| Dashboard | Ringkasan data siswa, model aktif, pengujian, dan prediksi terbaru. |
+| Dashboard | Ringkasan penelitian untuk admin, bimbingan untuk guru BK, serta profil dan rekomendasi pribadi untuk siswa. |
 | Data siswa | Pencarian, filter, tambah, ubah, hapus, detail nilai, dan impor Excel dengan pratinjau. |
 | Master data | Pengelolaan sekolah, atribut ID3, domain atribut, dan batas diskretisasi nilai. |
 | Training model | Pelatihan ID3, langkah entropy dan information gain, pohon keputusan, aturan IF-THEN, dan aktivasi model. |
 | Pengujian model | Stratified k-fold, confusion matrix, akurasi, precision, recall, dan F1. |
 | Prediksi | Rekomendasi dari input nilai, penelusuran keputusan, contoh program studi, serta prediksi massal siswa tanpa label. |
 | Laporan | Cetak data siswa, model, hasil pengujian, dan hasil prediksi; ekspor CSV sesuai jenis laporan. |
-| Pengguna | Pengelolaan akun admin dan guru BK oleh administrator. |
+| Pengguna | Pengelolaan akun admin, guru BK, dan siswa oleh administrator; pembuatan akun siswa massal dengan sandi awal sekali cetak. |
 
-Administrator mengelola data, pelatihan, pengujian, dan akun pengguna. Guru BK dapat membaca data dan hasil, menjalankan rekomendasi melalui form, serta menggunakan laporan sesuai hak aksesnya.
+Administrator mengelola data, pelatihan, pengujian, dan akun pengguna. Guru BK dapat membaca data dan hasil, menjalankan rekomendasi, memakai laporan, dan mereset sandi akun siswa. Siswa dapat melihat profil dan hasilnya sendiri, menjalankan simulasi, serta membuka riwayat prediksinya sendiri.
+
+| Peran | Data dan model | Prediksi | Akun |
+|---|---|---|---|
+| Administrator | Mengelola semua | Semua hasil dan prediksi massal | Mengelola semua; membuat akun siswa |
+| Guru BK | Melihat data dan laporan | Cek Rekomendasi dan semua hasil | Mereset sandi siswa |
+| Siswa | Melihat profil dan hasil model aktif sendiri | Simulasi dan riwayat sendiri | Mengganti sandi sendiri |
 
 ## Teknologi dan kebutuhan
 
@@ -87,7 +93,7 @@ Nama database dan kredensial harus sesuai dengan server lokal. File konfigurasi 
 php scripts/setup_auth.php
 ```
 
-Script membuat database jika belum ada, menyiapkan tabel, menjalankan migrasi kebijakan penggantian kata sandi, dan mengisi akun serta master data awal. Akun dan master data yang sudah tersedia tidak ditimpa. Pengguna database memerlukan hak pembuatan database bila database belum tersedia.
+Script membuat database jika belum ada, menyiapkan tabel, menjalankan migrasi kebijakan penggantian kata sandi dan peran siswa, lalu mengisi akun serta master data awal. Akun dan master data yang sudah tersedia tidak ditimpa. Pengguna database memerlukan hak pembuatan database bila database belum tersedia.
 
 File SQL untuk pemeriksaan atau instalasi manual tersedia di `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, dan `database/migrations/`.
 

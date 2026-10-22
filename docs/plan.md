@@ -64,7 +64,8 @@ Struktur implementasi dan alur E2E dipelihara di [struktur-proyek.md](struktur-p
 ## 6. Skema Database
 
 ```sql
-users(id, nama, username UNIQUE, password_hash, role ENUM('admin','guru_bk'),
+users(id, nama, username UNIQUE, password_hash, role ENUM('admin','guru_bk','siswa'),
+      kode_siswa VARCHAR(20) NULL UNIQUE,
       must_change_password, session_version, last_login, created_at)
 login_attempts(ip_hash CHAR(64) PK, attempts, window_start)            -- batas percobaan per IP
 

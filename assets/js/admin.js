@@ -37,6 +37,14 @@ document.querySelectorAll('form[data-tinggi]').forEach((form) => {
 });
 
 // Tombol cetak tanpa skrip inline.
+const roleSelect = document.querySelector('#role');
+const kodeSiswaField = document.querySelector('[data-kode-siswa]');
+if (roleSelect && kodeSiswaField) {
+  const updateRole = () => { kodeSiswaField.hidden = roleSelect.value !== 'siswa'; };
+  roleSelect.addEventListener('change', updateRole);
+  updateRole();
+}
+
 document.querySelectorAll('[data-print]').forEach((button) => button.addEventListener('click', () => window.print()));
 
 // Unduh PNG dari gambar SVG yang sama origin: digambar ke canvas dua kali ukuran asli.

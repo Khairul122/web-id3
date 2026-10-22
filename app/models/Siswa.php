@@ -69,6 +69,11 @@ final class Siswa
         return array_column(Database::run('SELECT DISTINCT kelas FROM siswa ORDER BY kelas')->fetchAll(), 'kelas');
     }
 
+    public static function countUnpredicted(int $modelId): int
+    {
+        return (int) Database::run("SELECT COUNT(*) FROM siswa s WHERE s.label IS NULL AND NOT EXISTS (SELECT 1 FROM prediksi p WHERE p.siswa_id = s.id AND p.sumber = 'massal' AND p.model_id = ?)", [$modelId])->fetchColumn();
+    }
+
     public static function find(int $id): ?array
     {
         $row = Database::run(
@@ -84,6 +89,12 @@ final class Siswa
         $row['mapel'] = array_intersect_key(array_replace(array_flip(Importer::SUBJECTS), $mapel), $mapel);
         $row['atribut'] = self::attributeMap([$id])[$id] ?? [];
         return $row;
+    }
+
+    public static function findByKode(string $kode): ?array
+    {
+        $id = Database::run('SELECT id FROM siswa WHERE kode_siswa = ?', [$kode])->fetchColumn();
+        return $id ? self::find((int) $id) : null;
     }
 
     public static function kodeExists(string $kode, ?int $exceptId = null): bool

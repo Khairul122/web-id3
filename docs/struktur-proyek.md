@@ -69,7 +69,7 @@ flowchart TD
     H --> I[HTML, CSS, JavaScript ke browser]
 ```
 
-Halaman publik langsung dirender oleh `index.php` setelah bootstrap. `login.php` dan `logout.php` meneruskan permintaan ke `AuthController`. Controller panel mewarisi `Controller`; operasi khusus admin memanggil `requireAdmin()`, sedangkan perubahan data memeriksa POST dan CSRF. Modul sederhana dapat membaca model langsung; service menangani proses yang membutuhkan logika bisnis. View menerima data tanpa menjalankan query.
+Halaman publik langsung dirender oleh `index.php` setelah bootstrap. `login.php` dan `logout.php` meneruskan permintaan ke `AuthController`. Controller panel mewarisi `Controller`; siswa hanya boleh masuk modul Dashboard, Prediksi, dan Akun. Aksi khusus admin memanggil `requireAdmin()`, sedangkan perubahan data memeriksa POST dan CSRF. Riwayat prediksi siswa difilter menurut pembuat atau baris siswa miliknya; identitas simulasi dibaca dari data siswa di server. Akun siswa memakai `kode_siswa` agar tetap tertaut setelah impor ulang. Modul sederhana dapat membaca model langsung; service menangani proses yang membutuhkan logika bisnis. View menerima data tanpa menjalankan query.
 
 | Tahap | File yang bertanggung jawab | Hasil |
 |---|---|---|

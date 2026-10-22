@@ -19,7 +19,7 @@ final class Auth
             return null;
         }
         $user = User::findById((int) $_SESSION['user_id']);
-        if (!$user || (int) $user['session_version'] !== ($_SESSION['auth_version'] ?? 0) || !in_array($user['role'], ['admin', 'guru_bk'], true)) {
+        if (!$user || (int) $user['session_version'] !== ($_SESSION['auth_version'] ?? 0) || !isset(PenggunaService::ROLES[$user['role']])) {
             self::logout();
             return null;
         }

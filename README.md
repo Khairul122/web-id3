@@ -16,16 +16,22 @@ The system recommends a **broad study field**, labeled Saintek, Soshum, or Campu
 |---|---|
 | Public website | Introduction to SIMINAT, study field exploration, usage workflow, ID3 explanation, and consultation guidance. |
 | Authentication | Login, logout, account settings, and password changes. |
-| Dashboard | Student data summary, active model, evaluation results, and recent predictions. |
+| Dashboard | Research summary for administrators, guidance summary for counselors, and personal profile and recommendation for students. |
 | Student records | Search, filters, create, edit, delete, grade details, and Excel import with a preview. |
 | Reference data | Management of schools, ID3 attributes, attribute domains, and grade discretization thresholds. |
 | Model training | ID3 training, entropy and information gain calculations, decision trees, IF-THEN rules, and model activation. |
 | Model evaluation | Stratified k-fold cross-validation, confusion matrices, accuracy, precision, recall, and F1. |
 | Predictions | Recommendations from grade inputs, decision paths, example degree programs, and batch predictions for unlabeled students. |
 | Reports | Printable student, model, evaluation, and prediction reports; CSV export where supported by the report type. |
-| User management | Administrator management of admin and guidance counselor accounts. |
+| User management | Administrator management of admin, guidance counselor, and student accounts; filtered batch creation and one-time printable credentials. |
 
-Administrators manage data, training, evaluation, and user accounts. Guidance counselors can view records and results, request recommendations through the input form, and use reports according to their permissions.
+Administrators manage data, training, evaluation, and user accounts. Guidance counselors can view records and results, request recommendations, use reports, and reset student passwords. Students can view their own profile and results, simulate recommendations, and see only their own prediction history.
+
+| Role | Data and model | Predictions | Accounts |
+|---|---|---|---|
+| Administrator | Manage all | All results, batch runs | Manage all; create student accounts |
+| Guidance counselor | View records and reports | Check recommendations and view all results | Reset student passwords |
+| Student | View own profile and active model result | Simulate and view own history | Change own password |
 
 ## Technology and requirements
 
@@ -87,7 +93,7 @@ The database name and credentials must match your local server. Git ignores the 
 php scripts/setup_auth.php
 ```
 
-The script creates the database if it does not exist, prepares the tables, applies the password-change policy migration, and seeds the initial account and reference data. It does not overwrite existing accounts or reference data. The database user needs database creation privileges if the database has not been created yet.
+The script creates the database if it does not exist, prepares the tables, applies the password-change and student-role migrations, and seeds the initial account and reference data. It does not overwrite existing accounts or reference data. The database user needs database creation privileges if the database has not been created yet.
 
 SQL files for inspection or manual installation are available in `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, and `database/migrations/`.
 

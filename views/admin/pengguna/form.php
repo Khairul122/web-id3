@@ -10,7 +10,12 @@
     </select>
     <?= field_error($errors, 'role') ?>
   </div>
-  <div></div>
+  <div class="field" data-kode-siswa>
+    <label for="kode_siswa">Kode siswa</label>
+    <input id="kode_siswa" name="kode_siswa" value="<?= e($form['kode_siswa'] ?? '') ?>" maxlength="20" <?= invalid_attr($errors, 'kode_siswa') ?>>
+    <p class="field__help">Isi bila peran Siswa. Kode harus ada di Data Siswa.</p>
+    <?= field_error($errors, 'kode_siswa') ?>
+  </div>
   <div class="field">
     <label for="password">Kata sandi<?= $existing ? ' baru (opsional)' : '' ?></label>
     <input id="password" name="password" type="password" autocomplete="new-password" maxlength="72" <?= $existing ? '' : 'required' ?> <?= invalid_attr($errors, 'password') ?>>

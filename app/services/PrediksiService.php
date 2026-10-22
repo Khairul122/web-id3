@@ -14,9 +14,12 @@ final class PrediksiService
     ];
 
     /** @return array{0: array, 1: array<string, string>} */
-    public static function fromPost(): array
+    public static function fromPost(?array $siswa = null): array
     {
         $form = ['nama' => trim(input('nama')), 'sekolah' => input('sekolah'), 'peminatan' => input('peminatan'), 'nilai' => [], 'manual' => []];
+        if ($siswa !== null) {
+            $form = self::withSiswaIdentity($form, $siswa);
+        }
         foreach (array_keys(Discretizer::SCORE_LABELS) as $column) {
             $form['nilai'][$column] = str_replace(',', '.', trim(input($column)));
         }
@@ -48,6 +51,11 @@ final class PrediksiService
         return [$form, $errors];
     }
 
+    public static function withSiswaIdentity(array $form, array $siswa): array
+    {
+        return array_replace($form, ['nama' => $siswa['nama'], 'sekolah' => $siswa['sekolah_kode'], 'peminatan' => $siswa['peminatan']]);
+    }
+
     /** Ubah isian form menjadi nilai atribut ID3. */
     public static function toAttributes(array $form, Discretizer $discretizer): array
     {
@@ -62,11 +70,11 @@ final class PrediksiService
     }
 
     /** Prediksi dari form lalu simpan ke riwayat. Mengembalikan id prediksi. */
-    public static function predictForm(array $model, array $form, int $userId): int
+    public static function predictForm(array $model, array $form, int $userId, ?int $siswaId = null): int
     {
         $attributes = self::toAttributes($form, Discretizer::fromDb());
         $input = ['atribut' => $attributes, 'nilai' => array_filter($form['nilai'], static fn (string $v): bool => $v !== '')];
-        return Prediksi::create((int) $model['id'], 'form', null, $form['nama'] !== '' ? $form['nama'] : null, $input, Id3::predict($model['tree'], $attributes), $userId);
+        return Prediksi::create((int) $model['id'], 'form', $siswaId, $form['nama'] !== '' ? $form['nama'] : null, $input, Id3::predict($model['tree'], $attributes), $userId);
     }
 
     /** Prediksi seluruh siswa tanpa label. Hasil massal lama dari model yang sama diganti. */

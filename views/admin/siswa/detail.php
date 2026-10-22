@@ -11,6 +11,16 @@
   <?php endif; ?>
 </div>
 
+<section class="card" aria-labelledby="akun-title">
+  <div class="card__head"><h2 id="akun-title">Akun siswa</h2></div>
+  <?php if ($account): ?>
+  <p>Username: <strong><?= e($account['username']) ?></strong></p>
+  <form method="post" action="<?= e(admin_url('siswa/reset-sandi')) ?>" data-confirm="Sandi lama tidak bisa dipakai lagi. Sandi baru hanya tampil sekali." data-confirm-title="Reset sandi siswa?" data-confirm-ok="Ya, reset sandi">
+    <?= Csrf::field() ?><input type="hidden" name="id" value="<?= (int) $siswa['id'] ?>"><button class="btn btn--outline" type="submit">Reset Sandi</button>
+  </form>
+  <?php else: ?><p>Siswa ini belum memiliki akun.</p><?php endif; ?>
+</section>
+
 <div class="grid grid--2">
   <section class="card" aria-labelledby="identitas-title">
     <div class="card__head"><h2 id="identitas-title">Identitas dan label</h2></div>

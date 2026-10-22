@@ -38,7 +38,7 @@ final class AuthController
                     $user = User::findByUsername($username);
                     $dummy = '$2y$12$jp51.VxPCE78fy1uK9CU7OKKTywqx0uGstjSyR.qPWOPg.7ms9JxW';
                     $valid = password_verify($password, $user['password_hash'] ?? $dummy);
-                    if ($valid && $user && in_array($user['role'], ['admin', 'guru_bk'], true)) {
+                    if ($valid && $user && isset(PenggunaService::ROLES[$user['role']])) {
                         User::recordLogin((int) $user['id']);
                         LoginAttempt::clear($ip);
                         Auth::login($user);

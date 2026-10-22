@@ -11,8 +11,11 @@ final class PenggunaController extends Controller
 
     public function index(): void
     {
+        $role = query('role');
+        $users = User::all();
         $this->render('pengguna/index', [
-            'users' => User::all(),
+            'users' => isset(PenggunaService::ROLES[$role]) ? array_values(array_filter($users, static fn ($account): bool => $account['role'] === $role)) : $users,
+            'role' => $role,
             'pageTitle' => 'Pengguna', 'active' => 'pengguna', 'crumbs' => ['Pengguna' => null],
         ]);
     }
@@ -30,7 +33,7 @@ final class PenggunaController extends Controller
     {
         $id = query_int('id');
         $existing = $id ? (User::findById($id) ?? $this->notFound('pengguna/', 'Pengguna tidak tersedia.')) : null;
-        $form = ['nama' => $existing['nama'] ?? '', 'username' => $existing['username'] ?? '', 'role' => $existing['role'] ?? 'guru_bk'];
+        $form = ['nama' => $existing['nama'] ?? '', 'username' => $existing['username'] ?? '', 'role' => $existing['role'] ?? 'guru_bk', 'kode_siswa' => $existing['kode_siswa'] ?? ''];
         $errors = [];
         $flash = null;
         if (is_post()) {
@@ -50,6 +53,39 @@ final class PenggunaController extends Controller
         $pageTitle = $existing ? 'Ubah Pengguna' : 'Tambah Pengguna';
         $this->render('pengguna/form', compact('existing', 'form', 'errors', 'flash', 'pageTitle') + [
             'active' => 'pengguna', 'crumbs' => ['Pengguna' => 'pengguna/', $pageTitle => null],
+        ]);
+    }
+
+    public function akunSiswa(): void
+    {
+        $schoolId = query_int('sekolah_id') ?: null;
+        $kelas = query('kelas');
+        if (is_post()) {
+            $this->verifyPost('pengguna/akun-siswa');
+            $schoolId = ctype_digit(input('sekolah_id')) ? (int) input('sekolah_id') : null;
+            $kelas = trim(input('kelas'));
+            try {
+                $cards = PenggunaService::createStudentAccounts($schoolId, $kelas);
+                if (!$cards) {
+                    flash('error', 'Tidak ada akun baru', 'Semua siswa pada filter ini sudah memiliki akun.');
+                    back_to('pengguna/akun-siswa');
+                }
+                $_SESSION['kartu_akun'] = $cards;
+                back_to('siswa/kartu-akun');
+            } catch (PDOException $exception) {
+                if ($exception->getCode() !== '23000') {
+                    throw $exception;
+                }
+                error_log($exception->getMessage());
+                flash('error', 'Gagal membuat akun', 'Username atau kode siswa sudah dipakai akun lain. Tidak ada akun baru yang disimpan.');
+                back_to('pengguna/akun-siswa');
+            }
+        }
+        $students = User::withoutSiswaAccount($schoolId, $kelas);
+        $this->render('pengguna/akun-siswa', [
+            'students' => $students, 'schoolId' => $schoolId, 'kelas' => $kelas,
+            'schools' => Sekolah::all(), 'classes' => Siswa::kelasList(),
+            'pageTitle' => 'Buat Akun Siswa', 'active' => 'pengguna', 'crumbs' => ['Pengguna' => 'pengguna/', 'Buat Akun Siswa' => null],
         ]);
     }
 

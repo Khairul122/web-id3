@@ -6,10 +6,17 @@ final class Prediksi
     public const PER_PAGE = 20;
 
     /** @return array{rows: list<array>, total: int} */
-    public static function paginate(array $filter, int $page): array
+    public static function paginate(array $filter, int $page, ?array $owner = null): array
     {
         $where = ['1 = 1'];
         $params = [];
+        if ($owner !== null) {
+            $where[] = $owner[1] === null ? 'p.dibuat_oleh = ?' : '(p.dibuat_oleh = ? OR p.siswa_id = ?)';
+            $params[] = $owner[0];
+            if ($owner[1] !== null) {
+                $params[] = $owner[1];
+            }
+        }
         if (in_array($filter['sumber'] ?? '', ['form', 'massal'], true)) {
             $where[] = 'p.sumber = ?';
             $params[] = $filter['sumber'];
@@ -45,6 +52,16 @@ final class Prediksi
             $row[$column] = json_decode($row[$column], true);
         }
         return $row;
+    }
+
+    public static function ownedBy(array $prediction, int $userId, ?int $siswaId): bool
+    {
+        return (int) $prediction['dibuat_oleh'] === $userId || ($siswaId !== null && (int) $prediction['siswa_id'] === $siswaId);
+    }
+
+    public static function hasCreatedBy(int $userId): bool
+    {
+        return (bool) Database::run('SELECT 1 FROM prediksi WHERE dibuat_oleh = ? LIMIT 1', [$userId])->fetchColumn();
     }
 
     public static function create(int $modelId, string $source, ?int $siswaId, ?string $name, array $input, array $result, int $userId): int
@@ -87,6 +104,12 @@ final class Prediksi
     public static function countBySource(): array
     {
         return array_column(Database::run('SELECT sumber, COUNT(*) AS total FROM prediksi GROUP BY sumber')->fetchAll(), 'total', 'sumber');
+    }
+
+    public static function countBatchByResult(int $modelId): array
+    {
+        $counts = Database::run("SELECT p.hasil, COUNT(DISTINCT p.siswa_id) AS total FROM prediksi p JOIN siswa s ON s.id = p.siswa_id WHERE p.sumber = 'massal' AND p.model_id = ? GROUP BY p.hasil", [$modelId])->fetchAll();
+        return array_replace(array_fill_keys(Id3::CLASSES, 0), array_column($counts, 'total', 'hasil'));
     }
 
     public static function export(): array

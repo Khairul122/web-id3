@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-22 (panel multi-peran)
+
+- Tambah peran siswa, tautan akun melalui kode siswa, dashboard dan navigasi per peran, serta pembatasan riwayat dan detail prediksi siswa.
+- Admin dapat membuat akun siswa massal; admin dan guru BK dapat mereset sandi siswa. Sandi awal hanya tampil sekali di kartu cetak dan perubahan sandi mengakhiri sesi lama.
+- Form simulasi siswa mengunci nama, sekolah, dan peminatan dari data server. Uji HTTP mencakup isolasi data, CSRF, akun massal, dan reset sandi.
+
 ## 2026-10-19 (perapian struktur sumber dan skrip penelitian)
 
 - 66 dokumen penelitian dipisahkan ke `data/sumber/` berdasarkan sekolah dan jenis sumber, serta `data/referensi/` untuk proposal. Dataset siap impor tetap di `data/Dataset_Bersih_ID3.xlsx`.

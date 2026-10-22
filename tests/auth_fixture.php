@@ -12,11 +12,11 @@ if (!preg_match('/^auth_test_[a-f0-9]{12}$/D', $username)) {
 }
 if ($action === 'create') {
     $role = getenv('SIMINAT_TEST_ROLE') ?: 'admin';
-    if (!in_array($role, ['admin', 'guru_bk'], true)) {
+    if (!in_array($role, ['admin', 'guru_bk', 'siswa'], true)) {
         throw new InvalidArgumentException('Peran fixture tidak valid.');
     }
-    $statement = Database::pdo()->prepare('INSERT INTO users (nama, username, password_hash, role, must_change_password) VALUES (?, ?, ?, ?, 1)');
-    $statement->execute(['Fixture Pengujian Autentikasi', $username, password_hash(getenv('SIMINAT_TEST_PASSWORD'), PASSWORD_BCRYPT, ['cost' => 12]), $role]);
+    $statement = Database::pdo()->prepare('INSERT INTO users (nama, username, password_hash, role, kode_siswa, must_change_password) VALUES (?, ?, ?, ?, ?, 1)');
+    $statement->execute(['Fixture Pengujian Autentikasi', $username, password_hash(getenv('SIMINAT_TEST_PASSWORD'), PASSWORD_BCRYPT, ['cost' => 12]), $role, getenv('SIMINAT_TEST_KODE') ?: null]);
 } elseif ($action === 'delete') {
     $statement = Database::pdo()->prepare('DELETE FROM users WHERE username = ? AND nama = ?');
     $statement->execute([$username, 'Fixture Pengujian Autentikasi']);

@@ -30,7 +30,7 @@
       <?php foreach ($prediction['jalur_json'] as $step): ?><li><span class="path__step"><?= e($step['atribut'] . ' = ' . $step['nilai']) ?><?= $step['dikenal'] ? '' : ' (tidak dikenal, memakai mayoritas node)' ?></span></li><?php endforeach; ?>
       <li><?= badge($prediction['hasil']) ?></li>
     </ol>
-    <?php if ($prediction['label_asli']): ?><p class="table-caption">Label asli siswa: <?= badge($prediction['label_asli']) ?></p><?php endif; ?>
+    <?php if (!$isSiswa && $prediction['label_asli']): ?><p class="table-caption">Label asli siswa: <?= badge($prediction['label_asli']) ?></p><?php endif; ?>
   </section>
 </div>
 
@@ -46,7 +46,7 @@
         <dt><?= e($attribute['nama']) ?></dt><dd><?= e($prediction['input_json']['atribut'][$attribute['kode']] ?? '-') ?><?php $column = Discretizer::SOURCES[$attribute['kode']] ?? null; if ($column && isset($prediction['input_json']['nilai'][$column])): ?> <small>(nilai <?= e(num($prediction['input_json']['nilai'][$column])) ?>)</small><?php endif; ?></dd>
       <?php endforeach; ?>
       <dt>Model</dt><dd><?= e($prediction['model_nama']) ?><?= $prediction['model_aktif'] ? ' (aktif)' : '' ?></dd>
-      <dt>Diproses oleh</dt><dd><?= e($prediction['pembuat'] ?? '-') ?></dd>
+      <?php if (!$isSiswa): ?><dt>Diproses oleh</dt><dd><?= e($prediction['pembuat'] ?? '-') ?></dd><?php endif; ?>
     </dl>
   </section>
 </div>

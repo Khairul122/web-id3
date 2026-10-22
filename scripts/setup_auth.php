@@ -14,6 +14,9 @@ $server = new PDO('mysql:host=' . $config['db_host'] . ';port=' . $config['db_po
 $server->exec('CREATE DATABASE IF NOT EXISTS `' . $config['db_name'] . '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/schema.sql'));
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/002_optional_password_change.sql'));
+if (!Database::run("SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'users' AND COLUMN_NAME = 'kode_siswa'")->fetchColumn()) {
+    Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/004_role_siswa.sql'));
+}
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed.sql'));
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed_master.sql'));
 echo "Database siap. Akun dan data yang sudah ada tidak diubah.\n";
