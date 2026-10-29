@@ -6,7 +6,7 @@ final class AuthController
     public function login(): void
     {
         if (Auth::user()) {
-            redirect('admin/dashboard/');
+            redirect('panel/dashboard/');
         }
         $errors = [];
         $username = '';
@@ -38,12 +38,12 @@ final class AuthController
                     $user = User::findByUsername($username);
                     $dummy = '$2y$12$jp51.VxPCE78fy1uK9CU7OKKTywqx0uGstjSyR.qPWOPg.7ms9JxW';
                     $valid = password_verify($password, $user['password_hash'] ?? $dummy);
-                    if ($valid && $user && isset(PenggunaService::ROLES[$user['role']])) {
+                    if ($valid && $user && isset(PenggunaService::ROLES[$user['role']]) && ($user['role'] !== 'guru_bk' || $user['sekolah_id'])) {
                         User::recordLogin((int) $user['id']);
                         LoginAttempt::clear($ip);
                         Auth::login($user);
                         flash('success', 'Berhasil masuk', 'Selamat datang, ' . $user['nama'] . '.');
-                        redirect('admin/dashboard/');
+                        redirect('panel/dashboard/');
                     }
                     http_response_code(422);
                     $notice = 'Username atau kata sandi tidak sesuai.';

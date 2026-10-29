@@ -44,16 +44,16 @@ final class Atribut
     }
 
     /** Jumlah siswa berlabel per nilai atribut dan kelas. */
-    public static function distribution(int $id): array
+    public static function distribution(int $id, ?int $schoolId = null): array
     {
         return Database::run(
             "SELECT n.nilai, COUNT(s.id) AS total, SUM(s.label = 'Saintek') AS saintek, SUM(s.label = 'Soshum') AS soshum,
-                    SUM(s.label = 'Campuran') AS campuran, SUM(sa.siswa_id IS NOT NULL AND s.label IS NULL) AS tanpa_label
+                    SUM(s.label = 'Campuran') AS campuran, SUM(s.id IS NOT NULL AND s.label IS NULL) AS tanpa_label
              FROM atribut_nilai n
              LEFT JOIN siswa_atribut sa ON sa.atribut_id = n.atribut_id AND sa.nilai = n.nilai
-             LEFT JOIN siswa s ON s.id = sa.siswa_id
+             LEFT JOIN siswa s ON s.id = sa.siswa_id" . ($schoolId ? ' AND s.sekolah_id = ?' : '') . "
              WHERE n.atribut_id = ? GROUP BY n.id ORDER BY n.urutan",
-            [$id]
+            $schoolId ? [$schoolId, $id] : [$id]
         )->fetchAll();
     }
 }

@@ -18,7 +18,8 @@ final class DashboardController extends Controller
             return;
         }
         if (!$this->isAdmin) {
-            $this->render('dashboard/guru', DashboardService::guidance() + [
+            $this->render('dashboard/guru', DashboardService::guidance((int) $this->user['sekolah_id']) + [
+                'school' => Sekolah::find((int) $this->user['sekolah_id']),
                 'pageTitle' => 'Dashboard', 'active' => 'dashboard', 'crumbs' => ['Dashboard' => null],
             ]);
             return;

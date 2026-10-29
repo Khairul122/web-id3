@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 final class DashboardService
 {
-    public static function guidance(): array
+    public static function guidance(int $schoolId): array
     {
         $model = ModelId3::active();
         $modelId = (int) ($model['id'] ?? 0);
         return [
-            'counts' => Siswa::counts(),
-            'byResult' => Prediksi::countBatchByResult($modelId),
-            'unpredicted' => Siswa::countUnpredicted($modelId),
-            'recent' => Prediksi::recent(6),
+            'counts' => Siswa::counts($schoolId),
+            'byResult' => Prediksi::countBatchByResult($modelId, $schoolId),
+            'unpredicted' => Siswa::countUnpredicted($modelId, $schoolId),
+            'recent' => Prediksi::recent(6, $schoolId),
             'model' => $model,
         ];
     }

@@ -19,7 +19,7 @@ final class Auth
             return null;
         }
         $user = User::findById((int) $_SESSION['user_id']);
-        if (!$user || (int) $user['session_version'] !== ($_SESSION['auth_version'] ?? 0) || !isset(PenggunaService::ROLES[$user['role']])) {
+        if (!$user || (int) $user['session_version'] !== ($_SESSION['auth_version'] ?? 0) || !isset(PenggunaService::ROLES[$user['role']]) || ($user['role'] === 'guru_bk' && !$user['sekolah_id'])) {
             self::logout();
             return null;
         }
@@ -44,7 +44,7 @@ final class Auth
     {
         if ($user['role'] !== 'admin') {
             flash('error', 'Akses ditolak', 'Halaman tersebut hanya dapat dibuka oleh administrator.');
-            redirect('admin/dashboard/');
+            redirect('panel/dashboard/');
         }
     }
 

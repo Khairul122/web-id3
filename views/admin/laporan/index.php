@@ -30,6 +30,7 @@
     </div>
   </section>
 </div>
+<?php if ($isAdmin): ?>
 <div class="grid grid--2">
   <section class="card" aria-labelledby="model-title">
     <div class="card__head"><h2 id="model-title">Model, pohon, dan aturan</h2></div>
@@ -54,3 +55,4 @@
     <?php endif; ?>
   </section>
 </div>
+<?php endif; ?>

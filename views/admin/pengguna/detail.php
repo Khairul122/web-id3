@@ -14,6 +14,7 @@
     <dt>Username</dt><dd><?= e($account['username']) ?></dd>
     <dt>Peran</dt><dd><?= e(PenggunaService::ROLES[$account['role']]) ?></dd>
     <?php if ($account['kode_siswa']): ?><dt>Kode siswa</dt><dd><?= e($account['kode_siswa']) ?></dd><?php endif; ?>
+    <?php if ($account['role'] === 'guru_bk'): ?><dt>Sekolah</dt><dd><?= e($account['sekolah_id'] ? Sekolah::find((int) $account['sekolah_id'])['nama'] : 'Belum ditentukan') ?></dd><?php endif; ?>
     <dt>Login terakhir</dt><dd><?= e(wib($account['last_login'])) ?></dd>
     <dt>Dibuat</dt><dd><?= e(wib($account['created_at'])) ?></dd>
     <dt>Hak akses</dt><dd><?= e(['admin' => 'Semua menu, termasuk master data, training, dan pengguna.', 'guru_bk' => 'Melihat data dan hasil, menjalankan Cek Rekomendasi, mencetak laporan, dan mereset sandi siswa.', 'siswa' => 'Melihat profil dan rekomendasi sendiri, menjalankan simulasi, serta melihat riwayat sendiri.'][$account['role']]) ?></dd>

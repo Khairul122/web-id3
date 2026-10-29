@@ -7,15 +7,16 @@ final class SiswaController extends Controller
 
     public function index(): void
     {
-        $filter = ['q' => query('q'), 'sekolah_id' => query_int('sekolah_id'), 'kelas' => query('kelas'), 'label' => query('label')];
+        $schoolId = $this->isAdmin ? null : (int) $this->user['sekolah_id'];
+        $filter = ['q' => query('q'), 'sekolah_id' => $schoolId ?? query_int('sekolah_id'), 'kelas' => query('kelas'), 'label' => query('label')];
         $page = max(1, query_int('page'));
         $this->render('siswa/index', [
             'filter' => $filter,
             'page' => $page,
             'result' => Siswa::paginate($filter, $page),
             'perPage' => Siswa::PER_PAGE,
-            'schools' => Sekolah::all(),
-            'classes' => Siswa::kelasList(),
+            'schools' => $schoolId ? [Sekolah::find($schoolId)] : Sekolah::all(),
+            'classes' => Siswa::kelasList($schoolId),
             'labelOptions' => ['' => 'Semua label', 'labeled' => 'Berlabel', 'Saintek' => 'Saintek', 'Soshum' => 'Soshum', 'Campuran' => 'Campuran', 'none' => 'Tanpa label'],
             'pageTitle' => 'Data Siswa', 'active' => 'siswa', 'crumbs' => ['Master Data' => null, 'Data Siswa' => null],
         ]);
@@ -24,6 +25,9 @@ final class SiswaController extends Controller
     public function detail(): void
     {
         $siswa = Siswa::find(query_int('id')) ?? $this->notFound('siswa/', 'Siswa yang dipilih tidak tersedia.');
+        if (!$this->isAdmin && (int) $siswa['sekolah_id'] !== (int) $this->user['sekolah_id']) {
+            $this->notFound('siswa/', 'Siswa yang dipilih tidak tersedia.');
+        }
         $model = ModelId3::active();
         $this->render('siswa/detail', [
             'siswa' => $siswa,
@@ -41,6 +45,9 @@ final class SiswaController extends Controller
         $id = (int) $this->field('id');
         $this->verifyPost('siswa/detail?id=' . $id);
         $siswa = Siswa::find($id) ?? $this->notFound('siswa/', 'Siswa tidak tersedia.');
+        if (!$this->isAdmin && (int) $siswa['sekolah_id'] !== (int) $this->user['sekolah_id']) {
+            $this->notFound('siswa/', 'Siswa tidak tersedia.');
+        }
         $account = User::findByKodeSiswa($siswa['kode_siswa']);
         if (!$account) {
             flash('error', 'Gagal mereset sandi', 'Siswa ini belum memiliki akun siswa.');

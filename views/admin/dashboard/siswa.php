@@ -11,17 +11,21 @@ $scale = static fn (float $value): float => max(0.0, min(100.0, ($value - 60) / 
 ?>
 <section class="hero" aria-labelledby="hero-title">
   <div>
-    <p class="hero__eyebrow" id="hero-title">Rekomendasi rumpun untuk Anda</p>
     <?php if ($live): ?>
-    <p class="hero__result"><?= e($live['kelas']) ?></p>
+    <div class="hero__main">
+      <?= icon('cap', 'icon--xl') ?>
+      <div><span id="hero-title">Rekomendasi rumpun</span><strong><?= e($live['kelas']) ?></strong><span>Keyakinan <?= e(pct($live['keyakinan'])) ?> dari distribusi daun pohon keputusan</span></div>
+    </div>
     <p class="hero__text">Berdasarkan nilai dan peminatan Anda, dihitung dengan model <?= e($model['nama']) ?>.</p>
     <div class="bar">
       <div class="hero__conf"><span>Tingkat keyakinan</span><strong><?= e(pct($live['keyakinan'])) ?></strong></div>
       <?= stacked_bar(['saintek' => (int) round($live['keyakinan'] * 100)], 100, 'Keyakinan ' . pct($live['keyakinan'])) ?>
     </div>
     <?php else: ?>
-    <p class="hero__result">Belum tersedia</p>
-    <p class="hero__text">Rekomendasi akan tampil setelah guru BK mengaktifkan model.</p>
+    <div class="hero__main">
+      <?= icon('cap', 'icon--xl') ?>
+      <div><span id="hero-title">Rekomendasi rumpun</span><strong>Belum tersedia</strong><span>Rekomendasi tampil setelah guru BK mengaktifkan model.</span></div>
+    </div>
     <?php endif; ?>
   </div>
   <dl class="hero__facts">
@@ -31,6 +35,10 @@ $scale = static fn (float $value): float => max(0.0, min(100.0, ($value - 60) / 
     <div><dt>Prediksi tersimpan</dt><dd><?= count($history) ?><small><?= $history ? 'Terakhir ' . e(wib($history[0]['created_at'])) : 'Belum ada riwayat' ?></small></dd></div>
   </dl>
 </section>
+<aside class="callout" role="note" aria-labelledby="catatan-title">
+  <span class="callout__icon"><?= icon('alert') ?></span>
+  <div><h2 class="callout__title" id="catatan-title">Catatan penting</h2><p class="callout__text">Hasil ini bahan diskusi dengan guru BK, <strong>bukan keputusan akhir</strong>.</p></div>
+</aside>
 
 <div class="grid grid--2">
   <section class="card" aria-labelledby="skor-title">
@@ -97,5 +105,4 @@ $scale = static fn (float $value): float => max(0.0, min(100.0, ($value - 60) / 
   </table></div>
   <?php endif; ?>
 </section>
-<div class="notice"><?= icon('alert') ?><div>Hasil ini bahan diskusi dengan guru BK, bukan keputusan akhir.</div></div>
 <?php endif; ?>

@@ -6,7 +6,7 @@ final class Prediksi
     public const PER_PAGE = 20;
 
     /** @return array{rows: list<array>, total: int} */
-    public static function paginate(array $filter, int $page, ?array $owner = null): array
+    public static function paginate(array $filter, int $page, ?array $owner = null, ?int $schoolId = null): array
     {
         $where = ['1 = 1'];
         $params = [];
@@ -17,6 +17,11 @@ final class Prediksi
                 $params[] = $owner[1];
             }
         }
+        if ($schoolId !== null) {
+            $where[] = self::schoolWhere();
+            $params[] = $schoolId;
+            $params[] = Sekolah::find($schoolId)['kode'];
+        }
         if (in_array($filter['sumber'] ?? '', ['form', 'massal'], true)) {
             $where[] = 'p.sumber = ?';
             $params[] = $filter['sumber'];
@@ -26,7 +31,7 @@ final class Prediksi
             $params[] = $filter['hasil'];
         }
         $where = implode(' AND ', $where);
-        $total = (int) Database::run("SELECT COUNT(*) FROM prediksi p WHERE {$where}", $params)->fetchColumn();
+        $total = (int) Database::run("SELECT COUNT(*) FROM prediksi p LEFT JOIN siswa s ON s.id = p.siswa_id WHERE {$where}", $params)->fetchColumn();
         $offset = (max($page, 1) - 1) * self::PER_PAGE;
         $rows = Database::run(
             "SELECT p.id, p.sumber, p.hasil, p.keyakinan, p.created_at, COALESCE(s.nama, p.nama_input) AS nama, s.kode_siswa, m.nama AS model_nama
@@ -59,6 +64,19 @@ final class Prediksi
         return (int) $prediction['dibuat_oleh'] === $userId || ($siswaId !== null && (int) $prediction['siswa_id'] === $siswaId);
     }
 
+    public static function belongsToSchool(array $prediction, int $schoolId): bool
+    {
+        if ($prediction['siswa_id'] !== null) {
+            return (int) Database::run('SELECT sekolah_id FROM siswa WHERE id = ?', [$prediction['siswa_id']])->fetchColumn() === $schoolId;
+        }
+        return ($prediction['input_json']['atribut']['Sekolah_Asal'] ?? null) === Sekolah::find($schoolId)['kode'];
+    }
+
+    private static function schoolWhere(): string
+    {
+        return "(s.sekolah_id = ? OR (p.siswa_id IS NULL AND JSON_UNQUOTE(JSON_EXTRACT(p.input_json, '$.atribut.Sekolah_Asal')) = ?))";
+    }
+
     public static function hasCreatedBy(int $userId): bool
     {
         return (bool) Database::run('SELECT 1 FROM prediksi WHERE dibuat_oleh = ? LIMIT 1', [$userId])->fetchColumn();
@@ -84,11 +102,12 @@ final class Prediksi
         Database::run('DELETE FROM prediksi WHERE id = ?', [$id]);
     }
 
-    public static function recent(int $limit = 5): array
+    public static function recent(int $limit = 5, ?int $schoolId = null): array
     {
         return Database::run(
             'SELECT p.id, p.sumber, p.hasil, p.keyakinan, p.created_at, COALESCE(s.nama, p.nama_input) AS nama
-             FROM prediksi p LEFT JOIN siswa s ON s.id = p.siswa_id ORDER BY p.id DESC LIMIT ' . max(1, $limit)
+             FROM prediksi p LEFT JOIN siswa s ON s.id = p.siswa_id' . ($schoolId ? ' WHERE ' . self::schoolWhere() : '') . ' ORDER BY p.id DESC LIMIT ' . max(1, $limit),
+            $schoolId ? [$schoolId, Sekolah::find($schoolId)['kode']] : []
         )->fetchAll();
     }
 
@@ -106,17 +125,18 @@ final class Prediksi
         return array_column(Database::run('SELECT sumber, COUNT(*) AS total FROM prediksi GROUP BY sumber')->fetchAll(), 'total', 'sumber');
     }
 
-    public static function countBatchByResult(int $modelId): array
+    public static function countBatchByResult(int $modelId, ?int $schoolId = null): array
     {
-        $counts = Database::run("SELECT p.hasil, COUNT(DISTINCT p.siswa_id) AS total FROM prediksi p JOIN siswa s ON s.id = p.siswa_id WHERE p.sumber = 'massal' AND p.model_id = ? AND s.label IS NULL GROUP BY p.hasil", [$modelId])->fetchAll();
+        $counts = Database::run("SELECT p.hasil, COUNT(DISTINCT p.siswa_id) AS total FROM prediksi p JOIN siswa s ON s.id = p.siswa_id WHERE p.sumber = 'massal' AND p.model_id = ? AND s.label IS NULL" . ($schoolId ? ' AND s.sekolah_id = ?' : '') . ' GROUP BY p.hasil', $schoolId ? [$modelId, $schoolId] : [$modelId])->fetchAll();
         return array_replace(array_fill_keys(Id3::CLASSES, 0), array_column($counts, 'total', 'hasil'));
     }
 
-    public static function export(): array
+    public static function export(?int $schoolId = null): array
     {
         return Database::run(
             'SELECT p.id, p.sumber, p.hasil, p.keyakinan, p.created_at, COALESCE(s.nama, p.nama_input) AS nama, s.kode_siswa, m.nama AS model_nama
-             FROM prediksi p JOIN model_id3 m ON m.id = p.model_id LEFT JOIN siswa s ON s.id = p.siswa_id ORDER BY p.id DESC'
+             FROM prediksi p JOIN model_id3 m ON m.id = p.model_id LEFT JOIN siswa s ON s.id = p.siswa_id' . ($schoolId ? ' WHERE ' . self::schoolWhere() : '') . ' ORDER BY p.id DESC',
+            $schoolId ? [$schoolId, Sekolah::find($schoolId)['kode']] : []
         )->fetchAll();
     }
 }

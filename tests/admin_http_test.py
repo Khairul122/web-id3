@@ -76,119 +76,120 @@ try:
     page = login(admin, ADMIN)
     assert 'data-confirm-title="Keluar dari akun?"' in page, 'Logout harus memakai dialog konfirmasi'
 
-    for route in ['admin/', 'admin/siswa/', 'admin/siswa/?label=none&q=a', 'admin/siswa/form', 'admin/siswa/import', 'admin/sekolah/',
-                  'admin/sekolah/detail?id=1', 'admin/atribut/', 'admin/atribut/detail?id=2', 'admin/diskretisasi/', 'admin/training/',
-                  'admin/training/form', 'admin/pengujian/', 'admin/prediksi/', 'admin/laporan/', 'admin/pengguna/', 'admin/akun/', 'admin/akun/password']:
+    for route in ['panel/', 'panel/siswa/', 'panel/siswa/?label=none&q=a', 'panel/siswa/form', 'panel/siswa/import', 'panel/sekolah/',
+                  'panel/sekolah/detail?id=1', 'panel/atribut/', 'panel/atribut/detail?id=2', 'panel/diskretisasi/', 'panel/training/',
+                  'panel/training/form', 'panel/pengujian/', 'panel/prediksi/', 'panel/laporan/', 'panel/pengguna/', 'panel/akun/', 'panel/akun/password']:
         status, page, _, _ = admin.request(route)
         assert status == 200 and '<h1>' in page, route
 
     # Training: form -> review -> simpan
-    _, page, _, _ = admin.request('admin/training/form')
+    _, page, _, _ = admin.request('panel/training/form')
     codes = re.findall(r'name="atribut\[\]" value="([A-Za-z_]+)"', page)
-    status, page, _, _ = admin.request('admin/training/form', {'_csrf': csrf(page), 'nama': 'UJI-OTOMATIS ' + TAG, 'skenario': 'semua', 'atribut[]': codes, 'min_sampel': '2', 'max_depth': '', 'aktifkan': '1'})
+    status, page, _, _ = admin.request('panel/training/form', {'_csrf': csrf(page), 'nama': 'UJI-OTOMATIS ' + TAG, 'skenario': 'semua', 'atribut[]': codes, 'min_sampel': '2', 'max_depth': '', 'aktifkan': '1'})
     assert status == 200 and 'Information gain di akar' in page
-    status, page, _, _ = admin.request('admin/training/review', {'_csrf': csrf(page)})
+    status, page, _, _ = admin.request('panel/training/review', {'_csrf': csrf(page)})
     assert flash(page) == 'Training berhasil' and 'Pohon keputusan' in page and 'Aturan IF-THEN' in page
     model_id = re.search(r'training/aktifkan|pengujian/form\?model_id=(\d+)', page).group(1)
 
-    status, svg, ctype, _ = admin.request('admin/training/pohon?id=' + model_id)
+    status, svg, ctype, _ = admin.request('panel/training/pohon?id=' + model_id)
     assert status == 200 and 'image/svg+xml' in ctype and svg.startswith('<svg') and 'UJI-OTOMATIS' in svg
 
     # Validasi form training
-    status, page, _, _ = admin.request('admin/training/form', {'_csrf': csrf(page), 'nama': '', 'skenario': 'x', 'min_sampel': '0'})
+    status, page, _, _ = admin.request('panel/training/form', {'_csrf': csrf(page), 'nama': '', 'skenario': 'x', 'min_sampel': '0'})
     assert status == 422 and flash(page) == 'Gagal menyimpan' and 'Pilih minimal satu atribut' in page
 
     # Pengujian k-fold
-    _, page, _, _ = admin.request('admin/pengujian/form?model_id=' + model_id)
-    status, page, _, _ = admin.request('admin/pengujian/form', {'_csrf': csrf(page), 'model_id': model_id, 'k': '5'})
+    _, page, _, _ = admin.request('panel/pengujian/form?model_id=' + model_id)
+    status, page, _, _ = admin.request('panel/pengujian/form', {'_csrf': csrf(page), 'model_id': model_id, 'k': '5'})
     assert flash(page) == 'Pengujian selesai' and 'Confusion matrix' in page
     evaluation_id = re.search(r'jenis=evaluasi&amp;id=(\d+)', page).group(1)
 
     # Cek Rekomendasi: form -> review -> hasil
-    _, page, _, _ = admin.request('admin/prediksi/form')
+    _, page, _, _ = admin.request('panel/prediksi/form')
     form = {'_csrf': csrf(page), 'nama': 'UJI Prediksi Lain ' + TAG, 'sekolah': 'MAN', 'peminatan': 'Umum', 'rata_agama': '93', 'nilai_barab': '91',
             'rata_bahasa': '95.5', 'nilai_mtk': '96', 'rata_mipa': '95', 'rata_ips': '92', 'kat_Kecenderungan': ''}
-    status, page, _, _ = admin.request('admin/prediksi/form', form)
+    status, page, _, _ = admin.request('panel/prediksi/form', form)
     assert 'Tinjau Input' in page and 'Tinggi' in page
-    status, page, _, _ = admin.request('admin/prediksi/review', {'_csrf': csrf(page)})
+    status, page, _, _ = admin.request('panel/prediksi/review', {'_csrf': csrf(page)})
     assert flash(page) == 'Rekomendasi selesai' and 'Jalur keputusan' in page
     other_prediction_id = re.search(r'Hasil #(\d+)', page).group(1)
-    status, page, _, _ = admin.request('admin/prediksi/form', {'_csrf': csrf(page), 'sekolah': 'X'})
+    status, page, _, _ = admin.request('panel/prediksi/form', {'_csrf': csrf(page), 'sekolah': 'X'})
     assert status == 422 and 'Isi nilai atau pilih kategori' in page
 
     # Prediksi massal
-    _, page, _, _ = admin.request('admin/prediksi/massal')
-    status, page, _, _ = admin.request('admin/prediksi/massal', {'_csrf': csrf(page)})
+    _, page, _, _ = admin.request('panel/prediksi/massal')
+    status, page, _, _ = admin.request('panel/prediksi/massal', {'_csrf': csrf(page)})
     assert flash(page) == 'Prediksi massal selesai', flash(page)
-    _, page, _, _ = admin.request('admin/prediksi/massal?cakupan=semua')
+    _, page, _, _ = admin.request('panel/prediksi/massal?cakupan=semua')
     assert 'Semua siswa' in page and '<th>Label</th>' in page
-    status, page, _, _ = admin.request('admin/prediksi/massal', {'_csrf': csrf(page), 'cakupan': 'semua'})
+    status, page, _, _ = admin.request('panel/prediksi/massal', {'_csrf': csrf(page), 'cakupan': 'semua'})
     assert flash(page) == 'Prediksi massal selesai' and 'siswa berlabel sesuai label asli' in page, flash(page)
 
     # Siswa: tambah -> tinjau -> simpan -> ubah -> hapus
-    _, page, _, _ = admin.request('admin/siswa/form')
+    _, page, _, _ = admin.request('panel/siswa/form')
     siswa = {'_csrf': csrf(page), 'kode_siswa': 'UJI-K9-01', 'nama': 'UJI Siswa ' + TAG, 'sekolah_id': '1', 'kelas': 'XII.9', 'nis': '', 'nisn': '',
              'jk': 'P', 'peminatan': 'Umum', 'label': '', 'sumber_label': '', 'detail_label': '', 'jurusan_diterima': '',
              'rata_agama': '94', 'nilai_barab': '', 'kat_Kat_BArab': 'Sedang', 'rata_bahasa': '96', 'nilai_mtk': '91', 'rata_mipa': '93', 'rata_ips': '95', 'kat_Kecenderungan': ''}
-    status, page, _, _ = admin.request('admin/siswa/form', siswa)
+    status, page, _, _ = admin.request('panel/siswa/form', siswa)
     assert 'Tinjau Data Siswa' in page and '(manual)' in page
-    status, page, _, _ = admin.request('admin/siswa/review', {'_csrf': csrf(page)})
+    status, page, _, _ = admin.request('panel/siswa/review', {'_csrf': csrf(page)})
     assert flash(page) == 'Berhasil disimpan' and 'UJI Siswa' in page
     siswa_id = re.search(r'siswa/form\?id=(\d+)', page).group(1)
-    status, page, _, _ = admin.request('admin/siswa/form', dict(siswa, _csrf=csrf(page), kode_siswa='UJI-K9-01'))
+    status, page, _, _ = admin.request('panel/siswa/form', dict(siswa, _csrf=csrf(page), kode_siswa='UJI-K9-01'))
     assert status == 422 and 'Kode siswa sudah dipakai' in page, 'Kode duplikat harus ditolak saat tambah'
-    _, page, _, _ = admin.request('admin/siswa/form?id=' + siswa_id)
-    admin.request('admin/siswa/form?id=' + siswa_id, dict(siswa, _csrf=csrf(page), nama='UJI Ubah ' + TAG))
-    _, page, _, _ = admin.request('admin/siswa/review')
-    status, page, _, _ = admin.request('admin/siswa/review', {'_csrf': csrf(page)})
+    _, page, _, _ = admin.request('panel/siswa/form?id=' + siswa_id)
+    admin.request('panel/siswa/form?id=' + siswa_id, dict(siswa, _csrf=csrf(page), nama='UJI Ubah ' + TAG))
+    _, page, _, _ = admin.request('panel/siswa/review')
+    status, page, _, _ = admin.request('panel/siswa/review', {'_csrf': csrf(page)})
     assert flash(page) == 'Berhasil disimpan' and 'UJI Ubah' in page
 
     # Akun siswa: validasi kode, isolasi riwayat, dan identitas simulasi dari server.
-    _, page, _, _ = admin.request('admin/pengguna/form')
+    _, page, _, _ = admin.request('panel/pengguna/form')
     student_account = {'_csrf': csrf(page), 'nama': 'UJI Akun', 'username': 'uji_akun_' + TAG, 'role': 'siswa', 'password': PASSWORD, 'password_confirmation': PASSWORD}
-    status, page, _, _ = admin.request('admin/pengguna/form', dict(student_account, kode_siswa=''))
+    status, page, _, _ = admin.request('panel/pengguna/form', dict(student_account, kode_siswa=''))
     assert status == 422 and 'Pilih kode siswa' in page
-    status, page, _, _ = admin.request('admin/pengguna/form', dict(student_account, _csrf=csrf(page), kode_siswa='UJI-TIDAK-ADA'))
+    status, page, _, _ = admin.request('panel/pengguna/form', dict(student_account, _csrf=csrf(page), kode_siswa='UJI-TIDAK-ADA'))
     assert status == 422 and 'Pilih kode siswa' in page
 
     fixture('create', SISWA, 'siswa', 'UJI-K9-01')
+    assert subprocess.run(['php', 'tests/admin_fixture.php', 'student-school', 'UJI-K9-01'], check=True, capture_output=True, text=True).stdout == '1'
     siswa_client = Client()
     page = login(siswa_client, SISWA)
     assert 'UJI Ubah ' + TAG in page and 'UJI Prediksi Lain ' + TAG not in page
     assert 'Panel Siswa' in page and 'Riwayat Saya' in page and 'Master Data' not in page and 'Proses ID3' not in page
-    for route in ['admin/siswa/detail?id=' + siswa_id, 'admin/sekolah/', 'admin/atribut/', 'admin/diskretisasi/',
-                  'admin/training/', 'admin/pengujian/', 'admin/laporan/csv?jenis=siswa', 'admin/pengguna/']:
+    for route in ['panel/siswa/detail?id=' + siswa_id, 'panel/sekolah/', 'panel/atribut/', 'panel/diskretisasi/',
+                  'panel/training/', 'panel/pengujian/', 'panel/laporan/csv?jenis=siswa', 'panel/pengguna/']:
         assert flash(siswa_client.request(route)[1]) == 'Akses ditolak', route
-    assert 'UJI Prediksi Lain ' + TAG not in siswa_client.request('admin/prediksi/')[1]
-    assert flash(siswa_client.request('admin/prediksi/detail?id=' + other_prediction_id)[1]) == 'Data tidak ditemukan'
-    assert flash(siswa_client.request('admin/prediksi/massal')[1]) == 'Akses ditolak'
-    assert flash(siswa_client.request('admin/prediksi/hapus', {'id': other_prediction_id})[1]) == 'Akses ditolak'
-    _, page, _, _ = siswa_client.request('admin/prediksi/form')
+    assert 'UJI Prediksi Lain ' + TAG not in siswa_client.request('panel/prediksi/')[1]
+    assert flash(siswa_client.request('panel/prediksi/detail?id=' + other_prediction_id)[1]) == 'Data tidak ditemukan'
+    assert flash(siswa_client.request('panel/prediksi/massal')[1]) == 'Akses ditolak'
+    assert flash(siswa_client.request('panel/prediksi/hapus', {'id': other_prediction_id})[1]) == 'Akses ditolak'
+    _, page, _, _ = siswa_client.request('panel/prediksi/form')
     assert 'name="sekolah"' not in page and 'name="peminatan"' not in page and 'name="nama"' not in page
     # Nilai milik siswa terisi otomatis; mapel tanpa nilai kosong dengan kategori tersimpan terpilih.
     assert re.search(r'name="rata_agama"[^>]*value="94\.00"', page) and re.search(r'name="rata_bahasa"[^>]*value="96\.00"', page)
     assert re.search(r'name="nilai_barab"[^>]*value=""', page) and '<option selected>Sedang</option>' in page
     forged = dict(form, _csrf=csrf(page), nama='Nama Palsu', sekolah='MAS', peminatan='IPA')
-    status, page, _, _ = siswa_client.request('admin/prediksi/form', forged)
+    status, page, _, _ = siswa_client.request('panel/prediksi/form', forged)
     assert status == 200 and 'UJI Ubah ' + TAG in page and 'Nama Palsu' not in page
-    status, page, _, _ = siswa_client.request('admin/prediksi/review', {'_csrf': csrf(page)})
+    status, page, _, _ = siswa_client.request('panel/prediksi/review', {'_csrf': csrf(page)})
     assert flash(page) == 'Rekomendasi selesai' and 'Nama Palsu' not in page and 'UJI Ubah ' + TAG in page
     own_prediction_id = re.search(r'Hasil #(\d+)', page).group(1)
     linked_id = subprocess.run(['php', 'tests/admin_fixture.php', 'prediction-student', own_prediction_id], check=True, capture_output=True, text=True).stdout
     assert linked_id == siswa_id
-    assert own_prediction_id in siswa_client.request('admin/prediksi/')[1]
+    assert own_prediction_id in siswa_client.request('panel/prediksi/')[1]
     assert 'Label asli siswa' not in page and 'Diproses oleh' not in page
 
     # Guru hanya dapat mereset akun siswa dari data siswa yang dituju.
     guru_reset = Client()
     login(guru_reset, GURU)
-    _, page, _, _ = guru_reset.request('admin/siswa/detail?id=' + siswa_id)
+    _, page, _, _ = guru_reset.request('panel/siswa/detail?id=' + siswa_id)
     assert 'Reset Sandi' in page
-    assert flash(guru_reset.request('admin/siswa/reset-sandi', {'id': siswa_id})[1]) == 'Sesi form berakhir'
-    status, card, _, _ = guru_reset.request('admin/siswa/reset-sandi', {'_csrf': csrf(page), 'id': siswa_id})
+    assert flash(guru_reset.request('panel/siswa/reset-sandi', {'id': siswa_id})[1]) == 'Sesi form berakhir'
+    status, card, _, _ = guru_reset.request('panel/siswa/reset-sandi', {'_csrf': csrf(page), 'id': siswa_id})
     new_password = re.search(r'data-label="Sandi awal"><strong>([a-f0-9]{12})</strong>', card).group(1)
-    assert status == 200 and new_password not in guru_reset.request('admin/siswa/kartu-akun')[1]
-    assert flash(siswa_client.request('admin/')[1]) == 'Sesi berakhir'
+    assert status == 200 and new_password not in guru_reset.request('panel/siswa/kartu-akun')[1]
+    assert flash(siswa_client.request('panel/')[1]) == 'Sesi berakhir'
     _, login_page, _, _ = Client().request('login.php')
     failed = Client()
     _, login_page, _, _ = failed.request('login.php')
@@ -199,106 +200,142 @@ try:
     empty_client = Client()
     page = login(empty_client, SISWA_KOSONG)
     assert 'Data Anda belum tersedia' in page
-    assert 'Data Anda belum tersedia' in empty_client.request('admin/prediksi/form')[1]
+    assert 'Data Anda belum tersedia' in empty_client.request('panel/prediksi/form')[1]
 
     # Pembuatan akun massal memakai kelas uji khusus agar tidak menyentuh siswa nyata.
-    _, page, _, _ = admin.request('admin/siswa/form')
-    admin.request('admin/siswa/form', dict(siswa, _csrf=csrf(page), kode_siswa='UJI-K9-02', nama='UJI Massal ' + TAG, kelas='UJI.XII'))
-    _, page, _, _ = admin.request('admin/siswa/review')
-    _, page, _, _ = admin.request('admin/siswa/review', {'_csrf': csrf(page)})
+    _, page, _, _ = admin.request('panel/siswa/form')
+    admin.request('panel/siswa/form', dict(siswa, _csrf=csrf(page), kode_siswa='UJI-K9-02', nama='UJI Massal ' + TAG, kelas='UJI.XII'))
+    _, page, _, _ = admin.request('panel/siswa/review')
+    _, page, _, _ = admin.request('panel/siswa/review', {'_csrf': csrf(page)})
     batch_siswa_id = re.search(r'siswa/form\?id=(\d+)', page).group(1)
-    _, detail, _, _ = guru_reset.request('admin/siswa/detail?id=' + batch_siswa_id)
-    assert flash(guru_reset.request('admin/siswa/reset-sandi', {'_csrf': csrf(detail), 'id': batch_siswa_id})[1]) == 'Gagal mereset sandi'
+    _, detail, _, _ = guru_reset.request('panel/siswa/detail?id=' + batch_siswa_id)
+    assert flash(guru_reset.request('panel/siswa/reset-sandi', {'_csrf': csrf(detail), 'id': batch_siswa_id})[1]) == 'Gagal mereset sandi'
     own_user_id = subprocess.run(['php', 'tests/admin_fixture.php', 'user-id', SISWA], check=True, capture_output=True, text=True).stdout
-    _, edit, _, _ = admin.request('admin/pengguna/form?id=' + own_user_id)
-    status, edit, _, _ = admin.request('admin/pengguna/form?id=' + own_user_id, {'_csrf': csrf(edit), 'nama': 'Fixture Pengujian Autentikasi', 'username': SISWA, 'role': 'siswa', 'kode_siswa': 'UJI-K9-02', 'password': ''})
+    _, edit, _, _ = admin.request('panel/pengguna/form?id=' + own_user_id)
+    status, edit, _, _ = admin.request('panel/pengguna/form?id=' + own_user_id, {'_csrf': csrf(edit), 'nama': 'Fixture Pengujian Autentikasi', 'username': SISWA, 'role': 'siswa', 'kode_siswa': 'UJI-K9-02', 'password': ''})
     assert status == 422 and 'tidak dapat ditautkan ke siswa lain' in edit
-    _, page, _, _ = admin.request('admin/pengguna/form')
-    _, page, _, _ = admin.request('admin/pengguna/form', {'_csrf': csrf(page), 'nama': 'UJI Benturan', 'username': 'uji-k9-02', 'role': 'guru_bk', 'password': PASSWORD, 'password_confirmation': PASSWORD})
+    _, page, _, _ = admin.request('panel/pengguna/form')
+    _, page, _, _ = admin.request('panel/pengguna/form', {'_csrf': csrf(page), 'nama': 'UJI Benturan', 'username': 'uji-k9-02', 'role': 'guru_bk', 'sekolah_id': '1', 'password': PASSWORD, 'password_confirmation': PASSWORD})
     collision_id = re.search(r'pengguna/form\?id=(\d+)', page).group(1)
-    _, page, _, _ = admin.request('admin/pengguna/akun-siswa?kelas=UJI.XII')
+    _, page, _, _ = admin.request('panel/pengguna/akun-siswa?kelas=UJI.XII')
     assert '1 siswa belum memiliki akun' in page
-    assert flash(admin.request('admin/pengguna/akun-siswa', {'_csrf': csrf(page), 'sekolah_id': '0', 'kelas': 'UJI.XII'})[1]) == 'Gagal membuat akun'
-    _, page, _, _ = admin.request('admin/pengguna/detail?id=' + collision_id)
-    admin.request('admin/pengguna/hapus', {'_csrf': csrf(page), 'id': collision_id})
-    _, page, _, _ = admin.request('admin/pengguna/akun-siswa?kelas=UJI.XII')
-    status, card, _, _ = admin.request('admin/pengguna/akun-siswa', {'_csrf': csrf(page), 'sekolah_id': '0', 'kelas': 'UJI.XII'})
+    assert flash(admin.request('panel/pengguna/akun-siswa', {'_csrf': csrf(page), 'sekolah_id': '0', 'kelas': 'UJI.XII'})[1]) == 'Gagal membuat akun'
+    _, page, _, _ = admin.request('panel/pengguna/detail?id=' + collision_id)
+    admin.request('panel/pengguna/hapus', {'_csrf': csrf(page), 'id': collision_id})
+    _, page, _, _ = admin.request('panel/pengguna/akun-siswa?kelas=UJI.XII')
+    status, card, _, _ = admin.request('panel/pengguna/akun-siswa', {'_csrf': csrf(page), 'sekolah_id': '0', 'kelas': 'UJI.XII'})
     batch_password = re.search(r'data-label="Sandi awal"><strong>([a-f0-9]{12})</strong>', card).group(1)
-    assert status == 200 and 'uji-k9-02' in card and batch_password not in admin.request('admin/siswa/kartu-akun')[1]
+    assert status == 200 and 'uji-k9-02' in card and batch_password not in admin.request('panel/siswa/kartu-akun')[1]
+    assert subprocess.run(['php', 'tests/admin_fixture.php', 'student-school', 'UJI-K9-02'], check=True, capture_output=True, text=True).stdout == '1'
     stored_hash = subprocess.run(['php', 'tests/admin_fixture.php', 'user-hash', 'UJI-K9-02'], check=True, capture_output=True, text=True).stdout
     assert stored_hash.startswith('$2y$') and batch_password not in stored_hash
     login(Client(), 'uji-k9-02', batch_password)
 
-    status, page, _, _ = admin.request('admin/siswa/hapus', {'_csrf': 'salah', 'id': siswa_id})
+    status, page, _, _ = admin.request('panel/siswa/hapus', {'_csrf': 'salah', 'id': siswa_id})
     assert flash(page) == 'Sesi form berakhir'
-    status, page, _, _ = admin.request('admin/siswa/hapus', {'_csrf': csrf(page), 'id': siswa_id})
+    status, page, _, _ = admin.request('panel/siswa/hapus', {'_csrf': csrf(page), 'id': siswa_id})
     assert flash(page) == 'Berhasil dihapus'
-    _, page, _, _ = admin.request('admin/siswa/form')
-    admin.request('admin/siswa/form', dict(siswa, _csrf=csrf(page), nama='UJI Setelah Impor ' + TAG))
-    _, page, _, _ = admin.request('admin/siswa/review')
-    admin.request('admin/siswa/review', {'_csrf': csrf(page)})
+    assert subprocess.run(['php', 'tests/admin_fixture.php', 'student-school', 'UJI-K9-01'], check=True, capture_output=True, text=True).stdout == ''
+    _, page, _, _ = admin.request('panel/siswa/form')
+    admin.request('panel/siswa/form', dict(siswa, _csrf=csrf(page), nama='UJI Setelah Impor ' + TAG))
+    _, page, _, _ = admin.request('panel/siswa/review')
+    admin.request('panel/siswa/review', {'_csrf': csrf(page)})
+    assert subprocess.run(['php', 'tests/admin_fixture.php', 'student-school', 'UJI-K9-01'], check=True, capture_output=True, text=True).stdout == '1'
     linked = Client()
     linked_page = login(linked, SISWA, new_password)
     assert 'UJI Setelah Impor ' + TAG in linked_page
-    assert 'Hasil #' + own_prediction_id in linked.request('admin/prediksi/detail?id=' + own_prediction_id)[1]
-    assert own_prediction_id in linked.request('admin/prediksi/')[1]
-    _, edit, _, _ = admin.request('admin/pengguna/form?id=' + own_user_id)
-    assert flash(admin.request('admin/pengguna/form?id=' + own_user_id, {'_csrf': csrf(edit), 'nama': 'Fixture Pengujian Autentikasi', 'username': SISWA, 'role': 'guru_bk', 'kode_siswa': '', 'password': ''})[1]) == 'Berhasil disimpan'
-    assert flash(linked.request('admin/')[1]) == 'Sesi berakhir'
-    status, page, _, _ = admin.request('admin/siswa/form', {'_csrf': csrf(page)})
+    assert 'Hasil #' + own_prediction_id in linked.request('panel/prediksi/detail?id=' + own_prediction_id)[1]
+    assert own_prediction_id in linked.request('panel/prediksi/')[1]
+    _, edit, _, _ = admin.request('panel/pengguna/form?id=' + own_user_id)
+    assert flash(admin.request('panel/pengguna/form?id=' + own_user_id, {'_csrf': csrf(edit), 'nama': 'Fixture Pengujian Autentikasi', 'username': SISWA, 'role': 'guru_bk', 'sekolah_id': '1', 'kode_siswa': '', 'password': ''})[1]) == 'Berhasil disimpan'
+    assert flash(linked.request('panel/')[1]) == 'Sesi berakhir'
+    status, page, _, _ = admin.request('panel/siswa/form', {'_csrf': csrf(page)})
     assert status == 422 and flash(page) == 'Gagal menyimpan'
 
     # Master data lain: simpan ulang nilai yang sama
-    _, page, _, _ = admin.request('admin/sekolah/form?id=2')
+    _, page, _, _ = admin.request('panel/sekolah/form?id=2')
     name = re.search(r'id="nama" name="nama"[^>]*value="([^"]+)"', page).group(1)
     alamat = re.search(r'<textarea id="alamat"[^>]*>([^<]*)</textarea>', page).group(1)
-    status, page, _, _ = admin.request('admin/sekolah/form?id=2', {'_csrf': csrf(page), 'nama': name, 'alamat': alamat})
+    status, page, _, _ = admin.request('panel/sekolah/form?id=2', {'_csrf': csrf(page), 'nama': name, 'alamat': alamat})
     assert flash(page) == 'Berhasil disimpan'
-    _, page, _, _ = admin.request('admin/diskretisasi/form')
-    status, page, _, _ = admin.request('admin/diskretisasi/form', {'_csrf': csrf(page), 'batas_tinggi': '95', 'batas_sedang': '96'})
+    _, page, _, _ = admin.request('panel/diskretisasi/form')
+    status, page, _, _ = admin.request('panel/diskretisasi/form', {'_csrf': csrf(page), 'batas_tinggi': '95', 'batas_sedang': '96'})
     assert status == 422 and 'lebih kecil' in page
-    status, page, _, _ = admin.request('admin/diskretisasi/form', {'_csrf': csrf(page), 'batas_tinggi': '95', 'batas_sedang': '92'})
+    status, page, _, _ = admin.request('panel/diskretisasi/form', {'_csrf': csrf(page), 'batas_tinggi': '95', 'batas_sedang': '92'})
     assert flash(page) == 'Berhasil disimpan'
 
     # Import: baca file server -> tinjau -> batal (data tidak diganti)
-    _, page, _, _ = admin.request('admin/siswa/import')
-    status, page, _, _ = admin.request('admin/siswa/import', {'_csrf': csrf(page), 'sumber': 'server'})
+    _, page, _, _ = admin.request('panel/siswa/import')
+    status, page, _, _ = admin.request('panel/siswa/import', {'_csrf': csrf(page), 'sumber': 'server'})
     assert 'Validasi lulus' in page and '>247<' in page
-    status, page, _, _ = admin.request('admin/siswa/import-review', {'_csrf': csrf(page), 'aksi': 'batal'})
+    status, page, _, _ = admin.request('panel/siswa/import-review', {'_csrf': csrf(page), 'aksi': 'batal'})
     assert flash(page) == 'Import dibatalkan'
 
     # Laporan
-    for route in ['admin/laporan/cetak?jenis=siswa', 'admin/laporan/cetak?jenis=model&id=' + model_id, 'admin/laporan/cetak?jenis=evaluasi&id=' + evaluation_id, 'admin/laporan/cetak?jenis=prediksi']:
+    for route in ['panel/laporan/cetak?jenis=siswa', 'panel/laporan/cetak?jenis=model&id=' + model_id, 'panel/laporan/cetak?jenis=evaluasi&id=' + evaluation_id, 'panel/laporan/cetak?jenis=prediksi']:
         status, page, _, _ = admin.request(route)
         assert status == 200 and 'data-print' in page, route
-    status, page, ctype, _ = admin.request('admin/laporan/csv?jenis=siswa')
+    status, page, ctype, _ = admin.request('panel/laporan/csv?jenis=siswa')
     assert status == 200 and 'text/csv' in ctype and 'Kode;Sekolah;Kelas' in page
 
     # Pengguna
-    _, page, _, _ = admin.request('admin/pengguna/form')
-    status, page, _, _ = admin.request('admin/pengguna/form', {'_csrf': csrf(page), 'nama': 'UJI Guru', 'username': 'uji_otomatis_' + TAG, 'role': 'guru_bk', 'password': PASSWORD, 'password_confirmation': PASSWORD})
+    _, page, _, _ = admin.request('panel/pengguna/form')
+    status, page, _, _ = admin.request('panel/pengguna/form', {'_csrf': csrf(page), 'nama': 'UJI Guru', 'username': 'uji_otomatis_' + TAG, 'role': 'guru_bk', 'sekolah_id': '1', 'password': PASSWORD, 'password_confirmation': PASSWORD})
     assert flash(page) == 'Berhasil disimpan'
     user_id = re.search(r'pengguna/form\?id=(\d+)', page).group(1)
-    status, page, _, _ = admin.request('admin/pengguna/hapus', {'_csrf': csrf(page), 'id': user_id})
+    status, page, _, _ = admin.request('panel/pengguna/hapus', {'_csrf': csrf(page), 'id': user_id})
     assert flash(page) == 'Berhasil dihapus'
 
     # Route tidak dikenal dan method khusus POST
-    status, page, _, _ = admin.request('admin/tidak-ada/')
+    status, page, _, _ = admin.request('panel/tidak-ada/')
     assert flash(page) == 'Halaman tidak ditemukan'
-    assert admin.request('admin/training/hapus', follow=False)[0] == 405
+    assert admin.request('panel/training/hapus', follow=False)[0] == 405
 
     # Guru BK: tidak boleh mengubah data
     guru = Client()
     login(guru, GURU)
-    for route in ['admin/training/form', 'admin/pengguna/', 'admin/siswa/form', 'admin/prediksi/massal']:
+    _, page, _, _ = admin.request('panel/siswa/form')
+    admin.request('panel/siswa/form', dict(siswa, _csrf=csrf(page), kode_siswa='UJI-K9-03', nama='UJI Sekolah Lain ' + TAG, sekolah_id='2'))
+    _, page, _, _ = admin.request('panel/siswa/review')
+    _, page, _, _ = admin.request('panel/siswa/review', {'_csrf': csrf(page)})
+    other_school_student_id = re.search(r'siswa/form\?id=(\d+)', page).group(1)
+    assert 'MAS Al-Muslimun Lhoksukon' in admin.request('panel/siswa/?q=UJI-K9-03')[1]
+    assert 'MAN 4 Aceh Utara' in guru.request('panel/siswa/?q=UJI-K9-01')[1]
+    assert 'UJI Sekolah Lain ' + TAG not in guru.request('panel/siswa/?sekolah_id=2')[1]
+    assert flash(guru.request('panel/siswa/detail?id=' + other_school_student_id)[1]) == 'Data tidak ditemukan'
+    assert flash(guru.request('panel/sekolah/detail?id=2')[1]) == 'Data tidak ditemukan'
+    assert 'UJI Sekolah Lain ' + TAG not in guru.request('panel/laporan/csv?jenis=siswa')[1]
+    assert 'UJI Sekolah Lain ' + TAG not in guru.request('panel/laporan/cetak?jenis=siswa&sekolah_id=2')[1]
+    assert flash(guru.request('panel/laporan/cetak?jenis=model&id=' + model_id)[1]) == 'Data tidak ditemukan'
+    _, page, _, _ = admin.request('panel/prediksi/form')
+    admin.request('panel/prediksi/form', dict(form, _csrf=csrf(page), sekolah='MAS', nama='UJI Prediksi Sekolah Lain ' + TAG))
+    _, page, _, _ = admin.request('panel/prediksi/review')
+    _, page, _, _ = admin.request('panel/prediksi/review', {'_csrf': csrf(page)})
+    other_school_prediction_id = re.search(r'Hasil #(\d+)', page).group(1)
+    assert 'UJI Prediksi Sekolah Lain ' + TAG not in guru.request('panel/prediksi/')[1]
+    assert 'UJI Prediksi Sekolah Lain ' + TAG not in guru.request('panel/laporan/csv?jenis=prediksi')[1]
+    assert flash(guru.request('panel/prediksi/detail?id=' + other_school_prediction_id)[1]) == 'Data tidak ditemukan'
+    _, page, _, _ = guru.request('panel/prediksi/form')
+    status, page, _, _ = guru.request('panel/prediksi/form', dict(form, _csrf=csrf(page), sekolah='MAS'))
+    assert status == 422 and 'Pilih sekolah Anda.' in page
+    for route in ['panel/training/', 'panel/pengujian/', 'panel/training/form', 'panel/pengguna/', 'panel/siswa/form', 'panel/prediksi/massal']:
         status, page, _, _ = guru.request(route)
         assert flash(page) == 'Akses ditolak', route
-    status, page, _, _ = guru.request('admin/prediksi/form')
+    status, page, _, _ = guru.request('panel/prediksi/form')
     assert status == 200 and 'Cek Rekomendasi' in page
-    assert 'siswa/hapus' not in guru.request('admin/siswa/')[1]
+    assert 'siswa/hapus' not in guru.request('panel/siswa/')[1]
+    # Sidebar dibedakan per peran: admin mengelola, guru BK membimbing dan hanya melihat model.
+    admin_menu = admin.request('panel/')[1]
+    assert 'Panel Administrator' in admin_menu and 'Kelola Data' in admin_menu and 'Administrasi' in admin_menu and 'Training Model' in admin_menu
+    assert 'Referensi Model' not in admin_menu and 'Bimbingan' not in admin_menu
+    guru_menu = guru.request('panel/')[1]
+    assert 'Panel Guru BK' in guru_menu and 'Bimbingan' in guru_menu and 'Referensi (hanya lihat)' in guru_menu
+    assert 'Riwayat Prediksi' in guru_menu and 'Hasil Pengujian' not in guru_menu
+    assert 'Kelola Data' not in guru_menu and 'Administrasi' not in guru_menu and 'Training Model' not in guru_menu and 'panel/pengguna/' not in guru_menu
+    assert re.search(r'href="[^"]*prediksi/form" aria-current="page"', guru.request('panel/prediksi/form')[1]), 'Cek Rekomendasi guru BK harus aktif di sidebar'
 
     # Logout dengan dialog berhasil keluar
-    status, page, _, _ = admin.request('logout.php', {'_csrf': csrf(page := admin.request('admin/')[1])})
+    status, page, _, _ = admin.request('logout.php', {'_csrf': csrf(page := admin.request('panel/')[1])})
     assert flash(page) == 'Berhasil keluar'
     print('PASS: halaman panel, training, pengujian, prediksi, CRUD master data, import, laporan, pengguna, dialog, CSRF, dan hak akses guru BK.')
 finally:

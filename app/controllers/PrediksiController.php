@@ -10,7 +10,7 @@ final class PrediksiController extends Controller
         $this->render('prediksi/index', [
             'filter' => $filter,
             'page' => $page,
-            'result' => Prediksi::paginate($filter, $page, $this->isSiswa ? [(int) $this->user['id'], $this->ownSiswa ? (int) $this->ownSiswa['id'] : null] : null),
+            'result' => Prediksi::paginate($filter, $page, $this->isSiswa ? [(int) $this->user['id'], $this->ownSiswa ? (int) $this->ownSiswa['id'] : null] : null, $this->isAdmin || $this->isSiswa ? null : (int) $this->user['sekolah_id']),
             'perPage' => Prediksi::PER_PAGE,
             'model' => ModelId3::active(),
             'pageTitle' => $this->isSiswa ? 'Riwayat Saya' : 'Prediksi', 'active' => $this->isSiswa ? 'riwayat' : 'prediksi', 'crumbs' => [$this->isSiswa ? 'Riwayat Saya' : 'Prediksi' => null],
@@ -25,6 +25,9 @@ final class PrediksiController extends Controller
         $draft = $_SESSION['prediksi_draft'] ?? null;
         $fromDraft = query('draft') === '1' && $draft;
         $form = $fromDraft ? $draft : PrediksiService::EMPTY;
+        if (!$this->isAdmin && !$this->isSiswa && !$fromDraft) {
+            $form['sekolah'] = Sekolah::find((int) $this->user['sekolah_id'])['kode'];
+        }
         if ($this->isSiswa) {
             $form = PrediksiService::withSiswaIdentity($form, $this->ownSiswa);
             if (!$fromDraft) {
@@ -36,6 +39,9 @@ final class PrediksiController extends Controller
         if (is_post()) {
             $this->verifyPost('prediksi/form');
             [$form, $errors] = PrediksiService::fromPost($this->isSiswa ? $this->ownSiswa : null);
+            if (!$this->isAdmin && !$this->isSiswa && $form['sekolah'] !== Sekolah::find((int) $this->user['sekolah_id'])['kode']) {
+                $errors['sekolah'] = 'Pilih sekolah Anda.';
+            }
             if (!$errors) {
                 $_SESSION['prediksi_draft'] = $form;
                 back_to('prediksi/review');
@@ -45,9 +51,9 @@ final class PrediksiController extends Controller
         }
         $this->render('prediksi/form', compact('model', 'form', 'errors', 'flash') + [
             'domains' => Atribut::domains(),
-            'schools' => Sekolah::all(),
+            'schools' => $this->isAdmin || $this->isSiswa ? Sekolah::all() : [Sekolah::find((int) $this->user['sekolah_id'])],
             'rule' => Discretizer::fromDb(),
-            'pageTitle' => $this->isSiswa ? 'Simulasi Rekomendasi' : 'Cek Rekomendasi', 'active' => $this->isSiswa ? 'simulasi' : 'prediksi', 'crumbs' => ['Prediksi' => 'prediksi/', 'Cek Rekomendasi' => null],
+            'pageTitle' => $this->isSiswa ? 'Simulasi Rekomendasi' : 'Cek Rekomendasi', 'active' => $this->isAdmin ? 'prediksi' : 'simulasi', 'crumbs' => ['Prediksi' => 'prediksi/', 'Cek Rekomendasi' => null],
         ]);
     }
 
@@ -64,6 +70,10 @@ final class PrediksiController extends Controller
         if ($this->isSiswa) {
             $draft = PrediksiService::withSiswaIdentity($draft, $this->ownSiswa);
         }
+        if (!$this->isAdmin && !$this->isSiswa && $draft['sekolah'] !== Sekolah::find((int) $this->user['sekolah_id'])['kode']) {
+            unset($_SESSION['prediksi_draft']);
+            $this->notFound('prediksi/form', 'Sekolah prediksi tidak sesuai dengan akun Anda.');
+        }
         if (is_post()) {
             $this->verifyPost('prediksi/review');
             $id = PrediksiService::predictForm($model, $draft, (int) $this->user['id'], $this->isSiswa ? (int) $this->ownSiswa['id'] : null);
@@ -77,7 +87,7 @@ final class PrediksiController extends Controller
             'form' => $draft,
             'attributes' => PrediksiService::toAttributes($draft, Discretizer::fromDb()),
             'attributeList' => Atribut::all(),
-            'pageTitle' => 'Tinjau Input', 'active' => $this->isSiswa ? 'simulasi' : 'prediksi', 'crumbs' => ['Prediksi' => 'prediksi/', 'Cek Rekomendasi' => 'prediksi/form?draft=1', 'Tinjau' => null],
+            'pageTitle' => 'Tinjau Input', 'active' => $this->isAdmin ? 'prediksi' : 'simulasi', 'crumbs' => ['Prediksi' => 'prediksi/', 'Cek Rekomendasi' => 'prediksi/form?draft=1', 'Tinjau' => null],
         ]);
     }
 
@@ -85,6 +95,9 @@ final class PrediksiController extends Controller
     {
         $prediction = Prediksi::find(query_int('id')) ?? $this->notFound('prediksi/', 'Hasil prediksi tidak tersedia.');
         if ($this->isSiswa && !Prediksi::ownedBy($prediction, (int) $this->user['id'], $this->ownSiswa ? (int) $this->ownSiswa['id'] : null)) {
+            $this->notFound('prediksi/', 'Hasil prediksi tidak tersedia.');
+        }
+        if (!$this->isAdmin && !$this->isSiswa && !Prediksi::belongsToSchool($prediction, (int) $this->user['sekolah_id'])) {
             $this->notFound('prediksi/', 'Hasil prediksi tidak tersedia.');
         }
         $this->render('prediksi/detail', [

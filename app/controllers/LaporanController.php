@@ -7,10 +7,11 @@ final class LaporanController extends Controller
 
     public function index(): void
     {
+        $schoolId = $this->isAdmin ? null : (int) $this->user['sekolah_id'];
         $this->render('laporan/index', [
-            'models' => ModelId3::all(),
-            'evaluations' => Evaluasi::all(),
-            'schools' => Sekolah::all(),
+            'models' => $this->isAdmin ? ModelId3::all() : [],
+            'evaluations' => $this->isAdmin ? Evaluasi::all() : [],
+            'schools' => $schoolId ? [Sekolah::find($schoolId)] : Sekolah::all(),
             'pageTitle' => 'Laporan', 'active' => 'laporan', 'crumbs' => ['Laporan' => null],
         ]);
     }
@@ -22,11 +23,15 @@ final class LaporanController extends Controller
         if (!in_array($type, self::PRINTS, true)) {
             $this->notFound('laporan/', 'Jenis laporan tidak tersedia.');
         }
+        if (!$this->isAdmin && in_array($type, ['model', 'evaluasi'], true)) {
+            $this->notFound('laporan/', 'Jenis laporan tidak tersedia.');
+        }
+        $schoolId = $this->isAdmin ? null : (int) $this->user['sekolah_id'];
         $data = match ($type) {
-            'siswa' => ['rows' => Siswa::export(['sekolah_id' => query_int('sekolah_id'), 'label' => query('label')]), 'attributes' => Atribut::all()],
+            'siswa' => ['rows' => Siswa::export(['sekolah_id' => $schoolId ?? query_int('sekolah_id'), 'label' => query('label')]), 'attributes' => Atribut::all()],
             'model' => $this->modelData(),
             'evaluasi' => $this->evaluationData(),
-            'prediksi' => ['rows' => Prediksi::export()],
+            'prediksi' => ['rows' => Prediksi::export($schoolId)],
         };
         $titles = ['siswa' => 'Laporan Data Siswa', 'model' => 'Laporan Model ID3', 'evaluasi' => 'Laporan Pengujian Model', 'prediksi' => 'Laporan Hasil Prediksi'];
         $this->render('laporan/cetak-' . $type, $data + [
@@ -58,12 +63,12 @@ final class LaporanController extends Controller
             $rows = array_map(static fn (array $r): array => [
                 $r['kode_siswa'], $r['sekolah_kode'], $r['kelas'], $r['nama'], $r['nisn'] ?? '', $r['peminatan'],
                 ...array_map(static fn (string $c): string => $r['atribut'][$c] ?? '', $codes), $r['label'] ?? '',
-            ], Siswa::export([]));
+            ], Siswa::export($this->isAdmin ? [] : ['sekolah_id' => (int) $this->user['sekolah_id']]));
         } elseif ($type === 'prediksi') {
             $header = ['ID', 'Waktu (WIB)', 'Sumber', 'Kode siswa', 'Nama', 'Model', 'Hasil', 'Keyakinan'];
             $rows = array_map(static fn (array $r): array => [
                 $r['id'], wib($r['created_at']), $r['sumber'], $r['kode_siswa'] ?? '', $r['nama'] ?? '', $r['model_nama'], $r['hasil'], number_format((float) $r['keyakinan'] * 100, 1, ',', ''),
-            ], Prediksi::export());
+            ], Prediksi::export($this->isAdmin ? null : (int) $this->user['sekolah_id']));
         } else {
             $this->notFound('laporan/', 'Jenis CSV tidak tersedia.');
         }

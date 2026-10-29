@@ -21,7 +21,7 @@ Aturan proyek yang paling sering dilanggar:
 
 ### Arsitektur panel
 
-- Semua URL panel lewat `admin/index.php` → `Router::dispatch()` (`app/core/Router.php`). Pola `/admin/{modul}/{aksi}` → `{Modul}Controller::{aksi}()`.
+- Semua URL panel lewat `panel/index.php` → `Router::dispatch()` (`app/core/Router.php`). Pola `/panel/{modul}/{aksi}` → `{Modul}Controller::{aksi}()`.
 - Semua controller panel turunan `Controller` (`app/core/Controller.php`). Konstruktornya memanggil `Auth::requireUser()`; jadi konstruktor adalah satu titik yang dilewati setiap request panel.
 - Layout: `views/layouts/admin_top.php` (sidebar + topbar) dan `admin_bottom.php`. View menerima `$user`, `$isAdmin`, dan (setelah perubahan working tree) `$isSiswa`.
 

@@ -22,6 +22,7 @@ final class PenggunaService
             'nama' => trim(input('nama')),
             'username' => trim(input('username')),
             'role' => input('role'),
+            'sekolah_id' => trim(input('sekolah_id')),
             'kode_siswa' => trim(input('kode_siswa')),
             'password' => input('password'),
         ];
@@ -50,6 +51,15 @@ final class PenggunaService
         } else {
             $form['kode_siswa'] = null;
         }
+        if ($form['role'] === 'guru_bk') {
+            if (!ctype_digit($form['sekolah_id']) || !Sekolah::find((int) $form['sekolah_id'])) {
+                $errors['sekolah_id'] = 'Pilih sekolah guru BK.';
+            } else {
+                $form['sekolah_id'] = (int) $form['sekolah_id'];
+            }
+        } else {
+            $form['sekolah_id'] = null;
+        }
         if (!$existing || $form['password'] !== '') {
             $message = self::passwordError($form['password'], input('password_confirmation'));
             if ($message) {
@@ -62,10 +72,10 @@ final class PenggunaService
     public static function save(array $form, ?array $existing): int
     {
         if ($existing) {
-            User::update((int) $existing['id'], $form['nama'], $form['username'], $form['role'], $form['password'], $form['kode_siswa']);
+            User::update((int) $existing['id'], $form['nama'], $form['username'], $form['role'], $form['password'], $form['kode_siswa'], $form['sekolah_id']);
             return (int) $existing['id'];
         }
-        return User::create($form['nama'], $form['username'], $form['role'], $form['password'], $form['kode_siswa']);
+        return User::create($form['nama'], $form['username'], $form['role'], $form['password'], $form['kode_siswa'], $form['sekolah_id']);
     }
 
     public static function createStudentAccounts(?int $schoolId, string $kelas): array

@@ -9,9 +9,10 @@ web-id3/
 |-- index.php                 Halaman publik
 |-- login.php, logout.php     Entry point autentikasi
 |-- .htaccess                 Pembatasan akses folder internal
-|-- admin/
+|-- panel/
 |   |-- index.php             Front controller panel
-|   `-- .htaccess             Rewrite /admin/{modul}/{aksi}
+|   `-- .htaccess             Rewrite /panel/{modul}/{aksi}
+|-- admin/                    Pengalih alamat lama /admin/... ke /panel/...
 |-- app/
 |   |-- core/                 Bootstrap, Router, Controller, View, Auth, Csrf, Database, helper
 |   |-- controllers/          Alur HTTP per modul
@@ -56,7 +57,7 @@ Instalasi web tidak memerlukan Composer atau build Node. `package-lock.json` men
 
 ```mermaid
 flowchart TD
-    A[Browser: /admin/modul/aksi] --> B[admin/.htaccess dan admin/index.php]
+    A[Browser: /panel/modul/aksi] --> B[panel/.htaccess dan panel/index.php]
     B --> C[bootstrap.php dan Router]
     C --> D[Controller: login, role, POST, CSRF]
     D --> E[Service: validasi dan proses bisnis]

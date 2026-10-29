@@ -16,7 +16,7 @@ final class AtributController extends Controller
         $attribute = Atribut::find(query_int('id')) ?? $this->notFound('atribut/', 'Atribut yang dipilih tidak tersedia.');
         $rootGain = null;
         $model = ModelId3::active();
-        if ($model) {
+        if ($model && $this->isAdmin) {
             foreach (ModelId3::steps((int) $model['id'])[0]['detail_gain'] ?? [] as $gain) {
                 if ($gain['atribut'] === $attribute['kode']) {
                     $rootGain = $gain['gain'];
@@ -25,7 +25,7 @@ final class AtributController extends Controller
         }
         $this->render('atribut/detail', [
             'attribute' => $attribute,
-            'distribution' => Atribut::distribution((int) $attribute['id']),
+            'distribution' => Atribut::distribution((int) $attribute['id'], $this->isAdmin ? null : (int) $this->user['sekolah_id']),
             'rootGain' => $rootGain,
             'pageTitle' => $attribute['nama'], 'active' => 'atribut', 'crumbs' => ['Atribut ID3' => 'atribut/', $attribute['kode'] => null],
         ]);

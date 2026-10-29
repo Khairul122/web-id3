@@ -32,7 +32,7 @@ mysql -u root siminat < database/schema.sql
 mysql -u root siminat < database/seed.sql
 # 3. Salin config
 cp config/config.example.php config/config.php
-# 4. Buka http://localhost/siminat  (admin: /siminat/admin)
+# 4. Buka http://localhost/siminat  (panel: /siminat/panel)
 # 5. Uji mesin ID3
 php tests/id3_manual_test.php
 ```
@@ -47,7 +47,7 @@ Akun awal (`seed.sql`): `admin` / `admin123`. Sesuai keputusan pengguna, login l
 3. Query **hanya** lewat `Database::pdo()` dengan prepared statement. Jangan pernah menyisipkan `$_GET` atau `$_POST` ke string SQL.
 4. Output ke HTML **selalu** lewat `e($teks)`. Untuk JSON gunakan `json_encode(..., JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE)`.
 5. Form POST wajib berisi `<?= Csrf::field() ?>` dan controller wajib memanggil `Csrf::verify()`.
-6. MVC + service. Panel admin lewat front controller `admin/index.php` dan `Router` (`/admin/{modul}/{aksi}` -> `{Modul}Controller::{aksi}()`). Controller tipis di `app/controllers/`, logika di `app/services/`, query di `app/models/`, tampilan di `views/admin/{modul}/{halaman}.php`.
+6. MVC + service. Panel (semua peran) lewat front controller `panel/index.php` dan `Router` (`/panel/{modul}/{aksi}` -> `{Modul}Controller::{aksi}()`). Controller tipis di `app/controllers/`, logika di `app/services/`, query di `app/models/`, tampilan di `views/admin/{modul}/{halaman}.php`.
    Pesan hasil aksi memakai `flash('success'|'error', judul, pesan)` dan tampil sebagai dialog di tengah. Aksi yang mengubah atau menghapus data memakai `data-confirm` pada form.
 7. View hanya menampilkan data. Tidak ada query di view.
 8. Error tampil ramah ke pengguna. Detail error masuk `storage/logs/app.log`.

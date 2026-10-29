@@ -93,7 +93,7 @@ The database name and credentials must match your local server. Git ignores the 
 php scripts/setup_auth.php
 ```
 
-The script creates the database if it does not exist, prepares the tables, applies the password-change and student-role migrations, and seeds the initial account and reference data. It does not overwrite existing accounts or reference data. The database user needs database creation privileges if the database has not been created yet.
+The script creates the database if it does not exist, prepares the tables, applies the password-change, student-role, and teacher-school migrations, and seeds the initial account and reference data. It does not overwrite existing accounts or reference data. The database user needs database creation privileges if the database has not been created yet. After migration, an administrator must assign a school to each existing counselor account before it can sign in.
 
 SQL files for inspection or manual installation are available in `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, and `database/migrations/`.
 
@@ -103,7 +103,7 @@ SQL files for inspection or manual installation are available in `database/schem
 |---|---|
 | Home | `http://localhost/web-id3/` |
 | Login | `http://localhost/web-id3/login.php` |
-| Dashboard | `http://localhost/web-id3/admin/` |
+| Dashboard | `http://localhost/web-id3/panel/` |
 
 If Laragon's virtual host is enabled, use `http://web-id3.test/`. Adjust the URL to match your directory or virtual host name.
 

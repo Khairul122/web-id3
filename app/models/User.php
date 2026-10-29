@@ -25,22 +25,28 @@ final class User
 
     public static function all(): array
     {
-        return Database::run('SELECT id, nama, username, role, kode_siswa, last_login, created_at FROM users ORDER BY role, nama')->fetchAll();
+        return Database::run('SELECT id, nama, username, role, sekolah_id, kode_siswa, last_login, created_at FROM users ORDER BY role, nama')->fetchAll();
     }
 
-    public static function create(string $nama, string $username, string $role, string $password, ?string $kodeSiswa = null): int
+    public static function create(string $nama, string $username, string $role, string $password, ?string $kodeSiswa = null, ?int $sekolahId = null): int
     {
+        if ($role === 'siswa') {
+            $sekolahId = self::studentSchool($kodeSiswa);
+        }
         Database::run(
-            'INSERT INTO users (nama, username, password_hash, role, kode_siswa) VALUES (?, ?, ?, ?, ?)',
-            [$nama, $username, password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]), $role, $kodeSiswa]
+            'INSERT INTO users (nama, username, password_hash, role, kode_siswa, sekolah_id) VALUES (?, ?, ?, ?, ?, ?)',
+            [$nama, $username, password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]), $role, $kodeSiswa, $sekolahId]
         );
         return (int) Database::pdo()->lastInsertId();
     }
 
     /** Ubah profil. Password baru (opsional) juga mengakhiri sesi akun tersebut di perangkat lain. */
-    public static function update(int $id, string $nama, string $username, string $role, string $password = '', ?string $kodeSiswa = null): void
+    public static function update(int $id, string $nama, string $username, string $role, string $password = '', ?string $kodeSiswa = null, ?int $sekolahId = null): void
     {
-        Database::run('UPDATE users SET session_version = session_version + IF(role <> ? OR NOT (kode_siswa <=> ?), 1, 0), nama = ?, username = ?, role = ?, kode_siswa = ? WHERE id = ?', [$role, $kodeSiswa, $nama, $username, $role, $kodeSiswa, $id]);
+        if ($role === 'siswa') {
+            $sekolahId = self::studentSchool($kodeSiswa);
+        }
+        Database::run('UPDATE users SET session_version = session_version + IF(role <> ? OR NOT (kode_siswa <=> ?) OR NOT (sekolah_id <=> ?), 1, 0), nama = ?, username = ?, role = ?, kode_siswa = ?, sekolah_id = ? WHERE id = ?', [$role, $kodeSiswa, $sekolahId, $nama, $username, $role, $kodeSiswa, $sekolahId, $id]);
         if ($password !== '') {
             self::changePassword($id, $password);
         }
@@ -64,6 +70,19 @@ final class User
     public static function kodeSiswaTaken(string $kode, int $exceptId = 0): bool
     {
         return (bool) Database::run('SELECT 1 FROM users WHERE kode_siswa = ? AND id <> ?', [$kode, $exceptId])->fetchColumn();
+    }
+
+    private static function studentSchool(?string $kode): ?int
+    {
+        $id = $kode === null ? false : Database::run('SELECT sekolah_id FROM siswa WHERE kode_siswa = ?', [$kode])->fetchColumn();
+        return $id === false ? null : (int) $id;
+    }
+
+    public static function syncStudentSchools(?string $kode = null): void
+    {
+        Database::run("UPDATE users u LEFT JOIN siswa s ON s.kode_siswa = u.kode_siswa
+            SET u.session_version = u.session_version + 1, u.sekolah_id = s.sekolah_id
+            WHERE u.role = 'siswa' AND NOT (u.sekolah_id <=> s.sekolah_id)" . ($kode === null ? '' : ' AND u.kode_siswa = ?'), $kode === null ? [] : [$kode]);
     }
 
     public static function withoutSiswaAccount(?int $schoolId, string $kelas): array

@@ -17,7 +17,7 @@
   <label class="sr-only" for="sekolah_id">Sekolah</label>
   <select id="sekolah_id" name="sekolah_id">
     <option value="">Semua sekolah</option>
-    <?php foreach ($schools as $school): ?><option value="<?= (int) $school['id'] ?>" <?= $filter['sekolah_id'] === (int) $school['id'] ? 'selected' : '' ?>><?= e($school['kode']) ?></option><?php endforeach; ?>
+    <?php foreach ($schools as $school): ?><option value="<?= (int) $school['id'] ?>" <?= $filter['sekolah_id'] === (int) $school['id'] ? 'selected' : '' ?>><?= e($school['nama']) ?></option><?php endforeach; ?>
   </select>
   <label class="sr-only" for="kelas">Kelas</label>
   <select id="kelas" name="kelas">
@@ -45,7 +45,7 @@
       <tr>
         <td data-label="Kode" class="nowrap"><?= e($row['kode_siswa']) ?></td>
         <td class="cell-title"><a href="<?= e(admin_url('siswa/detail?id=' . $row['id'])) ?>"><?= e($row['nama']) ?></a></td>
-        <td data-label="Sekolah"><?= e($row['sekolah_kode']) ?></td>
+        <td data-label="Sekolah"><a href="<?= e(admin_url('sekolah/detail?id=' . $row['sekolah_id'])) ?>"><?= e($row['sekolah_nama']) ?></a></td>
         <td data-label="Kelas"><?= e($row['kelas']) ?></td>
         <td data-label="Peminatan"><?= e($row['peminatan']) ?></td>
         <td data-label="Label"><?= badge($row['label']) ?></td>

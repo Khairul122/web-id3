@@ -227,6 +227,7 @@ final class Importer
                 $row['atribut'] = ['Sekolah_Asal' => $row['sekolah_kode'], 'Peminatan' => $row['peminatan']] + $categories;
                 Siswa::save($row);
             }
+            User::syncStudentSchools();
             return count($rows);
         });
     }

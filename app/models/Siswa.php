@@ -12,7 +12,7 @@ final class Siswa
         $total = (int) Database::run("SELECT COUNT(*) FROM siswa s WHERE {$where}", $params)->fetchColumn();
         $offset = (max($page, 1) - 1) * self::PER_PAGE;
         $rows = Database::run(
-            "SELECT s.id, s.kode_siswa, s.nama, s.kelas, s.peminatan, s.label, k.kode AS sekolah_kode
+            "SELECT s.id, s.kode_siswa, s.nama, s.sekolah_id, s.kelas, s.peminatan, s.label, k.nama AS sekolah_nama
              FROM siswa s JOIN sekolah k ON k.id = s.sekolah_id WHERE {$where}
              ORDER BY s.kode_siswa LIMIT " . self::PER_PAGE . " OFFSET {$offset}",
             $params
@@ -64,14 +64,14 @@ final class Siswa
         return [implode(' AND ', $where), $params];
     }
 
-    public static function kelasList(): array
+    public static function kelasList(?int $schoolId = null): array
     {
-        return array_column(Database::run('SELECT DISTINCT kelas FROM siswa ORDER BY kelas')->fetchAll(), 'kelas');
+        return array_column(Database::run('SELECT DISTINCT kelas FROM siswa' . ($schoolId ? ' WHERE sekolah_id = ?' : '') . ' ORDER BY kelas', $schoolId ? [$schoolId] : [])->fetchAll(), 'kelas');
     }
 
-    public static function countUnpredicted(int $modelId): int
+    public static function countUnpredicted(int $modelId, ?int $schoolId = null): int
     {
-        return (int) Database::run("SELECT COUNT(*) FROM siswa s WHERE s.label IS NULL AND NOT EXISTS (SELECT 1 FROM prediksi p WHERE p.siswa_id = s.id AND p.sumber = 'massal' AND p.model_id = ?)", [$modelId])->fetchColumn();
+        return (int) Database::run("SELECT COUNT(*) FROM siswa s WHERE s.label IS NULL AND NOT EXISTS (SELECT 1 FROM prediksi p WHERE p.siswa_id = s.id AND p.sumber = 'massal' AND p.model_id = ?)" . ($schoolId ? ' AND s.sekolah_id = ?' : ''), $schoolId ? [$modelId, $schoolId] : [$modelId])->fetchColumn();
     }
 
     public static function find(int $id): ?array
@@ -122,6 +122,7 @@ final class Siswa
      */
     public static function save(array $data, ?int $id = null): int
     {
+        $oldCode = $id === null ? null : Database::run('SELECT kode_siswa FROM siswa WHERE id = ?', [$id])->fetchColumn();
         $id = self::write($data, $id);
         // Form tidak mengubah nilai mapel legger; nilai mapel hanya diganti bila dikirim.
         if (isset($data['mapel'])) {
@@ -132,6 +133,10 @@ final class Siswa
         }
         self::saveScores($id, $data['nilai'] ?? []);
         self::saveAttributes($id, $data['atribut']);
+        if ($oldCode !== null && $oldCode !== false && $oldCode !== $data['kode_siswa']) {
+            User::syncStudentSchools($oldCode);
+        }
+        User::syncStudentSchools($data['kode_siswa']);
         return $id;
     }
 
@@ -187,7 +192,11 @@ final class Siswa
 
     public static function delete(int $id): void
     {
+        $code = Database::run('SELECT kode_siswa FROM siswa WHERE id = ?', [$id])->fetchColumn();
         Database::run('DELETE FROM siswa WHERE id = ?', [$id]);
+        if ($code !== false) {
+            User::syncStudentSchools($code);
+        }
     }
 
     public static function deleteAll(): void
@@ -229,9 +238,9 @@ final class Siswa
         return $rows;
     }
 
-    public static function counts(): array
+    public static function counts(?int $schoolId = null): array
     {
-        return Database::run('SELECT COUNT(*) AS total, SUM(label IS NOT NULL) AS berlabel, SUM(label IS NULL) AS tanpa_label FROM siswa')->fetch();
+        return Database::run('SELECT COUNT(*) AS total, SUM(label IS NOT NULL) AS berlabel, SUM(label IS NULL) AS tanpa_label FROM siswa' . ($schoolId ? ' WHERE sekolah_id = ?' : ''), $schoolId ? [$schoolId] : [])->fetch();
     }
 
     /** Jumlah per sekolah dan label untuk dashboard. */

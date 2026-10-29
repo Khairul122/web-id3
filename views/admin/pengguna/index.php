@@ -5,14 +5,14 @@
 <form class="toolbar" method="get"><label for="role_filter">Peran</label><select id="role_filter" name="role"><option value="">Semua peran</option><?php foreach (PenggunaService::ROLES as $value => $label): ?><option value="<?= e($value) ?>" <?= $role === $value ? 'selected' : '' ?>><?= e($label) ?></option><?php endforeach; ?></select><button class="btn" type="submit">Tampilkan</button></form>
 <div class="table-wrap">
   <table class="table table--cards">
-    <thead><tr><th>Nama</th><th>Username</th><th>Peran</th><th>Kode siswa</th><th>Login terakhir</th><th class="actions">Aksi</th></tr></thead>
+    <thead><tr><th>Nama</th><th>Username</th><th>Peran</th><th>Sekolah/Kode siswa</th><th>Login terakhir</th><th class="actions">Aksi</th></tr></thead>
     <tbody>
     <?php foreach ($users as $account): ?>
       <tr>
         <td class="cell-title"><a href="<?= e(admin_url('pengguna/detail?id=' . $account['id'])) ?>"><?= e($account['nama']) ?></a><?= (int) $account['id'] === (int) $user['id'] ? ' <small>(Anda)</small>' : '' ?></td>
         <td data-label="Username"><?= e($account['username']) ?></td>
         <td data-label="Peran"><span class="badge badge--<?= $account['role'] === 'admin' ? 'admin' : 'none' ?>"><?= e(PenggunaService::ROLES[$account['role']]) ?></span></td>
-        <td data-label="Kode siswa"><?= e($account['kode_siswa'] ?? '-') ?></td>
+        <td data-label="Sekolah/Kode siswa"><?= e($account['role'] === 'guru_bk' ? ($account['sekolah_id'] ? Sekolah::find((int) $account['sekolah_id'])['nama'] : 'Belum ditentukan') : ($account['kode_siswa'] ?? '-')) ?></td>
         <td data-label="Login terakhir" class="nowrap"><?= e(wib($account['last_login'])) ?></td>
         <td class="actions">
           <a class="link-btn" href="<?= e(admin_url('pengguna/detail?id=' . $account['id'])) ?>">Detail</a>

@@ -16,6 +16,14 @@
     <p class="field__help">Isi bila peran Siswa. Kode harus ada di Data Siswa.</p>
     <?= field_error($errors, 'kode_siswa') ?>
   </div>
+  <div class="field" data-sekolah-guru>
+    <label for="sekolah_id">Sekolah guru BK</label>
+    <select id="sekolah_id" name="sekolah_id" <?= invalid_attr($errors, 'sekolah_id') ?>>
+      <option value="">Pilih sekolah</option>
+      <?php foreach ($schools as $school): ?><option value="<?= (int) $school['id'] ?>" <?= $form['sekolah_id'] === (string) $school['id'] ? 'selected' : '' ?>><?= e($school['nama']) ?></option><?php endforeach; ?>
+    </select>
+    <?= field_error($errors, 'sekolah_id') ?>
+  </div>
   <div class="field">
     <label for="password">Kata sandi<?= $existing ? ' baru (opsional)' : '' ?></label>
     <input id="password" name="password" type="password" autocomplete="new-password" maxlength="72" <?= $existing ? '' : 'required' ?> <?= invalid_attr($errors, 'password') ?>>

@@ -17,6 +17,83 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// Dropdown menu pengguna di topbar (mendukung details / summary native).
+const userMenu = document.querySelector('[data-user-menu]');
+if (userMenu) {
+  const isDetails = userMenu.tagName.toLowerCase() === 'details';
+  const userToggle = userMenu.querySelector('[data-user-menu-toggle]');
+  const userDropdown = userMenu.querySelector('[data-user-menu-dropdown]');
+
+  const openMenu = () => {
+    if (isDetails) userMenu.open = true;
+    else {
+      userToggle?.setAttribute('aria-expanded', 'true');
+      if (userDropdown) userDropdown.hidden = false;
+    }
+  };
+
+  const closeMenu = (focusToggle = false) => {
+    if (isDetails) userMenu.open = false;
+    else {
+      userToggle?.setAttribute('aria-expanded', 'false');
+      if (userDropdown) userDropdown.hidden = true;
+    }
+    if (focusToggle) userToggle?.focus();
+  };
+
+  // Tutup bila klik di luar menu.
+  document.addEventListener('click', (event) => {
+    if (!userMenu.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  userMenu.addEventListener('keydown', (event) => {
+    const isOpen = isDetails ? userMenu.open : userToggle?.getAttribute('aria-expanded') === 'true';
+    if (event.key === 'Escape' && isOpen) {
+      event.preventDefault();
+      closeMenu(true);
+      return;
+    }
+
+    if (!isOpen) {
+      if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openMenu();
+        const firstItem = userDropdown?.querySelector('.user-dropdown__item');
+        firstItem?.focus();
+      }
+      return;
+    }
+
+    if (!userDropdown) return;
+    const items = Array.from(userDropdown.querySelectorAll('.user-dropdown__item:not([disabled])'));
+    const currentIndex = items.indexOf(document.activeElement);
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      const nextIndex = (currentIndex + 1) % items.length;
+      items[nextIndex]?.focus();
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      const prevIndex = (currentIndex - 1 + items.length) % items.length;
+      items[prevIndex]?.focus();
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      items[0]?.focus();
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      items[items.length - 1]?.focus();
+    } else if (event.key === 'Tab') {
+      setTimeout(() => {
+        if (!userMenu.contains(document.activeElement)) {
+          closeMenu();
+        }
+      }, 0);
+    }
+  });
+}
+
 // Kategori nilai langsung saat diketik: <form data-tinggi="95" data-sedang="92"> + <input data-score="id-hint">.
 document.querySelectorAll('form[data-tinggi]').forEach((form) => {
   const tinggi = Number(form.dataset.tinggi);
@@ -39,8 +116,9 @@ document.querySelectorAll('form[data-tinggi]').forEach((form) => {
 // Tombol cetak tanpa skrip inline.
 const roleSelect = document.querySelector('#role');
 const kodeSiswaField = document.querySelector('[data-kode-siswa]');
+const sekolahGuruField = document.querySelector('[data-sekolah-guru]');
 if (roleSelect && kodeSiswaField) {
-  const updateRole = () => { kodeSiswaField.hidden = roleSelect.value !== 'siswa'; };
+  const updateRole = () => { kodeSiswaField.hidden = roleSelect.value !== 'siswa'; sekolahGuruField.hidden = roleSelect.value !== 'guru_bk'; };
   roleSelect.addEventListener('change', updateRole);
   updateRole();
 }

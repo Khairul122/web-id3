@@ -9,7 +9,7 @@ function e(string|int|float|null $value): string
 function url(string $path = ''): string
 {
     $base = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/index.php'));
-    $base = preg_replace('#/admin(?:/.*)?$#', '', $base);
+    $base = preg_replace('#/(?:panel|admin)(?:/.*)?$#', '', $base);
     return rtrim($base, '/.') . '/' . ltrim($path, '/');
 }
 
@@ -134,10 +134,10 @@ function json_out(mixed $value): string
 
 function admin_url(string $path = ''): string
 {
-    return url('admin/' . ltrim($path, '/'));
+    return url('panel/' . ltrim($path, '/'));
 }
 
 function back_to(string $path): never
 {
-    redirect('admin/' . ltrim($path, '/'));
+    redirect('panel/' . ltrim($path, '/'));
 }

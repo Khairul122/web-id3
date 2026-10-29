@@ -1,15 +1,24 @@
 -- Skema SIMINAT: autentikasi, master data, dan pemodelan ID3.
+CREATE TABLE IF NOT EXISTS sekolah (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    kode VARCHAR(10) NOT NULL UNIQUE,
+    nama VARCHAR(150) NOT NULL,
+    alamat VARCHAR(255) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
     username VARCHAR(100) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     role ENUM('admin', 'guru_bk', 'siswa') NOT NULL DEFAULT 'guru_bk',
+    sekolah_id TINYINT UNSIGNED NULL,
     kode_siswa VARCHAR(20) NULL UNIQUE,
     must_change_password TINYINT(1) NOT NULL DEFAULT 0,
     session_version INT UNSIGNED NOT NULL DEFAULT 1,
     last_login DATETIME NULL,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_users_sekolah FOREIGN KEY (sekolah_id) REFERENCES sekolah(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS login_attempts (
@@ -20,13 +29,6 @@ CREATE TABLE IF NOT EXISTS login_attempts (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Master data siswa, atribut ID3, model, evaluasi, dan prediksi.
-CREATE TABLE IF NOT EXISTS sekolah (
-    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    kode VARCHAR(10) NOT NULL UNIQUE,
-    nama VARCHAR(150) NOT NULL,
-    alamat VARCHAR(255) NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 CREATE TABLE IF NOT EXISTS siswa (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     kode_siswa VARCHAR(20) NOT NULL UNIQUE,

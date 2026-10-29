@@ -3,6 +3,12 @@ declare(strict_types=1);
 
 final class PengujianController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->requireAdmin();
+    }
+
     public function index(): void
     {
         $this->render('pengujian/index', [

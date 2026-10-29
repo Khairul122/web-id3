@@ -33,7 +33,7 @@ final class PenggunaController extends Controller
     {
         $id = query_int('id');
         $existing = $id ? (User::findById($id) ?? $this->notFound('pengguna/', 'Pengguna tidak tersedia.')) : null;
-        $form = ['nama' => $existing['nama'] ?? '', 'username' => $existing['username'] ?? '', 'role' => $existing['role'] ?? 'guru_bk', 'kode_siswa' => $existing['kode_siswa'] ?? ''];
+        $form = ['nama' => $existing['nama'] ?? '', 'username' => $existing['username'] ?? '', 'role' => $existing['role'] ?? 'guru_bk', 'kode_siswa' => $existing['kode_siswa'] ?? '', 'sekolah_id' => (string) ($existing['sekolah_id'] ?? '')];
         $errors = [];
         $flash = null;
         if (is_post()) {
@@ -52,7 +52,7 @@ final class PenggunaController extends Controller
         }
         $pageTitle = $existing ? 'Ubah Pengguna' : 'Tambah Pengguna';
         $this->render('pengguna/form', compact('existing', 'form', 'errors', 'flash', 'pageTitle') + [
-            'active' => 'pengguna', 'crumbs' => ['Pengguna' => 'pengguna/', $pageTitle => null],
+            'schools' => Sekolah::all(), 'active' => 'pengguna', 'crumbs' => ['Pengguna' => 'pengguna/', $pageTitle => null],
         ]);
     }
 

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-/** Router panel admin: /admin/{modul}/{aksi} -> {Modul}Controller::{aksi}(). */
+/** Router panel: /panel/{modul}/{aksi} -> {Modul}Controller::{aksi}(). */
 final class Router
 {
     private const MODULES = [
@@ -29,7 +29,7 @@ final class Router
             Auth::requireUser();
             http_response_code(404);
             flash('error', 'Halaman tidak ditemukan', 'Alamat yang dibuka tidak tersedia di panel.');
-            redirect('admin/dashboard/');
+            redirect('panel/dashboard/');
         }
         (new $class())->$method();
     }

@@ -17,6 +17,10 @@ Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/002_opt
 if (!Database::run("SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'users' AND COLUMN_NAME = 'kode_siswa'")->fetchColumn()) {
     Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/004_role_siswa.sql'));
 }
+if (!Database::run("SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'users' AND COLUMN_NAME = 'sekolah_id'")->fetchColumn()) {
+    Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/migrations/005_guru_sekolah.sql'));
+}
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed.sql'));
 Database::pdo()->exec(file_get_contents(APP_ROOT . '/database/seed_master.sql'));
+User::syncStudentSchools();
 echo "Database siap. Akun dan data yang sudah ada tidak diubah.\n";

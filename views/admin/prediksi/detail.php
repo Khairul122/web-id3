@@ -1,4 +1,4 @@
-<?php $class = strtolower($prediction['hasil']); $total = array_sum($prediction['distribusi_json']); ?>
+<?php $total = array_sum($prediction['distribusi_json']); ?>
 <div class="page-head">
   <div><h1>Hasil Rekomendasi</h1><p><?= e($prediction['nama'] ?? 'Tanpa nama') ?> · <?= $prediction['sumber'] === 'massal' ? 'Prediksi massal' : 'Cek Rekomendasi' ?> · <?= e(wib($prediction['created_at'])) ?></p></div>
   <div class="page-actions">
@@ -7,15 +7,19 @@
   </div>
 </div>
 
-<div class="result-head result-head--<?= e($class) ?>">
+<div class="result-head">
   <?= icon('cap', 'icon--xl') ?>
   <div><span>Rekomendasi rumpun</span><strong><?= e($prediction['hasil']) ?></strong><span>Keyakinan <?= e(pct($prediction['keyakinan'])) ?> dari distribusi daun pohon keputusan</span></div>
 </div>
+<aside class="callout" role="note" aria-labelledby="catatan-title">
+  <span class="callout__icon"><?= icon('alert') ?></span>
+  <div><h2 class="callout__title" id="catatan-title">Catatan penting</h2><p class="callout__text">Hasil ini adalah rekomendasi, <strong>bukan keputusan akhir</strong>. Diskusikan dengan guru BK dan orang tua.</p></div>
+</aside>
 
 <div class="grid grid--2">
   <section class="card" aria-labelledby="yakin-title">
     <div class="card__head"><h2 id="yakin-title">Tingkat keyakinan</h2><p>Proporsi kelas data latih pada daun yang dicapai.</p></div>
-    <div class="bars">
+    <div class="bars bars--navy">
       <?php foreach ($prediction['distribusi_json'] as $label => $count): if (!$count) continue; ?>
         <div class="bar">
           <div class="bar__label"><span><?= e($label) ?></span><span><?= (int) $count ?> data · <?= e(pct($total ? $count / $total : 0)) ?></span></div>
@@ -50,4 +54,3 @@
     </dl>
   </section>
 </div>
-<div class="notice"><?= icon('alert') ?><div>Hasil ini adalah rekomendasi, bukan keputusan akhir. Diskusikan dengan guru BK dan orang tua.</div></div>

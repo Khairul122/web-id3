@@ -15,8 +15,10 @@ if ($action === 'create') {
     if (!in_array($role, ['admin', 'guru_bk', 'siswa'], true)) {
         throw new InvalidArgumentException('Peran fixture tidak valid.');
     }
-    $statement = Database::pdo()->prepare('INSERT INTO users (nama, username, password_hash, role, kode_siswa, must_change_password) VALUES (?, ?, ?, ?, ?, 1)');
-    $statement->execute(['Fixture Pengujian Autentikasi', $username, password_hash(getenv('SIMINAT_TEST_PASSWORD'), PASSWORD_BCRYPT, ['cost' => 12]), $role, getenv('SIMINAT_TEST_KODE') ?: null]);
+    $statement = Database::pdo()->prepare('INSERT INTO users (nama, username, password_hash, role, kode_siswa, sekolah_id, must_change_password) VALUES (?, ?, ?, ?, ?, ?, 1)');
+    $kode = getenv('SIMINAT_TEST_KODE') ?: null;
+    $studentSchool = $role === 'siswa' && $kode ? Database::run('SELECT sekolah_id FROM siswa WHERE kode_siswa = ?', [$kode])->fetchColumn() : false;
+    $statement->execute(['Fixture Pengujian Autentikasi', $username, password_hash(getenv('SIMINAT_TEST_PASSWORD'), PASSWORD_BCRYPT, ['cost' => 12]), $role, $kode, $role === 'guru_bk' ? (int) (getenv('SIMINAT_TEST_SEKOLAH_ID') ?: 1) : ($studentSchool === false ? null : (int) $studentSchool)]);
 } elseif ($action === 'delete') {
     $statement = Database::pdo()->prepare('DELETE FROM users WHERE username = ? AND nama = ?');
     $statement->execute([$username, 'Fixture Pengujian Autentikasi']);

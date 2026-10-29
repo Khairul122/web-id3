@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/app/core/bootstrap.php';
-$accountUrl = url(Auth::isSignedIn() ? 'admin/' : 'login.php');
+$accountUrl = url(Auth::isSignedIn() ? 'panel/' : 'login.php');
 $accountLabel = Auth::isSignedIn() ? 'Panel Saya' : 'Masuk';
 ?>
 <!doctype html>

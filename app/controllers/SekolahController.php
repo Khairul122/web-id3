@@ -6,7 +6,7 @@ final class SekolahController extends Controller
     public function index(): void
     {
         $this->render('sekolah/index', [
-            'schools' => Sekolah::all(),
+            'schools' => $this->isAdmin ? Sekolah::all() : [Sekolah::find((int) $this->user['sekolah_id'])],
             'pageTitle' => 'Data Sekolah', 'active' => 'sekolah', 'crumbs' => ['Master Data' => null, 'Data Sekolah' => null],
         ]);
     }
@@ -14,6 +14,9 @@ final class SekolahController extends Controller
     public function detail(): void
     {
         $school = Sekolah::find(query_int('id')) ?? $this->notFound('sekolah/', 'Sekolah yang dipilih tidak tersedia.');
+        if (!$this->isAdmin && (int) $school['id'] !== (int) $this->user['sekolah_id']) {
+            $this->notFound('sekolah/', 'Sekolah yang dipilih tidak tersedia.');
+        }
         $classes = Sekolah::breakdown((int) $school['id']);
         $this->render('sekolah/detail', [
             'school' => $school,

@@ -93,7 +93,7 @@ Nama database dan kredensial harus sesuai dengan server lokal. File konfigurasi 
 php scripts/setup_auth.php
 ```
 
-Script membuat database jika belum ada, menyiapkan tabel, menjalankan migrasi kebijakan penggantian kata sandi dan peran siswa, lalu mengisi akun serta master data awal. Akun dan master data yang sudah tersedia tidak ditimpa. Pengguna database memerlukan hak pembuatan database bila database belum tersedia.
+Script membuat database jika belum ada, menyiapkan tabel, menjalankan migrasi kebijakan penggantian kata sandi, peran siswa, dan sekolah guru BK, lalu mengisi akun serta master data awal. Akun dan master data yang sudah tersedia tidak ditimpa. Pengguna database memerlukan hak pembuatan database bila database belum tersedia. Setelah migrasi, administrator harus mengisi sekolah pada setiap akun guru BK lama sebelum akun tersebut dapat masuk.
 
 File SQL untuk pemeriksaan atau instalasi manual tersedia di `database/schema.sql`, `database/seed.sql`, `database/seed_master.sql`, dan `database/migrations/`.
 
@@ -103,7 +103,7 @@ File SQL untuk pemeriksaan atau instalasi manual tersedia di `database/schema.sq
 |---|---|
 | Beranda | `http://localhost/web-id3/` |
 | Login | `http://localhost/web-id3/login.php` |
-| Panel | `http://localhost/web-id3/admin/` |
+| Panel | `http://localhost/web-id3/panel/` |
 
 Jika virtual host Laragon aktif, gunakan `http://web-id3.test/`. Sesuaikan URL dengan nama folder atau virtual host pada komputer Anda.
 

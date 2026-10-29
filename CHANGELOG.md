@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-22 (sidebar per peran)
+
+- Sidebar punya menu terpisah per peran. Admin: Kelola Data, Proses ID3, Administrasi (Pengguna, Laporan). Guru BK: Bimbingan (Cek Rekomendasi, Riwayat Prediksi, Data Siswa, Laporan) dan Referensi (hanya lihat) untuk model, pengujian, atribut, diskretisasi, dan sekolah. Siswa tetap tiga menu pribadi.
+- Subjudul sidebar mengikuti peran (Panel Administrator, Panel Guru BK, Panel Siswa). Cek Rekomendasi menjadi menu aktif untuk guru BK dan siswa.
+- Uji HTTP memeriksa isi sidebar admin dan guru BK serta menu aktif Cek Rekomendasi.
+
+## 2026-10-22 (alamat panel /panel/)
+
+- Prefiks URL panel diganti dari `/admin/` menjadi `/panel/` karena panel dipakai semua peran. Folder `admin/` menjadi `panel/`; `admin_url()`, redirect login, dan Router mengikuti. Folder `views/admin/` dan `admin.css` tidak berubah.
+- `admin/index.php` tetap ada sebagai pengalih 303 dari `/admin/...` ke `/panel/...` (parameter query ikut) agar tautan lama berfungsi.
+- Uji HTTP dan uji browser memakai alamat baru.
+
 ## 2026-10-22 (dashboard siswa dan prediksi massal semua siswa)
 
 - Form Simulasi Rekomendasi siswa terisi otomatis dengan nilai rapor dan kategori dari data siswa; nilai yang belum ada tetap kosong untuk diisi atau dipilih manual. Draf yang sedang diedit tidak ditimpa.

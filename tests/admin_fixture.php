@@ -27,6 +27,8 @@ if ($action === 'state') {
     echo Database::run('SELECT siswa_id FROM prediksi WHERE id = ?', [(int) $argv[2]])->fetchColumn();
 } elseif ($action === 'user-id' && preg_match('/^auth_test_[a-f0-9]{12}$/D', $argv[2] ?? '')) {
     echo User::findByUsername($argv[2])['id'] ?? '';
+} elseif ($action === 'student-school' && preg_match('/^UJI-[A-Z0-9-]{3,16}$/D', $argv[2] ?? '')) {
+    echo User::findByKodeSiswa($argv[2])['sekolah_id'] ?? '';
 } else {
     throw new InvalidArgumentException('Aksi fixture tidak valid.');
 }
